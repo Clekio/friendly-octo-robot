@@ -216,11 +216,11 @@ public class Gestures : MonoBehaviour {
 	private string Recognition(List<Vector2> basicpointlist)
 	{
         string gestureName = "Error";
-        for (int i = 0; i < scr_gestosTemplate.TemplateRunas.Count; i++)
+        for (int i = 0; i < GesturesTemplate.TemplateRunas.Count; i++)
         {
-            if (CompareList(basicpointlist, scr_gestosTemplate.TemplateRunas[i].dirList))
+            if (CompareList(basicpointlist, GesturesTemplate.TemplateRunas[i].dirList))
             {
-                gestureName = scr_gestosTemplate.TemplateRunas[i].Name;
+                gestureName = GesturesTemplate.TemplateRunas[i].Name;
                 break;
             }
 		}
