@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     private Vector2 Velocity;
 
     private bool grounded;
-    const float k_GroundedRadius = .02f;                // Radius of the overlap circle to determine if grounded
+    const float k_GroundedRadius = .1f;                // Radius of the overlap circle to determine if grounded
     private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
 
     public float maxJumpHeight = 4;
@@ -58,13 +58,16 @@ public class Player : MonoBehaviour
 
 		if (Input.GetButtonDown("Jump") && grounded)
 		{
-            rb2d.velocity = Vector2.up * maxJumpVelocity;
+            rb2d.velocity = new Vector2(rb2d.velocity.x, maxJumpVelocity);
+            Debug.Break();
+            Velocity.y = maxJumpVelocity;
         }
 		else if (Input.GetButtonUp("Jump"))
 		{
             if (rb2d.velocity.y > minJumpVelocity)
             {
-                rb2d.velocity = Vector2.up * minJumpVelocity;
+                rb2d.velocity = new Vector2(rb2d.velocity.x, minJumpVelocity);
+                Velocity.y = minJumpVelocity;
             }
 		}
 
@@ -101,6 +104,9 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         rb2d.velocity = new Vector2(Velocity.x, rb2d.velocity.y);
+        //Debug.Log(Velocity.y);
+        //Debug.Break();
+        //rb2d.velocity = new Vector2(Velocity.x, Velocity.y);
         Grounded();
     }
 
