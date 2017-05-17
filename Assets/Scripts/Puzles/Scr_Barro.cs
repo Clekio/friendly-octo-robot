@@ -23,7 +23,8 @@ public class Scr_Barro : MonoBehaviour
     {
         if (enBarro == true)
         {
-            Scr_PlayerVictor.Velocity.x -= reduccionVelocidad;
+            //El Script Scr_Victor esta en la carpeta de borrar
+            //Scr_PlayerVictor.Velocity.x -= reduccionVelocidad;
         }
     }
 }

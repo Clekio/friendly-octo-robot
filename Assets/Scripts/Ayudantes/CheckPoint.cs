@@ -11,9 +11,11 @@ public class CheckPoint : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "Player")
-            scr_Respawn.RespawnPosition = m_spawnPosition;
-
-        Debug.Log("Spawn position: " + scr_Respawn.RespawnPosition);
+        if (other.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<PlayerLive>().RespawnPosition = transform.position;
+            Debug.Log("Spawn position: " + other.gameObject.GetComponent<PlayerLive>().RespawnPosition);
+        }
+        
     }
 }
