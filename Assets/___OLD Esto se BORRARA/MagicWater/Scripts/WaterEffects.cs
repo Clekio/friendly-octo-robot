@@ -4,103 +4,103 @@ using UnityEngine;
 
 public class WaterEffects : MonoBehaviour {
 
-	public Scr_PlayerVictor player;
+//	public Scr_PlayerVictor player;
 
-	public bool barro;
-	public bool planta;
-	public bool fuego;
-	public bool seta;
+//	public bool barro;
+//	public bool planta;
+//	public bool fuego;
+//	public bool seta;
 
-	public bool setaDesactivable;
+//	public bool setaDesactivable;
 
-	public float plantSpeed;
-	public float jumpMultiplier = 1.5f;
+//	public float plantSpeed;
+//	public float jumpMultiplier = 1.5f;
 
-	public Transform plantPosition;
+//	public Transform plantPosition;
 
-	bool plantActivated;
-	bool setaActivated;
+//	bool plantActivated;
+//	bool setaActivated;
 
-	float originalJump;
-	float setaBounce;
+//	float originalJump;
+//	float setaBounce;
 
-	Color originalColor;
+//	Color originalColor;
 
-	// Use this for initialization
-	void Start () {
+//	// Use this for initialization
+//	void Start () {
 		
-		plantActivated = false;
-		setaActivated = false;
+//		plantActivated = false;
+//		setaActivated = false;
 
-		originalJump = player.MaxJumpHeight;
-		setaBounce = originalJump * jumpMultiplier;
+//		originalJump = player.MaxJumpHeight;
+//		setaBounce = originalJump * jumpMultiplier;
 
-		originalColor = gameObject.GetComponent <Renderer> ().material.color;
+//		originalColor = gameObject.GetComponent <Renderer> ().material.color;
 
-	}
+//	}
 	
-	// Update is called once per frame
-	void Update () {
-		if (plantActivated) {
-			if (transform.position != plantPosition.position) {
-				transform.position = Vector2.MoveTowards (transform.position, plantPosition.position, plantSpeed);
-			} else {
-				plantActivated = false;
-			}
-		}
-		
-	}
-
-	void OnTriggerEnter2D (Collider2D col){
-		if (col.tag == "Water") {
-//			if (col.GetComponent <DynamicParticle> ().currentState == col.GetComponent <DynamicParticle> ().STATES.WATER) {
-				ApplyEffect ();
+//	// Update is called once per frame
+//	void Update () {
+//		if (plantActivated) {
+//			if (transform.position != plantPosition.position) {
+//				transform.position = Vector2.MoveTowards (transform.position, plantPosition.position, plantSpeed);
+//			} else {
+//				plantActivated = false;
 //			}
-		}
+//		}
+		
+//	}
 
-		if (col.tag == "Player" && setaActivated) {
+//	void OnTriggerEnter2D (Collider2D col){
+//		if (col.tag == "Water") {
+////			if (col.GetComponent <DynamicParticle> ().currentState == col.GetComponent <DynamicParticle> ().STATES.WATER) {
+//				ApplyEffect ();
+////			}
+//		}
+
+//		if (col.tag == "Player" && setaActivated) {
 			
-			Debug.Log ("jump");
+//			Debug.Log ("jump");
 
-			player.MaxSetaImpulse = setaBounce;
+//			player.MaxSetaImpulse = setaBounce;
 
-			player.OnSetaOn ();
+//			player.OnSetaOn ();
 
-			if (setaDesactivable) {
-				setaActivated = false;
-				gameObject.GetComponent <Renderer> ().material.color = originalColor;
-			}
-		}
-	}
+//			if (setaDesactivable) {
+//				setaActivated = false;
+//				gameObject.GetComponent <Renderer> ().material.color = originalColor;
+//			}
+//		}
+//	}
 
-	void ApplyEffect (){
-		if (barro) {
-			EfectoBarro ();
-		}
-		if (planta) {
-			EfectoPlanta ();
-		}
-		if (fuego) {
-			EfectoFuego ();
-		}
-		if (seta) {
-			EfectoSeta ();
-		}
-	}
+//	void ApplyEffect (){
+//		if (barro) {
+//			EfectoBarro ();
+//		}
+//		if (planta) {
+//			EfectoPlanta ();
+//		}
+//		if (fuego) {
+//			EfectoFuego ();
+//		}
+//		if (seta) {
+//			EfectoSeta ();
+//		}
+//	}
 
-	void EfectoBarro (){
-		gameObject.GetComponent <Renderer> ().material.color = Color.grey;
-	}
-	void EfectoPlanta (){
-		gameObject.GetComponent <Renderer> ().material.color = Color.green;
-		plantActivated = true;
-	}
-	void EfectoFuego (){
-		gameObject.GetComponent <Renderer> ().material.color = Color.yellow;
-	}
-	void EfectoSeta (){
-		gameObject.GetComponent <Renderer> ().material.color = Color.magenta;
-		setaActivated = true;
-	}
+//	void EfectoBarro (){
+//		gameObject.GetComponent <Renderer> ().material.color = Color.grey;
+//	}
+//	void EfectoPlanta (){
+//		gameObject.GetComponent <Renderer> ().material.color = Color.green;
+//		plantActivated = true;
+//	}
+//	void EfectoFuego (){
+//		gameObject.GetComponent <Renderer> ().material.color = Color.yellow;
+//	}
+//	void EfectoSeta (){
+//		gameObject.GetComponent <Renderer> ().material.color = Color.magenta;
+//		setaActivated = true;
+//	}
 
 }

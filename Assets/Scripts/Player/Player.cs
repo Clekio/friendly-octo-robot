@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public bool Death = false;
 
-	public float maxHorizontalSpeed = 7;
+    public float maxHorizontalSpeed = 7;
     public float maxVericalGlideSpeed = 0;
     float accelerationTimeAirborne = .3f;
     float accelerationTimeGrounded = .01f;
@@ -51,63 +52,113 @@ public class Player : MonoBehaviour
 
     private void Update()
 	{
-        Velocity = Vector2.zero;
-		Vector2 move = Vector2.zero;
+  //      Velocity = Vector2.zero;
+		//Vector2 move = Vector2.zero;
 
-		move.x = Input.GetAxis("Horizontal");
+		//move.x = Input.GetAxis("Horizontal");
 
-		if (Input.GetButtonDown("Jump") && grounded)
-		{
-            rb2d.velocity = new Vector2(rb2d.velocity.x, maxJumpVelocity);
-            //Debug.Break();
-            Velocity.y = maxJumpVelocity;
-        }
-		else if (Input.GetButtonUp("Jump"))
-		{
-            if (rb2d.velocity.y > minJumpVelocity)
-            {
-                rb2d.velocity = new Vector2(rb2d.velocity.x, minJumpVelocity);
-                Velocity.y = minJumpVelocity;
-            }
-		}
+		//if (Input.GetButtonDown("Jump") && grounded)
+		//{
+  //          rb2d.velocity = new Vector2(rb2d.velocity.x, maxJumpVelocity);
+  //          //Debug.Break();
+  //          Velocity.y = maxJumpVelocity;
+  //      }
+		//else if (Input.GetButtonUp("Jump"))
+		//{
+  //          if (rb2d.velocity.y > minJumpVelocity)
+  //          {
+  //              rb2d.velocity = new Vector2(rb2d.velocity.x, minJumpVelocity);
+  //              Velocity.y = minJumpVelocity;
+  //          }
+		//}
 
-        if (Input.GetButton("Jump") && rb2d.velocity.y < 0)
-            rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.SmoothDamp(rb2d.velocity.y, maxVericalGlideSpeed, ref velocityYSmoothing, 0.1f));
-        //rb2d.velocity = new Vector2(rb2d.velocity.x, Vector2.ClampMagnitude(rb2d.velocity, maxVericalSpeed).y);
-        //if (Input.GetButton("Jump") && rb2d.velocity.y < 0)
-        //    rb2d.gravityScale = m_glideGravityScale / Physics2D.gravity.y;
-        //else
-        //    rb2d.gravityScale = m_mainGravityScale / Physics2D.gravity.y;
+  //      if (Input.GetButton("Jump") && rb2d.velocity.y < 0)
+  //          rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.SmoothDamp(rb2d.velocity.y, maxVericalGlideSpeed, ref velocityYSmoothing, 0.1f));
+  //      //rb2d.velocity = new Vector2(rb2d.velocity.x, Vector2.ClampMagnitude(rb2d.velocity, maxVericalSpeed).y);
+  //      //if (Input.GetButton("Jump") && rb2d.velocity.y < 0)
+  //      //    rb2d.gravityScale = m_glideGravityScale / Physics2D.gravity.y;
+  //      //else
+  //      //    rb2d.gravityScale = m_mainGravityScale / Physics2D.gravity.y;
 
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
-		if (flipSprite)
-		{
-			spriteRenderer.flipX = !spriteRenderer.flipX;
-		}
+  //      bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
+		//if (flipSprite)
+		//{
+		//	spriteRenderer.flipX = !spriteRenderer.flipX;
+		//}
 
-		animator.SetBool("grounded", grounded);
-        animator.SetFloat("velocityX", Mathf.Abs(rb2d.velocity.x) / maxHorizontalSpeed);
+		//animator.SetBool("grounded", grounded);
+  //      animator.SetFloat("velocityX", Mathf.Abs(rb2d.velocity.x) / maxHorizontalSpeed);
 
-        float m_targetVelocityX = move.x * maxHorizontalSpeed;
+  //      float m_targetVelocityX = move.x * maxHorizontalSpeed;
         
-        //Velocidad de movimiento lateral cuando el jugador esta...
-        if (Input.GetKey(KeyCode.LeftControl) && grounded)              //...agachado.
-            Velocity.x = Mathf.SmoothDamp(rb2d.velocity.x, m_targetVelocityX * CrouchSpeed, ref velocityXSmoothing, accelerationTimeGrounded);
+  //      //Velocidad de movimiento lateral cuando el jugador esta...
+  //      if (Input.GetKey(KeyCode.LeftControl) && grounded)              //...agachado.
+  //          Velocity.x = Mathf.SmoothDamp(rb2d.velocity.x, m_targetVelocityX * CrouchSpeed, ref velocityXSmoothing, accelerationTimeGrounded);
 
-        else if (grounded)                         //...en el suelo.
-            Velocity.x = Mathf.SmoothDamp(rb2d.velocity.x, m_targetVelocityX, ref velocityXSmoothing, accelerationTimeGrounded);
+  //      else if (grounded)                         //...en el suelo.
+  //          Velocity.x = Mathf.SmoothDamp(rb2d.velocity.x, m_targetVelocityX, ref velocityXSmoothing, accelerationTimeGrounded);
 
-        else if (Input.GetButton("Jump") && rb2d.velocity.y < 0)    //...con el paraguas.
-            Velocity.x = Mathf.SmoothDamp(rb2d.velocity.x, m_targetVelocityX, ref velocityXSmoothing, accelerationTimeGrounded);
+  //      else if (Input.GetButton("Jump") && rb2d.velocity.y < 0)    //...con el paraguas.
+  //          Velocity.x = Mathf.SmoothDamp(rb2d.velocity.x, m_targetVelocityX, ref velocityXSmoothing, accelerationTimeGrounded);
 
-        else if (!grounded)                                         //...callendo.
-            Velocity.x = Mathf.SmoothDamp(rb2d.velocity.x, m_targetVelocityX, ref velocityXSmoothing, accelerationTimeAirborne);
+  //      else if (!grounded)                                         //...callendo.
+  //          Velocity.x = Mathf.SmoothDamp(rb2d.velocity.x, m_targetVelocityX, ref velocityXSmoothing, accelerationTimeAirborne);
     }
 
     private void FixedUpdate()
     {
         rb2d.velocity = new Vector2(Velocity.x, rb2d.velocity.y);
         Grounded();
+
+        Velocity = Vector2.zero;
+        Vector2 move = Vector2.zero;
+
+        if (!Death)
+        {
+            move.x = Input.GetAxis("Horizontal");
+
+            if (Input.GetButtonDown("Jump") && grounded)
+            {
+                rb2d.velocity = new Vector2(rb2d.velocity.x, maxJumpVelocity);
+                //Debug.Break();
+                Velocity.y = maxJumpVelocity;
+            }
+            else if (Input.GetButtonUp("Jump"))
+            {
+                if (rb2d.velocity.y > minJumpVelocity)
+                {
+                    rb2d.velocity = new Vector2(rb2d.velocity.x, minJumpVelocity);
+                    Velocity.y = minJumpVelocity;
+                }
+            }
+
+            if (Input.GetButton("Jump") && rb2d.velocity.y < 0)
+                rb2d.velocity = new Vector2(rb2d.velocity.x, Mathf.SmoothDamp(rb2d.velocity.y, maxVericalGlideSpeed, ref velocityYSmoothing, 0.1f));
+
+            bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
+            if (flipSprite)
+            {
+                spriteRenderer.flipX = !spriteRenderer.flipX;
+            }
+
+            float m_targetVelocityX = move.x * maxHorizontalSpeed;
+
+            //Velocidad de movimiento lateral cuando el jugador esta...
+            if (Input.GetKey(KeyCode.LeftControl) && grounded)              //...agachado.
+                Velocity.x = Mathf.SmoothDamp(rb2d.velocity.x, m_targetVelocityX * CrouchSpeed, ref velocityXSmoothing, accelerationTimeGrounded);
+
+            else if (grounded)                         //...en el suelo.
+                Velocity.x = Mathf.SmoothDamp(rb2d.velocity.x, m_targetVelocityX, ref velocityXSmoothing, accelerationTimeGrounded);
+
+            else if (Input.GetButton("Jump") && rb2d.velocity.y < 0)    //...con el paraguas.
+                Velocity.x = Mathf.SmoothDamp(rb2d.velocity.x, m_targetVelocityX, ref velocityXSmoothing, accelerationTimeGrounded);
+
+            else if (!grounded)                                         //...callendo.
+                Velocity.x = Mathf.SmoothDamp(rb2d.velocity.x, m_targetVelocityX, ref velocityXSmoothing, accelerationTimeAirborne);
+        }
+
+        animator.SetBool("grounded", grounded);
+        animator.SetFloat("velocityX", Mathf.Abs(rb2d.velocity.x) / maxHorizontalSpeed);
     }
 
     private void Grounded()
