@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class Scr_PlataformaFlotante : MonoBehaviour
 {
-    public bool move;
-	
-	void Update () {
-        move = Scr_MenhirPlatsFlotantes.activarPlataformas;
+    [SerializeField]
+    Animator anim;
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+    void Update () {
+        bool move = Scr_MenhirPlatsFlotantes.activarPlataformas; ;
+        anim.SetBool("Move", move);
     }
 }
