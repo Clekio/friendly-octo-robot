@@ -2,64 +2,73 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Player))]
 public class Player : MonoBehaviour
 {
 	public enum MovementMode {OnGround, OnAir, OnClimbing};
-	public MovementMode PlayerMode;
+	private MovementMode PlayerMode;
 
+    [HideInInspector]
     public bool Death = false;
+	
 
-    public float maxHorizontalSpeed = 7;
-    public float maxVericalGlideSpeed = 0;
-    float accelerationTimeAirborne = .3f;
-    float accelerationTimeGrounded = .01f;
-    float acceleration;
-    [Range(0, 1)] [Tooltip("Reduccion de la velocidad de movimiento normal cuando esta agachado")]
-    public float CrouchSpeed = .25f;
-
-    private Vector2 Velocity;
-
-    private bool grounded;
-    const float k_GroundedRadius = .1f;                // Radius of the overlap circle to determine if grounded
-	[SerializeField]
+    //Velocity Variables ground
+    [Header("MoviminentoNormal")]
+    [SerializeField]
+    float groundAccel;
+    [SerializeField]
+    float groundMaxSpeed;
+    [SerializeField]
+    float crouchedMaxSpeed;
+    [SerializeField]
+    float groundFriction;
+    [SerializeField]
+    float gravityOnGround;
+    [SerializeField]
     private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
 
-    public float maxJumpHeight = 4;
-    public float minJumpHeight = 1;
-    public float timeToJumpApex = .4f;
+    private bool grounded;
 
-    private SpriteRenderer spriteRenderer;
-	private Animator animator;
-	[SerializeField]
-    private Rigidbody2D rb2d;
-
-    private float m_mainGravityScale;
-    private float m_glideGravityScale;
-	[SerializeField]
+    [Header("OnAir")]
+    [SerializeField]
+    float gravityOnAir;
+    [SerializeField]
+    float airAccel;
+    [SerializeField]
+    float maxVericalGlideSpeed;
+    [SerializeField]
+    float airGlideAccel;
+    [SerializeField]
+    float airFriction;
+    bool jumpPressed;
+    bool jumpPressedBefore;
+    [SerializeField]
     float maxJumpVelocity;
-	[SerializeField]
+    [SerializeField]
     float minJumpVelocity;
-    float velocityXSmoothing;
-    float velocityYSmoothing;
 
-	public bool climbing;
+    [Header("OnClimbing")]
 	public float ClimbingSpeed;
+    [SerializeField]
+    float grabXInterpolation;
+    [SerializeField]
+    float climbSpeed;
+    [HideInInspector]
+    public bool climbing;
 
-    // Use this for initialization
-    void Start()
-	{
-    }
-
-    private void Update()
-	{     
-    }
-
+    Scr_ObjetoTrepar grabbedTransform;
+    
+    [Header("Otros")]
+    [SerializeField]
+    private Rigidbody2D rb2d;
+    [SerializeField]
+    Collider2D groundChecker;
+    private float velocityYSmoothing;
 
     private void FixedUpdate()
     {
 		Grounded();
-
-		Velocity = Vector2.zero;
+        
 		Vector2 move = Vector2.zero;
 
 		if (!Death) {
@@ -75,38 +84,7 @@ public class Player : MonoBehaviour
 				break;
 			}
 		}
-		/*
-        bool flipSprite = (spriteRenderer.flipX ? (move.x > 0.01f) : (move.x < 0.01f));
-        if (flipSprite)
-        {
-            spriteRenderer.flipX = !spriteRenderer.flipX;
-        }
-
-        animator.SetBool("grounded", grounded);
-        animator.SetFloat("velocityX", Mathf.Abs(rb2d.velocity.x) / maxHorizontalSpeed);*/
     }
-
-	//Velocity Variables ground
-	[SerializeField]
-	float groundAccel;
-	[SerializeField]
-	float groundMaxSpeed;
-	[SerializeField]
-	float crouchedMaxSpeed;
-	[SerializeField]
-	float groundFriction;
-	[SerializeField]
-	float gravityOnGround;
-	[SerializeField]
-	float gravityOnAir;
-	[SerializeField]
-	float airAccel;
-	[SerializeField]
-	float airFriction;
-	[SerializeField]
-
-	bool jumpPressed;
-	bool jumpPressedBefore;
 
 	private void UpdateGround(){
 		//Setear velocidad máxima
@@ -116,8 +94,10 @@ public class Player : MonoBehaviour
 		}
 		float xSpeed = 0;
 		if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f)
-			//Apply acceleration
-			xSpeed = rb2d.velocity.x + Input.GetAxis ("Horizontal") * groundAccel * Time.deltaTime;
+        {
+            //Apply acceleration
+            xSpeed = rb2d.velocity.x + Input.GetAxis("Horizontal") * groundAccel * Time.deltaTime;
+        }
 		else
 			//Apply Friction
 			xSpeed = rb2d.velocity.x * (1 - groundFriction * Time.deltaTime);
@@ -148,30 +128,37 @@ public class Player : MonoBehaviour
 		//Setear velocidad máxima
 		float speedToUse = groundMaxSpeed;
 		float xSpeed = 0;
-		if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f)
-			//Apply acceleration
-			xSpeed = rb2d.velocity.x + Input.GetAxis ("Horizontal") * airAccel * Time.deltaTime;
+        jumpPressed = Input.GetButton("Jump");
+        jumpPressedBefore = jumpPressed;
+        float aceleationToUse = jumpPressed && rb2d.velocity.y < 0 ? airGlideAccel : airAccel;
+
+        if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f)
+        {
+            //Apply acceleration
+            xSpeed = rb2d.velocity.x + Input.GetAxis("Horizontal") * aceleationToUse * Time.deltaTime;
+        }
 		else {
 			//Apply Friction
 			xSpeed = rb2d.velocity.x * (1 - airFriction * Time.deltaTime);
 		}
 		xSpeed = Mathf.Clamp(xSpeed, - speedToUse ,speedToUse );
-		Debug.Log (xSpeed);
 
-		float gravityToUse = gravityOnGround;
-		if(rb2d.velocity.y > 0)
-			gravityToUse = gravityOnAir;
-		float ySpeed = rb2d.velocity.y + gravityToUse * Time.deltaTime;
+		float gravityToUse = rb2d.velocity.y > 0 ? gravityOnAir : gravityOnGround;
+		//if(rb2d.velocity.y > 0)
+		//	gravityToUse = gravityOnAir;
 
-		//Chequear Salto
-		jumpPressed = Input.GetButton("Jump");
-		jumpPressedBefore = jumpPressed;
-		if (!jumpPressed && rb2d.velocity.y > minJumpVelocity)
+        float ySpeed = rb2d.velocity.y + gravityToUse * Time.deltaTime;
+
+        //Chequear Salto
+        if (!jumpPressed && rb2d.velocity.y > minJumpVelocity)
 		{
 			ySpeed = minJumpVelocity;
 		}
 
-		rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
+        if (jumpPressed && rb2d.velocity.y < 0)
+            ySpeed = Mathf.SmoothDamp(rb2d.velocity.y, maxVericalGlideSpeed, ref velocityYSmoothing, .1f);
+
+        rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
 
 		if (grounded)
 			PlayerMode = MovementMode.OnGround;
@@ -181,30 +168,26 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	Scr_ObjetoTrepar grabbedTransform;
-	[SerializeField]
-	float grabXInterpolation;
-	[SerializeField]
-	float climbSpeed;
-
-	private void UpdateClimb(){
-
+	private void UpdateClimb()
+    {
 		jumpPressed = Input.GetButton("Jump");
 		bool jumpDown = jumpPressed && !jumpPressedBefore;
 		jumpPressedBefore = jumpPressed;
-		if (jumpDown || grabbedTransform == null) {
+		if (jumpDown || grabbedTransform == null)
+        {
 			rb2d.velocity = maxJumpVelocity * Vector2.up;
 			PlayerMode = MovementMode.OnAir;
-		}else if(transform.position.y >= grabbedTransform.upPoint.position.y || transform.position.y <= grabbedTransform.downPoint.position.y || grounded && Input.GetAxis ("Vertical") < 0){
+		}
+        else if(transform.position.y >= grabbedTransform.upPoint.position.y || transform.position.y <= grabbedTransform.downPoint.position.y || grounded && Input.GetAxis ("Vertical") < 0)
 			PlayerMode = MovementMode.OnGround;
-		}else{
+
+        else
+        {
 			Vector2 climb = Input.GetAxis ("Vertical") * climbSpeed * Vector2.up;
 			rb2d.velocity = climb;
 			transform.position =  new Vector3( Mathf.Lerp (rb2d.position.x, grabbedTransform.transform.position.x, Time.deltaTime * grabXInterpolation) , rb2d.position.y, transform.position.z);
 		}
 	}
-	[SerializeField]
-	Collider2D groundChecker;
 
     private void Grounded()
     {
@@ -218,15 +201,4 @@ public class Player : MonoBehaviour
 			grabbedTransform = null;
 		}	
 	}
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-
-        Vector2 position = transform.position + Vector3.up * maxJumpHeight;
-        Gizmos.DrawLine(position + Vector2.left * .25f, position + Vector2.right * .25f);
-
-        position = transform.position + Vector3.up * minJumpHeight;
-        Gizmos.DrawLine(position + Vector2.left * .25f, position + Vector2.right * .25f);
-    }
 }
