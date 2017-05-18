@@ -17,6 +17,11 @@ public class ColisionAbajo : MonoBehaviour
     void Update()
     {
         anim.SetBool("ColisionAbajo", colisionAbajo);
+
+        if (colisionAbajo == true)
+        {
+            colisionAbajo = false;
+        }
     }
 
     void OnCollisionEnter2D(Collision2D coll)
