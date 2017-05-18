@@ -16,7 +16,7 @@ public class ColisionAbajo : MonoBehaviour
 
     void Update()
     {
-        anim.SetBool("ColisionAbajo", colisionAbajo);
+       // anim.SetBool("ColisionAbajo", colisionAbajo);
 
         if (colisionAbajo == true)
         {
