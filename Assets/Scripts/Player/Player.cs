@@ -150,7 +150,7 @@ public class Player : MonoBehaviour
         float ySpeed = rb2d.velocity.y + gravityToUse * Time.deltaTime;
 
         //Chequear Salto
-        if (!jumpPressed && rb2d.velocity.y > minJumpVelocity)
+        if (Input.GetButtonUp("Jump") && rb2d.velocity.y > minJumpVelocity)
 		{
 			ySpeed = minJumpVelocity;
 		}
