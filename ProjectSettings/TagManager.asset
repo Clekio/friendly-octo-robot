@@ -9,6 +9,7 @@ TagManager:
   - DynamicParticle
   - waterReactor
   - Through
+  - Ground
   layers:
   - Default
   - TransparentFX
