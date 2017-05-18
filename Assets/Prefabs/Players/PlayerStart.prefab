@@ -39,6 +39,8 @@ GameObject:
   - component: {fileID: 114581037534340950}
   - component: {fileID: 61568043968288868}
   - component: {fileID: 61659763151094122}
+  - component: {fileID: 95418982398269368}
+  - component: {fileID: 114745160949772500}
   m_Layer: 13
   m_Name: PlayerStart
   m_TagString: Player
@@ -46,38 +48,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &1905348531184572
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4130160647425230}
-  - component: {fileID: 20407723414019456}
-  - component: {fileID: 92604386561700688}
-  - component: {fileID: 124111527279325226}
-  - component: {fileID: 81134374065875488}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4130160647425230
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1905348531184572}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05000019, y: 2.02, z: -10}
-  m_LocalScale: {x: 0.9286506, y: 1.9752254, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4345459232120236}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4345459232120236
 Transform:
   m_ObjectHideFlags: 1
@@ -85,10 +55,9 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1188590420293162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 53.2, y: -15, z: 0}
+  m_LocalPosition: {x: 2.29, y: 3, z: 0}
   m_LocalScale: {x: 1.7102393, y: 1.71024, z: 1.71024}
   m_Children:
-  - {fileID: 4130160647425230}
   - {fileID: 4566797654940672}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -99,49 +68,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1116900248984994}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: -0.032195672, w: 0.9994816}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.45936012, y: 0.85, z: 1}
   m_Children: []
   m_Father: {fileID: 4345459232120236}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!20 &20407723414019456
-Camera:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1905348531184572}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 10
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 0
-  m_AllowMSAA: 1
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -3.69}
 --- !u!50 &50445034004152982
 Rigidbody2D:
   serializedVersion: 4
@@ -153,7 +86,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 1
   m_UseAutoMass: 1
-  m_Mass: 2.9249196
+  m_Mass: 1.3162138
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -185,7 +118,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.45, y: 1}
   m_EdgeRadius: 0
 --- !u!61 &61659763151094122
 BoxCollider2D:
@@ -210,22 +143,25 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.9, y: 0.08}
+  m_Size: {x: 0.42, y: 0.08}
   m_EdgeRadius: 0
---- !u!81 &81134374065875488
-AudioListener:
+--- !u!95 &95418982398269368
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1905348531184572}
+  m_GameObject: {fileID: 1188590420293162}
   m_Enabled: 1
---- !u!92 &92604386561700688
-Behaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1905348531184572}
-  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d47806bd489c0c842a5872c110fdf9f3, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114581037534340950
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -237,41 +173,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91cee7439d76b2740b2966f6399d651c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerMode: 0
   Death: 0
-  maxHorizontalSpeed: 7
-  maxVericalGlideSpeed: 0
-  CrouchSpeed: 0.4
-  m_WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  maxJumpHeight: 3
-  minJumpHeight: 1
-  timeToJumpApex: 0.4
-  rb2d: {fileID: 50445034004152982}
-  maxJumpVelocity: 20
-  minJumpVelocity: 10
-  climbing: 0
-  ClimbingSpeed: 12.59
   groundAccel: 200
   groundMaxSpeed: 10
   crouchedMaxSpeed: 5
   groundFriction: 20
   gravityOnGround: -40
+  m_WhatIsGround:
+    serializedVersion: 2
+    m_Bits: 256
   gravityOnAir: -60
   airAccel: 15
+  maxVericalGlideSpeed: -3
+  airGlideAccel: 180
   airFriction: 10
-  jumpPressed: 0
+  maxJumpVelocity: 20
+  minJumpVelocity: 10
+  ClimbingSpeed: 12.59
   grabXInterpolation: 5
   climbSpeed: 10
+  climbing: 0
+  rb2d: {fileID: 50445034004152982}
   groundChecker: {fileID: 61659763151094122}
---- !u!124 &124111527279325226
-Behaviour:
+--- !u!114 &114745160949772500
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1905348531184572}
+  m_GameObject: {fileID: 1188590420293162}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 379c9e16f91cd664da23a7ec89337db7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RespawnPosition: {x: 0, y: 0, z: 0}
+  WaitTimeToRespawn: 2
 --- !u!212 &212991655389708426
 SpriteRenderer:
   m_ObjectHideFlags: 1
