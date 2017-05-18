@@ -255,9 +255,20 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1.0000002}
+  m_EdgeRadius: 0
 --- !u!61 &61724644284782096
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -269,9 +280,20 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.99999994, y: 1}
+  m_EdgeRadius: 0
 --- !u!61 &61943580073135324
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -283,9 +305,20 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
+  m_UsedByComposite: 0
   m_Offset: {x: -0.005563489, y: -0.0011253357}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1.0860757, y: 1.3147066}
+  m_EdgeRadius: 0
 --- !u!114 &114032025267648018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
+  cameraName: 
 --- !u!114 &114304379499065266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -309,11 +343,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d8a723f2c19c348b835edce2109a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  barro: 0
-  planta: 1
-  fuego: 0
-  speed: 0.08
-  plantPosition: {fileID: 4233765826095138}
 --- !u!114 &114464021155215400
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -342,6 +371,7 @@ MonoBehaviour:
   particleForce: {x: 0, y: 0, z: 0}
   particlesState: 0
   particlesParent: {fileID: 4215038696625034}
+  parentName: 
 --- !u!212 &212036933227829330
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -372,11 +402,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cd9d2acd812a9924ab642c8aac1bc7d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!212 &212137692867226484
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -407,11 +442,16 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: fc15374f23c1e28498602ffb98b28a40, type: 3}
   m_Color: {r: 0.9865112, g: 1, b: 0.022058845, a: 0.384}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
 --- !u!212 &212560084959268922
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -442,8 +482,13 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: cd9d2acd812a9924ab642c8aac1bc7d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0

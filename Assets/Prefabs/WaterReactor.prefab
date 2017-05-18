@@ -104,15 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7d8a723f2c19c348b835edce2109a6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  barro: 0
-  planta: 1
-  fuego: 0
-  seta: 0
-  setaDesactivable: 0
-  plantSpeed: 0
-  jumpMultiplier: 1.5
-  plantPosition: {fileID: 0}
 --- !u!212 &212182977391887118
 SpriteRenderer:
   m_ObjectHideFlags: 1
