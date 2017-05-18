@@ -20,9 +20,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4099625596676358}
   - component: {fileID: 212538840928900150}
-  - component: {fileID: 114008015404897862}
   - component: {fileID: 61098828394437874}
   - component: {fileID: 60311682957453896}
+  - component: {fileID: 114537548956456618}
   m_Layer: 12
   m_Name: Seta
   m_TagString: waterReactor
@@ -37,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1061902676145604}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 30.07, y: 1.96, z: -21}
-  m_LocalScale: {x: 1.2153984, y: 0.89385766, z: 1.2048529}
+  m_LocalPosition: {x: -1.8, y: -60.74, z: 0}
+  m_LocalScale: {x: 1.8573889, y: 3.1596892, z: 3.2022772}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -49,7 +49,7 @@ PolygonCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1061902676145604}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -149,7 +149,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8076973, y: 0.7053246}
   m_EdgeRadius: 0
---- !u!114 &114008015404897862
+--- !u!114 &114537548956456618
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -157,9 +157,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1061902676145604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7d8a723f2c19c348b835edce2109a6a, type: 3}
+  m_Script: {fileID: 11500000, guid: dbbc548071e48214388ff73ba59dac5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  FuerzaDelImpulso: 20
 --- !u!212 &212538840928900150
 SpriteRenderer:
   m_ObjectHideFlags: 1
