@@ -10,7 +10,6 @@ public class Player : MonoBehaviour
 
     [HideInInspector]
     public bool Death = false;
-	
 
     //Velocity Variables ground
     [Header("MoviminentoNormal")]
@@ -64,6 +63,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     Collider2D groundChecker;
     private float velocityYSmoothing;
+    [SerializeField]
+    Animator anim;
 
     private void FixedUpdate()
     {
@@ -84,6 +85,8 @@ public class Player : MonoBehaviour
 				break;
 			}
 		}
+        anim.SetBool("grounded", grounded);
+        anim.SetBool("jumpPressed", jumpPressed);
     }
 
 	private void UpdateGround(){
