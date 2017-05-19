@@ -204,52 +204,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fa3605eabbdb34c9edd76fc4821d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VelocidadTentaculos1: 4
-  VelocidadTentaculos2: 7
-  TiempoDestruccion: 2
+  anim: {fileID: 0}
   destruir: {fileID: 0}
---- !u!1001 &279293276
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4566797654940672, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 43.546
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566797654940672, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: -2.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566797654940672, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566797654940672, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566797654940672, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566797654940672, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566797654940672, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566797654940672, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &309627294
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +235,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerArbolRampa: 0
+  other: {fileID: 0}
 --- !u!61 &309627296
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -382,6 +339,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &684368132
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -24.646276
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -1.0364857
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &725570877
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,9 +488,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fa3605eabbdb34c9edd76fc4821d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VelocidadTentaculos1: 4
-  VelocidadTentaculos2: 7
-  TiempoDestruccion: 2
+  anim: {fileID: 0}
   destruir: {fileID: 0}
 --- !u!1 &771351705
 GameObject:
@@ -843,9 +840,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fa3605eabbdb34c9edd76fc4821d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VelocidadTentaculos1: 4
-  VelocidadTentaculos2: 7
-  TiempoDestruccion: 2
+  anim: {fileID: 0}
   destruir: {fileID: 0}
 --- !u!1 &1177033041
 GameObject:
@@ -1234,10 +1229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155b0736470fdb147ac26030854b8477, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 1473057532}
-  force: {x: 0, y: 0}
-  position: {x: 15.5, y: 6.1}
-  mode: 0
+  anim: {fileID: 0}
 --- !u!33 &1473057530
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1427,7 +1419,7 @@ GameObject:
   - component: {fileID: 1723292025}
   - component: {fileID: 1723292024}
   - component: {fileID: 1723292023}
-  m_Layer: 12
+  m_Layer: 8
   m_Name: Obstacle (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1713,7 +1705,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 771e121b25f1a5e4a8b24f782c8b706d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  menhir: {fileID: 0}
 --- !u!1 &1753409550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1810,9 +1801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fa3605eabbdb34c9edd76fc4821d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VelocidadTentaculos1: 4
-  VelocidadTentaculos2: 7
-  TiempoDestruccion: 2
+  anim: {fileID: 0}
   destruir: {fileID: 0}
 --- !u!1 &1760057480
 GameObject:
@@ -2239,9 +2228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fa3605eabbdb34c9edd76fc4821d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VelocidadTentaculos1: 4
-  VelocidadTentaculos2: 7
-  TiempoDestruccion: 2
+  anim: {fileID: 0}
   destruir: {fileID: 0}
 --- !u!1 &2132425260
 GameObject:
@@ -2339,7 +2326,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21fa3605eabbdb34c9edd76fc4821d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VelocidadTentaculos1: 4
-  VelocidadTentaculos2: 7
-  TiempoDestruccion: 2
+  anim: {fileID: 0}
   destruir: {fileID: 0}

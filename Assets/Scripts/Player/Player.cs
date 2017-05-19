@@ -66,6 +66,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     Animator anim;
 
+    bool crouch = false;
+
     private void FixedUpdate()
     {
 		Grounded();
@@ -85,8 +87,16 @@ public class Player : MonoBehaviour
 				break;
 			}
 		}
+
+        if (Input.GetKey(KeyCode.LeftControl))
+        {
+            crouch = true;
+        } else
+            crouch = false;
+
         anim.SetBool("grounded", grounded);
-        anim.SetBool("jumpPressed", jumpPressed);
+        anim.SetBool("crouch", crouch);
+        anim.SetFloat("velocityX", rb2d.velocity.x);
     }
 
 	private void UpdateGround(){

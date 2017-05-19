@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Scr_TriggerTentaculos : MonoBehaviour
 {
-    public bool triggerTentaculos;
-    public static bool purificacionPosible;
+    public bool triggerTentaculos = false;
+    public static bool purificacionPosible = false;
+    public static bool tirarArbolPosible = false;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -18,9 +19,10 @@ public class Scr_TriggerTentaculos : MonoBehaviour
         {
             if (Input.GetMouseButtonDown(1))
             {
-                gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, -5);
+                gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, -30);
                 triggerTentaculos = false;
                 purificacionPosible = true;
+                tirarArbolPosible = true;
             }
         }
     }
