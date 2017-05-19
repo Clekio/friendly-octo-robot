@@ -15,10 +15,13 @@ public class Scr_MenhirPlatsFlotantes : MonoBehaviour
 
     void Update()
     {
+
+		if (menhirActivado == true) {
         if (Input.GetMouseButtonDown(1))
         {
             activarPlataformas = true;
             gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, -5);
         }
+		}
     }
 }
