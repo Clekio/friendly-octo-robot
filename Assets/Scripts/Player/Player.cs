@@ -87,7 +87,7 @@ public class Player : MonoBehaviour
 		}
         anim.SetBool("grounded", grounded);
         anim.SetBool("jumpPressed", jumpPressed);
-        anim.SetFloat("velocityX", groundMaxSpeed);
+        anim.SetFloat("velocityX", rb2d.velocity.x);
     }
 
 	private void UpdateGround(){
