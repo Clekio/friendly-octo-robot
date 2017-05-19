@@ -50,6 +50,9 @@ TagManager:
   - name: Fondo
     uniqueID: 1010787549
     locked: 0
+  - name: Interactuables
+    uniqueID: 1842122803
+    locked: 0
   - name: Player
     uniqueID: 681983847
     locked: 0

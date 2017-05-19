@@ -6,9 +6,11 @@ public class Gestures : MonoBehaviour {
 
     private Vector2 m_gesturePosition;
     private string m_gestureName;
+    private float m_gestureAngle;
+    private Vector2 m_gestureScale;
 
     struct NormalizedGesture {
-        public Vector2 originalCenter;
+        //public Vector2 originalCenter;
         public float rotation;
         public float size;
         public bool inverted;
@@ -45,11 +47,12 @@ public class Gestures : MonoBehaviour {
         if (Input.GetMouseButtonUp(0))
         {
             currentGesture = OptimizeGesture(currentGesture);
-			currentNormalized = Normalize(currentGesture);
+            GetGestureMesurements(currentGesture);
+            currentNormalized = Normalize(currentGesture);
             finalGesture = Simplification(currentNormalized.gesture);
-            scr_magicManager.magicName = Recognition(finalGesture);
-            //m_gestureName = Recognition(finalGesture);
-            //scr_magicManager.SpawnMagic(m_gestureName, m_gesturePosition);
+            //scr_magicManager.magicName = Recognition(finalGesture); //Se clicka despues
+            m_gestureName = Recognition(finalGesture);
+            scr_magicManager.SpawnMagic(m_gestureName, m_gesturePosition, m_gestureAngle, m_gestureScale); //Aparece en un punto segun dibujas 
         }
 		lastDelta = thisDelta;
         //lastMousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
@@ -128,11 +131,40 @@ public class Gestures : MonoBehaviour {
                 }
             }
             optimized.Add(points[points.Count-1]);
-
+            
             return optimized;
         } else {
             return points;
         }
+    }
+
+    private void GetGestureMesurements(List<Vector2> gesture)
+    {
+        //Get direction
+        m_gestureAngle = Vector2.Angle(Vector2.left, gesture[0] - gesture[1]);
+
+        //Get Center
+        Vector2 center = Vector2.zero;
+        foreach (Vector2 v in gesture)
+        {
+            center += v;
+        }
+        center = center / ((float)gesture.Count);
+        m_gesturePosition = center;
+
+        //Get Scale
+        m_gestureScale = Vector2.zero;
+        foreach (Vector2 v in gesture)
+        {
+            Vector2 vec = new Vector2(Mathf.Abs(v.x - center.x), Mathf.Abs(v.y - center.y));
+
+            if (vec.x > m_gestureScale.x)
+                m_gestureScale.x = vec.x;
+
+            if (vec.y > m_gestureScale.y)
+                m_gestureScale.y = vec.y;
+        }
+        m_gestureScale = m_gestureScale*2;
     }
 
     NormalizedGesture Normalize(List<Vector2> gesture) {
@@ -140,13 +172,13 @@ public class Gestures : MonoBehaviour {
         List<Vector2> normalizedList = new List<Vector2>(gesture);
 
         //sacamos centro de puntos y normalizamos posición
-        Vector2 center = Vector2.zero;
-        foreach(Vector2 v in gesture) {
-            center += v;
-        }
-        center = center / ((float)gesture.Count);
-        m_gesturePosition = center;
-        normalized.originalCenter = center;
+        //Vector2 center = Vector2.zero;
+        //foreach(Vector2 v in gesture) {
+        //    center += v;
+        //}
+        //center = center / ((float)gesture.Count);
+        //m_gesturePosition = center;
+        //normalized.originalCenter = center;
         Vector2 c = normalizedList[0];
         for (int i = 0; i < normalizedList.Count; i++)
         {

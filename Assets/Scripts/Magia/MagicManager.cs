@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MagicManager : MonoBehaviour {
 
+    public static float MagicTimeToDestroy = 5f;
+
 	bool waterfall;
 	bool bubble;
 	bool wind;
@@ -22,6 +24,7 @@ public class MagicManager : MonoBehaviour {
 	public GameObject waterBall;
 	public GameObject waterBubble;
 	public GameObject viento1;
+    public GameObject viento2;
 	public GameObject remol1;
 
 	//public Camera camera;
@@ -166,8 +169,10 @@ public class MagicManager : MonoBehaviour {
 
 	}
 
-    public void SpawnMagic(string name, Vector2 position)
+    public void SpawnMagic(string name, Vector2 position, float angle, Vector2 scale)
     {
+        GameObject effect;
+
         Debug.Log(position);
         //if (name == "waterfall")
         //{
@@ -187,7 +192,11 @@ public class MagicManager : MonoBehaviour {
         if (name == "wind")
         {
             Cursor.SetCursor(cursorTextureVie, hotSpot, cursorMode);
-            Instantiate(viento1, new Vector3(position.x, position.y, 0), Quaternion.identity);
+
+            effect = Instantiate(viento2, new Vector3(position.x, position.y, 0), Quaternion.identity) as GameObject;
+            effect.transform.localScale = scale;
+            effect.GetComponent<AreaEffector2D>().forceAngle = angle;
+            Destroy(effect, MagicTimeToDestroy);
             Cursor.SetCursor(null, Vector2.zero, cursorMode);
             ResetOption();
         }
@@ -198,16 +207,16 @@ public class MagicManager : MonoBehaviour {
             Cursor.SetCursor(null, Vector2.zero, cursorMode);
             ResetOption();
         }
-        else if (name == "thunder")
-        {
-            RaycastHit2D hit = Physics2D.Raycast(new Vector2(position.x, position.y), Vector2.zero);
+        //else if (name == "thunder")
+        //{
+        //    RaycastHit2D hit = Physics2D.Raycast(new Vector2(position.x, position.y), Vector2.zero);
 
-            if (hit.collider != null)
-            {
-                hit.collider.gameObject.GetComponent<scr_thunderEffects>().Accion();
-            }
-            name = null;
-        }
+        //    if (hit.collider != null)
+        //    {
+        //        hit.collider.gameObject.GetComponent<scr_thunderEffects>().Accion();
+        //    }
+        //    name = null;
+        //}
     }
 
 	void ResetOption (){

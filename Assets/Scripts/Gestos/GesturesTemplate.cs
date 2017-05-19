@@ -14,17 +14,17 @@ public class GesturesTemplate : MonoBehaviour
     {
         //Triangulo
         Gesto Triangulo1 = new Gesto();
-        Triangulo1.Name = "waterfall";
+        Triangulo1.Name = "swirl";
         Triangulo1.dirList = new List<Vector2>(new Vector2[] { new Vector2(0, 1), new Vector2(1, -1), new Vector2(-1, 0) });
         TemplateRunas.Add(Triangulo1);
 
         Gesto Triangulo2 = new Gesto();
-        Triangulo2.Name = "waterfall";
+        Triangulo2.Name = "swirl";
         Triangulo2.dirList = new List<Vector2>(new Vector2[] { new Vector2(0, 1), new Vector2(1, -1), new Vector2(-1, -1) });
         TemplateRunas.Add(Triangulo2);
 
         Gesto Triangulo3 = new Gesto();
-        Triangulo3.Name = "waterfall";
+        Triangulo3.Name = "swirl";
         Triangulo3.dirList = new List<Vector2>(new Vector2[] { new Vector2(0, 1), new Vector2(1, 0), new Vector2(-1, -1) });
         TemplateRunas.Add(Triangulo3);
 
@@ -46,7 +46,7 @@ public class GesturesTemplate : MonoBehaviour
 
         //T1
         Gesto T = new Gesto();
-        T.Name = "swirl";
+        T.Name = "waterfall";
         T.dirList = new List<Vector2>(new Vector2[] { new Vector2(0, 1), new Vector2(1, 0), new Vector2(-1, 0) });
         TemplateRunas.Add(T);
 
