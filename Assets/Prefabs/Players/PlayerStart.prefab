@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1188590420293162}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 73.2, y: 32.24, z: 0}
+  m_LocalPosition: {x: 51.14, y: -12.58, z: 0}
   m_LocalScale: {x: 1.7102393, y: 1.71024, z: 1.71024}
   m_Children:
   - {fileID: 4566797654940672}
@@ -154,7 +154,7 @@ Animator:
   m_GameObject: {fileID: 1188590420293162}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d47806bd489c0c842a5872c110fdf9f3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0f7d3f0e4669c14438487f6e37479181, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -195,6 +195,7 @@ MonoBehaviour:
   climbing: 0
   rb2d: {fileID: 50445034004152982}
   groundChecker: {fileID: 61659763151094122}
+  anim: {fileID: 95418982398269368}
 --- !u!114 &114745160949772500
 MonoBehaviour:
   m_ObjectHideFlags: 1
