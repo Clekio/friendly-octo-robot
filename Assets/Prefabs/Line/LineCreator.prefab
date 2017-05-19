@@ -55,10 +55,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   magicName: 
+  position: {x: 0, y: 0}
   waterBall: {fileID: 1399212290911130, guid: 46cd5a00be7226f49a3a5fb98af6216e, type: 2}
   waterBubble: {fileID: 1399212290911130, guid: 052608c4126a5b34b9223aa076141ea4,
     type: 2}
   viento1: {fileID: 1944199387664560, guid: 8f311be0435708c4a8fd5d27867a6436, type: 2}
+  viento2: {fileID: 1305357304771254, guid: 1d1678d1ff1697040a137888e4468ffe, type: 2}
   remol1: {fileID: 1664939715166164, guid: 718bd61a24769de48a51fcc325010ee6, type: 2}
   cursorTextureVie: {fileID: 2800000, guid: fa1fe09ebf5812a4997c0439799686b0, type: 3}
   cursorTextureRaf: {fileID: 2800000, guid: 8f42e2f0f3b81844791fef92e1027307, type: 3}
@@ -91,7 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01b535328a9c41d4498a270ecce29c75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gestureName: 
   distanceMargin: 0.05
   mouseDeltaNeeded: 0.05
   minimumAngle: 10

@@ -7,7 +7,7 @@ public class Scr_ArbolRampa : MonoBehaviour
     [SerializeField]
     Animator anim;
 
-    bool purificado;
+    bool purificado = false;
 
     void Start()
     {
@@ -18,7 +18,7 @@ public class Scr_ArbolRampa : MonoBehaviour
     {
         purificado = Scr_TriggerArbolRampa.purificacionPosible;
 
-        if (purificado == true)
+        if (purificado)// == true)
         {
             anim.SetBool("Purificado", purificado);
         }
