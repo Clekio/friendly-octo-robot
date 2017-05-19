@@ -8,3 +8,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Level Scenes/Demo01.unity
     guid: 9bd2ec3ae1b67f34aa4aa1bcddef2560
+  - enabled: 1
+    path: Assets/_Scenes/Test Scenes/MagiaTest.unity
+    guid: 00000000000000000000000000000000

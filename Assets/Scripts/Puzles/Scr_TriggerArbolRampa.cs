@@ -5,7 +5,7 @@ using UnityEngine;
 public class Scr_TriggerArbolRampa : MonoBehaviour
 {
     public bool triggerArbolRampa;
-    public static bool purificacionPosible;
+    public static bool purificacionPosible = false;
     public Collider2D other;
 
     void OnTriggerEnter2D(Collider2D other)
