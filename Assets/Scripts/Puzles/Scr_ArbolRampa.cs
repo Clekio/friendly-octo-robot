@@ -4,25 +4,23 @@ using UnityEngine;
 
 public class Scr_ArbolRampa : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    [SerializeField]
+    Animator anim;
 
-    public Vector2 force;
-    public Vector2 position;
-    public ForceMode2D mode;
+    bool purificado;
 
-    bool purificacion;
-	
-	void Update () {
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
-        purificacion = Scr_TriggerArbolRampa.purificacionPosible;
+    void Update ()
+    {
+        purificado = Scr_TriggerArbolRampa.purificacionPosible;
 
-        if (purificacion == true)
+        if (purificado == true)
         {
-            if (Input.GetMouseButtonDown(1))
-            {
-                force = new Vector3(-12, -12);
-                rb.AddForceAtPosition(force, position, mode = ForceMode2D.Force);
-            }
+            anim.SetBool("Purificado", purificado);
         }
     }
 }

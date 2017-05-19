@@ -13,7 +13,7 @@ public class Scr_PlataformaFlotante : MonoBehaviour
     }
 
     void Update () {
-        bool move = Scr_MenhirPlatsFlotantes.activarPlataformas; ;
+        bool move = Scr_MenhirPlatsFlotantes.activarPlataformas;
         anim.SetBool("Move", move);
     }
 }
