@@ -47,9 +47,9 @@ public class Gestures : MonoBehaviour {
             currentGesture = OptimizeGesture(currentGesture);
 			currentNormalized = Normalize(currentGesture);
             finalGesture = Simplification(currentNormalized.gesture);
-            //scr_magicManager.magicName = Recognition(finalGesture);
-            m_gestureName = Recognition(finalGesture);
-            scr_magicManager.SpawnMagic(m_gestureName, m_gesturePosition);
+            scr_magicManager.magicName = Recognition(finalGesture);
+            //m_gestureName = Recognition(finalGesture);
+            //scr_magicManager.SpawnMagic(m_gestureName, m_gesturePosition);
         }
 		lastDelta = thisDelta;
         //lastMousePos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
