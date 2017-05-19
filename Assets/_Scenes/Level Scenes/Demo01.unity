@@ -5715,66 +5715,6 @@ Prefab:
       propertyPath: m_Name
       value: PlayerStart (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 114581037534340950, guid: e7fcecc826687024e9b52ec763b14088,
-        type: 2}
-      propertyPath: groundMaxSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114581037534340950, guid: e7fcecc826687024e9b52ec763b14088,
-        type: 2}
-      propertyPath: crouchedMaxSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114581037534340950, guid: e7fcecc826687024e9b52ec763b14088,
-        type: 2}
-      propertyPath: maxJumpVelocity
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 114581037534340950, guid: e7fcecc826687024e9b52ec763b14088,
-        type: 2}
-      propertyPath: gravityOnAir
-      value: -70
-      objectReference: {fileID: 0}
-    - target: {fileID: 114581037534340950, guid: e7fcecc826687024e9b52ec763b14088,
-        type: 2}
-      propertyPath: ClimbingSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114581037534340950, guid: e7fcecc826687024e9b52ec763b14088,
-        type: 2}
-      propertyPath: climbSpeed
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1.7102393
-      objectReference: {fileID: 0}
-    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1.7102399
-      objectReference: {fileID: 0}
-    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1.71024
-      objectReference: {fileID: 0}
-    - target: {fileID: 212991655389708426, guid: e7fcecc826687024e9b52ec763b14088,
-        type: 2}
-      propertyPath: m_SortingLayerID
-      value: 681983847
-      objectReference: {fileID: 0}
-    - target: {fileID: 212991655389708426, guid: e7fcecc826687024e9b52ec763b14088,
-        type: 2}
-      propertyPath: m_SortingLayer
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1116900248984994, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188590420293162, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
   m_IsPrefabParent: 0
