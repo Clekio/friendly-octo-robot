@@ -2816,15 +2816,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4866510255706180, guid: 73cef47861cb77548927345963354a26, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4572036564011200, guid: 73cef47861cb77548927345963354a26, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4585368792291118, guid: 73cef47861cb77548927345963354a26, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4873233235837026, guid: 73cef47861cb77548927345963354a26, type: 2}
       propertyPath: m_LocalPosition.x
@@ -4759,7 +4759,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4035658655920002, guid: fb403835a0f15a04aab810923ad0c525, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb403835a0f15a04aab810923ad0c525, type: 2}
@@ -5830,7 +5830,7 @@ Transform:
   m_LocalScale: {x: 0.1135159, y: 0.23654106, z: 0.23654106}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &826375675
 GameObject:
@@ -6414,7 +6414,7 @@ Transform:
   m_LocalScale: {x: 0.23654105, y: 0.23654106, z: 0.23654106}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 4.157}
 --- !u!1 &890108344
 GameObject:
@@ -8459,7 +8459,7 @@ Transform:
   m_LocalScale: {x: 0.23654105, y: 0.23654106, z: 0.23654106}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 4.157}
 --- !u!1 &1134831669
 GameObject:
@@ -14612,7 +14612,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1915906715 stripped
 Transform:
