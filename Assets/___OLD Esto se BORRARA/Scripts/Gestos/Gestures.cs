@@ -24,8 +24,12 @@ public class Gestures : MonoBehaviour {
     List<Vector2> finalGesture;
 
     private MagicManager scr_magicManager;
+
+    private GesturesTemplate m_template;
     private void Awake()
     {
+        m_template = new GesturesTemplate();
+
         scr_magicManager = GetComponent<MagicManager>();
     }
 

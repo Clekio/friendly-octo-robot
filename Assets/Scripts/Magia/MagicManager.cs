@@ -74,7 +74,7 @@ public class MagicManager : MonoBehaviour {
         //Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 21));
         Vector3 p = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z));
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && magicName != null)
         {
             if (magicName == "waterfall")
             {
@@ -82,14 +82,14 @@ public class MagicManager : MonoBehaviour {
                 waterTransform = bola.GetComponent<Transform>();
                 bola.GetComponent<Rigidbody2D>().gravityScale = 0;
                 waterGrowing = true;
-			}
-			else if (magicName == "bubble")
-			{
-				bola = Instantiate(waterBubble, new Vector3(p.x, p.y, 0), Quaternion.identity);
-				bubbleTransform = bola.GetComponent<Transform>();
-				bola.GetComponent<Rigidbody2D>().gravityScale = 0;
-				bubbleGrowing = true;
-			}
+            }
+            else if (magicName == "bubble")
+            {
+                bola = Instantiate(waterBubble, new Vector3(p.x, p.y, 0), Quaternion.identity);
+                bubbleTransform = bola.GetComponent<Transform>();
+                bola.GetComponent<Rigidbody2D>().gravityScale = 0;
+                bubbleGrowing = true;
+            }
 
             else if (magicName == "wind")
             {
@@ -125,15 +125,15 @@ public class MagicManager : MonoBehaviour {
                 bola.GetComponent<Rigidbody2D>().gravityScale = waterGravity;
                 ResetOption();
             }
-			else if (magicName == "bubble")
-			{
-				bubbleGrowing = false;
-				bola.GetComponent<Rigidbody2D>().gravityScale = bubbleGravity;
-				ResetOption();
-			}
+            else if (magicName == "bubble")
+            {
+                bubbleGrowing = false;
+                bola.GetComponent<Rigidbody2D>().gravityScale = bubbleGravity;
+                ResetOption();
+            }
         }
 
-        
+
 
         if (Input.GetKeyDown ("1")) {
 			ActivateWaterfall ();
