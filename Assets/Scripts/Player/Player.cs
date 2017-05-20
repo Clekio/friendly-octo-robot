@@ -67,6 +67,8 @@ public class Player : MonoBehaviour
     Animator anim;
 
     bool crouch = false;
+    bool planeo = false;
+    bool golpePurificante = false;
 
     private void FixedUpdate()
     {
@@ -94,9 +96,17 @@ public class Player : MonoBehaviour
         } else
             crouch = false;
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            golpePurificante = true;
+        }
+        else
+            golpePurificante = false;
+
         anim.SetBool("grounded", grounded);
         anim.SetBool("crouch", crouch);
         anim.SetFloat("velocityX", rb2d.velocity.x);
+        anim.SetBool("golpePurificante", golpePurificante);
     }
 
 	private void UpdateGround(){
@@ -169,7 +179,16 @@ public class Player : MonoBehaviour
 		}
 
         if (jumpPressed && rb2d.velocity.y < 0)
+        {
             ySpeed = Mathf.SmoothDamp(rb2d.velocity.y, maxVericalGlideSpeed, ref velocityYSmoothing, .1f);
+            planeo = true;
+            anim.SetBool("planeando", planeo);
+        }
+        else
+        {
+            planeo = false;
+            anim.SetBool("planeando", planeo);
+        }
 
         rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
 
