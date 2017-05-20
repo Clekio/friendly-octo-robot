@@ -91,15 +91,12 @@ public class Player : MonoBehaviour
 		}
 
         if (Input.GetKey(KeyCode.LeftControl))
-        {
             crouch = true;
-        } else
+        else
             crouch = false;
 
         if (Input.GetMouseButtonDown(1))
-        {
             golpePurificante = true;
-        }
         else
             golpePurificante = false;
 
