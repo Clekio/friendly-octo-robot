@@ -68,6 +68,7 @@ public class Player : MonoBehaviour
 
     bool crouch = false;
     bool planeo = false;
+    bool golpePurificante = false;
 
     private void FixedUpdate()
     {
@@ -95,9 +96,17 @@ public class Player : MonoBehaviour
         } else
             crouch = false;
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            golpePurificante = true;
+        }
+        else
+            golpePurificante = false;
+
         anim.SetBool("grounded", grounded);
         anim.SetBool("crouch", crouch);
         anim.SetFloat("velocityX", rb2d.velocity.x);
+        anim.SetBool("golpePurificante", golpePurificante);
     }
 
 	private void UpdateGround(){
