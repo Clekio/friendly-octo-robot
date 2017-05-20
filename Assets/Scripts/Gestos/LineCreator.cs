@@ -20,7 +20,7 @@ public class LineCreator : MonoBehaviour {
         if (Input.GetMouseButtonUp(0))
         {
             activeLine = null;
-            GameObject.Destroy(lineGO, 2.0f);
+            GameObject.Destroy(lineGO, MagicManager.MagicTimeToDestroy);
         }
 
         if (activeLine != null)
