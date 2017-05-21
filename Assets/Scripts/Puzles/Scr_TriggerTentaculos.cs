@@ -7,6 +7,7 @@ public class Scr_TriggerTentaculos : MonoBehaviour
     public bool triggerTentaculos = false;
     public static bool purificacionPosible = false;
     public static bool tirarArbolPosible = false;
+    public Animator tentaculos;
 
     void OnTriggerEnter2D(Collider2D other)
     {
