@@ -1,0 +1,182 @@
+fileFormatVersion: 2
+guid: b8aa7ae4bb754ea45b9c28a379ad4558
+timeCreated: 1495397518
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: BirdIdleAnim_0
+    21300002: BirdIdleAnim_1
+    21300004: BirdIdleAnim_2
+    21300006: BirdIdleAnim_3
+    21300008: BirdIdleAnim_4
+    21300010: BirdIdleAnim_5
+    21300012: BirdIdleAnim_6
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BirdIdleAnim_0
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 108
+        width: 151
+        height: 139
+      alignment: 9
+      pivot: {x: 0.4506551, y: 0.053604785}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BirdIdleAnim_1
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 110
+        width: 158
+        height: 138
+      alignment: 9
+      pivot: {x: 0.43397793, y: 0.0755906}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BirdIdleAnim_2
+      rect:
+        serializedVersion: 2
+        x: 675
+        y: 108
+        width: 165
+        height: 140
+      alignment: 9
+      pivot: {x: 0.4277473, y: 0.085154995}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BirdIdleAnim_3
+      rect:
+        serializedVersion: 2
+        x: 920
+        y: 110
+        width: 165
+        height: 137
+      alignment: 9
+      pivot: {x: 0.43677866, y: 0.0652649}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BirdIdleAnim_4
+      rect:
+        serializedVersion: 2
+        x: 1165
+        y: 110
+        width: 159
+        height: 138
+      alignment: 9
+      pivot: {x: 0.4625106, y: 0.0431947}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BirdIdleAnim_5
+      rect:
+        serializedVersion: 2
+        x: 1403
+        y: 108
+        width: 150
+        height: 139
+      alignment: 9
+      pivot: {x: 0.48013103, y: 0.042883784}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BirdIdleAnim_6
+      rect:
+        serializedVersion: 2
+        x: 1633
+        y: 108
+        width: 151
+        height: 140
+      alignment: 9
+      pivot: {x: 0.4802618, y: 0.053221893}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
