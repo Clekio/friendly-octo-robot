@@ -10,8 +10,6 @@ public class Scr_Tentaculos : MonoBehaviour
     bool tentaculos;
     bool purificacion;
 
-    //public GameObject destruir;
-
     void Start ()
     {
         anim = GetComponent<Animator>();
