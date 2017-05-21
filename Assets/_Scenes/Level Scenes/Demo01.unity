@@ -7572,6 +7572,7 @@ GameObject:
   m_Component:
   - component: {fileID: 908475900}
   - component: {fileID: 908475899}
+  - component: {fileID: 908475901}
   m_Layer: 0
   m_Name: Menhir_claro
   m_TagString: Untagged
@@ -7632,6 +7633,17 @@ Transform:
   m_Father: {fileID: 1545346399}
   m_RootOrder: 51
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &908475901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 908475898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee94581aa2001e24c9a83312e13383df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &917295156
 GameObject:
   m_ObjectHideFlags: 0
