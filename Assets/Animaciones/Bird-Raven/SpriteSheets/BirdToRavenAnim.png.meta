@@ -1,16 +1,17 @@
 fileFormatVersion: 2
-guid: cfb19fef976c1cf4487f5af02314d24c
-timeCreated: 1495377887
+guid: 2d9106fda94ca6347be1899a7a641f4a
+timeCreated: 1495380973
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Raven_0
-    21300002: Raven_1
-    21300004: Raven_2
-    21300006: Raven_3
-    21300008: Raven_4
-    21300010: Raven_5
-    21300012: Raven_6
+    21300000: BirdToRavenAnim_0
+    21300002: BirdToRavenAnim_1
+    21300004: BirdToRavenAnim_2
+    21300006: BirdToRavenAnim_3
+    21300008: BirdToRavenAnim_4
+    21300010: BirdToRavenAnim_5
+    21300012: BirdToRavenAnim_6
+    21300014: BirdToRavenAnim_7
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -85,93 +86,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Raven_0
+      name: BirdToRavenAnim_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 1485
-        width: 783
-        height: 563
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 217
+        y: 1643
+        width: 298
+        height: 272
+      alignment: 9
+      pivot: {x: 0.3221579, y: 0.121775456}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Raven_1
+      name: BirdToRavenAnim_1
       rect:
         serializedVersion: 2
-        x: 825
-        y: 1509
-        width: 814
-        height: 520
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 639
+        y: 1643
+        width: 326
+        height: 272
+      alignment: 9
+      pivot: {x: 0.41871634, y: 0.09742063}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Raven_2
+      name: BirdToRavenAnim_2
       rect:
         serializedVersion: 2
-        x: 1680
-        y: 1509
+        x: 1109
+        y: 1651
+        width: 371
+        height: 306
+      alignment: 9
+      pivot: {x: 0.39286372, y: 0.075771354}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BirdToRavenAnim_3
+      rect:
+        serializedVersion: 2
+        x: 1565
+        y: 1573
         width: 835
-        height: 475
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Raven_3
-      rect:
-        serializedVersion: 2
-        x: 2511
-        y: 1509
-        width: 832
         height: 414
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+      alignment: 9
+      pivot: {x: 0.5357016, y: 0.27202514}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Raven_4
+      name: BirdToRavenAnim_4
       rect:
         serializedVersion: 2
-        x: 0
-        y: 919
-        width: 831
-        height: 474
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 2487
+        y: 1571
+        width: 832
+        height: 416
+      alignment: 9
+      pivot: {x: 0.5477738, y: 0.3105287}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Raven_5
+      name: BirdToRavenAnim_5
       rect:
         serializedVersion: 2
-        x: 873
-        y: 919
-        width: 815
-        height: 520
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        x: 8
+        y: 1016
+        width: 837
+        height: 475
+      alignment: 9
+      pivot: {x: 0.57123244, y: 0.3347173}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: Raven_6
+      name: BirdToRavenAnim_6
       rect:
         serializedVersion: 2
-        x: 1729
-        y: 919
+        x: 961
+        y: 1016
+        width: 816
+        height: 521
+      alignment: 9
+      pivot: {x: 0.5690064, y: 0.29880702}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: BirdToRavenAnim_7
+      rect:
+        serializedVersion: 2
+        x: 1842
+        y: 1010
         width: 786
-        height: 564
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        height: 566
+      alignment: 9
+      pivot: {x: 0.59271103, y: 0.26919803}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
