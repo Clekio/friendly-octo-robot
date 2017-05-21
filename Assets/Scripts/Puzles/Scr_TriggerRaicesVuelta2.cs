@@ -7,16 +7,21 @@ public class Scr_TriggerRaicesVuelta2 : MonoBehaviour
     [SerializeField]
     Animator raicesVuelta;
 
-    bool trigger2 = false;
+    bool trigger2Activado = false;
+    bool raicesDown = false;
 
-    void Start()
+    void OnTriggerEnter2D(Collider2D other)
     {
-        raicesVuelta = GetComponent<Animator>();
+        if (trigger2Activado == true)
+        {
+            raicesDown = true;
+            gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, -30);
+        }
     }
 
     void Update()
     {
-        trigger2 = Scr_TriggerRaicesVuelta1.trigger2;
-        raicesVuelta.SetBool("espinasDown", trigger2);
+        trigger2Activado = Scr_TriggerRaicesVuelta1.trigger1Activado;
+        raicesVuelta.SetBool("espinasDown", raicesDown);
     }
 }
