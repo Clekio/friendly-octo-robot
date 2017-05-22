@@ -9,13 +9,19 @@ public class Scr_TriggerTroncoRampa : MonoBehaviour
 
     public static bool arbolDown = false;
 
+    bool activado = false;
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        arbolDown = true;
+        if (activado == true)
+        {
+            arbolDown = true;
+        }
     }
 
     void Update()
     {
         arbolRampa.SetBool("arbolDown", arbolDown);
+        activado = Scr_TriggerRaicesVuelta1.trigger1Activado;
     }
 }
