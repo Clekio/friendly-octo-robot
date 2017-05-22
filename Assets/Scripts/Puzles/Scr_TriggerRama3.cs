@@ -9,13 +9,19 @@ public class Scr_TriggerRama3 : MonoBehaviour
 
     public static bool rama3Down = false;
 
+    bool activado = false;
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        rama3Down = true;
+        if (activado == true)
+        {
+            rama3Down = true;
+        }
     }
 
     void Update()
     {
         rama3.SetBool("rama3Down", rama3Down);
+        activado = Scr_TriggerRaicesVuelta1.trigger1Activado;
     }
 }
