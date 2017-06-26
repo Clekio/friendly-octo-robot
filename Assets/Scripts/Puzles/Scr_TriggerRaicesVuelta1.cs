@@ -6,7 +6,10 @@ public class Scr_TriggerRaicesVuelta1 : MonoBehaviour
 {
     public static bool trigger1Activado = false;
 
-    void OnTriggerEnter2D(Collider2D other)
+    [SerializeField]
+    Collider2D player;
+
+    void OnTriggerEnter2D(Collider2D player)
     {
         trigger1Activado = true;
         gameObject.GetComponent<BoxCollider2D>().offset = new Vector2(0, -30);
