@@ -218,9 +218,24 @@ public class Player : MonoBehaviour
 		}
 	}
 
+    ContactFilter2D cf = new ContactFilter2D();
+    Collider2D[] cols = new Collider2D[1];
+
     private void Grounded()
     {
-		grounded = groundChecker.IsTouchingLayers(m_WhatIsGround);
+        // grounded = groundChecker.IsTouchingLayers(m_WhatIsGround);
+
+        cf.layerMask = m_WhatIsGround;
+        cf.useLayerMask = true;
+
+        if (groundChecker.OverlapCollider (cf, cols) > 0)
+        {
+            grounded = true;
+        }
+        else
+        {
+            grounded = false;
+        }
     }
 
 	public void OnClimb (Scr_ObjetoTrepar stair, bool enter){
