@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Player))]
-public class Player : MonoBehaviour
+[RequireComponent(typeof(PlayerAuraPequeña))]
+public class PlayerAuraPequeña : MonoBehaviour
 {
 	public enum MovementMode {OnGround, OnAir, OnClimbing};
 	private MovementMode PlayerMode;
@@ -178,7 +178,7 @@ public class Player : MonoBehaviour
         if (jumpPressed && rb2d.velocity.y < 0)
         {
             ySpeed = Mathf.SmoothDamp(rb2d.velocity.y, maxVericalGlideSpeed, ref velocityYSmoothing, .1f);
-            planeo = true;
+            planeo = false;
             anim.SetBool("planeando", planeo);
         }
         else
@@ -218,9 +218,24 @@ public class Player : MonoBehaviour
 		}
 	}
 
+    ContactFilter2D cf = new ContactFilter2D();
+    Collider2D[] cols = new Collider2D[1];
+
     private void Grounded()
     {
-		grounded = groundChecker.IsTouchingLayers(m_WhatIsGround);
+        // grounded = groundChecker.IsTouchingLayers(m_WhatIsGround);
+
+        cf.layerMask = m_WhatIsGround;
+        cf.useLayerMask = true;
+
+        if (groundChecker.OverlapCollider (cf, cols) > 0)
+        {
+            grounded = true;
+        }
+        else
+        {
+            grounded = false;
+        }
     }
 
 	public void OnClimb (Scr_ObjetoTrepar stair, bool enter){

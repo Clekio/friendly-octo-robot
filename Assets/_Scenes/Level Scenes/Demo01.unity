@@ -975,11 +975,6 @@ Transform:
   m_Father: {fileID: 1545346399}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &110824510 stripped
-BoxCollider2D:
-  m_PrefabParentObject: {fileID: 61568043968288868, guid: e7fcecc826687024e9b52ec763b14088,
-    type: 2}
-  m_PrefabInternal: {fileID: 1354612495}
 --- !u!1 &117371901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,7 +1315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToFocus: {fileID: 848722857}
-  Player: {fileID: 227369624}
+  Player: {fileID: 1454408744}
   gameCamera: {fileID: 946831053}
   focusSize: 62.63
   speed: 0.02
@@ -1392,7 +1387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToFocus: {fileID: 977668333}
-  Player: {fileID: 227369624}
+  Player: {fileID: 1454408744}
   gameCamera: {fileID: 946831053}
   focusSize: 49.15
   speed: 0.05
@@ -1771,11 +1766,6 @@ Transform:
   m_Father: {fileID: 1777712167}
   m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &227369624 stripped
-Transform:
-  m_PrefabParentObject: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088,
-    type: 2}
-  m_PrefabInternal: {fileID: 1354612495}
 --- !u!1 &230382969
 GameObject:
   m_ObjectHideFlags: 0
@@ -4959,7 +4949,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToFocus: {fileID: 1973001102}
-  Player: {fileID: 227369624}
+  Player: {fileID: 1454408744}
   gameCamera: {fileID: 946831053}
   focusSize: 68.7
   speed: 0.05
@@ -5304,6 +5294,48 @@ SpriteRenderer:
   m_Size: {x: 20, y: 20}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+--- !u!1001 &645428992
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -143.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &646907906
 GameObject:
   m_ObjectHideFlags: 0
@@ -5370,7 +5402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e73ce19b308751a4f902c7bdda8e686b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 110824510}
+  player: {fileID: 0}
 --- !u!1 &653619167
 GameObject:
   m_ObjectHideFlags: 0
@@ -5984,7 +6016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToFocus: {fileID: 1194996431}
-  Player: {fileID: 227369624}
+  Player: {fileID: 1454408744}
   gameCamera: {fileID: 946831053}
   focusSize: 49.64
   speed: 0.05
@@ -6442,7 +6474,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToFocus: {fileID: 957645832}
-  Player: {fileID: 227369624}
+  Player: {fileID: 1454408744}
   gameCamera: {fileID: 946831053}
   focusSize: 49.64
   speed: 0.05
@@ -6958,7 +6990,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToFocus: {fileID: 526475355}
-  Player: {fileID: 227369624}
+  Player: {fileID: 1454408744}
   gameCamera: {fileID: 946831053}
   focusSize: 49.15
   speed: 0.05
@@ -7759,7 +7791,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToFocus: {fileID: 1121207257}
-  Player: {fileID: 227369624}
+  Player: {fileID: 1454408744}
   gameCamera: {fileID: 946831053}
   focusSize: 49.15
   speed: 0.05
@@ -8480,10 +8512,10 @@ Transform:
   m_GameObject: {fileID: 946831053}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -87.6, y: 9, z: -17}
-  m_LocalScale: {x: 1.5882148, y: 3.3781097, z: 1.71024}
+  m_LocalScale: {x: 1.5882146, y: 3.3781095, z: 1.71024}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &946831059
 MonoBehaviour:
@@ -8496,7 +8528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c47ecb4570c3a4e8694803a3cdc050, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Target: {fileID: 227369624}
+  Target: {fileID: 1454408744}
   OffsetX: 0
   OffsetY: 3
   FollowSpeed: 2.96
@@ -12409,74 +12441,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1351374440}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1001 &1354612495
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -88.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 5.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4345459232120236, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1188590420293162, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_Name
-      value: Aura
-      objectReference: {fileID: 0}
-    - target: {fileID: 114581037534340950, guid: e7fcecc826687024e9b52ec763b14088,
-        type: 2}
-      propertyPath: crouchedMaxSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114581037534340950, guid: e7fcecc826687024e9b52ec763b14088,
-        type: 2}
-      propertyPath: groundMaxSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4944653131130006, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566797654940672, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4566797654940672, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: e7fcecc826687024e9b52ec763b14088, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &1354986435
 GameObject:
   m_ObjectHideFlags: 0
@@ -12655,7 +12619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToFocus: {fileID: 1830275842}
-  Player: {fileID: 227369624}
+  Player: {fileID: 1454408744}
   gameCamera: {fileID: 946831053}
   focusSize: 49.15
   speed: 0.05
@@ -13117,6 +13081,11 @@ SpriteRenderer:
   m_Size: {x: 13.98, y: 4.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+--- !u!4 &1454408744 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e,
+    type: 2}
+  m_PrefabInternal: {fileID: 645428992}
 --- !u!1 &1462509046
 GameObject:
   m_ObjectHideFlags: 0
@@ -13146,7 +13115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToFocus: {fileID: 1049691036}
-  Player: {fileID: 227369624}
+  Player: {fileID: 1454408744}
   gameCamera: {fileID: 946831053}
   focusSize: 65.41
   speed: 0.05
@@ -13388,7 +13357,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerArbolRampa: 0
-  other: {fileID: 110824510}
+  other: {fileID: 0}
 --- !u!61 &1476538361
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14313,6 +14282,53 @@ Transform:
   m_Father: {fileID: 1777712167}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -29.768002}
+--- !u!1001 &1590255775
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4866448933922272, guid: f50efd261245fee4694b0a978ef529b3, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -146.85155
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866448933922272, guid: f50efd261245fee4694b0a978ef529b3, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 4.0427027
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866448933922272, guid: f50efd261245fee4694b0a978ef529b3, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866448933922272, guid: f50efd261245fee4694b0a978ef529b3, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866448933922272, guid: f50efd261245fee4694b0a978ef529b3, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866448933922272, guid: f50efd261245fee4694b0a978ef529b3, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866448933922272, guid: f50efd261245fee4694b0a978ef529b3, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866448933922272, guid: f50efd261245fee4694b0a978ef529b3, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114608772375815166, guid: f50efd261245fee4694b0a978ef529b3,
+        type: 2}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1995857604}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f50efd261245fee4694b0a978ef529b3, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &1595627231
 GameObject:
   m_ObjectHideFlags: 0
@@ -14463,7 +14479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8249c9230c35c624a9e5c7318fb39fb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  other: {fileID: 110824510}
+  other: {fileID: 0}
 --- !u!61 &1601654952
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -14894,7 +14910,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToFocus: {fileID: 2019751979}
-  Player: {fileID: 227369624}
+  Player: {fileID: 1454408744}
   gameCamera: {fileID: 946831053}
   focusSize: 47.32
   speed: 0.05
@@ -17864,6 +17880,11 @@ Transform:
   m_Father: {fileID: 1545346399}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -74.452}
+--- !u!1 &1995857604 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1090007264681456, guid: 82c0728468eecd34d8c8dce64a13259e,
+    type: 2}
+  m_PrefabInternal: {fileID: 645428992}
 --- !u!1 &2004191302
 GameObject:
   m_ObjectHideFlags: 0
