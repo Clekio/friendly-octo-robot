@@ -51,9 +51,47 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7645d4857c0ceaa4389fbfc30f56130d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linePrefab: {fileID: 1958155713448096, guid: 7b0e36b5746805542a772401be5029a3, type: 2}
-  MagicTimeToDestroy: 3
-  waterBall: {fileID: 0}
-  waterBubble: {fileID: 0}
-  viento: {fileID: 1305357304771254, guid: 1d1678d1ff1697040a137888e4468ffe, type: 2}
-  remolino: {fileID: 0}
+  lista:
+  - Name: water
+    dirList:
+    - {x: 0, y: 1}
+    - {x: 1, y: -1}
+    - {x: 0, y: 1}
+    - {x: -1, y: -1}
+  - Name: thunder
+    dirList:
+    - {x: 0, y: 1}
+    - {x: 1, y: -1}
+    - {x: -1, y: 1}
+  - Name: thunder
+    dirList:
+    - {x: 0, y: 1}
+    - {x: 1, y: -1}
+    - {x: 0, y: 1}
+  - Name: thunder
+    dirList:
+    - {x: 0, y: 1}
+    - {x: 1, y: -1}
+    - {x: 1, y: 1}
+  - Name: wind
+    dirList:
+    - {x: 0, y: 1}
+    - {x: 1, y: -1}
+    - {x: -1, y: 0}
+  - Name: wind
+    dirList:
+    - {x: 0, y: 1}
+    - {x: 1, y: -1}
+    - {x: -1, y: -1}
+  - Name: wind
+    dirList:
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: -1, y: -1}
+  particlePrefab: {fileID: 1109158048800960, guid: fd9b210b8ac845e4cbe1d246b8799f40,
+    type: 2}
+  MagicTimeToDestroy: 2
+  water: {fileID: 1030359037256292, guid: 10d31de1edc82aa429adc90974fbaf6a, type: 2}
+  thunder: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 2}
+  wind: {fileID: 1182704348935344, guid: 73d460275f8b05c489fdcca42a42bce9, type: 2}
+  swirl: {fileID: 1193440099776944, guid: 5a5b01e97d5db8043a32cf273521bbf0, type: 2}

@@ -3,11 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RunasRecognizer : MonoBehaviour {
+public class recognizerRunas : MonoBehaviour
+{
+    [System.Serializable]
+    public struct Runa
+    {
+        public string Name;
+        public List<Vector2> dirList;
+    }
+    [Header("Lista de Runas")]
+    public List<Runa> lista;
 
     protected List<Vector2> optimacedPointList;
     protected List<Vector2> normalizedPointList;
     protected List<Vector2> simplifyPointList;
+    protected List<Vector2> globalPointList;
 
     protected Vector2   m_magicPosition;
     protected string    m_magicName;
@@ -15,19 +25,20 @@ public class RunasRecognizer : MonoBehaviour {
     protected Vector2   m_magicScale;
 
     float distanceMargin    = 0.05f;
-    float mouseDeltaNeeded  = 0.05f;
+    //float mouseDeltaNeeded  = 0.05f;
     float minimumAngle      = 10;
 
-    public void StartRecognizer(List<Vector2> PointsList, List<Vector2> DeltaList)
+    public void StartRecognizer(List<Vector2> PointsList)//, List<Vector2> DeltaList)
     {
-        DebugLine(PointsList, Colors.Yellow);
-
-        optimacedPointList  = optimizeGesture(PointsList, DeltaList);
+        optimacedPointList = optimizeGesture(PointsList);//, DeltaList);
 
         if (optimacedPointList.Count < 3)
+            //texto.text = "ERROR";
             return;
 
-        GetMagicMesurements(optimacedPointList);
+        globalPointList = GetGlobalPoints(optimacedPointList);
+
+        GetMagicMesurements(globalPointList);
 
         normalizedPointList = NormalizeRune(optimacedPointList);
 
@@ -36,7 +47,7 @@ public class RunasRecognizer : MonoBehaviour {
         m_magicName         = MatchRune(simplifyPointList);
     }
 
-    private List<Vector2> optimizeGesture(List<Vector2> pointsList, List<Vector2> deltaList)
+    private List<Vector2> optimizeGesture(List<Vector2> pointsList)//, List<Vector2> deltaList)
     {
         //Si la lista de puntos tiene menos de 3 puntos ya es muy simple.
         if (pointsList.Count < 3)
@@ -49,13 +60,13 @@ public class RunasRecognizer : MonoBehaviour {
         for (int i=1; i < pointsList.Count; ++i)
         {
             Vector2 lastPoint = optimizedDistance[optimizedDistance.Count - 1];
-            if (Vector2.Distance(lastPoint, pointsList[i]) > distanceMargin && (deltaList[i] - deltaList[i-1]).magnitude < mouseDeltaNeeded)
+            if (Vector2.Distance(lastPoint, pointsList[i]) > distanceMargin)// && (deltaList[i] - deltaList[i-1]).magnitude < mouseDeltaNeeded)
             {
                 optimizedDistance.Add(pointsList[i]);
             }
         }
 
-        DebugLine(optimizedDistance, Colors.DarkRed);
+//DebugLine(optimizedDistance, Colors.DarkRed);
 
         //Quitamos los puntos que no creen un cambio de direccion.
         List<Vector2> optimizedDirection = new List<Vector2>();
@@ -74,7 +85,7 @@ public class RunasRecognizer : MonoBehaviour {
         }
         optimizedDirection.Add(optimizedDistance[optimizedDistance.Count - 1]);
 
-        DebugLine(optimizedDirection, Colors.Red);
+//DebugLine(optimizedDirection, Colors.Red);
 
         return optimizedDirection;
     }
@@ -89,7 +100,7 @@ public class RunasRecognizer : MonoBehaviour {
         {
             normaliced[i] = normaliced[i] - c;
         }
-        DebugLine(normaliced, Colors.DarkGreen);
+//DebugLine(normaliced, Colors.DarkGreen);
 
     //Normalizamos la rotacion
         //Sacamos el angulo que hay que rotarlo del original
@@ -103,7 +114,7 @@ public class RunasRecognizer : MonoBehaviour {
         {
             normaliced[i] = Rotate(normaliced[i], angle);
         }
-        DebugLine(normaliced, Colors.Green);
+//DebugLine(normaliced, Colors.Green);
 
     //Normalizamos la Inversion
         if ((normaliced[2] - normaliced[1]).x < 0)
@@ -112,7 +123,7 @@ public class RunasRecognizer : MonoBehaviour {
             {
                 normaliced[i] = new Vector2(-normaliced[i].x, normaliced[i].y);
             }
-            DebugLine(normaliced, Colors.LightGreen);
+//DebugLine(normaliced, Colors.LightGreen);
         }
 
         return normaliced;
@@ -144,12 +155,12 @@ public class RunasRecognizer : MonoBehaviour {
 
             simplified.Add(dirBasica);
         }
-        Vector2 vP = new Vector2(0, 0);
-        for (int i = 0; i < simplified.Count; i++)
-        {
-            Debug.DrawLine(vP, simplified[i] + vP, Colors.LightBlue, 2, false);
-            vP = vP + simplified[i];
-        }
+        //Vector2 vP = new Vector2(0, 0);
+        //for (int i = 0; i < simplified.Count; i++)
+        //{
+        //    Debug.DrawLine(vP, simplified[i] + vP, Colors.LightBlue, 2, false);
+        //    vP = vP + simplified[i];
+        //}
 
         return simplified;
     }
@@ -158,23 +169,33 @@ public class RunasRecognizer : MonoBehaviour {
     {
         string runaName = "Error";
 
-        for (int i = 0; i < RunasTemplate.TemplateRunasList.Count; i++)
+        for (int i = 0; i < lista.Count; i++)
         {
-            if (CompareList(dirList, RunasTemplate.TemplateRunasList[i].dirList))
+            if (CompareList(dirList, lista[i].dirList))
             {
-                runaName = RunasTemplate.TemplateRunasList[i].Name;
+                runaName = lista[i].Name;
                 break;
             }
         }
-        Debug.Log(runaName);
+        //Debug.Log(runaName);
 
         return runaName;
+    }
+
+    private List<Vector2> GetGlobalPoints(List<Vector2> pointList)
+    {
+        List<Vector2> globalPoints = new List<Vector2>();
+
+        foreach (Vector2 v2 in pointList)
+            globalPoints.Add(Camera.main.ScreenToWorldPoint(new Vector3(v2.x, v2.y, - Camera.main.transform.position.z)));
+
+        return globalPoints;
     }
 
     private void GetMagicMesurements(List<Vector2> pointList)
     {
         //Get direction
-        m_magicAngle = Vector2.Angle(Vector2.left, pointList[0] - pointList[1]);
+        m_magicAngle = Vector2.Angle(Vector2.left, pointList[0] - pointList[3]);
 
         //Get Center
         Vector2 center = Vector2.zero;
@@ -182,7 +203,7 @@ public class RunasRecognizer : MonoBehaviour {
         {
             center += v;
         }
-        center = center / ((float)pointList.Count);
+        center = center / pointList.Count;
         m_magicPosition = center;
 
         //Get Scale
@@ -198,20 +219,6 @@ public class RunasRecognizer : MonoBehaviour {
                 m_magicScale.y = vec.y;
         }
         m_magicScale = m_magicScale * 2;
-    }
-
-    public void DebugLine(List <Vector2> Linea, Color color)
-    {
-        //Draw the lines compositions
-        if (Linea != null)
-        {
-            Vector2 vP = Linea[0];
-            for (int i = 1; i < Linea.Count; i++)
-            {
-                    Debug.DrawLine(vP, Linea[i], color, 2, false);
-                vP = Linea[i];
-            }
-        }
     }
 
     private Vector2 Rotate(Vector2 v, float degrees)
@@ -254,4 +261,42 @@ public class RunasRecognizer : MonoBehaviour {
         Vector2 diference = vec2 - vec1;
         return Vector2.Angle(Vector2.right, diference);
     }
+
+#if UNITY_EDITOR
+    public void DebugLine(List<Vector2> Linea, Color color)
+    {
+        //Draw the lines compositions
+        if (Linea != null)
+        {
+            Vector2 vP = Linea[0];
+            for (int i = 1; i < Linea.Count; i++)
+            {
+                Debug.DrawLine(vP, Linea[i], color);
+                vP = Linea[i];
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (optimacedPointList != null)
+            DebugLine(optimacedPointList, Colors.Red);
+
+        if (normalizedPointList != null)
+            DebugLine(normalizedPointList, Colors.Green);
+
+        if (globalPointList != null)
+            DebugLine(globalPointList, Colors.Pink);
+
+        if (simplifyPointList != null)
+        {
+            Vector2 vP = new Vector2(0, 0);
+            for (int i = 0; i < simplifyPointList.Count; i++)
+            {
+                Debug.DrawLine(vP, simplifyPointList[i] + vP, Colors.Blue);
+                vP = vP + simplifyPointList[i];
+            }
+        }
+    }
+#endif
 }
