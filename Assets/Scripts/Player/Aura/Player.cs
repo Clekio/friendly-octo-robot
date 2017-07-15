@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
 	public enum MovementMode {OnGround, OnAir, OnClimbing};
 	private MovementMode PlayerMode;
 
+    public float i;
+
     [HideInInspector]
     public bool Death = false;
 
@@ -56,8 +58,10 @@ public class Player : MonoBehaviour
     public bool climbing;
 
     Scr_ObjetoTrepar grabbedTransform;
-    
+
     [Header("Otros")]
+    public ContactFilter2D cf2d;
+    private ContactPoint2D[] contacts = new ContactPoint2D[16];
     [SerializeField]
     private Rigidbody2D rb2d;
     [SerializeField]
@@ -69,6 +73,26 @@ public class Player : MonoBehaviour
     bool crouch = false;
     bool planeo = false;
     bool golpePurificante = false;
+    bool slide = false;
+
+    private void Update()
+    {
+        slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
+
+        if (Input.GetKey(KeyCode.LeftControl))
+            crouch = true;
+        else
+            crouch = false;
+        anim.SetBool("crouch", crouch);
+
+        if (Input.GetMouseButtonDown(1))
+            golpePurificante = true;
+        else
+            golpePurificante = false;
+        
+        anim.SetFloat("velocityX", rb2d.velocity.x);
+        anim.SetBool("golpePurificante", golpePurificante);
+    }
 
     private void FixedUpdate()
     {
@@ -78,7 +102,7 @@ public class Player : MonoBehaviour
 
 		if (!Death) {
 			switch (PlayerMode) {
-			case MovementMode.OnGround:
+            case MovementMode.OnGround:
 				UpdateGround ();
 				break;
 			case MovementMode.OnAir:
@@ -90,39 +114,47 @@ public class Player : MonoBehaviour
 			}
 		}
 
-        if (Input.GetKey(KeyCode.LeftControl))
-            crouch = true;
-        else
-            crouch = false;
+        //if (Input.GetKey(KeyCode.LeftControl))
+        //    crouch = true;
+        //else
+        //    crouch = false;
 
-        if (Input.GetMouseButtonDown(1))
-            golpePurificante = true;
-        else
-            golpePurificante = false;
+        //if (Input.GetMouseButtonDown(1))
+        //    golpePurificante = true;
+        //else
+        //    golpePurificante = false;
 
-        anim.SetBool("grounded", grounded);
-        anim.SetBool("crouch", crouch);
-        anim.SetFloat("velocityX", rb2d.velocity.x);
-        anim.SetBool("golpePurificante", golpePurificante);
+        //anim.SetBool("grounded", grounded);
+        //anim.SetBool("crouch", crouch);
+        //anim.SetFloat("velocityX", rb2d.velocity.x);
+        //anim.SetBool("golpePurificante", golpePurificante);
     }
 
 	private void UpdateGround(){
+
 		//Setear velocidad máxima
 		float speedToUse = groundMaxSpeed;
-		if(Input.GetKey(KeyCode.LeftControl)){
+		if(Input.GetKey(KeyCode.LeftControl) && !slide)
+        {
 			speedToUse = crouchedMaxSpeed;
 		}
 		float xSpeed = 0;
-		if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f)
+		if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f && !slide)
         {
             //Apply acceleration
             xSpeed = rb2d.velocity.x + Input.GetAxis("Horizontal") * groundAccel * Time.deltaTime;
         }
-		else
-			//Apply Friction
-			xSpeed = rb2d.velocity.x * (1 - groundFriction * Time.deltaTime);
-		xSpeed = Mathf.Clamp(xSpeed, - speedToUse ,speedToUse );
-		float ySpeed = rb2d.velocity.y + gravityOnGround * Time.deltaTime;
+        else
+            //Apply Friction
+            xSpeed = rb2d.velocity.x * (1 - groundFriction * Time.deltaTime);
+
+        xSpeed = Mathf.Clamp(xSpeed, - speedToUse ,speedToUse );
+
+        Debug.Log(!slide && Input.GetAxis("Horizontal") < 0.1f && Input.GetAxis("Horizontal") > -0.1f);
+
+        float g = !slide && Input.GetAxis("Horizontal") < 0.1f && Input.GetAxis("Horizontal") > -0.1f ? 0 : gravityOnGround;
+
+        float ySpeed = rb2d.velocity.y + g * Time.deltaTime;
 
 		//Chequear Salto
 		jumpPressed = Input.GetButton("Jump");
@@ -150,22 +182,23 @@ public class Player : MonoBehaviour
 		float xSpeed = 0;
         jumpPressed = Input.GetButton("Jump");
         jumpPressedBefore = jumpPressed;
-        float aceleationToUse = jumpPressed && rb2d.velocity.y < 0 ? airGlideAccel : airAccel;
+        float aceleationToUse = planeo ? airGlideAccel : airAccel;
 
         if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f)
         {
             //Apply acceleration
             xSpeed = rb2d.velocity.x + Input.GetAxis("Horizontal") * aceleationToUse * Time.deltaTime;
         }
-		else {
-			//Apply Friction
-			xSpeed = rb2d.velocity.x * (1 - airFriction * Time.deltaTime);
-		}
-		xSpeed = Mathf.Clamp(xSpeed, - speedToUse ,speedToUse );
+        else
+        {
+            //Apply Friction
+            xSpeed = rb2d.velocity.x * (1 - airFriction * Time.deltaTime);
+        }
+        xSpeed = Mathf.Clamp(xSpeed, - speedToUse ,speedToUse );
 
 		float gravityToUse = rb2d.velocity.y > 0 ? gravityOnAir : gravityOnGround;
-		//if(rb2d.velocity.y > 0)
-		//	gravityToUse = gravityOnAir;
+        //if (rb2d.velocity.y > 0)
+        //    gravityToUse = gravityOnAir;
 
         float ySpeed = rb2d.velocity.y + gravityToUse * Time.deltaTime;
 
@@ -204,7 +237,7 @@ public class Player : MonoBehaviour
 		jumpPressedBefore = jumpPressed;
 		if (jumpDown || grabbedTransform == null)
         {
-			rb2d.velocity = maxJumpVelocity * Vector2.up;
+			//rb2d.velocity = maxJumpVelocity * Vector2.up;
 			PlayerMode = MovementMode.OnAir;
 		}
         else if(transform.position.y >= grabbedTransform.upPoint.position.y || transform.position.y <= grabbedTransform.downPoint.position.y || grounded && Input.GetAxis ("Vertical") < 0)
@@ -236,6 +269,8 @@ public class Player : MonoBehaviour
         {
             grounded = false;
         }
+
+        anim.SetBool("grounded", grounded);
     }
 
 	public void OnClimb (Scr_ObjetoTrepar stair, bool enter){
