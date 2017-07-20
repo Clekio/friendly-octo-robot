@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212264365793709294}
   - component: {fileID: 50741617388717844}
   - component: {fileID: 61942647587523390}
-  - component: {fileID: 114608772375815166}
-  - component: {fileID: 255035069939017388}
-  m_Layer: 0
+  - component: {fileID: 255222522269710012}
+  - component: {fileID: 114408006539989338}
+  m_Layer: 8
   m_Name: Pull&Push
   m_TagString: Pull&Push
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1639580727709868}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -148.16861, y: 3.7989397, z: 0}
+  m_LocalPosition: {x: -61.597565, y: 7.743043, z: 0}
   m_LocalScale: {x: 0.118879996, y: 0.118879996, z: 0.118879996}
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,7 +55,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 6
+  m_Mass: 6.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 8
@@ -89,7 +89,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 11.219071, y: 13.419684}
   m_EdgeRadius: 0
---- !u!114 &114608772375815166
+--- !u!114 &114408006539989338
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -141,7 +141,7 @@ SpriteRenderer:
   m_Size: {x: 25.339998, y: 30.71}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
---- !u!255 &255035069939017388
+--- !u!255 &255222522269710012
 FixedJoint2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -155,6 +155,6 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -146.66, y: 3.25}
+  m_ConnectedAnchor: {x: -61.597565, y: 7.743043}
   m_DampingRatio: 0
   m_Frequency: 0
