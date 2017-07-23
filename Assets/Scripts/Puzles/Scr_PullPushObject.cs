@@ -22,7 +22,7 @@ public class Scr_PullPushObject : MonoBehaviour // FALTA HACER QUE CUANDO SE EST
     {
         if (playerCollision == true && move == false)
         {
-            transform.position = new Vector3(xPos, transform.position.y);
+            //transform.position = new Vector3(xPos, transform.position.y);
         }
 
         if (playerCollision == true && Input.GetKeyDown(KeyCode.E))
