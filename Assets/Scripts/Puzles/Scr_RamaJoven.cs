@@ -1,4 +1,5 @@
-﻿using System.Collections;using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Scr_RamaJoven : MonoBehaviour
@@ -9,18 +10,9 @@ public class Scr_RamaJoven : MonoBehaviour
     [SerializeField]
     GameObject player;
 
-    bool jugador = false;
-    bool caja = false;
-
-    void Start ()
-    {
-		
-	}
-	
-	void Update ()
-    {
-
-    }
+    bool jugador;
+    bool caja;
+    bool ladoBueno;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -47,12 +39,28 @@ public class Scr_RamaJoven : MonoBehaviour
             jugador = false;
         }
 
-        if (jugador == true)
+        if (jugador == true && ladoBueno == true)
         {
             Rigidbody2D rb2d = player.gameObject.GetComponent<Rigidbody2D>();
 
             if (!rb2d.isKinematic)
                 rb2d.velocity = new Vector2(rb2d.velocity.x, impulso);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            ladoBueno = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            ladoBueno = false;
         }
     }
 }
