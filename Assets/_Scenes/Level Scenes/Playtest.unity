@@ -1454,6 +1454,7 @@ MonoBehaviour:
   destruir1: {fileID: 187438317}
   destruir2: {fileID: 1871016421}
   destruir3: {fileID: 0}
+  destruir4: {fileID: 0}
   tiempo: 2
 --- !u!1 &196168742
 GameObject:
@@ -2936,6 +2937,7 @@ MonoBehaviour:
   destruir1: {fileID: 0}
   destruir2: {fileID: 0}
   destruir3: {fileID: 0}
+  destruir4: {fileID: 0}
   tiempo: 0
 --- !u!1 &337695873
 GameObject:
@@ -3058,6 +3060,7 @@ MonoBehaviour:
   destruir1: {fileID: 337695873}
   destruir2: {fileID: 40127348}
   destruir3: {fileID: 0}
+  destruir4: {fileID: 0}
   tiempo: 2
 --- !u!1 &341075884
 GameObject:
@@ -3405,11 +3408,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -51.03
+      value: -264.3
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -8.59
+      value: -67.7
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5356,6 +5359,77 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 820487049}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &823939818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 823939821}
+  - component: {fileID: 823939820}
+  - component: {fileID: 823939819}
+  m_Layer: 0
+  m_Name: TriggerCorrupcion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &823939819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823939818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17dc2c2545b29814cad5acefc6fc76dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destruir1: {fileID: 1360478220}
+  destruir2: {fileID: 0}
+  destruir3: {fileID: 1360478220}
+  destruir4: {fileID: 1215102652}
+  tiempo: 0
+--- !u!61 &823939820
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823939818}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &823939821
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 823939818}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -269.5, y: -65.97, z: 0}
+  m_LocalScale: {x: 2, y: 5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 50
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &826486437
 GameObject:
   m_ObjectHideFlags: 0
@@ -6949,6 +7023,7 @@ MonoBehaviour:
   destruir1: {fileID: 1173638991}
   destruir2: {fileID: 1262766136}
   destruir3: {fileID: 0}
+  destruir4: {fileID: 0}
   tiempo: 2
 --- !u!1 &1183449368
 GameObject:
@@ -7374,7 +7449,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1215102652}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -131.9, y: -3.3, z: 0}
+  m_LocalPosition: {x: -116.4, y: -3.3, z: 0}
   m_LocalScale: {x: 1.6908631, y: 1.6378825, z: 1.18278}
   m_Children: []
   m_Father: {fileID: 1611305136}
@@ -8223,6 +8298,7 @@ MonoBehaviour:
   destruir1: {fileID: 1335523773}
   destruir2: {fileID: 0}
   destruir3: {fileID: 0}
+  destruir4: {fileID: 0}
   tiempo: 2
 --- !u!1 &1341866195
 GameObject:
@@ -8956,6 +9032,7 @@ MonoBehaviour:
   destruir1: {fileID: 1403922441}
   destruir2: {fileID: 0}
   destruir3: {fileID: 0}
+  destruir4: {fileID: 0}
   tiempo: 2
 --- !u!1 &1411696467
 GameObject:
@@ -9363,6 +9440,7 @@ MonoBehaviour:
   destruir1: {fileID: 1437818860}
   destruir2: {fileID: 483087639}
   destruir3: {fileID: 0}
+  destruir4: {fileID: 0}
   tiempo: 2
 --- !u!1 &1457263683
 GameObject:
@@ -10289,6 +10367,74 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 86.595}
+--- !u!1 &1563199382
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1563199384}
+  - component: {fileID: 1563199383}
+  - component: {fileID: 1563199385}
+  m_Layer: 0
+  m_Name: "Apa\xF1o vuelta"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &1563199383
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1563199382}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
+--- !u!4 &1563199384
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1563199382}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -277.2, y: -65.9, z: 0}
+  m_LocalScale: {x: 1, y: 5, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 51
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1563199385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1563199382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834d0013343e71a4b8244ed06404eb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mover1: {fileID: 1934192509}
+  mover2: {fileID: 2050397195}
 --- !u!1001 &1565130193
 Prefab:
   m_ObjectHideFlags: 0
@@ -10757,13 +10903,13 @@ CompositeCollider2D:
         Y: -526613856
   - m_Collider: {fileID: 1215102653}
     m_ColliderPaths:
-    - - X: -1244872192
+    - - X: -1089872256
         Y: -22752524
-      - X: -1392585728
+      - X: -1237585920
         Y: -22752524
-      - X: -1392585728
+      - X: -1237585920
         Y: -43772400
-      - X: -1244872192
+      - X: -1089872256
         Y: -43772400
   m_CompositePaths:
     m_Paths:
@@ -10825,16 +10971,16 @@ CompositeCollider2D:
       - {x: -100.92529, y: -85.17522}
       - {x: -98.54539, y: -85.17522}
       - {x: -88.99375, y: -90.86568}
-    - - {x: -124.48722, y: -2.2752523}
-      - {x: -139.25858, y: -2.2752523}
-      - {x: -139.25858, y: -4.37724}
-      - {x: -124.48722, y: -4.37724}
     - - {x: -44.924217, y: -3.0625725}
       - {x: -49.675755, y: -3.0625725}
       - {x: -49.675755, y: -3.1977234}
       - {x: -88.97927, y: -3.1977234}
       - {x: -88.97927, y: -3.2663574}
-      - {x: -110.57623, y: -3.2663574}
+      - {x: -108.98723, y: -3.2663574}
+      - {x: -108.98723, y: -2.2752523}
+      - {x: -123.75859, y: -2.2752523}
+      - {x: -123.75859, y: -4.37724}
+      - {x: -110.57623, y: -4.37724}
       - {x: -110.57623, y: -48.133636}
       - {x: -89.89566, y: -48.133636}
       - {x: -89.89566, y: -53.615597}
@@ -12700,7 +12846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1934192510
 Transform:
   m_ObjectHideFlags: 0
@@ -12802,6 +12948,7 @@ MonoBehaviour:
   destruir1: {fileID: 1934192509}
   destruir2: {fileID: 2050397195}
   destruir3: {fileID: 0}
+  destruir4: {fileID: 0}
   tiempo: 2
 --- !u!1 &1973663552
 GameObject:
@@ -12905,6 +13052,7 @@ MonoBehaviour:
   destruir1: {fileID: 0}
   destruir2: {fileID: 0}
   destruir3: {fileID: 0}
+  destruir4: {fileID: 0}
   tiempo: 0
 --- !u!1 &1973930814
 GameObject:
@@ -13324,7 +13472,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &2050397196
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13966,6 +14114,7 @@ MonoBehaviour:
   destruir1: {fileID: 2143300840}
   destruir2: {fileID: 214050811}
   destruir3: {fileID: 0}
+  destruir4: {fileID: 0}
   tiempo: 2
 --- !u!1 &2143376444
 GameObject:
