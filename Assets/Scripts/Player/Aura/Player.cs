@@ -80,9 +80,21 @@ public class Player : MonoBehaviour
         slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
 
         if (Input.GetKey(KeyCode.LeftControl))
+        {
             crouch = true;
+
+            //GetComponent<BoxCollider2D>().offset = new Vector2(0, -0.25f);
+            //GetComponent<BoxCollider2D>().size = new Vector2(0.6f, 0.6f);
+
+        }
         else
+        {
             crouch = false;
+
+            GetComponent<BoxCollider2D>().size = new Vector2(0.6f, 0.6f);
+
+        }
+
         anim.SetBool("crouch", crouch);
 
         if (Input.GetMouseButtonDown(1))
