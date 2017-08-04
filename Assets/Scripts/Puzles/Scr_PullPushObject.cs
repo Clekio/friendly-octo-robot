@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class Scr_PullPushObject : MonoBehaviour // FALTA HACER QUE CUANDO SE ESTÁ ARRASTRANDO UN OBJETO, EL JUGADOR NO SE PUEDA AGACHAR NI PUEDA SALTAR
 {
-    // VERSION 1: SE TIRA Y SE EMPUJA CON LA E Y NO SE MUEVE AL CHOCAR
-
     [SerializeField]
     GameObject player;
 
@@ -20,10 +18,10 @@ public class Scr_PullPushObject : MonoBehaviour // FALTA HACER QUE CUANDO SE EST
 
     void Update()
     {
-        if (playerCollision == true && move == false)
+        /*if (playerCollision == true && move == false)
         {
-            //transform.position = new Vector3(xPos, transform.position.y);
-        }
+            transform.position = new Vector3(xPos, transform.position.y);
+        }*/
 
         if (playerCollision == true && Input.GetKeyDown(KeyCode.E))
         {
