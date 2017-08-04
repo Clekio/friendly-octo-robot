@@ -75,6 +75,8 @@ public class Player : MonoBehaviour
     bool golpePurificante = false;
     bool slide = false;
 
+    bool tieneParaguas = false;
+
     private void Update()
     {
         slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
@@ -92,6 +94,8 @@ public class Player : MonoBehaviour
         
         anim.SetFloat("velocityX", rb2d.velocity.x);
         anim.SetBool("golpePurificante", golpePurificante);
+
+        tieneParaguas = Scr_TieneParaguas.paraguas;
     }
 
     private void FixedUpdate()
@@ -207,19 +211,22 @@ public class Player : MonoBehaviour
 		{
 			ySpeed = minJumpVelocity;
 		}
-        
-        if (jumpPressed && rb2d.velocity.y < 0)
+
+        if(tieneParaguas == true)
         {
-            ySpeed = Mathf.SmoothDamp(rb2d.velocity.y, maxVericalGlideSpeed, ref velocityYSmoothing, .1f);
-            planeo = true;
-            anim.SetBool("planeando", planeo);
+            if (jumpPressed && rb2d.velocity.y < 0)
+            {
+                ySpeed = Mathf.SmoothDamp(rb2d.velocity.y, maxVericalGlideSpeed, ref velocityYSmoothing, .1f);
+                planeo = true;
+                anim.SetBool("planeando", planeo);
+            }
+            else
+            {
+                planeo = false;
+                anim.SetBool("planeando", planeo);
+            }
         }
-        else
-        {
-            planeo = false;
-            anim.SetBool("planeando", planeo);
-        }
-        
+                
         rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
 
 		if (grounded)
