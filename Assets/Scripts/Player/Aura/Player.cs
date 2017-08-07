@@ -177,7 +177,7 @@ public class Player : MonoBehaviour
 		bool jumpDown = jumpPressed && !jumpPressedBefore;
 		jumpPressedBefore = jumpPressed;
 
-		if (jumpDown && grounded)
+		if (jumpDown && grounded && crouch == false)
 		{
 			ySpeed = maxJumpVelocity;
 		}
