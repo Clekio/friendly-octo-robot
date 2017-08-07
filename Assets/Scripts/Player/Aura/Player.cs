@@ -85,16 +85,16 @@ public class Player : MonoBehaviour
         {
             crouch = true;
 
-            GetComponent<CapsuleCollider2D>().size = new Vector3(0.6f, 0.6f, 1);
-            GetComponent<CapsuleCollider2D>().offset = new Vector3(0, 0.31f, 0);
+            GetComponent<BoxCollider2D>().size = new Vector3(0.6f, 0.6f, 1);
+            GetComponent<BoxCollider2D>().offset = new Vector3(0, 0.31f, 0);
         }
 
         if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             crouch = false;
 
-            GetComponent<CapsuleCollider2D>().size = new Vector3(0.45f, 0.85f, 1);
-            GetComponent<CapsuleCollider2D>().offset = new Vector3(0, 0.4256001f, 0);
+            GetComponent<BoxCollider2D>().size = new Vector3(0.45f, 0.85f, 1);
+            GetComponent<BoxCollider2D>().offset = new Vector3(0, 0.4256001f, 0);
         }
 
         anim.SetBool("crouch", crouch);
