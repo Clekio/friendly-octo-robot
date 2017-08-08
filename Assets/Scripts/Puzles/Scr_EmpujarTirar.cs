@@ -11,14 +11,22 @@ public class Scr_EmpujarTirar : MonoBehaviour
     GameObject helpText;
 
     bool playerInRange = false;
+    float xPos;
 
     public static bool canJump = true;
+
+    private void Start()
+    {
+        xPos = transform.position.x;
+    }
 
     private void Update()
     {
         if (playerInRange == true && !transform.GetComponent<FixedJoint2D>().enabled)
         {
             helpText.SetActive(true);
+
+            //transform.position = new Vector3(xPos, transform.position.y);
         }
         else
         {
@@ -36,6 +44,8 @@ public class Scr_EmpujarTirar : MonoBehaviour
         else if (transform.GetComponent<FixedJoint2D>().enabled && !Input.GetKey(KeyCode.LeftControl))
         {
             transform.GetComponent<FixedJoint2D>().enabled = false;
+
+            xPos = transform.position.x;
 
             canJump = true;
         }
