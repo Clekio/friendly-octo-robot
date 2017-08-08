@@ -77,6 +77,8 @@ public class Player : MonoBehaviour
 
     bool tieneParaguas = false;
 
+    bool canStandUp = false;
+
     private void Update()
     {
         slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
@@ -85,16 +87,16 @@ public class Player : MonoBehaviour
         {
             crouch = true;
 
-            GetComponent<CapsuleCollider2D>().size = new Vector3(0.6f, 0.6f, 1);
-            GetComponent<CapsuleCollider2D>().offset = new Vector3(0, 0.31f, 0);
+            GetComponent<BoxCollider2D>().size = new Vector3(0.6f, 0.6f, 1);
+            GetComponent<BoxCollider2D>().offset = new Vector3(0, 0.31f, 0);
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftControl))
+        if (Input.GetKeyUp(KeyCode.LeftControl) && canStandUp == true)
         {
             crouch = false;
 
-            GetComponent<CapsuleCollider2D>().size = new Vector3(0.45f, 0.85f, 1);
-            GetComponent<CapsuleCollider2D>().offset = new Vector3(0, 0.4256001f, 0);
+            GetComponent<BoxCollider2D>().size = new Vector3(0.45f, 0.85f, 1);
+            GetComponent<BoxCollider2D>().offset = new Vector3(0, 0.4256001f, 0);
         }
 
         anim.SetBool("crouch", crouch);
@@ -108,6 +110,8 @@ public class Player : MonoBehaviour
         anim.SetBool("golpePurificante", golpePurificante);
 
         tieneParaguas = Scr_TieneParaguas.paraguas;
+
+        canStandUp = Scr_CrouchCheck.canStandUp;
     }
 
     private void FixedUpdate()
@@ -146,7 +150,7 @@ public class Player : MonoBehaviour
         //anim.SetBool("golpePurificante", golpePurificante);
     }
 
-	private void UpdateGround(){
+    private void UpdateGround(){
 
 		//Setear velocidad máxima
 		float speedToUse = groundMaxSpeed;
@@ -177,7 +181,7 @@ public class Player : MonoBehaviour
 		bool jumpDown = jumpPressed && !jumpPressedBefore;
 		jumpPressedBefore = jumpPressed;
 
-		if (jumpDown && grounded)
+		if (jumpDown && grounded && crouch == false)
 		{
 			ySpeed = maxJumpVelocity;
 		}
