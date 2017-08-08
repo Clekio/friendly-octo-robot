@@ -79,11 +79,13 @@ public class Player : MonoBehaviour
 
     bool canStandUp = false;
 
+    bool canJump = true;
+
     private void Update()
     {
         slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
 
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             crouch = true;
 
@@ -91,7 +93,7 @@ public class Player : MonoBehaviour
             GetComponent<BoxCollider2D>().offset = new Vector3(0, 0.31f, 0);
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftControl) && canStandUp == true)
+        if (Input.GetKeyUp(KeyCode.S) && canStandUp == true)
         {
             crouch = false;
 
@@ -112,6 +114,8 @@ public class Player : MonoBehaviour
         tieneParaguas = Scr_TieneParaguas.paraguas;
 
         canStandUp = Scr_CrouchCheck.canStandUp;
+
+        canJump = Scr_EmpujarTirar.canJump;
     }
 
     private void FixedUpdate()
@@ -154,7 +158,7 @@ public class Player : MonoBehaviour
 
 		//Setear velocidad máxima
 		float speedToUse = groundMaxSpeed;
-		if(Input.GetKey(KeyCode.LeftControl) && !slide)
+		if(Input.GetKey(KeyCode.S) && !slide)
         {
 			speedToUse = crouchedMaxSpeed;
 		}
@@ -181,7 +185,7 @@ public class Player : MonoBehaviour
 		bool jumpDown = jumpPressed && !jumpPressedBefore;
 		jumpPressedBefore = jumpPressed;
 
-		if (jumpDown && grounded && crouch == false)
+		if (jumpDown && grounded && crouch == false && canJump == true)
 		{
 			ySpeed = maxJumpVelocity;
 		}

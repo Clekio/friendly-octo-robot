@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class HoldTrigger : MonoBehaviour {
 
-    // VERSION 1: SE TIRA Y SE EMPUJA CON LA E Y NO SE MUEVE AL CHOCAR
-
     [SerializeField]
     GameObject player;
+
     [SerializeField]
     GameObject feedback;
 
