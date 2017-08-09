@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
             GetComponent<BoxCollider2D>().offset = new Vector3(0, 0.31f, 0);
         }
 
-        if (Input.GetKeyUp(KeyCode.LeftControl) && !canStandUp == true)
+        if (Input.GetKeyUp(KeyCode.LeftControl) && canStandUp == true)
         {
             crouch = false;
 
