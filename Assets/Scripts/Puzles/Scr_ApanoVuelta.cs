@@ -22,6 +22,9 @@ public class Scr_ApanoVuelta : MonoBehaviour
     [SerializeField]
     GameObject tronco;
 
+    [SerializeField]
+    GameObject triggerParaguas;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         mover1.SetActive(true);
@@ -33,5 +36,7 @@ public class Scr_ApanoVuelta : MonoBehaviour
         balancin.SetActive(false);
 
         tronco.SetActive(true);
+
+        triggerParaguas.SetActive(true);
     }
 }
