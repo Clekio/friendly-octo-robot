@@ -2853,7 +2853,7 @@ MonoBehaviour:
   destruir2: {fileID: 1871016421}
   destruir3T: {fileID: 0}
   destruir4T: {fileID: 0}
-  tiempo: 2
+  tiempo: 3
 --- !u!1 &196168742
 GameObject:
   m_ObjectHideFlags: 0
@@ -5025,7 +5025,7 @@ MonoBehaviour:
   destruir2: {fileID: 40127348}
   destruir3T: {fileID: 0}
   destruir4T: {fileID: 0}
-  tiempo: 2
+  tiempo: 3
 --- !u!1 &341075884
 GameObject:
   m_ObjectHideFlags: 0
@@ -10496,11 +10496,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -189.54
+      value: -66.05
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -61.71
+      value: -9.65
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -14844,7 +14844,7 @@ MonoBehaviour:
   destruir2: {fileID: 1262766136}
   destruir3T: {fileID: 0}
   destruir4T: {fileID: 0}
-  tiempo: 2
+  tiempo: 3
 --- !u!1 &1183597393
 GameObject:
   m_ObjectHideFlags: 0
@@ -16768,7 +16768,7 @@ MonoBehaviour:
   destruir2: {fileID: 0}
   destruir3T: {fileID: 0}
   destruir4T: {fileID: 0}
-  tiempo: 2
+  tiempo: 3
 --- !u!1 &1341866195
 GameObject:
   m_ObjectHideFlags: 0
@@ -17637,7 +17637,7 @@ MonoBehaviour:
   destruir2: {fileID: 0}
   destruir3T: {fileID: 0}
   destruir4T: {fileID: 0}
-  tiempo: 2
+  tiempo: 3
 --- !u!1 &1410348446
 GameObject:
   m_ObjectHideFlags: 0
@@ -18298,7 +18298,7 @@ MonoBehaviour:
   destruir2: {fileID: 483087639}
   destruir3T: {fileID: 0}
   destruir4T: {fileID: 0}
-  tiempo: 2
+  tiempo: 3
 --- !u!1 &1438626755
 GameObject:
   m_ObjectHideFlags: 0
@@ -25379,7 +25379,7 @@ MonoBehaviour:
   destruir2: {fileID: 2050397195}
   destruir3T: {fileID: 0}
   destruir4T: {fileID: 0}
-  tiempo: 2
+  tiempo: 3
 --- !u!1 &1940634716
 GameObject:
   m_ObjectHideFlags: 0
@@ -27693,7 +27693,7 @@ MonoBehaviour:
   destruir2: {fileID: 214050811}
   destruir3T: {fileID: 0}
   destruir4T: {fileID: 0}
-  tiempo: 2
+  tiempo: 3
 --- !u!1 &2143376444
 GameObject:
   m_ObjectHideFlags: 0
