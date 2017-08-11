@@ -10958,8 +10958,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destruir1: {fileID: 2013223464}
   destruir2: {fileID: 0}
-  destruir3: {fileID: 0}
-  destruir4: {fileID: 0}
+  destruir3T: {fileID: 0}
+  destruir4T: {fileID: 0}
   tiempo: 1
 --- !u!68 &2013223467
 EdgeCollider2D:
@@ -11744,8 +11744,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destruir1: {fileID: 2088548191}
   destruir2: {fileID: 0}
-  destruir3: {fileID: 0}
-  destruir4: {fileID: 0}
+  destruir3T: {fileID: 0}
+  destruir4T: {fileID: 0}
   tiempo: 1
 --- !u!68 &2088548194
 EdgeCollider2D:
@@ -11818,7 +11818,7 @@ GameObject:
   - component: {fileID: 2095895409}
   - component: {fileID: 2095895408}
   m_Layer: 8
-  m_Name: "Plat 1 Direcci\xF3n (4)"
+  m_Name: RamaJoven
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -9,5 +9,6 @@ public class Scr_TieneParaguas : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         paraguas = true;
+        Destroy(gameObject);
     }
 }
