@@ -75,14 +75,32 @@ public class Player : MonoBehaviour
     bool golpePurificante = false;
     bool slide = false;
 
+    bool tieneParaguas = false;
+
+    bool canStandUp = false;
+
+    bool canJump = true;
+
     private void Update()
     {
         slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
 
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKeyDown(KeyCode.S))
+        {
             crouch = true;
-        else
+
+            GetComponent<BoxCollider2D>().size = new Vector3(0.6f, 0.6f, 1);
+            GetComponent<BoxCollider2D>().offset = new Vector3(0, 0.31f, 0);
+        }
+
+        if (Input.GetKeyUp(KeyCode.S) && canStandUp == true)
+        {
             crouch = false;
+
+            GetComponent<BoxCollider2D>().size = new Vector3(0.45f, 0.85f, 1);
+            GetComponent<BoxCollider2D>().offset = new Vector3(0, 0.4256001f, 0);
+        }
+
         anim.SetBool("crouch", crouch);
 
         if (Input.GetMouseButtonDown(1))
@@ -92,6 +110,12 @@ public class Player : MonoBehaviour
         
         anim.SetFloat("velocityX", rb2d.velocity.x);
         anim.SetBool("golpePurificante", golpePurificante);
+
+        tieneParaguas = Scr_TieneParaguas.paraguas;
+
+        canStandUp = Scr_CrouchCheck.canStandUp;
+
+        canJump = Scr_EmpujarTirar.canJump;
     }
 
     private void FixedUpdate()
@@ -130,11 +154,11 @@ public class Player : MonoBehaviour
         //anim.SetBool("golpePurificante", golpePurificante);
     }
 
-	private void UpdateGround(){
+    private void UpdateGround(){
 
 		//Setear velocidad máxima
 		float speedToUse = groundMaxSpeed;
-		if(Input.GetKey(KeyCode.LeftControl) && !slide)
+		if(Input.GetKey(KeyCode.S) && !slide)
         {
 			speedToUse = crouchedMaxSpeed;
 		}
@@ -161,7 +185,7 @@ public class Player : MonoBehaviour
 		bool jumpDown = jumpPressed && !jumpPressedBefore;
 		jumpPressedBefore = jumpPressed;
 
-		if (jumpDown && grounded)
+		if (jumpDown && grounded && crouch == false && canJump == true)
 		{
 			ySpeed = maxJumpVelocity;
 		}
@@ -207,19 +231,22 @@ public class Player : MonoBehaviour
 		{
 			ySpeed = minJumpVelocity;
 		}
-        
-        if (jumpPressed && rb2d.velocity.y < 0)
+
+        //if(tieneParaguas == true)
         {
-            ySpeed = Mathf.SmoothDamp(rb2d.velocity.y, maxVericalGlideSpeed, ref velocityYSmoothing, .1f);
-            planeo = true;
-            anim.SetBool("planeando", planeo);
+            if (jumpPressed && rb2d.velocity.y < 0)
+            {
+                ySpeed = Mathf.SmoothDamp(rb2d.velocity.y, maxVericalGlideSpeed, ref velocityYSmoothing, .1f);
+                planeo = true;
+                anim.SetBool("planeando", planeo);
+            }
+            else
+            {
+                planeo = false;
+                anim.SetBool("planeando", planeo);
+            }
         }
-        else
-        {
-            planeo = false;
-            anim.SetBool("planeando", planeo);
-        }
-        
+                
         rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
 
 		if (grounded)

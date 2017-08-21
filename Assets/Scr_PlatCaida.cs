@@ -11,10 +11,10 @@ public class Scr_PlatCaida : MonoBehaviour
     GameObject destruir2;
 
     [SerializeField]
-    GameObject destruir3;
+    GameObject destruir3T;
 
     [SerializeField]
-    GameObject destruir4;
+    GameObject destruir4T;
 
     [SerializeField]
     int tiempo;
@@ -32,8 +32,8 @@ public class Scr_PlatCaida : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Destroy(destruir3, tiempo);
-            Destroy(destruir4, tiempo);
+            Destroy(destruir3T, tiempo);
+            Destroy(destruir4T, tiempo);
         }
     }
 }
