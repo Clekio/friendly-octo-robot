@@ -20,6 +20,4 @@ public class Crecer : MonoBehaviour
             move = false;
         }
     }
-
-
 }
