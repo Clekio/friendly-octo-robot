@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StalactiteBreakable : MonoBehaviour {
-
+	/*
 	// Use this for initialization
 	void Start () {
 		
@@ -18,5 +18,5 @@ public class StalactiteBreakable : MonoBehaviour {
 		if (col.GetComponent <scr_thunderEffects> ().Estalactita) {
 			Destroy (gameObject);
 		}
-	}
+	}*/
 }
