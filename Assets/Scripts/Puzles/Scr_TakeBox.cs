@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Scr_TakeBox : MonoBehaviour
 {
-
+	/*
     public float altura;
     public float distance2Take;
     public GameObject player;
@@ -12,13 +12,13 @@ public class Scr_TakeBox : MonoBehaviour
 
     float distanceRight;
     float distanceLeft;
-    Scr_Player playerScr;
+    Player playerScr;
     float newHeight;
 
     void Start()
     {
 
-        playerScr = player.GetComponent<Scr_Player>();
+		playerScr = player.GetComponent<Player>();
         newHeight = transform.position.y + altura;
 
     }
@@ -46,5 +46,5 @@ public class Scr_TakeBox : MonoBehaviour
             Gizmos.DrawCube(transform.position, new Vector2(distance2Take * 2, 3));
         }
     }
-
+*/
 }
