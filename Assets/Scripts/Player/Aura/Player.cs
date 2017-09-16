@@ -80,7 +80,15 @@ public class Player : MonoBehaviour
     bool canStandUp = false;
 
     bool canJump = true;
-
+    
+    private void Awake()
+    {
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
     private void Update()
     {
         slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
@@ -174,7 +182,7 @@ public class Player : MonoBehaviour
 
         xSpeed = Mathf.Clamp(xSpeed, - speedToUse ,speedToUse );
 
-        Debug.Log(!slide && Input.GetAxis("Horizontal") < 0.1f && Input.GetAxis("Horizontal") > -0.1f);
+        //Debug.Log(!slide && Input.GetAxis("Horizontal") < 0.1f && Input.GetAxis("Horizontal") > -0.1f);
 
         float g = !slide && Input.GetAxis("Horizontal") < 0.1f && Input.GetAxis("Horizontal") > -0.1f ? 0 : gravityOnGround;
 

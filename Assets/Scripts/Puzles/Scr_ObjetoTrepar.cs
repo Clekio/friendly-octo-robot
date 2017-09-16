@@ -9,7 +9,7 @@ public class Scr_ObjetoTrepar : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D col){
 		if (col.CompareTag ("Player")) {
-			Debug.Log ("Dentro");
+			//Debug.Log ("Dentro");
 			col.gameObject.GetComponent <Player> ().OnClimb (this,true);
 		}
 	}

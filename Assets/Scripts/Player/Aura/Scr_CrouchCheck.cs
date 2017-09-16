@@ -11,7 +11,7 @@ public class Scr_CrouchCheck : MonoBehaviour
         //if (collision.gameObject.tag == "suelo")
         {
             canStandUp = false;
-            Debug.Log("YA NO PUEDES LEVANTARTE");
+            //Debug.Log("YA NO PUEDES LEVANTARTE");
         }
     }
 
@@ -20,7 +20,7 @@ public class Scr_CrouchCheck : MonoBehaviour
         //if (collision.gameObject.tag == "suelo")
         {
             canStandUp = true;
-            Debug.Log("PUEDES LEVANTARTE");
+            //Debug.Log("PUEDES LEVANTARTE");
         }
     }
 }
