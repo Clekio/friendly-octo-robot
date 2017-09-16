@@ -81,6 +81,14 @@ public class Player : MonoBehaviour
 
     bool canJump = true;
 
+    private void Awake()
+    {
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Update()
     {
         slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
