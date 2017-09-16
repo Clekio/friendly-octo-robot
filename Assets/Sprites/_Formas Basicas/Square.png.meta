@@ -2,8 +2,8 @@ fileFormatVersion: 2
 guid: d9c6b77cea326234ea5630fd0e454804
 labels:
 - Runas
-timeCreated: 1495236235
-licenseType: Free
+timeCreated: 1505469538
+licenseType: Pro
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 4
@@ -39,8 +39,8 @@ TextureImporter:
   spriteMode: 3
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 7
+  spritePivot: {x: 0.5, y: 0}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 4
   alphaUsage: 1
