@@ -8,6 +8,7 @@ public class Scr_PlayerDeath : MonoBehaviour
     GameObject Aura;
 
     Vector3 checkpoint;
+    string checkpointName;
 
     private void Start()
     {
@@ -19,8 +20,9 @@ public class Scr_PlayerDeath : MonoBehaviour
     private void Update()
     {
         checkpoint = Scr_PlayerCheckpoint.checkpoint;
+        checkpointName = Scr_PlayerCheckpoint.checkpointName;
 
-        Debug.Log("Last checkpoint position: " + checkpoint);
+        Debug.Log("Last checkpoint (" + checkpointName + ") position: " + checkpoint);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
