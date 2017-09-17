@@ -5,33 +5,36 @@ using UnityEngine;
 
 public class Scr_PlayerDeath : MonoBehaviour
 {
-    [SerializeField]
-    GameObject player;
+    GameObject Aura;
 
-    Vector3 lastCheckpoint;
+    Vector3 checkpoint;
 
     private void Start()
     {
-        DontDestroyOnLoad(player);
+        Aura = GameObject.Find("Aura");
+
+        DontDestroyOnLoad(Aura);
     }
 
     private void Update()
     {
-        lastCheckpoint = Scr_PlayerCheckpoint.lastCheckpoint;
+        checkpoint = Scr_PlayerCheckpoint.checkpoint;
+
+        Debug.Log("Last checkpoint position: " + checkpoint);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            player.transform.position = lastCheckpoint;
-
-            LoadScene();
+            Death();
         }
     }
 
-    void LoadScene()
+    void Death()
     {
-        SceneManager.LoadScene("Playtest", LoadSceneMode.Single);
+        SceneManager.LoadScene("Scn_PruebaVictor", LoadSceneMode.Single);
+
+        Aura.transform.position = checkpoint;
     }
 }
