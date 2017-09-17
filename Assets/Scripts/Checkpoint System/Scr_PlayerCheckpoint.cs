@@ -15,8 +15,6 @@ public class Scr_PlayerCheckpoint : MonoBehaviour
             checkpoint = gameObject.transform.position;
 
             checkpointName = gameObject.name;
-
-            Debug.Log("CP");
         }
     }
 }
