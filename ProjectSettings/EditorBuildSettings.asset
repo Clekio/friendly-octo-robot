@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/_Scenes/Level Scenes/Demo01.unity
+    path: 
     guid: 9bd2ec3ae1b67f34aa4aa1bcddef2560
   - enabled: 0
     path: Assets/_Scenes/Test Scenes/MagiaTest.unity
