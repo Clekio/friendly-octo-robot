@@ -124,6 +124,11 @@ public class Player : MonoBehaviour
         canStandUp = Scr_CrouchCheck.canStandUp;
 
         canJump = Scr_EmpujarTirar.canJump;
+
+        if (gameObject.transform.position.x > -25)
+        {
+            tieneParaguas = true;
+        }
     }
 
     private void FixedUpdate()
@@ -240,7 +245,7 @@ public class Player : MonoBehaviour
 			ySpeed = minJumpVelocity;
 		}
 
-        //if(tieneParaguas == true)
+        if(tieneParaguas == true)
         {
             if (jumpPressed && rb2d.velocity.y < 0)
             {
