@@ -6,7 +6,7 @@ public class CamHotspot : MonoBehaviour {
 
 
     public Transform ObjectToFocus;
-    public Transform Player;
+    public GameObject Player;
     public GameObject gameCamera;
     public float focusSize;
     public float speed;
@@ -30,6 +30,9 @@ public class CamHotspot : MonoBehaviour {
         oldSize = cameraComp.fieldOfView;
         oldOffsetX = scrCamara.OffsetX;
         oldOffsetY = scrCamara.OffsetY;
+
+        gameCamera = GameObject.Find("Main Camera");
+        Player = GameObject.Find("Aura");
     }
 
 
@@ -37,8 +40,8 @@ public class CamHotspot : MonoBehaviour {
     {
         if (permiso)
         {
-            scrCamara.OffsetX = ((Player.position.x + ObjectToFocus.position.x) / 2) - Player.position.x;
-            scrCamara.OffsetY = ((Player.position.y + ObjectToFocus.position.y) / 2) - Player.position.y;
+            scrCamara.OffsetX = ((Player.transform.position.x + ObjectToFocus.position.x) / 2) - Player.transform.position.x;
+            scrCamara.OffsetY = ((Player.transform.position.y + ObjectToFocus.position.y) / 2) - Player.transform.position.y;
             if (cameraComp.fieldOfView < focusSize)
             {
                 cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, focusSize, Time.deltaTime * speed);
@@ -48,6 +51,7 @@ public class CamHotspot : MonoBehaviour {
         {
             cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, oldSize, Time.deltaTime * speed);
         }
+        
     }
 
 
