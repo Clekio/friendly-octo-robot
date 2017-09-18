@@ -6,6 +6,7 @@ using UnityEngine;
 public class Scr_PlayerDeath : MonoBehaviour
 {
     GameObject Aura;
+    GameObject camara;
 
     Vector3 checkpoint;
     string checkpointName;
@@ -13,8 +14,10 @@ public class Scr_PlayerDeath : MonoBehaviour
     private void Start()
     {
         Aura = GameObject.Find("Aura");
+        camara = GameObject.Find("Main Camera");
 
         DontDestroyOnLoad(Aura);
+        DontDestroyOnLoad(camara);
     }
 
     private void Update()
