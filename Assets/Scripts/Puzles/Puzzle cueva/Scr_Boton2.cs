@@ -2,16 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scr_Boton1 : MonoBehaviour
+public class Scr_Boton2 : MonoBehaviour 
 {
     [SerializeField]
     Animator boton;
 
     [SerializeField]
-    Animator puerta;
-
-    [SerializeField]
-    Animator platCentral;
+    Animator sueloMovil;
 
     int estado;
 
@@ -29,15 +26,13 @@ public class Scr_Boton1 : MonoBehaviour
         else if (estado == 1)
         {
             boton.SetFloat("Move", 2);
-            puerta.SetBool("Open", false);
-            platCentral.SetBool("Move", false);
+            sueloMovil.SetBool("Move", false);
         }
-            
+
         else if (estado == -1)
         {
             boton.SetFloat("Move", -2);
-            puerta.SetBool("Open", true);
-            platCentral.SetBool("Move", true);
+            sueloMovil.SetBool("Move", true);
         }
     }
 
@@ -46,6 +41,7 @@ public class Scr_Boton1 : MonoBehaviour
         if (collision.gameObject.tag == "Pull&Push" || collision.gameObject.tag == "Player")
         {
             estado = -1;
+            Debug.Log("ADSSDS");
         }
 
         if (collision.gameObject.tag == "Pull&Push")
