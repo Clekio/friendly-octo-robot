@@ -29297,7 +29297,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 682503352}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -143.71, y: 0.79, z: 0}
+  m_LocalPosition: {x: -134.7, y: -0.6, z: 0}
   m_LocalScale: {x: 9.90532, y: 1.5729582, z: 0.12630673}
   m_Children: []
   m_Father: {fileID: 1956298109}
@@ -35297,11 +35297,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -384.5
+      value: 13.3
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 16.5
+      value: 3.63
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -39794,7 +39794,7 @@ MonoBehaviour:
   ObjectToFocus: {fileID: 682503353}
   Player: {fileID: 2070084458}
   gameCamera: {fileID: 1823525972}
-  focusSize: 85
+  focusSize: 90
   speed: 5.08
   GizmoEnabled: 0
 --- !u!1001 &893220384
@@ -66472,7 +66472,7 @@ MonoBehaviour:
   ObjectToFocus: {fileID: 1436231078}
   Player: {fileID: 2070084458}
   gameCamera: {fileID: 1823525972}
-  focusSize: 140
+  focusSize: 315
   speed: 5.08
   GizmoEnabled: 0
 --- !u!1 &1464538878
@@ -80032,9 +80032,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ObjectToFocus: {fileID: 373941487}
-  Player: {fileID: 0}
-  gameCamera: {fileID: 0}
-  focusSize: 145
+  Player: {fileID: 7698218}
+  gameCamera: {fileID: 1823525972}
+  focusSize: 200
   speed: 5.08
   GizmoEnabled: 0
 --- !u!1 &1757764836
