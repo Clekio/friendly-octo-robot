@@ -245,7 +245,7 @@ public class Player : MonoBehaviour
 			ySpeed = minJumpVelocity;
 		}
 
-        //if(tieneParaguas == true)
+        if(tieneParaguas == true)
         {
             if (jumpPressed && rb2d.velocity.y < 0)
             {

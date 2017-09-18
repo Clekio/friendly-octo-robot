@@ -6286,7 +6286,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impulso: 35
-  player: {fileID: 7698218}
 --- !u!251 &157420984
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -6733,7 +6732,7 @@ Transform:
   m_LocalScale: {x: 7.3665166, y: 1.12229, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 27
+  m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &168290756
 GameObject:
@@ -12763,7 +12762,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impulso: 57
-  player: {fileID: 7698218}
 --- !u!251 &292036652
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -14262,7 +14260,7 @@ Transform:
   - {fileID: 1478188520}
   - {fileID: 1464231023}
   m_Father: {fileID: 0}
-  m_RootOrder: 29
+  m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &328895567
 GameObject:
@@ -15737,7 +15735,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: -0.00000011920929, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -15750,7 +15748,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.01
 --- !u!23 &349643240
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -20115,7 +20113,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impulso: 49
-  player: {fileID: 7698218}
 --- !u!251 &477245072
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -22688,7 +22685,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impulso: 50
-  player: {fileID: 7698218}
 --- !u!251 &520140265
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -35301,11 +35297,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 194.6
+      value: -384.5
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -80.5
+      value: 16.5
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -45570,7 +45566,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impulso: 40
-  player: {fileID: 7698218}
 --- !u!251 &1030505495
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -49755,7 +49750,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4818569572898712, guid: 67e1c5cbb87365443ae53adbe786573f, type: 2}
       propertyPath: m_RootOrder
-      value: 28
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 1994395317609018, guid: 67e1c5cbb87365443ae53adbe786573f, type: 2}
       propertyPath: m_Name
@@ -53289,7 +53284,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impulso: 45
-  player: {fileID: 7698218}
 --- !u!251 &1213529802
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -54733,7 +54727,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4818569572898712, guid: 67e1c5cbb87365443ae53adbe786573f, type: 2}
       propertyPath: m_RootOrder
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 1994395317609018, guid: 67e1c5cbb87365443ae53adbe786573f, type: 2}
       propertyPath: m_Name
@@ -57544,7 +57538,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4818569572898712, guid: 67e1c5cbb87365443ae53adbe786573f, type: 2}
       propertyPath: m_RootOrder
-      value: 30
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 1994395317609018, guid: 67e1c5cbb87365443ae53adbe786573f, type: 2}
       propertyPath: m_Name
@@ -61485,7 +61479,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impulso: 42
-  player: {fileID: 7698218}
 --- !u!251 &1385804795
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -63123,7 +63116,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impulso: 50
-  player: {fileID: 7698218}
 --- !u!251 &1412635527
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -64979,7 +64971,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1438626756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66514,7 +66506,7 @@ Transform:
   - {fileID: 1336746365}
   - {fileID: 1535082470}
   m_Father: {fileID: 0}
-  m_RootOrder: 31
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1470172494
 GameObject:
@@ -70987,7 +70979,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   impulso: 42
-  player: {fileID: 7698218}
 --- !u!251 &1575017539
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -73278,7 +73269,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: -0.00000011920929, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -73291,7 +73282,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_EdgeRadius: 0.01
 --- !u!23 &1618336665
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -74404,7 +74395,7 @@ Transform:
   m_Children:
   - {fileID: 505395039}
   m_Father: {fileID: 0}
-  m_RootOrder: 25
+  m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1638067646
 GameObject:
@@ -96361,7 +96352,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4818569572898712, guid: 67e1c5cbb87365443ae53adbe786573f, type: 2}
       propertyPath: m_RootOrder
-      value: 32
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 1994395317609018, guid: 67e1c5cbb87365443ae53adbe786573f, type: 2}
       propertyPath: m_Name

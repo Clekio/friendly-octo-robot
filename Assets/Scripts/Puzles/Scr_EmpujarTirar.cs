@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Scr_EmpujarTirar : MonoBehaviour
 {
-    [SerializeField]
     GameObject player;
 
     [SerializeField]
@@ -18,6 +17,8 @@ public class Scr_EmpujarTirar : MonoBehaviour
     private void Start()
     {
         xPos = transform.position.x;
+
+        player = GameObject.Find("Aura");
     }
 
     private void Update()

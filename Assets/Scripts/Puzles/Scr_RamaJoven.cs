@@ -7,12 +7,16 @@ public class Scr_RamaJoven : MonoBehaviour
     [SerializeField]
     int impulso;
 
-    [SerializeField]
     GameObject player;
 
     bool jugadorEnRama;
     bool cajaEnRama;
     bool ladoBueno = false;
+
+    private void Start()
+    {
+        player = GameObject.Find("Aura");
+    }
 
     private void Update()
     {
