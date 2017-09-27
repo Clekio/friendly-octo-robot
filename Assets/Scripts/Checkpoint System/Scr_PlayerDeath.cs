@@ -24,8 +24,6 @@ public class Scr_PlayerDeath : MonoBehaviour
     {
         checkpoint = Scr_PlayerCheckpoint.checkpoint;
         checkpointName = Scr_PlayerCheckpoint.checkpointName;
-
-        Debug.Log("Last checkpoint (" + checkpointName + ") position: " + checkpoint);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

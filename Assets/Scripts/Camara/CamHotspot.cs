@@ -47,7 +47,7 @@ public class CamHotspot : MonoBehaviour {
                 cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, focusSize, Time.deltaTime * speed);
             }
         }
-        if (permiso == false && cameraComp.fieldOfView > oldSize)
+        if (!permiso && cameraComp.fieldOfView > oldSize)
         {
             cameraComp.fieldOfView = Mathf.Lerp(cameraComp.fieldOfView, oldSize, Time.deltaTime * speed);
         }

@@ -47,6 +47,9 @@ public class Player : MonoBehaviour
     float maxJumpVelocity;
     [SerializeField]
     float minJumpVelocity;
+    [SerializeField]
+    float timeLeft2Jump = 2.0f;
+    float instTimeLeft2Jump;
 
     [Header("OnClimbing")]
 	public float ClimbingSpeed;
@@ -80,7 +83,7 @@ public class Player : MonoBehaviour
     bool canStandUp = false;
 
     bool canJump = true;
-    
+
     private void Awake()
     {
         if (FindObjectsOfType(GetType()).Length > 1)
@@ -198,9 +201,10 @@ public class Player : MonoBehaviour
 		bool jumpDown = jumpPressed && !jumpPressedBefore;
 		jumpPressedBefore = jumpPressed;
 
-		if (jumpDown && grounded && crouch == false && canJump == true)
+		if (jumpDown && grounded && !crouch && canJump)
 		{
-			ySpeed = maxJumpVelocity;
+			ySpeed = ySpeed + maxJumpVelocity;
+            Debug.Log(ySpeed);
 		}
 
 		rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
@@ -220,6 +224,9 @@ public class Player : MonoBehaviour
         jumpPressed = Input.GetButton("Jump");
         jumpPressedBefore = jumpPressed;
         float aceleationToUse = planeo ? airGlideAccel : airAccel;
+
+        if (instTimeLeft2Jump > 0)
+            instTimeLeft2Jump -= Time.deltaTime;
 
         if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f)
         {
@@ -304,6 +311,7 @@ public class Player : MonoBehaviour
         if (groundChecker.OverlapCollider (cf, cols) > 0)
         {
             grounded = true;
+            instTimeLeft2Jump = timeLeft2Jump;
         }
         else
         {
