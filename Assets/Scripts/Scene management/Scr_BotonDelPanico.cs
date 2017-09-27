@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class Scr_PlayerDeath : MonoBehaviour
+public class Scr_BotonDelPanico : MonoBehaviour
 {
     GameObject Aura;
-    GameObject camara;
 
     Vector3 checkpoint;
     string checkpointName;
@@ -14,10 +13,8 @@ public class Scr_PlayerDeath : MonoBehaviour
     private void Start()
     {
         Aura = GameObject.Find("Aura");
-        camara = GameObject.Find("Main Camera");
 
         DontDestroyOnLoad(Aura);
-        DontDestroyOnLoad(camara);
     }
 
     private void Update()
@@ -25,12 +22,7 @@ public class Scr_PlayerDeath : MonoBehaviour
         checkpoint = Scr_PlayerCheckpoint.checkpoint;
         checkpointName = Scr_PlayerCheckpoint.checkpointName;
 
-        Debug.Log("Last checkpoint (" + checkpointName + ") position: " + checkpoint);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
+        if (Input.GetKeyDown(KeyCode.K))
         {
             Death();
         }

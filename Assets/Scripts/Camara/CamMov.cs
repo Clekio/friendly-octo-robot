@@ -9,6 +9,14 @@ public class CamMov : MonoBehaviour {
     public float OffsetY;
     public float FollowSpeed;
 
+    private void Awake()
+    {
+        if (FindObjectsOfType(GetType()).Length > 1)
+        {
+            Destroy(gameObject);
+        }
+    }
+
     private void Start()
     {
         Target = GameObject.Find("Aura").transform;
