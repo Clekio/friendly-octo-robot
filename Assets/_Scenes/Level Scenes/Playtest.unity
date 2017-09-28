@@ -28859,7 +28859,7 @@ GameObject:
   - component: {fileID: 673477741}
   - component: {fileID: 673477742}
   m_Layer: 0
-  m_Name: ZonaTrigger
+  m_Name: CameraTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28871,12 +28871,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 673477739}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.31, y: 3.82, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1322144577}
-  m_RootOrder: 0
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -116.66878, y: -7.595622, z: -17}
+  m_LocalScale: {x: 1.5882146, y: 3.3781095, z: 1.71024}
+  m_Children:
+  - {fileID: 1322144577}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &673477741
 BoxCollider2D:
@@ -58508,7 +58509,7 @@ Camera:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1322144570}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.31969073, g: 0.4585909, b: 0.5955882, a: 0}
@@ -58546,12 +58547,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1322144570}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -113, y: -20.5, z: -17}
-  m_LocalScale: {x: 1.5882146, y: 3.3781095, z: 1.71024}
-  m_Children:
-  - {fileID: 673477740}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_LocalPosition: {x: 2.3100011, y: -3.8199997, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 673477740}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1322527302
 GameObject:

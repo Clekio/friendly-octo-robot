@@ -16,11 +16,15 @@ public class Scr_CamaraFija : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             camaraMovil.SetActive(false);
+
+            gameObject.GetComponentInChildren<Camera>().enabled = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         camaraMovil.SetActive(true);
+
+        gameObject.GetComponentInChildren<Camera>().enabled = false;
     }
 }
