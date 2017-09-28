@@ -28,6 +28,9 @@ public class Scr_ApanoVuelta : MonoBehaviour
     [SerializeField]
     GameObject tronco;
 
+    [SerializeField]
+    GameObject suelo30;
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         mover1.SetActive(true);
@@ -42,5 +45,7 @@ public class Scr_ApanoVuelta : MonoBehaviour
         hueco.SetActive(true);
 
         triggerParaguas.SetActive(true);
+
+        suelo30.SetActive(true);
     }
 }
