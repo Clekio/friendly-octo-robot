@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
 
-    private bool grounded;
+    public static bool grounded;
 
     [Header("OnAir")]
     [SerializeField]

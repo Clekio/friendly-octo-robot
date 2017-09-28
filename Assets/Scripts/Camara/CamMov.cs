@@ -25,6 +25,4 @@ public class CamMov : MonoBehaviour {
     void LateUpdate () {
         transform.position = Vector3.Lerp(transform.position, new Vector3(Target.position.x + OffsetX, Target.position.y + OffsetY, transform.position.z), Time.deltaTime * FollowSpeed);
     }
-
-
 }
