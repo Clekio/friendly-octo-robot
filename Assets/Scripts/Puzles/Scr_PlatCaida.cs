@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections;using System.Collections.Generic;
 using UnityEngine;
 
 public class Scr_PlatCaida : MonoBehaviour
@@ -9,6 +8,9 @@ public class Scr_PlatCaida : MonoBehaviour
 
     [SerializeField]
     GameObject destruir2;
+
+    [SerializeField]
+    GameObject destruir3;
 
     [SerializeField]
     GameObject destruir3T;
@@ -25,6 +27,7 @@ public class Scr_PlatCaida : MonoBehaviour
         {
             Destroy(destruir1, tiempo);
             Destroy(destruir2, tiempo);
+            Destroy(destruir3, tiempo);
         }
     }
 
