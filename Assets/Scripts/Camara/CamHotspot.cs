@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CamHotspot : MonoBehaviour {
 
-
+    /*
     public Transform ObjectToFocus;
     public GameObject Player;
     public GameObject gameCamera;
@@ -84,5 +84,5 @@ public class CamHotspot : MonoBehaviour {
             Gizmos.color = new Color(1, 0, 0, 0.5F);
             Gizmos.DrawCube (new Vector2 (pmX, pmY), new Vector2(focusSize/2, aspectRatioY/2));
         }
-    }
+    }*/
 }

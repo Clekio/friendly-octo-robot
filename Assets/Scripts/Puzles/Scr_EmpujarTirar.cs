@@ -12,6 +12,8 @@ public class Scr_EmpujarTirar : MonoBehaviour
     bool playerInRange = false;
     float xPos;
 
+    bool grounded;
+
     public static bool canJump = true;
 
     private void Start()
@@ -23,6 +25,8 @@ public class Scr_EmpujarTirar : MonoBehaviour
 
     private void Update()
     {
+        grounded = Player.grounded;
+
         if (playerInRange == true && !transform.GetComponent<FixedJoint2D>().enabled)
         {
             helpText.SetActive(true);
@@ -34,7 +38,7 @@ public class Scr_EmpujarTirar : MonoBehaviour
             helpText.SetActive(false);
         }
 
-        if (playerInRange == true && Input.GetKey(KeyCode.LeftControl))
+        if (playerInRange == true && Input.GetKey(KeyCode.LeftControl) && grounded == true)
         {
             transform.GetComponent<FixedJoint2D>().enabled = true;
             transform.GetComponent<FixedJoint2D>().connectedBody = player.GetComponent<Rigidbody2D>();
@@ -42,7 +46,7 @@ public class Scr_EmpujarTirar : MonoBehaviour
             canJump = false;
         }
 
-        else if (transform.GetComponent<FixedJoint2D>().enabled && !Input.GetKey(KeyCode.LeftControl))
+        else if (transform.GetComponent<FixedJoint2D>().enabled && !Input.GetKey(KeyCode.LeftControl) /*|| grounded == false*/)
         {
             transform.GetComponent<FixedJoint2D>().enabled = false;
 

@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
 
-    private bool grounded;
+    public static bool grounded;
 
     [Header("OnAir")]
     [SerializeField]
@@ -84,6 +84,8 @@ public class Player : MonoBehaviour
 
     bool canJump = true;
 
+    bool planear = true;
+
     private void Awake()
     {
         if (FindObjectsOfType(GetType()).Length > 1)
@@ -132,6 +134,8 @@ public class Player : MonoBehaviour
         {
             tieneParaguas = true;
         }
+
+        planear = Scr_QuitarPlaneo.planear;
     }
 
     private void FixedUpdate()
@@ -252,7 +256,7 @@ public class Player : MonoBehaviour
 			ySpeed = minJumpVelocity;
 		}
 
-        if(tieneParaguas == true)
+        if(tieneParaguas == true && planear == true)
         {
             if (jumpPressed && rb2d.velocity.y < 0)
             {
