@@ -6,6 +6,8 @@ public class Crecer : MonoBehaviour
 {
     bool move = false;
 
+    public Vector3 newScale;
+
     private void OnParticleCollision(GameObject other)
     {
         move = true;
@@ -16,7 +18,7 @@ public class Crecer : MonoBehaviour
     {
         if (move)
         {
-            transform.localScale = new Vector3(1, 4, 0);
+            transform.localScale = newScale;
             move = false;
         }
     }
