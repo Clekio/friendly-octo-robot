@@ -156,7 +156,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1090007264681456}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.72, y: 117.21, z: 0}
+  m_LocalPosition: {x: -67.9, y: -9.63, z: -0}
   m_LocalScale: {x: 1.7102393, y: 1.7102399, z: 1.71024}
   m_Children:
   - {fileID: 4654829506783082}
@@ -319,6 +319,7 @@ MonoBehaviour:
   airFriction: 3
   maxJumpVelocity: 16
   minJumpVelocity: 10
+  timeLeft2Jump: 2
   ClimbingSpeed: 2
   grabXInterpolation: 5
   climbSpeed: 3
@@ -421,7 +422,7 @@ SpriteRenderer:
   m_SortingLayerID: 681983847
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d9c6b77cea326234ea5630fd0e454804, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad0a4b644a62be844b5661f394a49c54, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
