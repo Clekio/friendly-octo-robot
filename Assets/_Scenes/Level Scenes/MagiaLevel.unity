@@ -167,6 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d27b95d4d61f3443bbd3279741ff80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Duracion: 5
   newScale: {x: 0.5, y: 8, z: 0}
 --- !u!212 &260928041
 SpriteRenderer:
@@ -381,6 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d27b95d4d61f3443bbd3279741ff80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Duracion: 5
   newScale: {x: 3, y: 0.5, z: 0}
 --- !u!212 &421407366
 SpriteRenderer:
@@ -729,11 +731,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 10.47
+      value: 9.5
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 18.78
+      value: 20.4
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -823,6 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d27b95d4d61f3443bbd3279741ff80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Duracion: 5
   newScale: {x: 1, y: 5.82, z: 0}
 --- !u!212 &914592402
 SpriteRenderer:
@@ -946,6 +949,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d27b95d4d61f3443bbd3279741ff80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Duracion: 5
   newScale: {x: 3, y: 0.5, z: 0}
 --- !u!212 &968381660
 SpriteRenderer:
@@ -1168,6 +1172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d27b95d4d61f3443bbd3279741ff80a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Duracion: 5
   newScale: {x: 3.5, y: 0.5, z: 0}
 --- !u!212 &1075771390
 SpriteRenderer:
@@ -1378,7 +1383,7 @@ MonoBehaviour:
   - {x: 0, y: 0}
   - {x: 12.64, y: 2.66}
   - {x: 24.94, y: 19.98}
-  - {x: 35.92, y: 13.8}
+  - {x: 35.84, y: 14.6}
   m_speed: 2
   m_easeAmount: 0.5
   m_globalWaypoints: []
@@ -1391,7 +1396,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1454,8 +1459,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1421204481}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 76.74, y: 20.73, z: 0}
-  m_LocalScale: {x: 7.7875004, y: 1, z: 1}
+  m_LocalPosition: {x: 76.91, y: 22.09, z: 0}
+  m_LocalScale: {x: 1, y: 3, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6

@@ -36,9 +36,13 @@ public class MovePlatform : MonoBehaviour {
         m_move = true;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        collision.gameObject.transform.Translate(Velocity, Space.World);
+        if (other.CompareTag("Player") && m_move)
+        {
+            Debug.Log("hey");
+            other.gameObject.transform.position = transform.position;
+        }            
     }
 
     private void FixedUpdate()
