@@ -41,6 +41,13 @@ public class Scr_RamaJoven : MonoBehaviour
         if (collision.gameObject.tag == "Pull&Push")
         {
             cajaEnRama = false;
+            if (jugadorEnRama == true && ladoBueno == true)
+            {
+                Rigidbody2D rb2d = player.gameObject.GetComponent<Rigidbody2D>();
+
+                if (!rb2d.isKinematic)
+                    rb2d.velocity = new Vector2(rb2d.velocity.x, impulso);
+            }
         }
 
         if (collision.gameObject.tag == "Player")
@@ -48,12 +55,5 @@ public class Scr_RamaJoven : MonoBehaviour
             jugadorEnRama = false;
         }
 
-        if (jugadorEnRama == true && ladoBueno == true)
-        {
-            Rigidbody2D rb2d = player.gameObject.GetComponent<Rigidbody2D>();
-
-            if (!rb2d.isKinematic)
-                rb2d.velocity = new Vector2(rb2d.velocity.x, impulso);
-        }
     }
 }

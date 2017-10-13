@@ -8,22 +8,19 @@ public class Scr_PlataformaTiempo : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            StartCoroutine(DisablePlatform());
+            Invoke("DisablePlatform", 1);
         }
     }
 
-    IEnumerator DisablePlatform()
+    void DisablePlatform()
     {
-        yield return new WaitForSeconds(1);
         gameObject.GetComponent<MeshRenderer>().enabled = false;
         gameObject.GetComponent<BoxCollider2D>().enabled = false;
-
-        StartCoroutine(EnablePlatform());
+        Invoke("EnablePlatform", 3);
     }
 
-    IEnumerator EnablePlatform()
+    void EnablePlatform()
     {
-        yield return new WaitForSeconds(3);
         gameObject.GetComponent<MeshRenderer>().enabled = true;
         gameObject.GetComponent<BoxCollider2D>().enabled = true;
     }
