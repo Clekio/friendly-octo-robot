@@ -102,16 +102,23 @@ public class Player : MonoBehaviour
         {
             crouch = true;
 
-            GetComponent<BoxCollider2D>().size = new Vector3(0.6f, 0.6f, 1);
-            GetComponent<BoxCollider2D>().offset = new Vector3(0, 0.31f, 0);
         }
 
         if (Input.GetKeyUp(KeyCode.S) && canStandUp == true)
         {
             crouch = false;
+            
+        }
 
-            GetComponent<BoxCollider2D>().size = new Vector3(0.45f, 0.85f, 1);
-            GetComponent<BoxCollider2D>().offset = new Vector3(0, 0.4256001f, 0);
+        if (!crouch)
+        {
+            GetComponent<BoxCollider2D>().size = Vector3.Lerp(GetComponent<BoxCollider2D>().size, new Vector3(0.45f, 0.85f, 1) , 0.2f);
+            GetComponent<BoxCollider2D>().offset = Vector3.Lerp(GetComponent<BoxCollider2D>().offset, new Vector3(0, 0.4256001f, 0), 0.2f) ;
+        }
+        else
+        {
+            GetComponent<BoxCollider2D>().size = Vector3.Lerp(GetComponent<BoxCollider2D>().size, new Vector3(0.6f, 0.6f, 1), 0.2f);
+            GetComponent<BoxCollider2D>().offset = Vector3.Lerp(GetComponent<BoxCollider2D>().offset, new Vector3(0, 0.31f, 0), 0.2f);
         }
 
         anim.SetBool("crouch", crouch);
@@ -221,6 +228,8 @@ public class Player : MonoBehaviour
 		}
 	}
 
+    public bool ignoreJumpDepress;
+
 	private void UpdateAir(){
 		//Setear velocidad máxima
 		float speedToUse = groundMaxSpeed;
@@ -251,10 +260,13 @@ public class Player : MonoBehaviour
         float ySpeed = rb2d.velocity.y + gravityToUse * Time.deltaTime;
 
         //Chequear Salto
-        if (Input.GetButtonUp("Jump") && rb2d.velocity.y > minJumpVelocity)
+        if (Input.GetButtonUp("Jump") && rb2d.velocity.y > minJumpVelocity && !ignoreJumpDepress)
 		{
 			ySpeed = minJumpVelocity;
 		}
+
+        if (ySpeed < 0)
+            ignoreJumpDepress = false;
 
         if(tieneParaguas == true && planear == true)
         {
@@ -290,7 +302,8 @@ public class Player : MonoBehaviour
         {
 			//rb2d.velocity = maxJumpVelocity * Vector2.up;
 			PlayerMode = MovementMode.OnAir;
-		}
+            rb2d.velocity = new Vector2(rb2d.velocity.x,  maxJumpVelocity);
+        }
         else if(transform.position.y >= grabbedTransform.upPoint.position.y || transform.position.y <= grabbedTransform.downPoint.position.y || grounded && Input.GetAxis ("Vertical") < 0)
 			PlayerMode = MovementMode.OnGround;
 
