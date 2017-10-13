@@ -7,7 +7,7 @@ public class Scr_ReturnTronco : MonoBehaviour
     GameObject troncoActivo;
 
     Vector3 inicialPos;
-
+    /*
     private void Update()
     {
         inicialPos = Scr_EmpujarTirarSetActive.inicialPos;
@@ -20,5 +20,5 @@ public class Scr_ReturnTronco : MonoBehaviour
 
             troncoActivo.transform.position = inicialPos;
         }
-    }
+    }*/
 }
