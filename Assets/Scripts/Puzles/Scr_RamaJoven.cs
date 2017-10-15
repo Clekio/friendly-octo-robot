@@ -7,6 +7,9 @@ public class Scr_RamaJoven : MonoBehaviour
     [SerializeField]
     int impulso;
 
+    [SerializeField]
+    Animator anim;
+
     GameObject player;
 
     bool jugadorEnRama;
@@ -28,11 +31,15 @@ public class Scr_RamaJoven : MonoBehaviour
         if (collision.gameObject.tag == "Pull&Push")
         {
             cajaEnRama = true;
+
+            anim.SetInteger("Estado", 2);
         }
 
         if (collision.gameObject.tag == "Player")
         {
             jugadorEnRama = true;
+
+            anim.SetInteger("Estado", 1);
         }
     }
 
@@ -41,18 +48,28 @@ public class Scr_RamaJoven : MonoBehaviour
         if (collision.gameObject.tag == "Pull&Push")
         {
             cajaEnRama = false;
+
+            anim.SetInteger("Estado", 2);
+
             if (jugadorEnRama == true && ladoBueno == true)
             {
                 Rigidbody2D rb2d = player.gameObject.GetComponent<Rigidbody2D>();
 
                 if (!rb2d.isKinematic)
                     rb2d.velocity = new Vector2(rb2d.velocity.x, impulso);
+
+                anim.SetInteger("Estado", 3);
             }
         }
 
         if (collision.gameObject.tag == "Player")
         {
             jugadorEnRama = false;
+
+            if (!cajaEnRama == true)
+            {
+                anim.SetInteger("Estado", 0);
+            }
         }
 
     }
