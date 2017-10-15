@@ -1302,16 +1302,6 @@ CompositeCollider2D:
         Y: 26406044
       - X: 118393824
         Y: 21193904
-  - m_Collider: {fileID: 1617693503}
-    m_ColliderPaths:
-    - - X: 198806224
-        Y: 62793984
-      - X: 198806208
-        Y: 68006088
-      - X: 177393792
-        Y: 68006024
-      - X: 177393824
-        Y: 62793924
   - m_Collider: {fileID: 649045437}
     m_ColliderPaths:
     - - X: 795390080
@@ -1382,26 +1372,6 @@ CompositeCollider2D:
         Y: -118395904
       - X: 800116480
         Y: -118395904
-  - m_Collider: {fileID: 575072025}
-    m_ColliderPaths:
-    - - X: 619706176
-        Y: 103393984
-      - X: 619706176
-        Y: 108606080
-      - X: 598293760
-        Y: 108606024
-      - X: 598293824
-        Y: 103393928
-  - m_Collider: {fileID: 415768409}
-    m_ColliderPaths:
-    - - X: 741506176
-        Y: 160994000
-      - X: 741506176
-        Y: 166206096
-      - X: 720093824
-        Y: 166206016
-      - X: 720093824
-        Y: 160993920
   - m_Collider: {fileID: 1846687972}
     m_ColliderPaths:
     - - X: 1070448000
@@ -1452,26 +1422,6 @@ CompositeCollider2D:
         Y: 313361632
       - X: 1091940608
         Y: 209898352
-  - m_Collider: {fileID: 987414884}
-    m_ColliderPaths:
-    - - X: 930706176
-        Y: 176994016
-      - X: 930706176
-        Y: 182206112
-      - X: 909293824
-        Y: 182206032
-      - X: 909293824
-        Y: 176993936
-  - m_Collider: {fileID: 1746057374}
-    m_ColliderPaths:
-    - - X: 1076506368
-        Y: 188006032
-      - X: 1055094016
-        Y: 188006032
-      - X: 1055094016
-        Y: 182793936
-      - X: 1076506368
-        Y: 182793936
   - m_Collider: {fileID: 1487514411}
     m_ColliderPaths:
     - - X: 1055106048
@@ -1542,26 +1492,6 @@ CompositeCollider2D:
         Y: 231361600
       - X: 1181735040
         Y: -31501618
-  - m_Collider: {fileID: 2143378991}
-    m_ColliderPaths:
-    - - X: 1029821760
-        Y: 288014016
-      - X: 1029821760
-        Y: 293226112
-      - X: 1008378304
-        Y: 293226048
-      - X: 1008378304
-        Y: 288013920
-  - m_Collider: {fileID: 902832104}
-    m_ColliderPaths:
-    - - X: 1029822208
-        Y: 225193984
-      - X: 1029822208
-        Y: 230406080
-      - X: 1008378752
-        Y: 230406000
-      - X: 1008378752
-        Y: 225193904
   - m_Collider: {fileID: 1700227001}
     m_ColliderPaths:
     - - X: -66916324
@@ -1623,10 +1553,6 @@ CompositeCollider2D:
       - {x: 54.70777, y: 11.2411785}
       - {x: 54.70777, y: -5.616089}
       - {x: 60.036243, y: -5.616089}
-      - {x: 60.036236, y: 10.339394}
-      - {x: 61.97062, y: 10.339398}
-      - {x: 61.97062, y: 10.860608}
-      - {x: 60.036236, y: 10.860603}
       - {x: 60.036236, y: 22.519054}
       - {x: 100.83781, y: 22.51906}
       - {x: 100.83781, y: 29.322945}
@@ -1653,10 +1579,6 @@ CompositeCollider2D:
       - {x: 80.01165, y: 9.169849}
       - {x: 80.01165, y: 16.62159}
       - {x: 74.15037, y: 16.62159}
-      - {x: 74.15037, y: 16.62061}
-      - {x: 72.009384, y: 16.620602}
-      - {x: 72.009384, y: 16.099392}
-      - {x: 74.15037, y: 16.0994}
       - {x: 74.15037, y: -6.8108635}
       - {x: 33.01177, y: -6.8108673}
       - {x: 33.01177, y: 6.1022677}
@@ -1664,34 +1586,14 @@ CompositeCollider2D:
       - {x: 24.980228, y: -6.811028}
       - {x: 26.81099, y: -6.811028}
       - {x: 26.81099, y: -8.10603}
-    - - {x: 102.98218, y: 28.801401}
-      - {x: 102.98218, y: 29.32261}
-      - {x: 100.83783, y: 29.322605}
-      - {x: 100.83783, y: 28.801392}
-    - - {x: 102.98222, y: 22.519398}
-      - {x: 102.98222, y: 23.040607}
-      - {x: 100.837875, y: 23.0406}
-      - {x: 100.837875, y: 22.51939}
-    - - {x: 105.510605, y: 18.279394}
-      - {x: 107.650635, y: 18.279394}
-      - {x: 107.650635, y: 18.800604}
-      - {x: 105.510605, y: 18.800604}
-      - {x: 105.510605, y: 20.387205}
+    - - {x: 105.510605, y: 20.387205}
       - {x: 104.989395, y: 20.387205}
       - {x: 104.989395, y: 18.278795}
       - {x: 105.510605, y: 18.278795}
-    - - {x: 93.07062, y: 17.699402}
-      - {x: 93.07062, y: 18.220612}
-      - {x: 90.92938, y: 18.220604}
-      - {x: 90.92938, y: 17.699394}
     - - {x: 81.92633, y: 16.622507}
       - {x: 80.01169, y: 16.622507}
       - {x: 80.01169, y: 10.565493}
       - {x: 81.92633, y: 10.565493}
-    - - {x: 19.880623, y: 6.2793984}
-      - {x: 19.880621, y: 6.800609}
-      - {x: 17.73938, y: 6.8006024}
-      - {x: 17.739382, y: 6.2793922}
     - - {x: 41.33062, y: 4.3193974}
       - {x: 41.330616, y: 4.8406076}
       - {x: 39.189377, y: 4.8406014}
@@ -1911,6 +1813,7 @@ GameObject:
   - component: {fileID: 415768408}
   - component: {fileID: 415768410}
   - component: {fileID: 415768409}
+  - component: {fileID: 415768411}
   m_Layer: 8
   m_Name: Square (12)
   m_TagString: Ground
@@ -1941,8 +1844,8 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -2000,6 +1903,24 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!251 &415768411
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 415768407}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &446998070
 GameObject:
   m_ObjectHideFlags: 0
@@ -2263,7 +2184,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 451165769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 155.61, y: 17.28, z: 0}
+  m_LocalPosition: {x: 116.75, y: 2.57, z: 0}
   m_LocalScale: {x: 1.7102393, y: 1.7102399, z: 1.71024}
   m_Children:
   - {fileID: 645258651}
@@ -2945,6 +2866,7 @@ GameObject:
   - component: {fileID: 575072024}
   - component: {fileID: 575072026}
   - component: {fileID: 575072025}
+  - component: {fileID: 575072027}
   m_Layer: 8
   m_Name: Square (4)
   m_TagString: Ground
@@ -2975,8 +2897,8 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -3034,6 +2956,24 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!251 &575072027
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 575072023}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &609393443
 GameObject:
   m_ObjectHideFlags: 0
@@ -3868,6 +3808,7 @@ GameObject:
   - component: {fileID: 902832103}
   - component: {fileID: 902832105}
   - component: {fileID: 902832104}
+  - component: {fileID: 902832106}
   m_Layer: 8
   m_Name: Square (26)
   m_TagString: Ground
@@ -3898,8 +3839,8 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -3957,6 +3898,24 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!251 &902832106
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 902832102}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &934550964
 GameObject:
   m_ObjectHideFlags: 0
@@ -4301,6 +4260,7 @@ GameObject:
   - component: {fileID: 987414883}
   - component: {fileID: 987414885}
   - component: {fileID: 987414884}
+  - component: {fileID: 987414886}
   m_Layer: 8
   m_Name: Square (12)
   m_TagString: Ground
@@ -4331,8 +4291,8 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -4390,6 +4350,24 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!251 &987414886
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 987414882}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1069457504
 GameObject:
   m_ObjectHideFlags: 0
@@ -6066,7 +6044,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1572609755}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 70.48, y: 14.733996, z: 0}
+  m_LocalPosition: {x: 70.48, y: 14.75, z: 0}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 250334121}
@@ -6130,7 +6108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Duracion: 5
-  newScale: {x: 0.5, y: 3.2, z: 0.5}
+  newScale: {x: 0.5, y: 4, z: 0.5}
   Coll2D: {fileID: 0}
 --- !u!61 &1572609759
 BoxCollider2D:
@@ -6378,6 +6356,7 @@ GameObject:
   - component: {fileID: 1617693502}
   - component: {fileID: 1617693504}
   - component: {fileID: 1617693503}
+  - component: {fileID: 1617693505}
   m_Layer: 8
   m_Name: Square (4)
   m_TagString: Ground
@@ -6408,8 +6387,8 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -6467,6 +6446,24 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!251 &1617693505
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1617693501}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1646957314
 GameObject:
   m_ObjectHideFlags: 0
@@ -6983,6 +6980,7 @@ GameObject:
   - component: {fileID: 1746057373}
   - component: {fileID: 1746057375}
   - component: {fileID: 1746057374}
+  - component: {fileID: 1746057376}
   m_Layer: 8
   m_Name: Square (12)
   m_TagString: Ground
@@ -7013,8 +7011,8 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -7072,6 +7070,24 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!251 &1746057376
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1746057372}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1795550169
 GameObject:
   m_ObjectHideFlags: 0
@@ -8875,6 +8891,7 @@ GameObject:
   - component: {fileID: 2143378990}
   - component: {fileID: 2143378992}
   - component: {fileID: 2143378991}
+  - component: {fileID: 2143378993}
   m_Layer: 8
   m_Name: Square (26)
   m_TagString: Ground
@@ -8905,8 +8922,8 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -8964,6 +8981,24 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!251 &2143378993
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2143378989}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &2143512308
 GameObject:
   m_ObjectHideFlags: 0
