@@ -217,7 +217,7 @@ public class Player : MonoBehaviour
 		if (jumpDown && grounded && !crouch && canJump && canMove == true)
 		{
 			ySpeed = ySpeed + maxJumpVelocity;
-            Debug.Log(ySpeed);
+            //Debug.Log(ySpeed);
 		}
 
 		rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
