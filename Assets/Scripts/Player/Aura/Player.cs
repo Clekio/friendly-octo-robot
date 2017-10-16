@@ -80,7 +80,7 @@ public class Player : MonoBehaviour
 
     bool tieneParaguas = false;
 
-    bool canStandUp = false;
+    bool canStandUp = true;
 
     bool canJump = true;
 
@@ -100,16 +100,19 @@ public class Player : MonoBehaviour
     {
         slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
 
-        if (Input.GetKeyDown(KeyCode.S) && canMove == true)
+        if (Input.GetKey(KeyCode.S) && canMove == true)
         {
             crouch = true;
+        }
 
+        if ((Input.GetKeyUp(KeyCode.S) && canStandUp == false && canMove == true))
+        {
+            crouch = true;
         }
 
         if (Input.GetKeyUp(KeyCode.S) && canStandUp == true && canMove == true)
         {
             crouch = false;
-            
         }
 
         if (!crouch)
@@ -135,7 +138,7 @@ public class Player : MonoBehaviour
 
         tieneParaguas = Scr_TieneParaguas.paraguas;
 
-        canStandUp = Scr_CrouchCheck.canStandUp;
+        canStandUp = gameObject.GetComponentInChildren<Scr_CrouchCheck>().canStandUp;
 
         canJump = Scr_EmpujarTirar.canJump;
 
