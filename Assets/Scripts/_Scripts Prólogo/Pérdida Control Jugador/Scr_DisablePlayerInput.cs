@@ -8,7 +8,15 @@ public class Scr_DisablePlayerInput : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            GameObject.Find("Aura").GetComponent<Player>().enabled = false;
+            GameObject.Find("Aura").GetComponent<Player>().canMove = false;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            GameObject.Find("Aura").GetComponent<Player>().canMove = true;
         }
     }
 }
