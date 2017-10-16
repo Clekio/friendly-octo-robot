@@ -86,6 +86,8 @@ public class Player : MonoBehaviour
 
     bool planear = true;
 
+    bool canMove = true;
+
     private void Awake()
     {
         if (FindObjectsOfType(GetType()).Length > 1)
