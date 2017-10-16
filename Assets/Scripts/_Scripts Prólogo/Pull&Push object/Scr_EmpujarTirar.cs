@@ -6,8 +6,8 @@ public class Scr_EmpujarTirar : MonoBehaviour
 {
     GameObject player;
 
-    [SerializeField]
-    GameObject helpText;
+    //[SerializeField]
+    //GameObject helpText;
 
     bool playerInRange = false;
     float xPos;
@@ -29,13 +29,13 @@ public class Scr_EmpujarTirar : MonoBehaviour
 
         if (playerInRange == true && !transform.GetComponent<FixedJoint2D>().enabled)
         {
-            helpText.SetActive(true);
+            //helpText.SetActive(true);
 
             //transform.position = new Vector3(xPos, transform.position.y);
         }
         else
         {
-            helpText.SetActive(false);
+            //helpText.SetActive(false);
         }
 
         if (playerInRange == true && Input.GetKey(KeyCode.LeftControl) && grounded == true)
