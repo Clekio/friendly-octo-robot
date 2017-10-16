@@ -24,7 +24,12 @@ public class Scr_RamaJoven : MonoBehaviour
 
     private void Update()
     {
-        ladoBueno = Scr_LadoBuenoRamaJoven.ladoBueno;
+        ladoBueno = gameObject.GetComponentInChildren<Scr_LadoBuenoRamaJoven>().ladoBueno;
+
+        if (ladoBueno == true)
+        {
+            Debug.Log("ASD");
+        }
     }
 
     private void OnTriggerStay2D(Collider2D collision)

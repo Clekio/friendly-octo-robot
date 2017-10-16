@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Scr_LadoBuenoRamaJoven : MonoBehaviour
 {
-    public static bool ladoBueno = false;
+    public bool ladoBueno = false;
 
     private void OnTriggerStay2D(Collider2D collision)
     {
