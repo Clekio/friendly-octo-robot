@@ -2184,7 +2184,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 451165769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 116.75, y: 2.57, z: 0}
+  m_LocalPosition: {x: 153.94, y: 37.91, z: 0}
   m_LocalScale: {x: 1.7102393, y: 1.7102399, z: 1.71024}
   m_Children:
   - {fileID: 645258651}
@@ -2681,6 +2681,11 @@ Prefab:
         type: 2}
       propertyPath: m_Mass
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114280918453459268, guid: f50efd261245fee4694b0a978ef529b3,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f50efd261245fee4694b0a978ef529b3, type: 2}
@@ -4994,6 +4999,16 @@ Prefab:
     - target: {fileID: 4035658655920002, guid: fb403835a0f15a04aab810923ad0c525, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114662843828973312, guid: fb403835a0f15a04aab810923ad0c525,
+        type: 2}
+      propertyPath: lista.Array.data[0].Name
+      value: wind
+      objectReference: {fileID: 0}
+    - target: {fileID: 114662843828973312, guid: fb403835a0f15a04aab810923ad0c525,
+        type: 2}
+      propertyPath: lista.Array.data[2].Name
+      value: water
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb403835a0f15a04aab810923ad0c525, type: 2}
