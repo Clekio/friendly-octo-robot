@@ -7,10 +7,10 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 0
     path: 
-    guid: 9bd2ec3ae1b67f34aa4aa1bcddef2560
-  - enabled: 0
-    path: Assets/_Scenes/Test Scenes/MagiaTest.unity
-    guid: 2b7706860682a5c43870c6917eb605c8
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/_Scenes/Level Scenes/Playtest.unity
-    guid: b64a0498c42e2b64fb1ad18e6d07ddf8
+    path: "Assets/_Scenes/Game Scenes/Scn_Pr\xF3logo.unity"
+    guid: c6de73d29a73f86429d1ceceb4b18ef1
+  - enabled: 1
+    path: Assets/_Scenes/Test Scenes/Scn_PruebaVictor.unity
+    guid: ee2e9a79721f2c64d85f5085c8e8f170

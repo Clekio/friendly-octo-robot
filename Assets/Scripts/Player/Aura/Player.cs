@@ -80,11 +80,13 @@ public class Player : MonoBehaviour
 
     bool tieneParaguas = false;
 
-    bool canStandUp = false;
+    bool canStandUp = true;
 
     bool canJump = true;
 
     bool planear = true;
+
+    public bool canMove = true;
 
     private void Awake()
     {
@@ -98,16 +100,19 @@ public class Player : MonoBehaviour
     {
         slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKey(KeyCode.S) && canMove == true)
         {
             crouch = true;
-
         }
 
-        if (Input.GetKeyUp(KeyCode.S) && canStandUp == true)
+        if ((Input.GetKeyUp(KeyCode.S) && canStandUp == false && canMove == true))
+        {
+            crouch = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.S) && canStandUp == true && canMove == true)
         {
             crouch = false;
-            
         }
 
         if (!crouch)
@@ -123,9 +128,9 @@ public class Player : MonoBehaviour
 
         anim.SetBool("crouch", crouch);
 
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && canMove == true)
             golpePurificante = true;
-        else
+        else if (canMove == true)
             golpePurificante = false;
         
         anim.SetFloat("velocityX", rb2d.velocity.x);
@@ -133,7 +138,7 @@ public class Player : MonoBehaviour
 
         tieneParaguas = Scr_TieneParaguas.paraguas;
 
-        canStandUp = Scr_CrouchCheck.canStandUp;
+        canStandUp = gameObject.GetComponentInChildren<Scr_CrouchCheck>().canStandUp;
 
         canJump = Scr_EmpujarTirar.canJump;
 
@@ -185,17 +190,17 @@ public class Player : MonoBehaviour
 
 		//Setear velocidad máxima
 		float speedToUse = groundMaxSpeed;
-		if(Input.GetKey(KeyCode.S) && !slide)
+		if(Input.GetKey(KeyCode.S) && !slide && canMove == true)
         {
 			speedToUse = crouchedMaxSpeed;
 		}
 		float xSpeed = 0;
-		if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f && !slide)
+		if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f && !slide && canMove == true)
         {
             //Apply acceleration
             xSpeed = rb2d.velocity.x + Input.GetAxis("Horizontal") * groundAccel * Time.deltaTime;
         }
-        else
+        else if (canMove == true)
             //Apply Friction
             xSpeed = rb2d.velocity.x * (1 - groundFriction * Time.deltaTime);
 
@@ -212,18 +217,19 @@ public class Player : MonoBehaviour
 		bool jumpDown = jumpPressed && !jumpPressedBefore;
 		jumpPressedBefore = jumpPressed;
 
-		if (jumpDown && grounded && !crouch && canJump)
+		if (jumpDown && grounded && !crouch && canJump && canMove == true)
 		{
 			ySpeed = ySpeed + maxJumpVelocity;
-            Debug.Log(ySpeed);
+            //Debug.Log(ySpeed);
 		}
 
 		rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
 
-		if (!grounded)
+		if (!grounded && canMove == true)
 			PlayerMode = MovementMode.OnAir;
 
-		if(Mathf.Abs(Input.GetAxis ("Vertical")) > 0.1f && grabbedTransform != null){
+		if(Mathf.Abs(Input.GetAxis ("Vertical")) > 0.1f && grabbedTransform != null && canMove == true)
+        {
 			PlayerMode = MovementMode.OnClimbing;
 		}
 	}
@@ -241,12 +247,12 @@ public class Player : MonoBehaviour
         if (instTimeLeft2Jump > 0)
             instTimeLeft2Jump -= Time.deltaTime;
 
-        if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f)
+        if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f && canMove == true)
         {
             //Apply acceleration
             xSpeed = rb2d.velocity.x + Input.GetAxis("Horizontal") * aceleationToUse * Time.deltaTime;
         }
-        else
+        else if (canMove == true)
         {
             //Apply Friction
             xSpeed = rb2d.velocity.x * (1 - airFriction * Time.deltaTime);
@@ -260,14 +266,14 @@ public class Player : MonoBehaviour
         float ySpeed = rb2d.velocity.y + gravityToUse * Time.deltaTime;
 
         //Chequear Salto
-        if (Input.GetButtonUp("Jump") && rb2d.velocity.y > minJumpVelocity && !ignoreJumpDepress)
+        if (Input.GetButtonUp("Jump") && rb2d.velocity.y > minJumpVelocity && !ignoreJumpDepress && canMove == true)
 		{
 			ySpeed = minJumpVelocity;
 		}
 
         if (ySpeed < 0)
             ignoreJumpDepress = false;
-
+        /*
         if(tieneParaguas == true && planear == true)
         {
             if (jumpPressed && rb2d.velocity.y < 0)
@@ -281,14 +287,15 @@ public class Player : MonoBehaviour
                 planeo = false;
                 anim.SetBool("planeando", planeo);
             }
-        }
+        }*/
                 
         rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
 
 		if (grounded)
 			PlayerMode = MovementMode.OnGround;
 
-		if(Mathf.Abs(Input.GetAxis ("Vertical")) > 0.1f && grabbedTransform != null){
+		if(Mathf.Abs(Input.GetAxis ("Vertical")) > 0.1f && grabbedTransform != null && canMove == true)
+        {
 			PlayerMode = MovementMode.OnClimbing;
 		}
 	}
@@ -298,16 +305,16 @@ public class Player : MonoBehaviour
 		jumpPressed = Input.GetButton("Jump");
 		bool jumpDown = jumpPressed && !jumpPressedBefore;
 		jumpPressedBefore = jumpPressed;
-		if (jumpDown || grabbedTransform == null)
+		if (jumpDown || grabbedTransform == null && canMove == true)
         {
 			//rb2d.velocity = maxJumpVelocity * Vector2.up;
 			PlayerMode = MovementMode.OnAir;
             rb2d.velocity = new Vector2(rb2d.velocity.x,  maxJumpVelocity);
         }
-        else if(transform.position.y >= grabbedTransform.upPoint.position.y || transform.position.y <= grabbedTransform.downPoint.position.y || grounded && Input.GetAxis ("Vertical") < 0)
+        else if(transform.position.y >= grabbedTransform.upPoint.position.y || transform.position.y <= grabbedTransform.downPoint.position.y || grounded && Input.GetAxis ("Vertical") < 0 && canMove == true)
 			PlayerMode = MovementMode.OnGround;
 
-        else
+        else if (canMove == true)
         {
 			Vector2 climb = Input.GetAxis ("Vertical") * climbSpeed * Vector2.up;
 			rb2d.velocity = climb;

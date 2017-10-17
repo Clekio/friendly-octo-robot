@@ -319,6 +319,7 @@ MonoBehaviour:
   airFriction: 3
   maxJumpVelocity: 16
   minJumpVelocity: 10
+  timeLeft2Jump: 2
   ClimbingSpeed: 2
   grabXInterpolation: 5
   climbSpeed: 3
@@ -327,7 +328,9 @@ MonoBehaviour:
     useTriggers: 0
     useLayerMask: 0
     useDepth: 0
+    useOutsideDepth: 0
     useNormalAngle: 1
+    useOutsideNormalAngle: 0
     layerMask:
       serializedVersion: 2
       m_Bits: 0
@@ -338,6 +341,7 @@ MonoBehaviour:
   rb2d: {fileID: 50303953063130578}
   groundChecker: {fileID: 61323203935669242}
   anim: {fileID: 95213784141882238}
+  ignoreJumpDepress: 0
 --- !u!114 &114735741181391784
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -358,6 +362,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -373,6 +378,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -389,6 +395,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
 --- !u!212 &212216730982009946
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -398,6 +406,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
@@ -413,6 +422,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -421,7 +431,7 @@ SpriteRenderer:
   m_SortingLayerID: 681983847
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d9c6b77cea326234ea5630fd0e454804, type: 3}
+  m_Sprite: {fileID: 21300000, guid: ad0a4b644a62be844b5661f394a49c54, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -429,6 +439,8 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
 --- !u!212 &212996709517886822
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -438,6 +450,7 @@ SpriteRenderer:
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -453,6 +466,7 @@ SpriteRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -469,3 +483,5 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
