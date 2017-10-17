@@ -58,16 +58,17 @@ MonoBehaviour:
     - {x: 1, y: -1}
     - {x: 0, y: 1}
     - {x: -1, y: -1}
+  - Name: wind
+    dirList:
+    - {x: 0, y: 1}
+    - {x: 1, y: 0}
+    - {x: 0, y: -1}
+    - {x: -1, y: 0}
   - Name: thunder
     dirList:
     - {x: 0, y: 1}
     - {x: 1, y: -1}
     - {x: 0, y: 1}
-  - Name: wind
-    dirList:
-    - {x: 0, y: 1}
-    - {x: 1, y: -1}
-    - {x: -1, y: -1}
   particlePrefab: {fileID: 1109158048800960, guid: fd9b210b8ac845e4cbe1d246b8799f40,
     type: 2}
   MagicTimeToDestroy: 2

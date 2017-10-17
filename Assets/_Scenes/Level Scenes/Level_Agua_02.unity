@@ -306,7 +306,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a004c2ccc712964f88dd11aefc47aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  helpText: {fileID: 1127877608}
 --- !u!61 &39533411
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1046,7 +1045,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a004c2ccc712964f88dd11aefc47aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  helpText: {fileID: 1646957314}
 --- !u!61 &335048158
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2154,6 +2152,7 @@ MonoBehaviour:
   rb2d: {fileID: 451165775}
   groundChecker: {fileID: 451165772}
   anim: {fileID: 451165771}
+  canMove: 1
   ignoreJumpDepress: 0
 --- !u!50 &451165775
 Rigidbody2D:
@@ -2734,6 +2733,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f23ba91ff51a7084e833001bd31c8188, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canStandUp: 1
 --- !u!61 &551450970
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5000,16 +5000,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114662843828973312, guid: fb403835a0f15a04aab810923ad0c525,
-        type: 2}
-      propertyPath: lista.Array.data[0].Name
-      value: wind
-      objectReference: {fileID: 0}
-    - target: {fileID: 114662843828973312, guid: fb403835a0f15a04aab810923ad0c525,
-        type: 2}
-      propertyPath: lista.Array.data[2].Name
-      value: water
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb403835a0f15a04aab810923ad0c525, type: 2}
   m_IsPrefabParent: 0
@@ -6820,7 +6810,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a004c2ccc712964f88dd11aefc47aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  helpText: {fileID: 1407338584}
 --- !u!61 &1709597609
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7482,7 +7471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a004c2ccc712964f88dd11aefc47aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  helpText: {fileID: 2007761966}
 --- !u!61 &1909629262
 BoxCollider2D:
   m_ObjectHideFlags: 0
