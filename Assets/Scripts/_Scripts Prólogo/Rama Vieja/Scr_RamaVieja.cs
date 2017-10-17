@@ -9,8 +9,6 @@ public class Scr_RamaVieja : MonoBehaviour
         if (collision.gameObject.tag == "Pull&Push")
         {
             gameObject.SetActive(false);
-
-            collision.gameObject.SetActive(false);
         }
     }
 }

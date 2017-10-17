@@ -30,7 +30,7 @@ public class Scr_BotonDelPanico : MonoBehaviour
 
     void Death()
     {
-        SceneManager.LoadScene("Playtest", LoadSceneMode.Single);
+        SceneManager.LoadScene("Scn_Prólogo", LoadSceneMode.Single);
 
         Aura.transform.position = checkpoint;
     }
