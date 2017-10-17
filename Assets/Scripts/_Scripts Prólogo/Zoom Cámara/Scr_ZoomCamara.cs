@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Scr_ZoomCamara : MonoBehaviour
 {
+    [SerializeField]
+    int zoomDeseado;
+
     GameObject camara;
 
     private void Start()
@@ -15,7 +18,7 @@ public class Scr_ZoomCamara : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            camara.GetComponent<Camera>().orthographicSize = 10;
+            camara.GetComponent<Camera>().orthographicSize = zoomDeseado;
         }
     }
 
