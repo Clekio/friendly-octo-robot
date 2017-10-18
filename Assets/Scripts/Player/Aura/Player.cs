@@ -273,7 +273,7 @@ public class Player : MonoBehaviour
 
         if (ySpeed < 0)
             ignoreJumpDepress = false;
-        /*
+        
         if(tieneParaguas == true && planear == true)
         {
             if (jumpPressed && rb2d.velocity.y < 0)
@@ -287,7 +287,7 @@ public class Player : MonoBehaviour
                 planeo = false;
                 anim.SetBool("planeando", planeo);
             }
-        }*/
+        }
                 
         rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
 
