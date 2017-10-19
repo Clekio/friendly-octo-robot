@@ -1264,14 +1264,14 @@ CompositeCollider2D:
         Y: -117507200
   - m_Collider: {fileID: 1533514422}
     m_ColliderPaths:
-    - - X: 600362368
-        Y: 263100896
+    - - X: 600362432
+        Y: 263104480
       - X: 547077696
-        Y: 263100896
+        Y: 263104480
       - X: 547077696
-        Y: -56160888
+        Y: 21695518
       - X: 600362432
-        Y: -56160888
+        Y: 21695518
   - m_Collider: {fileID: 2107240746}
     m_ColliderPaths:
     - - X: 800116480
@@ -1314,14 +1314,14 @@ CompositeCollider2D:
         Y: 72885864
   - m_Collider: {fileID: 1069457506}
     m_ColliderPaths:
-    - - X: 1008378112
-        Y: 229446976
-      - X: 1008378112
-        Y: 293233088
-      - X: 581421952
-        Y: 293233024
-      - X: 581421952
-        Y: 229446928
+    - - X: 1008378240
+        Y: 229446864
+      - X: 1008378240
+        Y: 293065216
+      - X: 581421888
+        Y: 293065152
+      - X: 581421888
+        Y: 229446816
   - m_Collider: {fileID: 1108686568}
     m_ColliderPaths:
     - - X: 1288354816
@@ -1444,16 +1444,16 @@ CompositeCollider2D:
       - {x: 78.986176, y: 40.389847}
       - {x: 78.986176, y: 40.3896}
       - {x: 70.95462, y: 40.389595}
-      - {x: 70.95462, y: 29.323305}
-      - {x: 58.142197, y: 29.323303}
-      - {x: 58.142197, y: 26.31009}
-      - {x: 54.70777, y: 26.31009}
-      - {x: 54.70777, y: -5.616089}
-      - {x: 60.036243, y: -5.616089}
-      - {x: 60.036236, y: 22.944693}
-      - {x: 100.837814, y: 22.944698}
-      - {x: 100.837814, y: 29.323309}
-      - {x: 80.691376, y: 29.323305}
+      - {x: 70.95462, y: 29.306519}
+      - {x: 58.14219, y: 29.306515}
+      - {x: 58.14219, y: 26.310448}
+      - {x: 54.70777, y: 26.310448}
+      - {x: 54.70777, y: 2.1695518}
+      - {x: 60.036243, y: 2.1695518}
+      - {x: 60.036243, y: 22.944681}
+      - {x: 100.83782, y: 22.944687}
+      - {x: 100.83782, y: 29.306522}
+      - {x: 80.691376, y: 29.306519}
       - {x: 80.691376, y: 35.070145}
       - {x: 106.413055, y: 35.070152}
       - {x: 106.413055, y: 30.680698}
@@ -2127,7 +2127,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 451165769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 63.5, y: -12.7, z: 0}
+  m_LocalPosition: {x: 65.08, y: -10.56, z: 0}
   m_LocalScale: {x: 1.7102393, y: 1.7102399, z: 1.71024}
   m_Children:
   - {fileID: 645258651}
@@ -4174,7 +4174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbbc548071e48214388ff73ba59dac5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FuerzaDelImpulso: 41
+  FuerzaDelImpulso: 42
 --- !u!1 &975728333
 GameObject:
   m_ObjectHideFlags: 0
@@ -4504,8 +4504,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1069457504}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 79.49, y: 26.134, z: 0.03364443}
-  m_LocalScale: {x: 6.37861, y: 42.695614, z: 1}
+  m_LocalPosition: {x: 79.49, y: 26.1256, z: 0.03364443}
+  m_LocalScale: {x: 6.361833, y: 42.695633, z: 1}
   m_Children: []
   m_Father: {fileID: 378308337}
   m_RootOrder: 12
@@ -6254,8 +6254,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1533514420}
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 57.372, y: 10.347, z: 0.03364443}
-  m_LocalScale: {x: 31.926174, y: 5.3284736, z: 1}
+  m_LocalPosition: {x: 57.372, y: 14.24, z: 0.03364443}
+  m_LocalScale: {x: 24.140892, y: 5.328476, z: 1}
   m_Children: []
   m_Father: {fileID: 378308337}
   m_RootOrder: 5
@@ -6841,8 +6841,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1617693501}
   m_LocalRotation: {x: -0, y: -0, z: 0.0000014603136, w: 1}
-  m_LocalPosition: {x: 30.194, y: -6.29, z: 0.03364443}
-  m_LocalScale: {x: 2.14124, y: 0.52121, z: 1}
+  m_LocalPosition: {x: 30.194, y: -6.32, z: 0.03364443}
+  m_LocalScale: {x: 2.14124, y: 0.46137244, z: 1}
   m_Children: []
   m_Father: {fileID: 378308337}
   m_RootOrder: 3
@@ -8053,7 +8053,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1909629259}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 35.35, y: -19.49, z: 0.038644545}
+  m_LocalPosition: {x: 33.65, y: -19.49, z: 0.038644545}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 2007761968}
