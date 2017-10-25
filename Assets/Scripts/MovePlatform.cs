@@ -31,29 +31,41 @@ public class MovePlatform : MonoBehaviour {
         }
     }
 
+    private bool ctrlP;
+    private bool playerIn;
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.LeftControl) && m_playerReference != null)
+        {
+            m_playerReference.transform.position = transform.position - offset;
+        }
+    }
+
     private void OnParticleCollision(GameObject other)
     {
-        m_move = true;
+        transform.localScale = crecer;
     }
 
     private Vector3 offset;
+    public Vector3 crecer;
+
     private void OnTriggerStay2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
         {
+            m_playerReference = other.gameObject;
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {
                 m_move = true;
                 offset = transform.position - other.transform.position;
             }
-            else if (Input.GetKey(KeyCode.LeftControl))
-                other.transform.position = transform.position - offset;
-        }
-        //    //Input.GetKey(KeyCode.LeftControl))//&& m_move)// && Input.GetKey(KeyCode.LeftControl))
-        //{
-        //    Debug.Log("hey");
-        //    other.gameObject.transform.position = transform.position;
-        //}            
+        }      
+    }
+
+    private void OnTriggerExit2D(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            m_playerReference = null;
     }
 
     private void FixedUpdate()
@@ -75,7 +87,6 @@ public class MovePlatform : MonoBehaviour {
 
     Vector3 CalculatePlatformMovement()
     {
-
         m_fromWaypointIndex %= m_globalWaypoints.Length;
         int toWaypointIndex = (m_fromWaypointIndex + 1) % m_globalWaypoints.Length;
         float distanceBetweenWaypoints = Vector3.Distance(m_globalWaypoints[m_fromWaypointIndex], m_globalWaypoints[toWaypointIndex]);
