@@ -36,13 +36,24 @@ public class MovePlatform : MonoBehaviour {
         m_move = true;
     }
 
+    private Vector3 offset;
     private void OnTriggerStay2D(Collider2D other)
     {
-        if (other.CompareTag("Player") && m_move)
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("hey");
-            other.gameObject.transform.position = transform.position;
-        }            
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                m_move = true;
+                offset = transform.position - other.transform.position;
+            }
+            else if (Input.GetKey(KeyCode.LeftControl))
+                other.transform.position = transform.position - offset;
+        }
+        //    //Input.GetKey(KeyCode.LeftControl))//&& m_move)// && Input.GetKey(KeyCode.LeftControl))
+        //{
+        //    Debug.Log("hey");
+        //    other.gameObject.transform.position = transform.position;
+        //}            
     }
 
     private void FixedUpdate()
