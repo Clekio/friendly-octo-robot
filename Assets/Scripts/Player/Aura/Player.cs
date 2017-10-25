@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     public float i;
 
     [HideInInspector]
+    public static GameObject reference;
+
+    [HideInInspector]
     public bool Death = false;
 
     //Velocity Variables ground
@@ -90,6 +93,8 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        reference = this.gameObject;
+
         if (FindObjectsOfType(GetType()).Length > 1)
         {
             Destroy(gameObject);
