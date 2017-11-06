@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
     public float i;
 
     [HideInInspector]
+    public static GameObject reference;
+
+    [HideInInspector]
     public bool Death = false;
 
     //Velocity Variables ground
@@ -88,12 +91,27 @@ public class Player : MonoBehaviour
 
     public bool canMove = true;
 
+    SpriteRenderer spriteAura;
+
+    [SerializeField]
+    Sprite agachada;
+
+    [SerializeField]
+    Sprite planeando;
+
+    [SerializeField]
+    Sprite normal;
+
     private void Awake()
     {
+        reference = this.gameObject;
+
         if (FindObjectsOfType(GetType()).Length > 1)
         {
             Destroy(gameObject);
         }
+
+        spriteAura = GetComponentInChildren<SpriteRenderer>();
     }
     
     private void Update()
@@ -148,6 +166,16 @@ public class Player : MonoBehaviour
         }
 
         planear = Scr_QuitarPlaneo.planear;
+
+        if (crouch == true)
+            spriteAura.sprite = agachada;
+        else
+            spriteAura.sprite = normal;
+
+        if (planeo == true)
+            spriteAura.sprite = planeando;
+        else
+            spriteAura.sprite = normal;
     }
 
     private void FixedUpdate()
