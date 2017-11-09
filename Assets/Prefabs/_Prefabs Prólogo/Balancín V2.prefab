@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 61060519695896440}
   - component: {fileID: 114947739544800394}
   m_Layer: 8
-  m_Name: Detector
+  m_Name: Reset
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,8 +68,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1593573222574942}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -112.44, y: -36.11, z: 0.0010443}
-  m_LocalScale: {x: 12.541149, y: 1, z: 1}
+  m_LocalPosition: {x: -111.71748, y: -32.86887, z: 0}
+  m_LocalScale: {x: 12.745946, y: 1, z: 1}
   m_Children:
   - {fileID: 4469326491254232}
   m_Father: {fileID: 0}
@@ -127,7 +127,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 75
+  m_Mass: 85
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -197,7 +197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9e37e7c204887c469d49b859a121990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiempoReset: 3
+  reset: 1
+  tiempoReset: 5
 --- !u!233 &233712752121559972
 HingeJoint2D:
   m_ObjectHideFlags: 1
@@ -212,7 +213,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -112.44, y: -36.11}
+  m_ConnectedAnchor: {x: -112.543, y: -36.11}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
