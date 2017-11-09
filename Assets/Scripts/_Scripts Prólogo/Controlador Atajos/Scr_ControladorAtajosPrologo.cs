@@ -32,13 +32,13 @@ public class Scr_ControladorAtajosPrologo : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.V))
         {
-            LoadVictor();
+            LoadVictorScene();
         }
-    }
 
-    void LoadVictor()
-    {
-        SceneManager.LoadScene("Scn_PruebaVictor", LoadSceneMode.Single);
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            LoadEscenaMagias();
+        }
     }
 
     void Death()
@@ -46,5 +46,15 @@ public class Scr_ControladorAtajosPrologo : MonoBehaviour
         SceneManager.LoadScene("Scn_Prólogo", LoadSceneMode.Single);
 
         Aura.transform.position = checkpoint;
+    }
+
+    void LoadVictorScene()
+    {
+        SceneManager.LoadScene("Scn_PruebaVictor", LoadSceneMode.Single);
+    }
+
+    void LoadEscenaMagias()
+    {
+        SceneManager.LoadScene("Level_Agua_02", LoadSceneMode.Single);
     }
 }
