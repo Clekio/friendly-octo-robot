@@ -7,24 +7,27 @@ public class Scr_Balancin : MonoBehaviour
     [SerializeField]
     int tiempoReset;
 
-    [SerializeField]
-    float rotationSpeed;
-
-    Transform target;
-    Rigidbody2D rb;
+    float targetRotation;
+    float currentRotation;
+    float result;
 
     private void Start()
     {
-        target = transform.parent;
+        targetRotation = gameObject.GetComponentInParent<Transform>().rotation.z;
+    }
 
-        rb = gameObject.GetComponentInParent<Rigidbody2D>();
+    private void Update()
+    {
+        currentRotation = gameObject.GetComponentInParent<Transform>().rotation.z * 100;
+
+        Debug.Log(result);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            rb.SetActive(false);
+            gameObject.GetComponentInParent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
             Invoke("ResetBalancin", tiempoReset);
         }
@@ -32,11 +35,10 @@ public class Scr_Balancin : MonoBehaviour
 
     void ResetBalancin()
     {
-        transform.parent.rotation = Quaternion.Lerp(transform.parent.rotation, target.rotation, rotationSpeed);
+        result = 0 - currentRotation;
 
-        if (transform.parent.rotation == target.rotation)
-        {
+        gameObject.transform.parent.Rotate(new Vector3 (0, 0, result));
 
-        }
+        gameObject.GetComponentInParent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
 }
