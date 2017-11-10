@@ -7,6 +7,7 @@ public class Scr_ControladorAtajosPrologo : MonoBehaviour
 {
     GameObject Aura;
     GameObject troncoZona1;
+    GameObject corrupcion;
     GameObject escudo;
 
     Vector3 checkpoint;
@@ -17,10 +18,12 @@ public class Scr_ControladorAtajosPrologo : MonoBehaviour
         Aura = GameObject.Find("Aura");
         troncoZona1 = GameObject.Find("TroncoZona1");
         escudo = GameObject.Find("Escudo");
+        corrupcion = GameObject.Find("Corrupción");
 
         DontDestroyOnLoad(Aura);
         DontDestroyOnLoad(troncoZona1);
         DontDestroyOnLoad(escudo);
+        DontDestroyOnLoad(corrupcion);
     }
 
     void Update ()
