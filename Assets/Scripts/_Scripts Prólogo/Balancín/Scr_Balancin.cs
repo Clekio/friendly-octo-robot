@@ -19,8 +19,6 @@ public class Scr_Balancin : MonoBehaviour
     private void Update()
     {
         currentRotation = gameObject.GetComponentInParent<Transform>().rotation.z * 100;
-
-        Debug.Log(result);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
