@@ -43,7 +43,10 @@ public class Scr_DetectorRamaJoven : MonoBehaviour
         {
             jugadorEnRama = false;
 
-            estado = 0;
+            if (troncoEnRama == false)
+            {
+                estado = 0;
+            }
         }
 
         if (collision.gameObject.tag == "Pull&Push")
@@ -56,7 +59,9 @@ public class Scr_DetectorRamaJoven : MonoBehaviour
             }
 
             else
+            {
                 estado = 0;
+            }
         }
     }
 }
