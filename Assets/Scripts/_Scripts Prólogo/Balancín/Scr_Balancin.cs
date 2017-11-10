@@ -5,6 +5,9 @@ using UnityEngine;
 public class Scr_Balancin : MonoBehaviour
 {
     [SerializeField]
+    bool reset;
+
+    [SerializeField]
     int tiempoReset;
 
     float targetRotation;
@@ -23,7 +26,7 @@ public class Scr_Balancin : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && reset == true)
         {
             gameObject.GetComponentInParent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
