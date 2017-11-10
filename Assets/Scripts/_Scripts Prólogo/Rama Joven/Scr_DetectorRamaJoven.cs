@@ -43,7 +43,11 @@ public class Scr_DetectorRamaJoven : MonoBehaviour
         {
             jugadorEnRama = false;
 
-            if (troncoEnRama == false)
+            if (troncoEnRama == true)
+            {
+                estado = 2;
+            }
+            else
             {
                 estado = 0;
             }
