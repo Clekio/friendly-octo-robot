@@ -18,6 +18,8 @@ public class Scr_DetectorRamaJoven : MonoBehaviour
     private void Update()
     {
         ladoBueno = gameObject.GetComponentInChildren<Scr_LadoBuenoRamaJoven>().ladoBueno;
+
+        Debug.Log(estado);
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -26,7 +28,14 @@ public class Scr_DetectorRamaJoven : MonoBehaviour
         {
             jugadorEnRama = true;
 
-            estado = 1;
+            if (troncoEnRama == true)
+            {
+                estado = 2;
+            }
+            else
+            {
+                estado = 1;
+            }
         }
 
         if (collision.gameObject.tag == "Pull&Push")
@@ -43,7 +52,14 @@ public class Scr_DetectorRamaJoven : MonoBehaviour
         {
             jugadorEnRama = false;
 
-            estado = 0;
+            if (troncoEnRama == true)
+            {
+                estado = 2;
+            }
+            else
+            {
+                estado = 0;
+            }
         }
 
         if (collision.gameObject.tag == "Pull&Push")
@@ -56,7 +72,9 @@ public class Scr_DetectorRamaJoven : MonoBehaviour
             }
 
             else
+            {
                 estado = 0;
+            }
         }
     }
 }
