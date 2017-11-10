@@ -8,21 +8,24 @@ public class Scr_DetectorRamaJoven : MonoBehaviour
     public bool troncoEnRama;
     public bool ladoBueno = false;
 
-    public int estado = 0;
+    public int estado;
 
     // 0 = Estado inicial
     // 1 = Jugador en rama
     // 2 = Tronco en rama
     // 3 = Lanzamiento
 
+    private void Awake()
+    {
+        estado = 0;
+    }
+
     private void Update()
     {
         ladoBueno = gameObject.GetComponentInChildren<Scr_LadoBuenoRamaJoven>().ladoBueno;
-
-        Debug.Log(estado);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
