@@ -5,6 +5,9 @@ using UnityEngine;
 public class Scr_PlataformaTiempo : MonoBehaviour
 {
     [SerializeField]
+    bool doBreak;
+    
+    [SerializeField]
     int timeToBreak;
 
     [SerializeField]
@@ -12,7 +15,7 @@ public class Scr_PlataformaTiempo : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && doBreak == true)
         {
             Invoke("DisablePlatform", timeToBreak);
         }

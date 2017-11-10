@@ -23,7 +23,7 @@ public class Scr_RamaJoven : MonoBehaviour
     {
         estado = gameObject.GetComponentInChildren<Scr_DetectorRamaJoven>().estado;
 
-        anim.SetInteger("Estado", estado);
+        //anim.SetInteger("Estado", estado);
 
         if (estado == 3)
         {
@@ -39,7 +39,7 @@ public class Scr_RamaJoven : MonoBehaviour
         {
             rb2d.velocity = new Vector2(rb2d.velocity.x, impulso);
 
-            anim.SetInteger("Estado", 3);
+            //anim.SetInteger("Estado", 3);
         }
     }
 }
