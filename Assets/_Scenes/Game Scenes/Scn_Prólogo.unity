@@ -326,6 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d26d36a384c99e46a58b11954654eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  evento1: 0
 --- !u!1 &36610015
 GameObject:
   m_ObjectHideFlags: 0
@@ -8031,11 +8032,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 18.6
+      value: -20.08
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.81
+      value: -3.58
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -8195,12 +8196,12 @@ GameObject:
   - component: {fileID: 839285631}
   - component: {fileID: 839285632}
   m_Layer: 0
-  m_Name: "Controlador Atajos Pr\xF3logo"
+  m_Name: PlayerControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &839285631
 Transform:
   m_ObjectHideFlags: 0
@@ -16321,7 +16322,6 @@ GameObject:
   - component: {fileID: 1597564620}
   - component: {fileID: 1597564619}
   - component: {fileID: 1597564618}
-  - component: {fileID: 1597564623}
   - component: {fileID: 1597564621}
   - component: {fileID: 1597564622}
   m_Layer: 8
@@ -16445,17 +16445,6 @@ MonoBehaviour:
   noteColor: 0
   Autor: "V\xEDctor"
   Texto: "\n\n\tNO METER DENTRO DE UN GRUPO\n\n\tSE JODE LA ANIMACI\xD3N"
---- !u!114 &1597564623
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1597564617}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a288e7d506f5e14293aca0b794960dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1597925325
 GameObject:
   m_ObjectHideFlags: 0

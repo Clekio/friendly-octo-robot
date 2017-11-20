@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class Scr_ControladorAtajosPrologo : MonoBehaviour
+public class Scr_PlayerControl : MonoBehaviour
 {
     GameObject Aura;
     GameObject troncoZona1;

@@ -16,11 +16,11 @@ public class Scr_GameControl : MonoBehaviour
 {
     public static Scr_GameControl control;
 
-    public bool evento1;      // Cuando se ha activado se hace TRUE
+    public bool evento1;                         // Cuando se ha activado se hace TRUE
 
     private void Awake()
     {
-        if (control == null)
+        if (control == null)                     // Comprabación duplicados
         {
             DontDestroyOnLoad(gameObject);
             control = this;
@@ -29,6 +29,25 @@ public class Scr_GameControl : MonoBehaviour
         else if (control != this)
         {
             Destroy(gameObject);
+        }
+
+        evento1 = GameObject.Find("TroncoZona1").GetComponentInChildren<Scr_TroncoZona1Prologo>().evento1;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            Save();
+
+            Debug.Log("¡Game Succesfully Saved!");
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            Load();
+
+            Debug.Log("¡Game Succesfully Loaded!");
         }
     }
 
