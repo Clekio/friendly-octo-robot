@@ -326,6 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d26d36a384c99e46a58b11954654eac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  evento1: 0
 --- !u!1 &36610015
 GameObject:
   m_ObjectHideFlags: 0
@@ -3184,6 +3185,47 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 281612828}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &282580212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 282580213}
+  - component: {fileID: 282580214}
+  m_Layer: 0
+  m_Name: GameControl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &282580213
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 282580212}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -60.591255, y: 33.325523, z: -0.03125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1470460996}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &282580214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 282580212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3cdd9917d228c948b63098072589c02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  evento1: 0
 --- !u!1 &304546737
 GameObject:
   m_ObjectHideFlags: 0
@@ -7990,11 +8032,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 18.6
+      value: -20.08
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -0.81
+      value: -3.58
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.z
@@ -8154,7 +8196,7 @@ GameObject:
   - component: {fileID: 839285631}
   - component: {fileID: 839285632}
   m_Layer: 0
-  m_Name: "Controlador Atajos Pr\xF3logo"
+  m_Name: PlayerControl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14377,6 +14419,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 839285631}
+  - {fileID: 282580213}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16279,9 +16322,9 @@ GameObject:
   - component: {fileID: 1597564620}
   - component: {fileID: 1597564619}
   - component: {fileID: 1597564618}
-  - component: {fileID: 1597564623}
   - component: {fileID: 1597564621}
   - component: {fileID: 1597564622}
+  - component: {fileID: 1597564623}
   m_Layer: 8
   m_Name: TroncoZona1
   m_TagString: Untagged
@@ -16411,7 +16454,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1597564617}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a288e7d506f5e14293aca0b794960dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 63e444b9945617543b6c4e5a88fe039a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1597925325
