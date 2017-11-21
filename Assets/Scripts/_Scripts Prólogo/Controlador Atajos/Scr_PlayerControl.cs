@@ -7,6 +7,7 @@ public class Scr_PlayerControl : MonoBehaviour
 {
     GameObject Aura;
     GameObject evento1; // Evento caida tronco
+    GameObject evento2; // Evento escudo
 
     Vector3 checkpoint;
     string checkpointName;
@@ -14,7 +15,9 @@ public class Scr_PlayerControl : MonoBehaviour
     private void Start()
     {
         Aura = GameObject.Find("Aura");
+
         evento1 = GameObject.Find("TroncoZona1");
+        evento2 = GameObject.Find("Escudo");
 
         DontDestroyOnLoad(Aura);
     }
@@ -48,6 +51,11 @@ public class Scr_PlayerControl : MonoBehaviour
         if (Scr_GameControl.control.evento1 == true)
         {
             DontDestroyOnLoad(evento1);
+        }
+
+        if (Scr_GameControl.control.evento2 == true)
+        {
+            DontDestroyOnLoad(evento2);
         }
 
         SceneManager.LoadScene("Scn_Prólogo", LoadSceneMode.Single);
