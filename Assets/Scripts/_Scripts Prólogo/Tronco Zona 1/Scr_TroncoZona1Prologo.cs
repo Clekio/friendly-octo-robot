@@ -13,10 +13,16 @@ public class Scr_TroncoZona1Prologo : MonoBehaviour
         anim = gameObject.GetComponentInParent<Animator>();
     }
 
+    private void Update()
+    {
+        if (evento1 == true)
+        {
+            anim.SetBool("Activate", true);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        anim.SetBool("Activate", true);
-
         evento1 = true;
     }
 }

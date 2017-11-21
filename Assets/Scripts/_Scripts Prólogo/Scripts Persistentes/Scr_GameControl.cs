@@ -30,25 +30,11 @@ public class Scr_GameControl : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        evento1 = GameObject.Find("TroncoZona1").GetComponentInChildren<Scr_TroncoZona1Prologo>().evento1;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            Save();
-
-            Debug.Log("¡Game Succesfully Saved!");
-        }
-
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Load();
-
-            Debug.Log("¡Game Succesfully Loaded!");
-        }
+        evento1 = GameObject.Find("TroncoZona1").GetComponentInChildren<Scr_TroncoZona1Prologo>().evento1;
     }
 
     public void Save()

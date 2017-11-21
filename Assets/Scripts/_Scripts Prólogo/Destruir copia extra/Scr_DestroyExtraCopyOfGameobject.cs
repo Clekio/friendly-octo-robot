@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Scr_DestroyExtraCopyOfGameobject : MonoBehaviour
 {
-    private void Update()
+    private void Awake()
     {
         if (FindObjectsOfType(GetType()).Length > 1)
         {

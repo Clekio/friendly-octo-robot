@@ -16324,6 +16324,7 @@ GameObject:
   - component: {fileID: 1597564618}
   - component: {fileID: 1597564621}
   - component: {fileID: 1597564622}
+  - component: {fileID: 1597564623}
   m_Layer: 8
   m_Name: TroncoZona1
   m_TagString: Untagged
@@ -16445,6 +16446,17 @@ MonoBehaviour:
   noteColor: 0
   Autor: "V\xEDctor"
   Texto: "\n\n\tNO METER DENTRO DE UN GRUPO\n\n\tSE JODE LA ANIMACI\xD3N"
+--- !u!114 &1597564623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1597564617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e444b9945617543b6c4e5a88fe039a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1597925325
 GameObject:
   m_ObjectHideFlags: 0
