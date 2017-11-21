@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 
-public class Scr_ControladorAtajosPrologo : MonoBehaviour
+public class Scr_PlayerControl : MonoBehaviour
 {
     GameObject Aura;
-    GameObject troncoZona1;
-    GameObject corrupcion;
-    GameObject escudo;
+    GameObject evento1; // Evento caida tronco
+    GameObject evento2; // Evento escudo
+    GameObject evento3; // Evento corrupción
 
     Vector3 checkpoint;
     string checkpointName;
@@ -16,14 +16,12 @@ public class Scr_ControladorAtajosPrologo : MonoBehaviour
     private void Start()
     {
         Aura = GameObject.Find("Aura");
-        troncoZona1 = GameObject.Find("TroncoZona1");
-        escudo = GameObject.Find("Escudo");
-        corrupcion = GameObject.Find("Corrupción");
+
+        evento1 = GameObject.Find("TroncoZona1");
+        evento2 = GameObject.Find("Escudo");
+        evento3 = GameObject.Find("Corrupción");
 
         DontDestroyOnLoad(Aura);
-        DontDestroyOnLoad(troncoZona1);
-        DontDestroyOnLoad(escudo);
-        DontDestroyOnLoad(corrupcion);
     }
 
     void Update ()
@@ -41,7 +39,7 @@ public class Scr_ControladorAtajosPrologo : MonoBehaviour
             LoadVictorScene();
         }
 
-        if (Input.GetKeyDown(KeyCode.V))
+        if (Input.GetKeyDown(KeyCode.B))
         {
             LoadEscenaMagias();
         }
@@ -49,6 +47,24 @@ public class Scr_ControladorAtajosPrologo : MonoBehaviour
 
     void Death()
     {
+        Scr_GameControl.control.Save();
+        Scr_GameControl.control.Load();
+
+        if (Scr_GameControl.control.evento1 == true)
+        {
+            DontDestroyOnLoad(evento1);
+        }
+
+        if (Scr_GameControl.control.evento2 == true)
+        {
+            DontDestroyOnLoad(evento2);
+        }
+
+        if (Scr_GameControl.control.evento3 == true)
+        {
+            DontDestroyOnLoad(evento3);
+        }
+
         SceneManager.LoadScene("Scn_Prólogo", LoadSceneMode.Single);
 
         Aura.transform.position = checkpoint;
