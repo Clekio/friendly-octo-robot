@@ -16,6 +16,9 @@ public class Scr_CorrupcionVuelta : MonoBehaviour
             vueltaActivada = true;
 
             gameObject.GetComponent<MeshRenderer>().enabled = true;
+
+            GameObject.Find("Suelo 1 (25) - Se destruye a la vuelta").GetComponent<MeshRenderer>().enabled = false;
+            GameObject.Find("Suelo 1 (25) - Se destruye a la vuelta").GetComponent<BoxCollider2D>().enabled = false;
         }
     }
 }
