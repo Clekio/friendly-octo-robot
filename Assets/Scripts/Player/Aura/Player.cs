@@ -147,11 +147,6 @@ public class Player : MonoBehaviour
 
         canJump = Scr_EmpujarTirar.canJump;
 
-        if (gameObject.transform.position.x > -25)
-        {
-            tieneParaguas = true;
-        }
-
         planear = Scr_QuitarPlaneo.planear;
     }
 
