@@ -3531,6 +3531,7 @@ GameObject:
   - component: {fileID: 326382052}
   - component: {fileID: 326382053}
   - component: {fileID: 326382057}
+  - component: {fileID: 326382056}
   m_Layer: 0
   m_Name: Escudo
   m_TagString: Untagged
@@ -3617,6 +3618,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &326382056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 326382051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e444b9945617543b6c4e5a88fe039a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &326382057
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8077,11 +8089,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -19.1
+      value: -182.3
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.7
+      value: -11.7
       objectReference: {fileID: 0}
     - target: {fileID: 4712723673921884, guid: 82c0728468eecd34d8c8dce64a13259e, type: 2}
       propertyPath: m_LocalPosition.z

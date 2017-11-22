@@ -4,14 +4,7 @@ using UnityEngine;
 
 public class Scr_EscudoPrologo : MonoBehaviour
 {
-    GameObject escudo;
-
     public bool evento2;
-
-    private void Start()
-    {
-        escudo = GameObject.Find("Escudo");
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -19,7 +12,7 @@ public class Scr_EscudoPrologo : MonoBehaviour
         {
             evento2 = true;
 
-            escudo.SetActive(false);
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
         }
     }
 }
