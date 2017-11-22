@@ -18,6 +18,7 @@ public class Scr_GameControl : MonoBehaviour
 
     public bool evento1;                         // Cuando se ha activado se hace TRUE
     public bool evento2;
+    public bool evento3;
 
     private void Awake()
     {
@@ -37,6 +38,7 @@ public class Scr_GameControl : MonoBehaviour
     {
         evento1 = GameObject.Find("TroncoZona1").GetComponentInChildren<Scr_TroncoZona1Prologo>().evento1;
         evento2 = GameObject.Find("Escudo").GetComponent<Scr_EscudoPrologo>().evento2;
+        evento3 = GameObject.Find("Corrupción").GetComponent<Scr_CorrupcionVuelta>().evento3;
     }
 
     public void Save()
@@ -47,6 +49,7 @@ public class Scr_GameControl : MonoBehaviour
         ControlData data = new ControlData();
         data.evento1 = evento1;
         data.evento2 = evento2;
+        data.evento3 = evento3;
 
         bf.Serialize(file, data);
         file.Close();
@@ -62,6 +65,7 @@ public class Scr_GameControl : MonoBehaviour
 
         evento1 = data.evento1;
         evento2 = data.evento2;
+        evento3 = data.evento3;
     }
 }
 
@@ -70,4 +74,5 @@ class ControlData
 {
     public bool evento1;
     public bool evento2;
+    public bool evento3;
 }
