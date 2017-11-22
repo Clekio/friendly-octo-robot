@@ -31,7 +31,7 @@ public class Scr_PlayerControl : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            //Death();
+            Death();
         }
 
         if (Input.GetKeyDown(KeyCode.V))
