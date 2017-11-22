@@ -2,15 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Scr_CaidaRamas : MonoBehaviour {
+public class Scr_CaidaRamas : MonoBehaviour
+{
+    [SerializeField]
+    int timeToBreak;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Player" )
+        {
+            Invoke("DisablePlatform", timeToBreak);
+        }
+    }
+
+    void DisablePlatform()
+    {
+        Destroy(gameObject);
+    }
 }
