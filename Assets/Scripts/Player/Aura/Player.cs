@@ -100,7 +100,8 @@ public class Player : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    
+
+    private bool m_FacingRight = false;
     private void Update()
     {
         slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
@@ -148,9 +149,29 @@ public class Player : MonoBehaviour
         canJump = Scr_EmpujarTirar.canJump;
 
         planear = Scr_QuitarPlaneo.planear;
+
+        if (rb2d.velocity.x > 0 && !m_FacingRight)
+        {
+            Flip();
+        }
+        else if (rb2d.velocity.x < 0 && m_FacingRight)
+        {
+            Flip();
+        }
     }
 
-    private void FixedUpdate()
+    private void Flip()
+    {
+        // Switch the way the player is labelled as facing.
+        m_FacingRight = !m_FacingRight;
+
+        // Multiply the player's x local scale by -1.
+        Vector3 theScale = transform.localScale;
+        theScale.x *= -1;
+        transform.localScale = theScale;
+    }
+
+private void FixedUpdate()
     {
 		Grounded();
         
