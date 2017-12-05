@@ -73,8 +73,7 @@ public class MovePlatform : MonoBehaviour {
         if (m_move)
         {
             Velocity = CalculatePlatformMovement();
-
-            //m_playerReference.transform.Translate(Velocity, Space.World);
+            
             transform.Translate(Velocity, Space.World);
         }
     }
@@ -117,7 +116,7 @@ public class MovePlatform : MonoBehaviour {
     {
         if (LocalWaypoints != null)
         {
-            Gizmos.color = Color.black;
+            Gizmos.color = Color.yellow;
 
             for (int i = 0; i < LocalWaypoints.Length; i++)
             {
