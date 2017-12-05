@@ -93,11 +93,13 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        reference = this.gameObject;
+        if (reference == null)
+            reference = gameObject;
 
-        if (FindObjectsOfType(GetType()).Length > 1)
+        else //if (FindObjectsOfType(GetType()).Length > 1)
         {
             Destroy(gameObject);
+            return;
         }
     }
 
@@ -222,12 +224,12 @@ private void FixedUpdate()
             xSpeed = rb2d.velocity.x + Input.GetAxis("Horizontal") * groundAccel * Time.deltaTime;
         }
         else if (canMove == true)
+        {
             //Apply Friction
             xSpeed = rb2d.velocity.x * (1 - groundFriction * Time.deltaTime);
+        }
 
         xSpeed = Mathf.Clamp(xSpeed, - speedToUse ,speedToUse );
-
-        //Debug.Log(!slide && Input.GetAxis("Horizontal") < 0.1f && Input.GetAxis("Horizontal") > -0.1f);
 
         float g = !slide && Input.GetAxis("Horizontal") < 0.1f && Input.GetAxis("Horizontal") > -0.1f ? 0 : gravityOnGround;
 
@@ -366,10 +368,14 @@ private void FixedUpdate()
         anim.SetBool("grounded", grounded);
     }
 
-	public void OnClimb (Scr_ObjetoTrepar stair, bool enter){
-		if (enter) {
+	public void OnClimb (Scr_ObjetoTrepar stair, bool enter)
+    {
+		if (enter)
+        {
 			grabbedTransform = stair;
-		} else if (grabbedTransform == stair) {
+		}
+        else if (grabbedTransform == stair)
+        {
 			grabbedTransform = null;
 		}	
 	}
