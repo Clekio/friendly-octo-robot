@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 [RequireComponent(typeof(Player))]
 public class Player : MonoBehaviour
 {
 	public enum MovementMode {OnGround, OnAir, OnClimbing};
 	private MovementMode PlayerMode;
+
+    public XboxController controller;
 
     public float i;
 
@@ -44,8 +47,6 @@ public class Player : MonoBehaviour
     float airGlideAccel;
     [SerializeField]
     float airFriction;
-    bool jumpPressed;
-    bool jumpPressedBefore;
     [SerializeField]
     float maxJumpVelocity;
     [SerializeField]
@@ -104,41 +105,64 @@ public class Player : MonoBehaviour
     }
 
     private bool m_FacingRight = false;
+    float contador;
+    float crouchTime;
+    Vector2 standSize;
+    Vector2 crouchSize;
+    Vector2 StartSize;
+    Vector2 endSize;
+    //inputs
+    float axisX;
+    float axisY;
+    bool jumpPressed;
+    bool jumpReleased;
+    bool jumpPressedBefore;
+    bool crouchButtonPress;
     private void Update()
     {
+        //axisX = XCI.GetAxis(XboxAxis.LeftStickX, controller);
+        axisX = (Mathf.Abs(XCI.GetAxis(XboxAxis.LeftStickX, controller)) < Mathf.Abs(Input.GetAxisRaw("Horizontal"))) ? Input.GetAxisRaw("Horizontal") : XCI.GetAxis(XboxAxis.LeftStickX, controller);
+        //axisY = XCI.GetAxis(XboxAxis.LeftStickY, controller);
+        axisY = (Mathf.Abs(XCI.GetAxis(XboxAxis.LeftStickY, controller)) < Mathf.Abs(Input.GetAxisRaw("Vertical"))) ? Input.GetAxisRaw("Vertical") : XCI.GetAxis(XboxAxis.LeftStickY, controller);
+
+        jumpPressed = (Input.GetButton("Jump") || XCI.GetButton(XboxButton.A));
+        jumpReleased = (Input.GetButtonUp("Jump") || XCI.GetButtonUp(XboxButton.A));
+
         slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
 
-        if (Input.GetKey(KeyCode.S) && canMove == true)
+        crouchButtonPress = (Input.GetKey(KeyCode.S) || XCI.GetButton(XboxButton.LeftBumper)) && canMove;
+
+        if (crouchButtonPress)//(Input.GetKey(KeyCode.S) && canMove == true)
         {
             crouch = true;
         }
-
-        if ((Input.GetKeyUp(KeyCode.S) && canStandUp == false && canMove == true))
+        else if (!canStandUp && canMove)//((Input.GetKeyUp(KeyCode.S) && canStandUp == false && canMove == true))
         {
             crouch = true;
         }
-
-        if (Input.GetKeyUp(KeyCode.S) && canStandUp == true && canMove == true)
+        else if (canStandUp && canMove)
         {
             crouch = false;
         }
 
-        if (!crouch)
-        {
-            GetComponent<BoxCollider2D>().size = Vector3.Lerp(GetComponent<BoxCollider2D>().size, new Vector3(0.45f, 0.85f, 1) , 0.2f);
-            GetComponent<BoxCollider2D>().offset = Vector3.Lerp(GetComponent<BoxCollider2D>().offset, new Vector3(0, 0.4256001f, 0), 0.2f) ;
-        }
-        else
-        {
-            GetComponent<BoxCollider2D>().size = Vector3.Lerp(GetComponent<BoxCollider2D>().size, new Vector3(0.6f, 0.6f, 1), 0.2f);
-            GetComponent<BoxCollider2D>().offset = Vector3.Lerp(GetComponent<BoxCollider2D>().offset, new Vector3(0, 0.31f, 0), 0.2f);
-        }
+        //Esto hay que hacerlo en la animacion
+        //if (!crouch)
+        //{
+        //    GetComponent<BoxCollider2D>().size = Vector3.Lerp(GetComponent<BoxCollider2D>().size, new Vector3(0.45f, 0.85f, 1), 0.2f);
+        //    GetComponent<BoxCollider2D>().offset = Vector3.Lerp(GetComponent<BoxCollider2D>().offset, new Vector3(0, 0.4256001f, 0), 0.2f);
+        //}
+        //else
+        //{
+        //    GetComponent<BoxCollider2D>().size = Vector3.Lerp(GetComponent<BoxCollider2D>().size, new Vector3(0.6f, 0.6f, 1), 0.2f);
+        //    GetComponent<BoxCollider2D>().offset = Vector3.Lerp(GetComponent<BoxCollider2D>().offset, new Vector3(0, 0.31f, 0), 0.2f);
+        //}
 
         anim.SetBool("crouch", crouch);
 
-        if (Input.GetMouseButtonDown(1) && canMove == true)
+        //Input Golpe purificante
+        if ((Input.GetMouseButtonDown(1) || XCI.GetButtonDown(XboxButton.B)) && canMove)//(Input.GetMouseButtonDown(1) && canMove == true)
             golpePurificante = true;
-        else if (canMove == true)
+        else if (canMove)
             golpePurificante = false;
         
         anim.SetFloat("velocityX", rb2d.velocity.x);
@@ -209,21 +233,18 @@ private void FixedUpdate()
         //anim.SetBool("golpePurificante", golpePurificante);
     }
 
-    private void UpdateGround(){
+    private void UpdateGround()
+    {
+        //Setear velocidad máxima
+        float speedToUse = (crouchButtonPress && !slide) ? crouchedMaxSpeed : groundMaxSpeed;
 
-		//Setear velocidad máxima
-		float speedToUse = groundMaxSpeed;
-		if(Input.GetKey(KeyCode.S) && !slide && canMove == true)
-        {
-			speedToUse = crouchedMaxSpeed;
-		}
 		float xSpeed = 0;
-		if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f && !slide && canMove == true)
+		if (Mathf.Abs(axisX) > 0.1f && !slide && canMove)//(Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f && !slide && canMove)
         {
             //Apply acceleration
-            xSpeed = rb2d.velocity.x + Input.GetAxis("Horizontal") * groundAccel * Time.deltaTime;
+            xSpeed = rb2d.velocity.x + axisX * groundAccel * Time.deltaTime;//xSpeed = rb2d.velocity.x + Input.GetAxis("Horizontal") * groundAccel * Time.deltaTime;
         }
-        else if (canMove == true)
+        else if (canMove)
         {
             //Apply Friction
             xSpeed = rb2d.velocity.x * (1 - groundFriction * Time.deltaTime);
@@ -231,27 +252,25 @@ private void FixedUpdate()
 
         xSpeed = Mathf.Clamp(xSpeed, - speedToUse ,speedToUse );
 
-        float g = !slide && Input.GetAxis("Horizontal") < 0.1f && Input.GetAxis("Horizontal") > -0.1f ? 0 : gravityOnGround;
+        float g = !slide && Mathf.Abs(axisX) > 0.1f ? 0 : gravityOnGround;//!slide && Input.GetAxis("Horizontal") < 0.1f && Input.GetAxis("Horizontal") > -0.1f ? 0 : gravityOnGround;
 
         float ySpeed = rb2d.velocity.y + g * Time.deltaTime;
 
 		//Chequear Salto
-		jumpPressed = Input.GetButton("Jump");
 		bool jumpDown = jumpPressed && !jumpPressedBefore;
 		jumpPressedBefore = jumpPressed;
 
-		if (jumpDown && grounded && !crouch && canJump && canMove == true)
+		if (jumpDown && grounded && !crouch && canJump && canMove)
 		{
 			ySpeed = ySpeed + maxJumpVelocity;
-            //Debug.Log(ySpeed);
 		}
 
 		rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
 
-		if (!grounded && canMove == true)
+		if (!grounded && canMove)
 			PlayerMode = MovementMode.OnAir;
 
-		if(Mathf.Abs(Input.GetAxis ("Vertical")) > 0.1f && grabbedTransform != null && canMove == true)
+		if (Mathf.Abs(axisY) > 0.1f && grabbedTransform != null && canMove)//(Mathf.Abs(Input.GetAxis ("Vertical")) > 0.1f && grabbedTransform != null && canMove == true)
         {
 			PlayerMode = MovementMode.OnClimbing;
 		}
@@ -263,19 +282,19 @@ private void FixedUpdate()
 		//Setear velocidad máxima
 		float speedToUse = groundMaxSpeed;
 		float xSpeed = 0;
-        jumpPressed = Input.GetButton("Jump");
+        //jumpPressed = (Input.GetButton("Jump") || XCI.GetButton(XboxButton.A));
         jumpPressedBefore = jumpPressed;
         float aceleationToUse = planeo ? airGlideAccel : airAccel;
 
         if (instTimeLeft2Jump > 0)
             instTimeLeft2Jump -= Time.deltaTime;
 
-        if (Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f && canMove == true)
+        if (Mathf.Abs(axisX) > 0.1f && canMove)//(Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f && canMove == true)
         {
             //Apply acceleration
-            xSpeed = rb2d.velocity.x + Input.GetAxis("Horizontal") * aceleationToUse * Time.deltaTime;
+            xSpeed = rb2d.velocity.x + axisX * aceleationToUse * Time.deltaTime;//xSpeed = rb2d.velocity.x + Input.GetAxis("Horizontal") * aceleationToUse * Time.deltaTime;
         }
-        else if (canMove == true)
+        else if (canMove)
         {
             //Apply Friction
             xSpeed = rb2d.velocity.x * (1 - airFriction * Time.deltaTime);
@@ -289,15 +308,15 @@ private void FixedUpdate()
         float ySpeed = rb2d.velocity.y + gravityToUse * Time.deltaTime;
 
         //Chequear Salto
-        if (Input.GetButtonUp("Jump") && rb2d.velocity.y > minJumpVelocity && !ignoreJumpDepress && canMove == true)
-		{
+        if (jumpReleased && rb2d.velocity.y > minJumpVelocity && !ignoreJumpDepress && canMove)//(Input.GetButtonUp("Jump") && rb2d.velocity.y > minJumpVelocity && !ignoreJumpDepress && canMove)
+        {
 			ySpeed = minJumpVelocity;
 		}
 
         if (ySpeed < 0)
             ignoreJumpDepress = false;
         
-        if(tieneParaguas == true && planear == true)
+        if(tieneParaguas && planear)
         {
             if (jumpPressed && rb2d.velocity.y < 0)
             {
@@ -317,7 +336,7 @@ private void FixedUpdate()
 		if (grounded)
 			PlayerMode = MovementMode.OnGround;
 
-		if(Mathf.Abs(Input.GetAxis ("Vertical")) > 0.1f && grabbedTransform != null && canMove == true)
+		if (Mathf.Abs(axisY) > 0.1f && grabbedTransform != null && canMove)//(Mathf.Abs(Input.GetAxis ("Vertical")) > 0.1f && grabbedTransform != null && canMove == true)
         {
 			PlayerMode = MovementMode.OnClimbing;
 		}
@@ -325,10 +344,10 @@ private void FixedUpdate()
 
 	private void UpdateClimb()
     {
-		jumpPressed = Input.GetButton("Jump");
+		//jumpPressed = Input.GetButton("Jump");
 		bool jumpDown = jumpPressed && !jumpPressedBefore;
 		jumpPressedBefore = jumpPressed;
-		if (jumpDown || grabbedTransform == null && canMove == true)
+		if (jumpDown || grabbedTransform == null && canMove)
         {
 			//rb2d.velocity = maxJumpVelocity * Vector2.up;
 			PlayerMode = MovementMode.OnAir;
@@ -337,10 +356,10 @@ private void FixedUpdate()
         else if(transform.position.y >= grabbedTransform.upPoint.position.y || transform.position.y <= grabbedTransform.downPoint.position.y || grounded && Input.GetAxis ("Vertical") < 0 && canMove == true)
 			PlayerMode = MovementMode.OnGround;
 
-        else if (canMove == true)
+        else if (canMove)
         {
-			Vector2 climb = Input.GetAxis ("Vertical") * climbSpeed * Vector2.up;
-			rb2d.velocity = climb;
+            Vector2 climb = axisY * climbSpeed * Vector2.up;//Vector2 climb = Input.GetAxis ("Vertical") * climbSpeed * Vector2.up;
+            rb2d.velocity = climb;
 			transform.position =  new Vector3( Mathf.Lerp (rb2d.position.x, grabbedTransform.transform.position.x, Time.deltaTime * grabXInterpolation) , rb2d.position.y, transform.position.z);
 		}
 	}
