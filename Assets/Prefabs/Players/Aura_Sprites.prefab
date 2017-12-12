@@ -111,6 +111,7 @@ GameObject:
   - component: {fileID: 95519529688407838}
   - component: {fileID: 114316903878698120}
   - component: {fileID: 212278431245248020}
+  - component: {fileID: 114532132679459862}
   m_Layer: 10
   m_Name: Aura_Sprites
   m_TagString: Player
@@ -318,7 +319,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00014194846, y: 0.6081372}
+  m_Offset: {x: 0, y: 0.6081372}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -398,6 +399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91cee7439d76b2740b2966f6399d651c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  controller: 0
   i: 0
   Death: 0
   groundAccel: 200
@@ -454,6 +456,42 @@ MonoBehaviour:
   unSlowdownTime: 1
   CurShader: {fileID: 4800000, guid: d4ae3275d485ab0419b1d7e4c34e4782, type: 3}
   GrayScaleAmount: 0.8
+--- !u!114 &114532132679459862
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1632508292290358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c09f329afcea8440bc752f0f7054d3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerRef: {fileID: 114356869502822928}
+  playerColldier: {fileID: 61593265656283336}
+  SizeInterpolation:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  crouchTime: 0.2
+  standSize: {x: 0.4499062, y: 1.214912}
+  crouchSize: {x: 0.5114298, y: 0.747617}
+  standOffset: {x: 0, y: 0.6081372}
+  crouchOffset: {x: 0, y: 0.3782695}
 --- !u!124 &124582065517866392
 Behaviour:
   m_ObjectHideFlags: 1
