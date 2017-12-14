@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     float gravityOnGround;
     [SerializeField]
     private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
+    [SerializeField]
+    private Transform standUpCheck;
 
     public static bool grounded;
 
@@ -77,12 +79,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     Animator anim;
 
-    bool crouch = false;
+    [HideInInspector]
+    public bool crouch = false;
     bool planeo = false;
     bool golpePurificante = false;
     bool slide = false;
 
-    bool tieneParaguas = false;
+    bool tieneParaguas = true;
 
     bool canStandUp = true;
 
@@ -105,12 +108,6 @@ public class Player : MonoBehaviour
     }
 
     private bool m_FacingRight = false;
-    float contador;
-    float crouchTime;
-    Vector2 standSize;
-    Vector2 crouchSize;
-    Vector2 StartSize;
-    Vector2 endSize;
     //inputs
     float axisX;
     float axisY;
@@ -136,11 +133,18 @@ public class Player : MonoBehaviour
         {
             crouch = true;
         }
-        else if (!canStandUp && canMove)//((Input.GetKeyUp(KeyCode.S) && canStandUp == false && canMove == true))
-        {
-            crouch = true;
-        }
-        else if (canStandUp && canMove)
+        //else if (!canStandUp && canMove)//((Input.GetKeyUp(KeyCode.S) && canStandUp == false && canMove == true))
+        //{
+        //    crouch = true;
+        //}
+        //else if (canStandUp && canMove)
+        //{
+        //    crouch = false;
+        //}
+
+        Debug.Log(Physics2D.OverlapCircle(standUpCheck.position, 0.6f, m_WhatIsGround));
+
+        if (crouch && Physics2D.OverlapCircle(standUpCheck.position, 0.6f, m_WhatIsGround) == null && !crouchButtonPress)
         {
             crouch = false;
         }
@@ -168,13 +172,13 @@ public class Player : MonoBehaviour
         anim.SetFloat("velocityX", rb2d.velocity.x);
         anim.SetBool("golpePurificante", golpePurificante);
 
-        tieneParaguas = Scr_TieneParaguas.paraguas;
+        //tieneParaguas = Scr_TieneParaguas.paraguas;
 
         canStandUp = gameObject.GetComponentInChildren<Scr_CrouchCheck>().canStandUp;
 
         canJump = Scr_EmpujarTirar.canJump;
 
-        planear = Scr_QuitarPlaneo.planear;
+        //planear = Scr_QuitarPlaneo.planear;
 
         if (rb2d.velocity.x > 0 && !m_FacingRight)
         {
@@ -236,7 +240,7 @@ private void FixedUpdate()
     private void UpdateGround()
     {
         //Setear velocidad máxima
-        float speedToUse = (crouchButtonPress && !slide) ? crouchedMaxSpeed : groundMaxSpeed;
+        float speedToUse = (crouch && !slide) ? crouchedMaxSpeed : groundMaxSpeed;
 
 		float xSpeed = 0;
 		if (Mathf.Abs(axisX) > 0.1f && !slide && canMove)//(Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f && !slide && canMove)
