@@ -33,8 +33,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1642162547545006}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 9.5, y: 19.127169, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,3 +76,4 @@ MonoBehaviour:
   thunder: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 2}
   wind: {fileID: 1182704348935344, guid: 73d460275f8b05c489fdcca42a42bce9, type: 2}
   swirl: {fileID: 1193440099776944, guid: 5a5b01e97d5db8043a32cf273521bbf0, type: 2}
+  velocidadPuntero: 10
