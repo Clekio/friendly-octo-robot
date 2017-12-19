@@ -25,10 +25,10 @@ public class particleRunas : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z));
+        //transform.localPosition = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z));
         
         pSystem.Play(true);
-        StartCoroutine(followMouse());
+        //StartCoroutine(followMouse());
 
         lastPos = transform.position;
         minDelta = 1 / rateOverDistance;

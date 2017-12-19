@@ -33,6 +33,8 @@ public class Player : MonoBehaviour
     float gravityOnGround;
     [SerializeField]
     private LayerMask m_WhatIsGround;                  // A mask determining what is ground to the character
+    [SerializeField]
+    private Transform standUpCheck;
 
     public static bool grounded;
 
@@ -77,12 +79,13 @@ public class Player : MonoBehaviour
     [SerializeField]
     Animator anim;
 
-    bool crouch = false;
+    [HideInInspector]
+    public bool crouch = false;
     bool planeo = false;
     bool golpePurificante = false;
     bool slide = false;
 
-    bool tieneParaguas = false;
+    bool tieneParaguas = true;
 
     bool canStandUp = true;
 
@@ -105,12 +108,6 @@ public class Player : MonoBehaviour
     }
 
     private bool m_FacingRight = false;
-    float contador;
-    float crouchTime;
-    Vector2 standSize;
-    Vector2 crouchSize;
-    Vector2 StartSize;
-    Vector2 endSize;
     //inputs
     float axisX;
     float axisY;
@@ -120,13 +117,23 @@ public class Player : MonoBehaviour
     bool crouchButtonPress;
     private void Update()
     {
-        //axisX = XCI.GetAxis(XboxAxis.LeftStickX, controller);
-        axisX = (Mathf.Abs(XCI.GetAxis(XboxAxis.LeftStickX, controller)) < Mathf.Abs(Input.GetAxisRaw("Horizontal"))) ? Input.GetAxisRaw("Horizontal") : XCI.GetAxis(XboxAxis.LeftStickX, controller);
-        //axisY = XCI.GetAxis(XboxAxis.LeftStickY, controller);
-        axisY = (Mathf.Abs(XCI.GetAxis(XboxAxis.LeftStickY, controller)) < Mathf.Abs(Input.GetAxisRaw("Vertical"))) ? Input.GetAxisRaw("Vertical") : XCI.GetAxis(XboxAxis.LeftStickY, controller);
+        if (!Input.GetKey(KeyCode.L))
+        {
+            //axisX = XCI.GetAxis(XboxAxis.LeftStickX, controller);
+            axisX = (Mathf.Abs(XCI.GetAxis(XboxAxis.LeftStickX, controller)) < Mathf.Abs(Input.GetAxisRaw("Horizontal"))) ? Input.GetAxisRaw("Horizontal") : XCI.GetAxis(XboxAxis.LeftStickX, controller);
+            //axisY = XCI.GetAxis(XboxAxis.LeftStickY, controller);
+            axisY = (Mathf.Abs(XCI.GetAxis(XboxAxis.LeftStickY, controller)) < Mathf.Abs(Input.GetAxisRaw("Vertical"))) ? Input.GetAxisRaw("Vertical") : XCI.GetAxis(XboxAxis.LeftStickY, controller);
 
-        jumpPressed = (Input.GetButton("Jump") || XCI.GetButton(XboxButton.A));
-        jumpReleased = (Input.GetButtonUp("Jump") || XCI.GetButtonUp(XboxButton.A));
+            jumpPressed = (Input.GetButton("Jump") || XCI.GetButton(XboxButton.A));
+            jumpReleased = (Input.GetButtonUp("Jump") || XCI.GetButtonUp(XboxButton.A));
+        }
+        else
+        {
+            //axisX = XCI.GetAxis(XboxAxis.LeftStickX, controller);
+            axisX = 0;
+            //axisY = XCI.GetAxis(XboxAxis.LeftStickY, controller);
+            axisY = 0;
+        }
 
         slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
 
@@ -136,26 +143,11 @@ public class Player : MonoBehaviour
         {
             crouch = true;
         }
-        else if (!canStandUp && canMove)//((Input.GetKeyUp(KeyCode.S) && canStandUp == false && canMove == true))
-        {
-            crouch = true;
-        }
-        else if (canStandUp && canMove)
+
+        if (crouch && Physics2D.OverlapCircle(standUpCheck.position, 0.6f, m_WhatIsGround) == null && !crouchButtonPress)
         {
             crouch = false;
         }
-
-        //Esto hay que hacerlo en la animacion
-        //if (!crouch)
-        //{
-        //    GetComponent<BoxCollider2D>().size = Vector3.Lerp(GetComponent<BoxCollider2D>().size, new Vector3(0.45f, 0.85f, 1), 0.2f);
-        //    GetComponent<BoxCollider2D>().offset = Vector3.Lerp(GetComponent<BoxCollider2D>().offset, new Vector3(0, 0.4256001f, 0), 0.2f);
-        //}
-        //else
-        //{
-        //    GetComponent<BoxCollider2D>().size = Vector3.Lerp(GetComponent<BoxCollider2D>().size, new Vector3(0.6f, 0.6f, 1), 0.2f);
-        //    GetComponent<BoxCollider2D>().offset = Vector3.Lerp(GetComponent<BoxCollider2D>().offset, new Vector3(0, 0.31f, 0), 0.2f);
-        //}
 
         anim.SetBool("crouch", crouch);
 
@@ -168,13 +160,13 @@ public class Player : MonoBehaviour
         anim.SetFloat("velocityX", rb2d.velocity.x);
         anim.SetBool("golpePurificante", golpePurificante);
 
-        tieneParaguas = Scr_TieneParaguas.paraguas;
+        //tieneParaguas = Scr_TieneParaguas.paraguas;
 
         canStandUp = gameObject.GetComponentInChildren<Scr_CrouchCheck>().canStandUp;
 
         canJump = Scr_EmpujarTirar.canJump;
 
-        planear = Scr_QuitarPlaneo.planear;
+        //planear = Scr_QuitarPlaneo.planear;
 
         if (rb2d.velocity.x > 0 && !m_FacingRight)
         {
@@ -236,7 +228,7 @@ private void FixedUpdate()
     private void UpdateGround()
     {
         //Setear velocidad máxima
-        float speedToUse = (crouchButtonPress && !slide) ? crouchedMaxSpeed : groundMaxSpeed;
+        float speedToUse = (crouch && !slide) ? crouchedMaxSpeed : groundMaxSpeed;
 
 		float xSpeed = 0;
 		if (Mathf.Abs(axisX) > 0.1f && !slide && canMove)//(Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f && !slide && canMove)

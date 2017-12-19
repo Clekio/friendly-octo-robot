@@ -33,11 +33,11 @@ public class TimeManager : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
-            DoSlowmotion();
+        //if (Input.GetMouseButtonDown(0))
+        //    DoSlowmotion();
 
-        if (Input.GetMouseButtonUp(0))
-            StartCoroutine(UndoSlowmotion());
+        //if (Input.GetMouseButtonUp(0))
+        //    StartCoroutine(UndoSlowmotion());
     }
 
     private void Start()

@@ -119,6 +119,34 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1813546937630298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4006772201534196}
+  m_Layer: 10
+  m_Name: StandUp Check
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4006772201534196
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1813546937630298}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4300201161700238}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4290058598688138
 Transform:
   m_ObjectHideFlags: 1
@@ -147,6 +175,7 @@ Transform:
   - {fileID: 4529517972608844}
   - {fileID: 4925147939985206}
   - {fileID: 4290058598688138}
+  - {fileID: 4006772201534196}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -410,6 +439,7 @@ MonoBehaviour:
   m_WhatIsGround:
     serializedVersion: 2
     m_Bits: 256
+  standUpCheck: {fileID: 4006772201534196}
   gravityOnAir: -70
   airAccel: 15
   maxVericalGlideSpeed: -3
@@ -439,6 +469,7 @@ MonoBehaviour:
   rb2d: {fileID: 50798851978356582}
   groundChecker: {fileID: 61415100071495142}
   anim: {fileID: 95519529688407838}
+  crouch: 0
   canMove: 1
   ignoreJumpDepress: 0
 --- !u!114 &114413201050322974

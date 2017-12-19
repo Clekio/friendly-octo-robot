@@ -17,6 +17,7 @@ public class crouchLerp : MonoBehaviour
     private float currentCrouchTime;
     [SerializeField]
     private float crouchTime;
+    private bool preFrameCoruch = false;
 
     [SerializeField]
     private Vector2 standSize;
@@ -49,7 +50,7 @@ public class crouchLerp : MonoBehaviour
 
     void Update ()
     {
-        if ((Input.GetKeyDown(KeyCode.S) || XCI.GetButtonDown(XboxButton.LeftBumper)) && playerRef.canMove)
+        if (!preFrameCoruch && playerRef.crouch)//(Input.GetKeyDown(KeyCode.S) || XCI.GetButtonDown(XboxButton.LeftBumper)) && playerRef.canMove)
         {
             startSize = playerColldier.size;
             endSize = crouchSize;
@@ -59,7 +60,7 @@ public class crouchLerp : MonoBehaviour
 
             currentCrouchTime = 0;
         }
-        else if ((Input.GetKeyUp(KeyCode.S) || XCI.GetButtonUp(XboxButton.LeftBumper)) && playerRef.canMove)
+        else if (preFrameCoruch && !playerRef.crouch) //(Input.GetKeyUp(KeyCode.S) || XCI.GetButtonUp(XboxButton.LeftBumper)) && playerRef.canMove)
         {
             startSize = playerColldier.size;
             endSize = standSize;
@@ -78,5 +79,7 @@ public class crouchLerp : MonoBehaviour
 
         playerColldier.size = Vector2.Lerp(startSize, endSize, perc);
         playerColldier.offset = Vector2.Lerp(startOffset, endOffset, perc);
+
+        preFrameCoruch = playerRef.crouch;
     }
 }
