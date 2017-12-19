@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class Runas : recognizerRunas
 {
@@ -34,7 +35,7 @@ public class Runas : recognizerRunas
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
+        if (XCI.GetButtonDown(XboxButton.RightBumper))
         {
             posPuntero = Player.reference.transform.position + new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * 3;
 
@@ -44,7 +45,7 @@ public class Runas : recognizerRunas
 
             magicParticles = Instantiate(particlePrefab, (Vector3)posPuntero + Vector3.forward * 20, Quaternion.identity);
         }
-        else if (Input.GetKey(KeyCode.L))
+        else if (XCI.GetButton(XboxButton.RightBumper))
         {
             posPuntero += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * velocidadPuntero * Time.deltaTime;
 
@@ -53,7 +54,7 @@ public class Runas : recognizerRunas
             magicParticles.transform.position = (Vector3)posPuntero + Vector3.forward*20;
         }
 
-        if (Input.GetKeyUp(KeyCode.L))
+        if (XCI.GetButtonUp(XboxButton.RightBumper))
         {
             //Reconocer la Runa
             StartRecognizer(m_pointList);
