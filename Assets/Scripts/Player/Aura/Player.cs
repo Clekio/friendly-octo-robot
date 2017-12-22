@@ -57,6 +57,12 @@ public class Player : MonoBehaviour
     float timeLeft2Jump = 2.0f;
     float instTimeLeft2Jump;
 
+    bool canSecondJump;
+    [SerializeField]
+    float secondJumpSpeed;
+    [SerializeField]
+    float timeToSecondJump;
+
     [Header("OnClimbing")]
 	public float ClimbingSpeed;
     [SerializeField]
@@ -115,6 +121,7 @@ public class Player : MonoBehaviour
     bool jumpReleased;
     bool jumpPressedBefore;
     bool crouchButtonPress;
+    bool jumpButtonDown;
     private void Update()
     {
         if (!Input.GetKey(KeyCode.L))
@@ -124,6 +131,7 @@ public class Player : MonoBehaviour
             //axisY = XCI.GetAxis(XboxAxis.LeftStickY, controller);
             axisY = (Mathf.Abs(XCI.GetAxis(XboxAxis.LeftStickY, controller)) < Mathf.Abs(Input.GetAxisRaw("Vertical"))) ? Input.GetAxisRaw("Vertical") : XCI.GetAxis(XboxAxis.LeftStickY, controller);
 
+            jumpButtonDown = (Input.GetButtonDown("Jump") || XCI.GetButtonDown(XboxButton.A));
             jumpPressed = (Input.GetButton("Jump") || XCI.GetButton(XboxButton.A));
             jumpReleased = (Input.GetButtonUp("Jump") || XCI.GetButtonUp(XboxButton.A));
         }
@@ -308,6 +316,7 @@ private void FixedUpdate()
         if (ySpeed < 0)
             ignoreJumpDepress = false;
         
+        
         if(tieneParaguas && planear)
         {
             if (jumpPressed && rb2d.velocity.y < 0)
@@ -316,13 +325,19 @@ private void FixedUpdate()
                 planeo = true;
                 anim.SetBool("planeando", planeo);
             }
-            else
+            else if (planeo && jumpReleased)
             {
-                planeo = false;
-                anim.SetBool("planeando", planeo);
+                Invoke("ResetPlaneo", timeToSecondJump);
             }
         }
-                
+
+        if (jumpButtonDown && canSecondJump && canMove && planeo)
+        {
+            Debug.Log("Heyyy");
+            ySpeed = secondJumpSpeed;
+            canSecondJump = false;
+        }
+
         rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
 
 		if (grounded)
@@ -334,7 +349,14 @@ private void FixedUpdate()
 		}
 	}
 
-	private void UpdateClimb()
+    void ResetPlaneo()
+    {
+        Debug.Log("FinPlano");
+        planeo = false;
+        anim.SetBool("planeando", planeo);
+    }
+
+    private void UpdateClimb()
     {
 		//jumpPressed = Input.GetButton("Jump");
 		bool jumpDown = jumpPressed && !jumpPressedBefore;
@@ -369,6 +391,7 @@ private void FixedUpdate()
         if (groundChecker.OverlapCollider (cf, cols) > 0)
         {
             grounded = true;
+            canSecondJump = true;
             instTimeLeft2Jump = timeLeft2Jump;
         }
         else
