@@ -19,7 +19,7 @@ public class CamMov : MonoBehaviour {
 
     private void Start()
     {
-        Target = GameObject.Find("Aura").transform;
+        //Target = GameObject.Find("Aura").transform;
     }
 
     void LateUpdate () {

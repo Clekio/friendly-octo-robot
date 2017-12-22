@@ -20,7 +20,7 @@ public class Scr_EmpujarTirar : MonoBehaviour
     {
         xPos = transform.position.x;
 
-        player = GameObject.Find("Aura");
+        player = GameObject.Find("Aura_Sprites");
     }
 
     private void Update()

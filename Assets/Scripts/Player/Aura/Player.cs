@@ -351,7 +351,6 @@ private void FixedUpdate()
 
     void ResetPlaneo()
     {
-        Debug.Log("FinPlano");
         planeo = false;
         anim.SetBool("planeando", planeo);
     }
@@ -393,6 +392,7 @@ private void FixedUpdate()
             grounded = true;
             canSecondJump = true;
             instTimeLeft2Jump = timeLeft2Jump;
+            ResetPlaneo();
         }
         else
         {
