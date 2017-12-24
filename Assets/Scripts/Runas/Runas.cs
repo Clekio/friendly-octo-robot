@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using XboxCtrlrInput;
+//using XboxCtrlrInput;
 
 public class Runas : recognizerRunas
 {
@@ -35,32 +35,34 @@ public class Runas : recognizerRunas
     // Update is called once per frame
     void Update()
     {
-        if (XCI.GetButtonDown(XboxButton.RightBumper))
-        {
-            posPuntero = Player.reference.transform.position + new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * 3;
+        //if (XCI.GetButtonDown(XboxButton.RightBumper))
+        //{
+        //    posPuntero = Player.reference.transform.position + new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * 3;
 
-            if ((thisDelta - LastDelta).magnitude < 0.05f)
-                m_pointList = new List<Vector2>();
-            LastMousePos = posPuntero;
+        //    if ((thisDelta - LastDelta).magnitude < 0.05f)
+        //        m_pointList = new List<Vector2>();
+        //    LastMousePos = posPuntero;
 
-            magicParticles = Instantiate(particlePrefab, (Vector3)posPuntero + Vector3.forward * 20, Quaternion.identity);
-        }
-        else if (XCI.GetButton(XboxButton.RightBumper))
-        {
-            posPuntero += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * velocidadPuntero * Time.deltaTime;
+        //    magicParticles = Instantiate(particlePrefab, (Vector3)posPuntero + Vector3.forward * 20, Quaternion.identity);
+        //}
+        //else if (XCI.GetButton(XboxButton.RightBumper))
+        //{
+        //    posPuntero += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * velocidadPuntero * Time.deltaTime;
 
-            m_pointList.Add(Camera.main.WorldToScreenPoint(posPuntero));
+        //    m_pointList.Add(Camera.main.WorldToScreenPoint(posPuntero));
 
-            magicParticles.transform.position = (Vector3)posPuntero + Vector3.forward*20;
-        }
+        //    magicParticles.transform.position = (Vector3)posPuntero + Vector3.forward*20;
+        //}
 
-        if (XCI.GetButtonUp(XboxButton.RightBumper))
-        {
-            //Reconocer la Runa
-            StartRecognizer(m_pointList);
+        //if (XCI.GetButtonUp(XboxButton.RightBumper))
+        //{
+        //    //Reconocer la Runa
+        //    StartRecognizer(m_pointList);
 
-            Destroy(magicParticles, 3);
-        }
+        //    Destroy(magicParticles, 3);
+        //}
+
+
         //if (Input.GetMouseButtonDown(0))
         //{
         //    //Resetear el los valores de la runa.
