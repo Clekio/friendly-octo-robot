@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using XboxCtrlrInput;
+//using XboxCtrlrInput;
 
 [RequireComponent(typeof(Player))]
 public class Player : MonoBehaviour
@@ -9,7 +9,9 @@ public class Player : MonoBehaviour
 	public enum MovementMode {OnGround, OnAir, OnClimbing};
 	private MovementMode PlayerMode;
 
-    public XboxController controller;
+    //public XboxController controller;
+    [SerializeField]
+    private InputAura input;
 
     public float i;
 
@@ -124,16 +126,16 @@ public class Player : MonoBehaviour
     bool jumpButtonDown;
     private void Update()
     {
-        if (!Input.GetKey(KeyCode.L))
+        if (!input.Magia())
         {
             //axisX = XCI.GetAxis(XboxAxis.LeftStickX, controller);
-            axisX = (Mathf.Abs(XCI.GetAxis(XboxAxis.LeftStickX, controller)) < Mathf.Abs(Input.GetAxisRaw("Horizontal"))) ? Input.GetAxisRaw("Horizontal") : XCI.GetAxis(XboxAxis.LeftStickX, controller);
+            axisX = input.Horizontal();//(Mathf.Abs(XCI.GetAxis(XboxAxis.LeftStickX, controller)) < Mathf.Abs(Input.GetAxisRaw("Horizontal"))) ? Input.GetAxisRaw("Horizontal") : XCI.GetAxis(XboxAxis.LeftStickX, controller);
             //axisY = XCI.GetAxis(XboxAxis.LeftStickY, controller);
-            axisY = (Mathf.Abs(XCI.GetAxis(XboxAxis.LeftStickY, controller)) < Mathf.Abs(Input.GetAxisRaw("Vertical"))) ? Input.GetAxisRaw("Vertical") : XCI.GetAxis(XboxAxis.LeftStickY, controller);
+            axisY = input.Vertical();//(Mathf.Abs(XCI.GetAxis(XboxAxis.LeftStickY, controller)) < Mathf.Abs(Input.GetAxisRaw("Vertical"))) ? Input.GetAxisRaw("Vertical") : XCI.GetAxis(XboxAxis.LeftStickY, controller);
 
-            jumpButtonDown = (Input.GetButtonDown("Jump") || XCI.GetButtonDown(XboxButton.A));
-            jumpPressed = (Input.GetButton("Jump") || XCI.GetButton(XboxButton.A));
-            jumpReleased = (Input.GetButtonUp("Jump") || XCI.GetButtonUp(XboxButton.A));
+            jumpButtonDown = input.JumpDown();//(Input.GetButtonDown("Jump") || XCI.GetButtonDown(XboxButton.A));
+            jumpPressed = input.JumpHold();//(Input.GetButton("Jump") || XCI.GetButton(XboxButton.A));
+            jumpReleased = input.JumpUp();//(Input.GetButtonUp("Jump") || XCI.GetButtonUp(XboxButton.A));
         }
         else
         {
@@ -145,7 +147,7 @@ public class Player : MonoBehaviour
 
         slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
 
-        crouchButtonPress = (Input.GetKey(KeyCode.S) || XCI.GetButton(XboxButton.LeftBumper)) && canMove;
+        crouchButtonPress = input.Crouch();//(Input.GetKey(KeyCode.S) || XCI.GetButton(XboxButton.LeftBumper)) && canMove;
 
         if (crouchButtonPress)//(Input.GetKey(KeyCode.S) && canMove == true)
         {
@@ -160,7 +162,7 @@ public class Player : MonoBehaviour
         anim.SetBool("crouch", crouch);
 
         //Input Golpe purificante
-        if ((Input.GetMouseButtonDown(1) || XCI.GetButtonDown(XboxButton.B)) && canMove)//(Input.GetMouseButtonDown(1) && canMove == true)
+        if (input.GolpePurificante() && canMove)//(Input.GetMouseButtonDown(1) && canMove == true)
             golpePurificante = true;
         else if (canMove)
             golpePurificante = false;
@@ -239,18 +241,18 @@ private void FixedUpdate()
         float speedToUse = (crouch && !slide) ? crouchedMaxSpeed : groundMaxSpeed;
 
 		float xSpeed = 0;
-		if (Mathf.Abs(axisX) > 0.1f && !slide && canMove)//(Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f && !slide && canMove)
+		if (Mathf.Abs(axisX) > 0.5f && !slide && canMove)//(Mathf.Abs (Input.GetAxis ("Horizontal")) > 0.1f && !slide && canMove)
         {
             //Apply acceleration
-            xSpeed = rb2d.velocity.x + axisX * groundAccel * Time.deltaTime;//xSpeed = rb2d.velocity.x + Input.GetAxis("Horizontal") * groundAccel * Time.deltaTime;
+            xSpeed = Mathf.Clamp(rb2d.velocity.x + axisX * groundAccel * Time.deltaTime, -speedToUse, speedToUse);//xSpeed = rb2d.velocity.x + Input.GetAxis("Horizontal") * groundAccel * Time.deltaTime;
         }
-        else if (canMove)
-        {
-            //Apply Friction
-            xSpeed = rb2d.velocity.x * (1 - groundFriction * Time.deltaTime);
-        }
+        //else if (canMove)
+        //{
+        //    //Apply Friction
+        //    xSpeed = rb2d.velocity.x * (- groundFriction * Time.deltaTime);
+        //}
 
-        xSpeed = Mathf.Clamp(xSpeed, - speedToUse ,speedToUse );
+        //xSpeed = Mathf.Clamp(xSpeed, - speedToUse ,speedToUse );
 
         float g = !slide && Mathf.Abs(axisX) > 0.1f ? 0 : gravityOnGround;//!slide && Input.GetAxis("Horizontal") < 0.1f && Input.GetAxis("Horizontal") > -0.1f ? 0 : gravityOnGround;
 
@@ -265,7 +267,8 @@ private void FixedUpdate()
 			ySpeed = ySpeed + maxJumpVelocity;
 		}
 
-		rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
+        Debug.Log(xSpeed);
+        rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
 
 		if (!grounded && canMove)
 			PlayerMode = MovementMode.OnAir;
@@ -299,9 +302,9 @@ private void FixedUpdate()
             //Apply Friction
             xSpeed = rb2d.velocity.x * (1 - airFriction * Time.deltaTime);
         }
-        xSpeed = Mathf.Clamp(xSpeed, - speedToUse ,speedToUse );
+        xSpeed = Mathf.Clamp(xSpeed, -speedToUse, speedToUse);
 
-		float gravityToUse = rb2d.velocity.y > 0 ? gravityOnAir : gravityOnGround;
+        float gravityToUse = rb2d.velocity.y > 0 ? gravityOnAir : gravityOnGround;
         //if (rb2d.velocity.y > 0)
         //    gravityToUse = gravityOnAir;
 
@@ -338,6 +341,7 @@ private void FixedUpdate()
             canSecondJump = false;
         }
 
+        
         rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
 
 		if (grounded)
