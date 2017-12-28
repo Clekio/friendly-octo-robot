@@ -93,7 +93,7 @@ public class Player : MonoBehaviour
     bool golpePurificante = false;
     bool slide = false;
 
-    bool tieneParaguas = true;
+    public bool tieneParaguas = true;
 
     bool canStandUp = true;
 

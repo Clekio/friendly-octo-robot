@@ -51,24 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7645d4857c0ceaa4389fbfc30f56130d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lista:
-  - Name: water
-    dirList:
-    - {x: 0, y: 1}
-    - {x: 1, y: -1}
-    - {x: 0, y: 1}
-    - {x: -1, y: -1}
-  - Name: wind
-    dirList:
-    - {x: 0, y: 1}
-    - {x: 1, y: 0}
-    - {x: 0, y: -1}
-    - {x: -1, y: 0}
-  - Name: thunder
-    dirList:
-    - {x: 0, y: 1}
-    - {x: 1, y: -1}
-    - {x: 0, y: 1}
+  listaDeMagias: {fileID: 11400000, guid: 6f7351912fae9e8499637681ea84cc25, type: 2}
   particlePrefab: {fileID: 1109158048800960, guid: fd9b210b8ac845e4cbe1d246b8799f40,
     type: 2}
   MagicTimeToDestroy: 2
