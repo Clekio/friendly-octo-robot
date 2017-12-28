@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e64e0080f7bdf73448d51b22323176b5, type: 3}
-  m_Name: MagiaList
+  m_Name: MagiaListFer
   m_EditorClassIdentifier: 
   magias:
   - Name: water
