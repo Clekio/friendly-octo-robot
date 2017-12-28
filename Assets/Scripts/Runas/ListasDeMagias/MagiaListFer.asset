@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64e0080f7bdf73448d51b22323176b5, type: 3}
+  m_Name: MagiaListFer
+  m_EditorClassIdentifier: 
+  magias:
+  - Name: water
+    Effect: {fileID: 1030359037256292, guid: 10d31de1edc82aa429adc90974fbaf6a, type: 2}
+    Rune: 00000000030000000000000005000000
+  - Name: wind
+    Effect: {fileID: 1182704348935344, guid: 73d460275f8b05c489fdcca42a42bce9, type: 2}
+    Rune: 00000000020000000400000006000000
+  - Name: thunder
+    Effect: {fileID: 1000011128802252, guid: 96730f8640590934eacb6f860058e7f9, type: 2}
+    Rune: 050000000200000005000000

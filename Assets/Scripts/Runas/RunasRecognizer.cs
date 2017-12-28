@@ -12,7 +12,7 @@ public abstract class recognizerRunas : MonoBehaviour
         public List<Vector2> dirList;
     }
     [Header("Lista de Runas")]
-    public List<Runa> lista;
+    public MagiaList listaDeMagias;
 
     protected List<Vector2> optimacedPointList;
     protected List<Vector2> normalizedPointList;
@@ -214,11 +214,11 @@ public abstract class recognizerRunas : MonoBehaviour
     {
         string runaName = "Error";
 
-        for (int i = 0; i < lista.Count; i++)
+        for (int i = 0; i < listaDeMagias.magias.Count; i++)
         {
-            if (CompareList(dirList, lista[i].dirList))
+            if (CompareList(dirList, listaDeMagias.magias[i].runeVector2))
             {
-                runaName = lista[i].Name;
+                runaName = listaDeMagias.magias[i].Name;
                 break;
             }
         }
