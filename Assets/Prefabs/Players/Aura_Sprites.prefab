@@ -321,6 +321,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72daeae4bebd00146a679bfb0306901e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crouchInput: -0.5
 --- !u!114 &114248215344003100
 MonoBehaviour:
   m_ObjectHideFlags: 1

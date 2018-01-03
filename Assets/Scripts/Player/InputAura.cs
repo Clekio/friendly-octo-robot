@@ -5,8 +5,8 @@ using InControl;
 
 public class InputAura : MonoBehaviour
 {
-    //[SerializeField]
-    //private GameControllerInputs controllerInput;
+    [SerializeField][Range(-1,0)]
+    private float crouchInput = -0.5f;
 
     private InputDevice inputDevice;
 
@@ -34,7 +34,7 @@ public class InputAura : MonoBehaviour
         //    return true;
         //else
         //    return false;
-        return (inputDevice.Direction.Y < -0.75f);
+        return (inputDevice.Direction.Y < -0.5f);
     }
 
     public bool JumpDown()

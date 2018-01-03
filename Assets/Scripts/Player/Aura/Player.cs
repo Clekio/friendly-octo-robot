@@ -148,13 +148,11 @@ public class Player : MonoBehaviour
         slide = (rb2d.GetContacts(cf2d, contacts) <= 0);
 
         crouchButtonPress = input.Crouch();//(Input.GetKey(KeyCode.S) || XCI.GetButton(XboxButton.LeftBumper)) && canMove;
-
+        
         if (crouchButtonPress)//(Input.GetKey(KeyCode.S) && canMove == true)
         {
             crouch = true;
-        }
-
-        if (crouch && Physics2D.OverlapCircle(standUpCheck.position, 0.6f, m_WhatIsGround) == null && !crouchButtonPress)
+        }else if (crouch && Physics2D.OverlapCircle(standUpCheck.position, 0.6f, m_WhatIsGround) == null && !crouchButtonPress)
         {
             crouch = false;
         }
@@ -267,7 +265,6 @@ private void FixedUpdate()
 			ySpeed = ySpeed + maxJumpVelocity;
 		}
 
-        Debug.Log(xSpeed);
         rb2d.velocity = xSpeed*Vector2.right + ySpeed*Vector2.up;
 
 		if (!grounded && canMove)
