@@ -12,7 +12,7 @@ public class Seta : MonoBehaviour {
         if (!rb2d.isKinematic)
             rb2d.velocity = new Vector2(rb2d.velocity.x, FuerzaDelImpulso);
 
-        Player p = other.gameObject.GetComponent<Player>();
+        Aura p = other.gameObject.GetComponent<Aura>();
         if (p != null)
             p.ignoreJumpDepress = true;
     }

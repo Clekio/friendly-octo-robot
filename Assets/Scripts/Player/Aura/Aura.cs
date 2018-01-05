@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 //using XboxCtrlrInput;
 
-[RequireComponent(typeof(Player))]
-public class Player : MonoBehaviour
+public class Aura : MonoBehaviour
 {
 	public enum MovementMode {OnGround, OnAir, OnClimbing};
 	private MovementMode PlayerMode;

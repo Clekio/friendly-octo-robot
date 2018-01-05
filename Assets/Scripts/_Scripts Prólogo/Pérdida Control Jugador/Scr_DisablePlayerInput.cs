@@ -8,7 +8,7 @@ public class Scr_DisablePlayerInput : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            GameObject.Find("Aura").GetComponent<Player>().canMove = false;
+            GameObject.Find("Aura").GetComponent<Aura>().canMove = false;
         }
     }
 
@@ -16,7 +16,7 @@ public class Scr_DisablePlayerInput : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            GameObject.Find("Aura").GetComponent<Player>().canMove = true;
+            GameObject.Find("Aura").GetComponent<Aura>().canMove = true;
         }
     }
 }

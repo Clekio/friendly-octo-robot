@@ -10,13 +10,13 @@ public class Scr_ObjetoTrepar : MonoBehaviour {
 	void OnTriggerEnter2D (Collider2D col){
 		if (col.CompareTag ("Player")) {
 			//Debug.Log ("Dentro");
-			col.gameObject.GetComponent <Player> ().OnClimb (this,true);
+			col.gameObject.GetComponent <Aura> ().OnClimb (this,true);
 		}
 	}
 
 	void OnTriggerExit2D (Collider2D col){
 		if (col.CompareTag ("Player")) {
-			col.gameObject.GetComponent <Player> ().OnClimb (this,false);
+			col.gameObject.GetComponent <Aura> ().OnClimb (this,false);
 		}
 	}
 }

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8a99a642181d5454e820739d3fe39f16
+timeCreated: 1514315319
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - bColl2D: {instanceID: 0}
+  - objEscalon: {fileID: 1768544507939634, guid: 7f444c4e756e0f848a9f7fb05c397354,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

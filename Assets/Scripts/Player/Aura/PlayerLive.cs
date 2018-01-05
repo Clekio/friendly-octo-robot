@@ -7,13 +7,13 @@ public class PlayerLive : MonoBehaviour {
     public Vector3 RespawnPosition;
     public float WaitTimeToRespawn = 2f;
 
-    private Player scrPlayer;
+    private Aura scrPlayer;
 
     private static float m_respawnTimeLeft = 0.0f;
 
     private void Awake()
     {
-        scrPlayer = GetComponent<Player>();
+        scrPlayer = GetComponent<Aura>();
         RespawnPosition = transform.position;
     }
 

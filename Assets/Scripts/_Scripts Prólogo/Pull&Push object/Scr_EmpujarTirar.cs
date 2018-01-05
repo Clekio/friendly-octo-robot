@@ -25,7 +25,7 @@ public class Scr_EmpujarTirar : MonoBehaviour
 
     private void Update()
     {
-        grounded = Player.grounded;
+        grounded = Aura.grounded;
 
         if (playerInRange == true && !transform.GetComponent<FixedJoint2D>().enabled)
         {

@@ -1,12 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using XboxCtrlrInput;
 
-public class crouchLerp : MonoBehaviour
+public class PlayerCrouch : MonoBehaviour
 {
     [SerializeField]
-    Aura playerRef;
+    Player playerRef;
 
     [SerializeField]
     private BoxCollider2D playerColldier;
@@ -18,6 +17,7 @@ public class crouchLerp : MonoBehaviour
     [SerializeField]
     private float crouchTime;
     private bool preFrameCoruch = false;
+    private bool setRay = false;
 
     [SerializeField]
     private Vector2 standSize;
@@ -32,25 +32,19 @@ public class crouchLerp : MonoBehaviour
     private Vector2 crouchOffset;
     private Vector2 startOffset;
     private Vector2 endOffset;
-
-    // Use this for initialization
-    void Start ()
+    
+    void Start()
     {
         currentCrouchTime = crouchTime;
-
-        //standSize = playerColldier.size;
-        //crouchSize = standSize / 2;
-
-        //standOffset = playerColldier.offset;
-        //crouchOffset = standOffset / 2;
 
         endSize = playerColldier.size;
         endOffset = playerColldier.offset;
     }
 
-    void Update ()
+    void Update()
     {
-        if (!preFrameCoruch && playerRef.crouch)//(Input.GetKeyDown(KeyCode.S) || XCI.GetButtonDown(XboxButton.LeftBumper)) && playerRef.canMove)
+        bool crouch = playerRef.input.Crouch();
+        if (!preFrameCoruch && crouch)
         {
             startSize = playerColldier.size;
             endSize = crouchSize;
@@ -59,8 +53,10 @@ public class crouchLerp : MonoBehaviour
             endOffset = crouchOffset;
 
             currentCrouchTime = 0;
+
+            setRay = true;
         }
-        else if (preFrameCoruch && !playerRef.crouch) //(Input.GetKeyUp(KeyCode.S) || XCI.GetButtonUp(XboxButton.LeftBumper)) && playerRef.canMove)
+        else if (preFrameCoruch && !crouch)
         {
             startSize = playerColldier.size;
             endSize = standSize;
@@ -69,6 +65,8 @@ public class crouchLerp : MonoBehaviour
             endOffset = standOffset;
 
             currentCrouchTime = 0;
+
+            setRay = true;
         }
 
         currentCrouchTime = Mathf.Clamp(currentCrouchTime + Time.deltaTime, 0, crouchTime);
@@ -80,6 +78,12 @@ public class crouchLerp : MonoBehaviour
         playerColldier.size = Vector2.Lerp(startSize, endSize, perc);
         playerColldier.offset = Vector2.Lerp(startOffset, endOffset, perc);
 
-        preFrameCoruch = playerRef.crouch;
+        preFrameCoruch = crouch;
+
+        if (setRay && perc == 1)
+        {
+            playerRef.controller.CalculateRaySpacing();
+            setRay = false;
+        }
     }
 }
