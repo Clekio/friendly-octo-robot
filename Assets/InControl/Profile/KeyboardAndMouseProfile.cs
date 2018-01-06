@@ -50,7 +50,13 @@ namespace CustomProfile
 					Target = InputControlType.Action2,
 					Source = MouseButton0
 				},
-			};
+                new InputControlMapping
+                {
+                    Handle = "Accion",
+                    Target = InputControlType.Action4,
+                    Source = KeyCodeButton( KeyCode.LeftControl, KeyCode.RightControl)
+                },
+            };
 
 			AnalogMappings = new[]
 			{

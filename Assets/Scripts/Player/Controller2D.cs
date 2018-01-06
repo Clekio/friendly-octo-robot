@@ -10,6 +10,8 @@ public class Controller2D : RaycastController
 	[HideInInspector]
 	public Vector2 playerInput;
 
+    private bool goDown = false;
+
     private Rigidbody2D rb2d;
 
     private bool push;
@@ -25,18 +27,19 @@ public class Controller2D : RaycastController
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-	public void Move(Vector2 moveAmount, bool standingOnPlatform)
+    public void MovePlayer(Vector2 moveAmount, bool standingOnPlatform)
     {
-		Move (moveAmount, Vector2.zero, standingOnPlatform);
-	}
+        Move(moveAmount, false/*Vector2.zero*/, standingOnPlatform);
+    }
 
-	public void Move(Vector2 moveAmount, Vector2 input, bool standingOnPlatform = false)
+    public void Move(Vector2 moveAmount, bool down/*Vector2 input*/, bool standingOnPlatform = false)
     {
 		UpdateRaycastOrigins ();
 
 		collisions.Reset ();
 		collisions.moveAmountOld = moveAmount;
-		playerInput = input;
+        //playerInput = input;
+        goDown = down;
 
         if (box)
         {
@@ -152,7 +155,7 @@ public class Controller2D : RaycastController
 
             if (hit)
             {
-                if (hit.collider.tag == "Through")
+                if (hit.collider.CompareTag("Through"))
                 {
                     if (directionY == 1 || hit.distance == 0)
                     {
@@ -162,7 +165,7 @@ public class Controller2D : RaycastController
                     {
                         continue;
                     }
-                    if (playerInput.y == -1)
+                    if (goDown)//playerInput.y == -1)
                     {
                         collisions.fallingThroughPlatform = true;
                         Invoke("ResetFallingThroughPlatform", .5f);

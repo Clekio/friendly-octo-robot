@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class playerMoveCaja : MonoBehaviour
 {
-    public Controller2D controller;
-
     public LayerMask collisionMask;
 
     [SerializeField]
@@ -15,10 +13,16 @@ public class playerMoveCaja : MonoBehaviour
     private Vector2 CollisionSize;
 
     private Vector3 center;
+
+    [Header("Referencias")]
+    [SerializeField]
+    private Player player;
+    [SerializeField]
+    private Controller2D controller;
     
     void Update ()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (player.input.Action4.WasPressed)//Input.GetKeyDown(KeyCode.E))
         {
             center = transform.position + (Vector3.up * (transform.localScale.y / 2));
             Collider2D hit = Physics2D.OverlapBox(center, new Vector2(CollisionSize.x, CollisionSize.y), 0, collisionMask);
@@ -29,25 +33,11 @@ public class playerMoveCaja : MonoBehaviour
         }
         if (controller.box)
         {
-            if (Input.GetKeyUp(KeyCode.E) || Vector3.Distance(controller.box.transform.position, transform.position) > maxDistance)
+            if (player.input.Action4.WasReleased/*Input.GetKeyUp(KeyCode.E)*/ || Vector3.Distance(controller.box.transform.position, transform.position) > maxDistance)
             {
                 controller.box = null;
             }
         }
-    }
-
-    private bool canMoveBox()
-    {
-        bool b = true;
-
-        if (controller == null)
-            b = false;
-        else if (!Input.GetKey(KeyCode.P))
-            b = false;
-        else if (Vector3.Distance(controller.transform.position, transform.position) > 1f)
-            b = false;
-
-        return b;
     }
 
     private void OnDrawGizmosSelected()

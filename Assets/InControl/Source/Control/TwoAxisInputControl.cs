@@ -72,11 +72,15 @@ namespace InControl
 			get { return thisState != lastState; }
 		}
 
-
 		public Vector2 Vector
 		{
 			get { return new Vector2( X, Y ); }
 		}
+
+        public Vector2 Raw
+        {
+            get { return new Vector2(Mathf.Round(X), Mathf.Round(Y)); }
+        }
 
 
 		public static implicit operator bool( TwoAxisInputControl control )

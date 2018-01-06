@@ -5,8 +5,14 @@ using UnityEngine;
 public class PlayerCrouch : MonoBehaviour
 {
     [SerializeField]
-    Player playerRef;
+    Player player;
 
+    [SerializeField]
+    private Rect standUp;
+    [SerializeField]
+    private LayerMask Ground;
+
+    [Space]
     [SerializeField]
     private BoxCollider2D playerColldier;
 
@@ -41,9 +47,10 @@ public class PlayerCrouch : MonoBehaviour
         endOffset = playerColldier.offset;
     }
 
+    bool crouch = false;
     void Update()
     {
-        bool crouch = playerRef.input.Crouch();
+        CanCrouch(ref crouch);
         if (!preFrameCoruch && crouch)
         {
             startSize = playerColldier.size;
@@ -82,8 +89,30 @@ public class PlayerCrouch : MonoBehaviour
 
         if (setRay && perc == 1)
         {
-            playerRef.controller.CalculateRaySpacing();
+            player.controller.CalculateRaySpacing();
             setRay = false;
         }
+    }
+
+    private void CanCrouch(ref bool c)
+    {
+        if (player.PlayerMode == Player.MovementMode.OnAir)
+            c = false;
+        else if (player.input.Direction.Down)
+            c = true;
+        else if (c)
+        {
+            Collider2D coll = Physics2D.OverlapBox((Vector3)standUp.position + transform.position, standUp.size / 2, Ground);
+            if (coll == null || coll.CompareTag("Through"))
+                c = false;
+        }
+
+        player.crouch = c;
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Colors.LawnGreen;
+        Gizmos.DrawWireCube((Vector3)standUp.position + transform.position, standUp.size);
     }
 }

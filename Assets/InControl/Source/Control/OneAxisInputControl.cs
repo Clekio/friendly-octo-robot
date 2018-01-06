@@ -78,7 +78,7 @@ namespace InControl
 		}
 
 
-		public static implicit operator bool( OneAxisInputControl control )
+        public static implicit operator bool( OneAxisInputControl control )
 		{
 			return control.State;
 		}

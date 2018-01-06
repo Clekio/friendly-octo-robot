@@ -138,20 +138,20 @@ namespace InControl
 			get { return thisState != lastState; }
 		}
 
-
-		public bool IsPressed
+        //Is currently pressd (Read Only).
+        public bool IsPressed
 		{
 			get { return thisState.State; }
 		}
-
-
-		public bool WasPressed
+        
+        //Pressed since the previous tick (Read Only).
+        public bool WasPressed
 		{
 			get { return thisState && !lastState; }
 		}
 
-
-		public bool WasReleased
+        //Released since the previous tick (Read Only).
+        public bool WasReleased
 		{
 			get { return !thisState && lastState; }
 		}

@@ -1,11 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using InControl;
 
 [RequireComponent(typeof(Controller2D))]
+[RequireComponent(typeof(PlayerCrouch))]
 public class Player : MonoBehaviour
 {
     public enum MovementMode { OnGround, OnAir, OnClimbing };
-    private MovementMode PlayerMode = MovementMode.OnAir;
+    [HideInInspector]
+    public MovementMode PlayerMode = MovementMode.OnAir;
 
     [HideInInspector]
     public Vector3 velocity;
@@ -16,19 +19,27 @@ public class Player : MonoBehaviour
 
     private bool Dead = false;
     private bool canMove = true;
+    [HideInInspector]
+    public bool crouch = false;
 
     [Header("Referencias")]
     public Controller2D controller;
-    public PlayerInput input;
+    //public PlayerInput input;
     [SerializeField]
     Animator anim;
+
+    [SerializeField]
+    public InputDevice input;
+
+    private void Awake()
+    {
+        input = InputManager.ActiveDevice;
+    }
 
     void Start()
     {
         if(!controller)
             controller = GetComponent<Controller2D>();
-        if (!input)
-            input = GetComponent<PlayerInput>();
 
         PlayerClimbInfo.empty = true;
 
@@ -40,7 +51,6 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-        directionalInput = input.Direction();
 
         if (!Dead && canMove)
         {
@@ -59,8 +69,8 @@ public class Player : MonoBehaviour
         }
 
         UpdateAnimations();
-
-        controller.Move(velocity * Time.deltaTime, directionalInput);
+        
+        controller.Move(velocity * Time.deltaTime, crouch && input.Action1.WasPressed);//directionalInput);
     }
 
     #region OnGround
@@ -84,10 +94,9 @@ public class Player : MonoBehaviour
     private void UpdateGround()
     {
         Vector2 speedToUse = Vector2.zero;
-        bool crouch = input.Crouch();
 
         //Horizontal Movement
-        float targetVelocityX = input.Horizontal() * ((crouch) ? crouchedSpeed : groundSpeed);
+        float targetVelocityX = input.Direction.X * ((crouch) ? crouchedSpeed : groundSpeed);
         float smoothTime = (crouch) ? timeCrouch : timeGround;
         speedToUse.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, smoothTime);
 
@@ -104,11 +113,11 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (input.JumpHold() && controller.collisions.below && !crouch)
+        if (input.Action1.WasPressed && controller.collisions.below && !crouch)
         {
             if (controller.collisions.slidingDownMaxSlope)
             {
-                if (Mathf.Abs(input.Horizontal()) != -Mathf.Sign(controller.collisions.slopeNormal.x))
+                if (input.Direction.Raw.x != -Mathf.Sign(controller.collisions.slopeNormal.x))
                 { // not jumping against max slope
                     SetMovementAir();
                     speedToUse.x = maxJumpVelocity * controller.collisions.slopeNormal.x;
@@ -128,7 +137,7 @@ public class Player : MonoBehaviour
         if (!controller.collisions.below)
             SetMovementAir();
 
-        if (Mathf.Abs(input.Vertical()) > 0.5f && !PlayerClimbInfo.empty && !crouch)
+        if (input.Direction.Raw.y != 0/*Mathf.Abs(input.Vertical()) > 0.5f*/ && !PlayerClimbInfo.empty && !crouch)
             SetMovementClimb();
 
         velocity = speedToUse;
@@ -137,6 +146,7 @@ public class Player : MonoBehaviour
     private void SetMovementGround()
     {
         PlayerMode = MovementMode.OnGround;
+        //Debug.Log(PlayerMode);
     }
 #endregion
 
@@ -192,7 +202,7 @@ public class Player : MonoBehaviour
         Vector2 speedToUse = Vector2.zero;
 
         //Horizontal Movement
-        float targetVelocityX = input.Horizontal() * ((planeando) ? xGlideSpeed : airSpeed);
+        float targetVelocityX = input.Direction.X * ((planeando) ? xGlideSpeed : airSpeed);
         float smoothTime = (planeando) ? xTimeGlide : airTime;
         speedToUse.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, smoothTime);
 
@@ -200,21 +210,21 @@ public class Player : MonoBehaviour
         float gravityToUse = velocity.y < 0 ? gravityOnAir : gravityOnGround;
         speedToUse.y = velocity.y + gravityToUse * Time.deltaTime;
 
-        if (input.JumpUp() && velocity.y > minJumpVelocity)
+        if (input.Action1.WasReleased && velocity.y > minJumpVelocity)
             speedToUse.y = minJumpVelocity;
 
         if (tieneParaguas)
         {
-            if (input.JumpHold() && velocity.y < 0)
+            if (input.Action1.IsPressed && velocity.y < 0)
             {
                 speedToUse.y = Mathf.SmoothDamp(velocity.y, yGlideSpeed, ref velocityYSmoothing, yGlideTime);
                 planeando = true;
                 //anim.SetBool("planeando", planeo);
             }
-            else if (planeando && input.JumpUp())
+            else if (planeando && input.Action1.WasReleased)
                 Invoke("ResetPlaneo", timeToSecondJump);
 
-            if (input.JumpDown() && canSecondJump && planeando)
+            if (input.Action1.WasPressed && canSecondJump && planeando)
             {
                 speedToUse.y = secondJumpSpeed;
                 canSecondJump = false;
@@ -226,7 +236,7 @@ public class Player : MonoBehaviour
         if (controller.collisions.below)
             SetMovementGround();
 
-        if (Mathf.Abs(input.Vertical()) > 0.5f && !PlayerClimbInfo.empty)
+        if (input.Direction.Raw.y != 0/*Mathf.Abs(input.Vertical()) > 0.5f*/ && !PlayerClimbInfo.empty)
             SetMovementClimb();
     }
 
@@ -234,6 +244,8 @@ public class Player : MonoBehaviour
     {
         PlayerMode = MovementMode.OnAir;
         canSecondJump = true;
+        //input.Crouch(true);
+        //Debug.Log(PlayerMode);
     }
 
     void ResetPlaneo()
@@ -254,19 +266,19 @@ public class Player : MonoBehaviour
     public ClimbInfo PlayerClimbInfo;
     private void UpdateClimb()
     {
-        if (input.JumpHold())
+        if (input.Action1.IsPressed)
         {
             SetMovementAir();
             velocity.y = minJumpVelocity;
         }
-        else if (Mathf.Abs(input.Horizontal()) > 0.5f || PlayerClimbInfo.empty)
+        else if (input.Direction.Raw.x != 0/*Mathf.Abs(input.Vertical()) > 0.5f*/ || PlayerClimbInfo.empty)
         {
             SetMovementGround();
         }
 
         else
         {
-            velocity.y = input.Vertical() * climbSpeed;
+            velocity.y = input.Direction.Y * climbSpeed;
             velocity.x = 0;
             transform.position = new Vector3(Mathf.Lerp(transform.position.x, PlayerClimbInfo.downPoint.x, Time.deltaTime * grabXInterpolation), transform.position.y, 0);
         }
@@ -284,9 +296,9 @@ public class Player : MonoBehaviour
     private bool m_FacingRight = false; 
     private void UpdateAnimations()
     {
-        anim.SetBool("crouch", input.Crouch());
+        anim.SetBool("crouch", crouch);
         anim.SetFloat("velocityX", velocity.x);
-        anim.SetBool("golpePurificante", input.GolpePurificante());
+        anim.SetBool("golpePurificante", input.Action2.WasPressed);
         anim.SetBool("planeando", planeando);
         anim.SetBool("grounded", controller.collisions.below);
 
