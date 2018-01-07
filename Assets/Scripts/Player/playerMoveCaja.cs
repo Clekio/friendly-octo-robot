@@ -12,6 +12,9 @@ public class playerMoveCaja : MonoBehaviour
     [SerializeField]
     private Vector2 CollisionSize;
 
+    [SerializeField]
+    private Rect grabColl;
+
     private Vector3 center;
 
     [Header("Referencias")]
@@ -22,10 +25,9 @@ public class playerMoveCaja : MonoBehaviour
     
     void Update ()
     {
-        if (player.input.Action4.WasPressed)//Input.GetKeyDown(KeyCode.E))
+        if (player.input.Action4.WasPressed)
         {
-            center = transform.position + (Vector3.up * (transform.localScale.y / 2));
-            Collider2D hit = Physics2D.OverlapBox(center, new Vector2(CollisionSize.x, CollisionSize.y), 0, collisionMask);
+            Collider2D hit = Physics2D.OverlapBox(transform.TransformPoint(grabColl.position), grabColl.size, 0, collisionMask);
             if (hit)
             {
                 controller.box = hit.GetComponent<BoxController>();
@@ -33,7 +35,7 @@ public class playerMoveCaja : MonoBehaviour
         }
         if (controller.box)
         {
-            if (player.input.Action4.WasReleased/*Input.GetKeyUp(KeyCode.E)*/ || Vector3.Distance(controller.box.transform.position, transform.position) > maxDistance)
+            if (player.input.Action4.WasReleased || Vector3.Distance(controller.box.transform.position, transform.position) > maxDistance)
             {
                 controller.box = null;
             }
@@ -42,10 +44,9 @@ public class playerMoveCaja : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        center = transform.position + (Vector3.up * (transform.localScale.y / 2));
         Gizmos.color = Colors.DarkCyan;
-        Gizmos.DrawWireCube(center, new Vector3(CollisionSize.x, CollisionSize.y, 1));
+        Gizmos.DrawWireCube(transform.TransformPoint(grabColl.position), grabColl.size);
         Gizmos.color = Colors.Cyan;
-        Gizmos.DrawWireSphere(transform.position, maxDistance);
+        Gizmos.DrawWireSphere(transform.position + Vector3.up, maxDistance);
     }
 }

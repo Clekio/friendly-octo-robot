@@ -102,7 +102,7 @@ public class PlayerCrouch : MonoBehaviour
             c = true;
         else if (c)
         {
-            Collider2D coll = Physics2D.OverlapBox((Vector3)standUp.position + transform.position, standUp.size / 2, Ground);
+            Collider2D coll = Physics2D.OverlapBox(transform.TransformPoint(standUp.position), standUp.size / 2, Ground);
             if (coll == null || coll.CompareTag("Through"))
                 c = false;
         }
@@ -113,6 +113,6 @@ public class PlayerCrouch : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Colors.LawnGreen;
-        Gizmos.DrawWireCube((Vector3)standUp.position + transform.position, standUp.size);
+        Gizmos.DrawWireCube(transform.TransformPoint(standUp.position), standUp.size);
     }
 }

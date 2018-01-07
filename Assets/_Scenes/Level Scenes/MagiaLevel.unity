@@ -524,11 +524,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4325792903536282, guid: 71ec6a4e844f45c4cbb9f7207d0fe642, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 15.03
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4325792903536282, guid: 71ec6a4e844f45c4cbb9f7207d0fe642, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 24.97
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4325792903536282, guid: 71ec6a4e844f45c4cbb9f7207d0fe642, type: 2}
       propertyPath: m_LocalPosition.z
@@ -2067,7 +2067,7 @@ GameObject:
   - component: {fileID: 1160007086}
   m_Layer: 8
   m_Name: Square (6)
-  m_TagString: Through
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
