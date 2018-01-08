@@ -69,8 +69,7 @@ public class Player : MonoBehaviour
         }
 
         UpdateAnimations();
-        
-        controller.Move(velocity * Time.deltaTime, crouch && input.Action1.WasPressed);//directionalInput);
+        controller.Move(velocity * Time.deltaTime, crouch && input.Action1.WasPressed);
     }
 
     #region OnGround
