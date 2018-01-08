@@ -120,37 +120,55 @@ namespace InControl
 			get { return lastState.State; }
 		}
 
-
+        /// <summary>
+        /// Returns a float.(Read Only)
+        /// <para>In range -1..1 for axes, 0..1 for buttons / triggers.</para>
+        /// </summary>
 		public float Value
 		{
 			get { return thisState.Value; }
 		}
 
-
+        /// <summary>
+        /// Returns a float, previous tick value.(Read Only)
+        /// <para>In range -1..1 for axes, 0..1 for buttons / triggers.</para>
+        /// </summary>
 		public float LastValue
 		{
 			get { return lastState.Value; }
 		}
 
-
+        /// <summary>
+        /// Returns a bool.(Read Only)
+        /// <para>Has changed state since previous tick.</para>
+        /// </summary>
 		public bool HasChanged
 		{
 			get { return thisState != lastState; }
 		}
 
-        //Is currently pressd (Read Only).
+        /// <summary>
+        /// Returns a bool (Read Only)
+        /// <para>Is currently press.</para>
+        /// </summary>
         public bool IsPressed
 		{
 			get { return thisState.State; }
 		}
-        
-        //Pressed since the previous tick (Read Only).
+
+        /// <summary>
+        /// Pressed since the previous tick(Read Only).
+        /// </summary>
+        /// <returns>Returns a bulean base on the button press previous frame status.</returns>
         public bool WasPressed
 		{
 			get { return thisState && !lastState; }
 		}
 
-        //Released since the previous tick (Read Only).
+        /// <summary>
+        /// Released since the previous tick (Read Only).
+        /// </summary>
+        /// <returns>Returns a bulean base on the button release previous frame status.</returns>
         public bool WasReleased
 		{
 			get { return !thisState && lastState; }
@@ -168,14 +186,21 @@ namespace InControl
 			get { return this != Null; }
 		}
 
-
-		public override string ToString()
+        /// <summary>
+        /// Returns a string representig the button status.
+        /// </summary>
+        /// <returns>Returns a format string (InputControl: Handle, Value) representig the button.</returns>
+        public override string ToString()
 		{
 			return string.Format( "[InputControl: Handle={0}, Value={1}]", Handle, Value );
 		}
 
-
-		public static implicit operator bool( InputControl control )
+        /// <summary>
+        /// Compares.
+        /// </summary>
+        /// <param name="control">Parameter value to pass.</param>
+        /// <returns>Returns an Bolean based on the passed value.</returns>
+        public static implicit operator bool( InputControl control )
 		{
 			return control.State;
 		}
