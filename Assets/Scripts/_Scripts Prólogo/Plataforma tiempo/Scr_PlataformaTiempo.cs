@@ -8,7 +8,7 @@ public class Scr_PlataformaTiempo : MonoBehaviour
     bool doBreak;
     
     [SerializeField]
-    int timeToBreak;
+    float timeToBreak;
 
     [SerializeField]
     int timeToSpawn;
