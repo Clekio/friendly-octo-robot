@@ -178,13 +178,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 114077020049493236}
-  standUp:
+  _standCollider:
     serializedVersion: 2
     x: 0
     y: 1.5
     width: 1
     height: 0.8
-  Ground:
+  collisionMask:
     serializedVersion: 2
     m_Bits: 256
   playerColldier: {fileID: 61047865520466976}
@@ -223,7 +223,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   maxDistance: 1
-  grabColl:
+  _grabCollider:
     serializedVersion: 2
     x: 0
     y: 0.95

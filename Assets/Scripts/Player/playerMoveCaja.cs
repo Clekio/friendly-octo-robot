@@ -51,7 +51,7 @@ public class playerMoveCaja : MonoBehaviour
         if (controller.box)
         {
             float _dis = maxDistance * Mathf.Abs(transform.localScale.x);
-            Vector3 _pos = transform.position + Vector3.up;
+            Vector3 _pos = transform.position + (Vector3.up / 2);
             if (player.input.Action4.WasReleased || Mathf.Abs(Vector3.Distance(controller.box.transform.position, _pos)) > _dis)
             {
                 Debug.Log("Player Input: " + player.input.Action4.WasReleased);
@@ -69,6 +69,6 @@ public class playerMoveCaja : MonoBehaviour
         //Gizmos.DrawWireCube(transform.TransformPoint(_grabCollider.position), Vector3.Scale(_grabCollider.size, transform.localScale));
         Gizmos.DrawWireCube(GrabCollider.position, GrabCollider.size);
         Gizmos.color = Colors.Cyan;
-        Gizmos.DrawWireSphere(transform.position + Vector3.up, maxDistance * Mathf.Abs(transform.localScale.x));
+        Gizmos.DrawWireSphere(transform.position + (Vector3.up/2), maxDistance * Mathf.Abs(transform.localScale.x));
     }
 }
