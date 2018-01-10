@@ -9,6 +9,8 @@ public class Scr_DetectorRamaJoven : MonoBehaviour
     public bool ladoBueno = false;
 
     public int estado;
+    [SerializeField]
+    private float impulso;
 
     // 0 = Estado inicial
     // 1 = Jugador en rama
@@ -51,7 +53,7 @@ public class Scr_DetectorRamaJoven : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.CompareTag("Player"))
         {
             jugadorEnRama = false;
 
@@ -65,7 +67,7 @@ public class Scr_DetectorRamaJoven : MonoBehaviour
             }
         }
 
-        if (collision.gameObject.tag == "Pull&Push")
+        if (collision.CompareTag("Pull&Push"))
         {
             troncoEnRama = false;
 

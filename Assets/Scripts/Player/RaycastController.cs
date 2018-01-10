@@ -4,10 +4,7 @@ using System.Collections.Generic;
 [RequireComponent (typeof (BoxCollider2D))]
 public class RaycastController : MonoBehaviour
 {
-	public LayerMask collisionMask;
-    public ContactFilter2D contactFilter;
-    [HideInInspector]
-    protected RaycastHit2D[] hitBuffer = new RaycastHit2D[12];
+	protected LayerMask collisionMask;
 
     public const float skinWidth = .015f;
     const float dstBetweenRays = .25f;
@@ -23,18 +20,16 @@ public class RaycastController : MonoBehaviour
 
     [HideInInspector]
 	public BoxCollider2D collider;
-    protected Collider2D coll;
     public RaycastOrigins raycastOrigins;
 
     public virtual void Awake() {
 		collider = GetComponent<BoxCollider2D> ();
-        coll = GetComponent<Collider2D>();
 	}
 
 	public virtual void Start()
     {
         CalculateRaySpacing ();
-        //collisionMask = Physics2D.GetLayerCollisionMask(gameObject.layer);
+        collisionMask = Physics2D.GetLayerCollisionMask(gameObject.layer);
     }
 
     public void UpdateRaycastOrigins()

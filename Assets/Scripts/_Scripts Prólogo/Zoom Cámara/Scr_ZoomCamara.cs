@@ -18,7 +18,7 @@ public class Scr_ZoomCamara : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            camara.GetComponent<Camera>().orthographicSize = zoomDeseado;
+            //camara.GetComponent<Camera>().orthographicSize = zoomDeseado;
         }
     }
 

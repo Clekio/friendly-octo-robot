@@ -72,15 +72,15 @@ public class PlayerController : MonoBehaviour
         if (distance > minMoveDistance)
         {
             int count = rb2d.Cast(move, contactFilter, hitBuffer, distance + shellRadius);
-            hitBufferList.Clear();
-            for (int i = 0; i < count; i++)
-            {
-                hitBufferList.Add(hitBuffer[i]);
-            }
+            //hitBufferList.Clear();
+            //for (int i = 0; i < count; i++)
+            //{
+            //    hitBufferList.Add(hitBuffer[i]);
+            //}
 
-            for (int i = 0; i < hitBufferList.Count; i++)
+            for (int i = 0; i < count; i++) //for (int i = 0; i < hitBufferList.Count; i++)
             {
-                Vector2 currentNormal = hitBufferList[i].normal;
+                Vector2 currentNormal = hitBuffer[i].normal;
                 if (currentNormal.y > minGroundNormalY)
                 {
                     grounded = true;
@@ -97,7 +97,7 @@ public class PlayerController : MonoBehaviour
                     velocity = velocity - projection * currentNormal;
                 }
 
-                float modifiedDistance = hitBufferList[i].distance - shellRadius;
+                float modifiedDistance = hitBuffer[i].distance - shellRadius;
                 distance = modifiedDistance < distance ? modifiedDistance : distance;
             }
         }

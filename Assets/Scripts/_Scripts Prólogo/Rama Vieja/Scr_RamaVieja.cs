@@ -11,9 +11,4 @@ public class Scr_RamaVieja : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        
-    }
 }
