@@ -554,6 +554,25 @@ Prefab:
       propertyPath: m_RootOrder
       value: 26
       objectReference: {fileID: 0}
+    - target: {fileID: 114853099984916734, guid: 71ec6a4e844f45c4cbb9f7207d0fe642,
+        type: 2}
+      propertyPath: _grabCollider.y
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 114853099984916734, guid: 71ec6a4e844f45c4cbb9f7207d0fe642,
+        type: 2}
+      propertyPath: _grabCollider.height
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114853099984916734, guid: 71ec6a4e844f45c4cbb9f7207d0fe642,
+        type: 2}
+      propertyPath: _grabCollider.width
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4325792903536282, guid: 71ec6a4e844f45c4cbb9f7207d0fe642, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1.97
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 71ec6a4e844f45c4cbb9f7207d0fe642, type: 2}
   m_IsPrefabParent: 0

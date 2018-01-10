@@ -10,7 +10,24 @@ public class playerMoveCaja : MonoBehaviour
     private float maxDistance;
 
     [SerializeField]
-    private Rect grabColl;
+    private Rect _grabCollider;
+
+    /// <value> GrabCollider property gets/sets the value of the rect field, _grabColl</value>
+    public Rect GrabCollider
+    {
+        get
+        {
+            Rect r = _grabCollider;
+
+            r.position = transform.TransformPoint(r.position);
+            //r.size = Vector2.Scale(_grabCollider.size, transform.localScale);
+            r.size = new Vector2 (Mathf.Abs(r.size.x * transform.localScale.x), Mathf.Abs(r.size.y * transform.localScale.y));
+
+            return r;
+        }
+
+        set { _grabCollider = value; }
+    }
 
     private Vector3 center;
 
@@ -24,9 +41,10 @@ public class playerMoveCaja : MonoBehaviour
     {
         if (player.input.Action4.WasPressed)
         {
-            Collider2D hit = Physics2D.OverlapBox(transform.TransformPoint(grabColl.position), Vector3.Scale(grabColl.size, transform.localScale), 0, collisionMask);
+            Collider2D hit = Physics2D.OverlapBox(GrabCollider.position, GrabCollider.size, 0, collisionMask);
             if (hit)
             {
+                Debug.Log("Hay caja");
                 controller.box = hit.GetComponent<BoxController>();
             }
         }
@@ -48,7 +66,8 @@ public class playerMoveCaja : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Colors.DarkCyan;
-        Gizmos.DrawWireCube(transform.TransformPoint(grabColl.position), Vector3.Scale(grabColl.size, transform.localScale));
+        //Gizmos.DrawWireCube(transform.TransformPoint(_grabCollider.position), Vector3.Scale(_grabCollider.size, transform.localScale));
+        Gizmos.DrawWireCube(GrabCollider.position, GrabCollider.size);
         Gizmos.color = Colors.Cyan;
         Gizmos.DrawWireSphere(transform.position + Vector3.up, maxDistance * Mathf.Abs(transform.localScale.x));
     }
