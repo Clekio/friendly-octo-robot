@@ -62,8 +62,8 @@ public class Controller2D : RaycastController
 			VerticalCollisions (ref moveAmount);
 		}
 
-        //transform.Translate (moveAmount);
-        rb2d.MovePosition(rb2d.position + moveAmount);
+        transform.Translate (moveAmount);
+        //rb2d.MovePosition(rb2d.position + moveAmount);
         //rb2d.velocity = moveAmount/Time.deltaTime;
 
         if (!push && box)
@@ -152,7 +152,7 @@ public class Controller2D : RaycastController
 
             Debug.DrawRay(hit.point, hit.normal, Color.red);
             Debug.DrawRay(hit.point, new Vector2(hit.normal.y, -hit.normal.x) * directionY, Color.blue);
-            Debug.DrawRay(rayOrigin, (Vector2.right * directionY) * rayLength, Color.green);
+            Debug.DrawRay(rayOrigin, (Vector2.up * directionY) * rayLength, Color.green);
 
             if (hit)
             {
