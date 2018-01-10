@@ -10,6 +10,9 @@ public class Scr_RamaJoven : MonoBehaviour
     Animator anim;
     GameObject player;
 
+    [SerializeField]
+    private Rect trigger;
+
     int estado;
 
     private void Start()
@@ -27,19 +30,21 @@ public class Scr_RamaJoven : MonoBehaviour
 
         if (estado == 3)
         {
-            Lanzamiento();
+            Player.Instance.addSpeed(0, impulso);
+            //Lanzamiento();
         }
     }
 
     void Lanzamiento()
     {
-        Rigidbody2D rb2d = player.gameObject.GetComponent<Rigidbody2D>();
+        
+        //Rigidbody2D rb2d = player.gameObject.GetComponent<Rigidbody2D>();
 
-        if (!rb2d.isKinematic)
-        {
-            rb2d.velocity = new Vector2(rb2d.velocity.x, impulso);
+        //if (!rb2d.isKinematic)
+        //{
+        //    rb2d.velocity = new Vector2(rb2d.velocity.x, impulso);
 
-            //anim.SetInteger("Estado", 3);
-        }
+        //    //anim.SetInteger("Estado", 3);
+        //}
     }
 }

@@ -9,9 +9,8 @@ public class Player : MonoBehaviour
     public enum MovementMode { OnGround, OnAir, OnClimbing };
     [HideInInspector]
     public MovementMode PlayerMode = MovementMode.OnAir;
-
-    [HideInInspector]
-    public Vector3 velocity;
+    
+    private Vector3 velocity;
     float velocityXSmoothing;
     float velocityYSmoothing;
 
@@ -31,6 +30,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     public InputDevice input;
 
+    [HideInInspector]
+    public static Player Instance;
+
     private void Awake()
     {
         input = InputManager.ActiveDevice;
@@ -38,6 +40,11 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        if (!Instance)
+            Instance = this;
+        else
+            Destroy(this.gameObject);
+
         if(!controller)
             controller = GetComponent<Controller2D>();
 
@@ -51,7 +58,6 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-
         if (!Dead && canMove)
         {
             switch (PlayerMode)
@@ -69,7 +75,8 @@ public class Player : MonoBehaviour
         }
 
         UpdateAnimations();
-        controller.Move(velocity * Time.deltaTime, crouch && input.Action1.WasPressed);
+        
+            controller.Move(velocity * Time.deltaTime, crouch && input.Action1.WasPressed);
     }
 
     #region OnGround
@@ -230,6 +237,9 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (controller.collisions.above)
+            speedToUse.y = 0;
+
         velocity = speedToUse;
 
         if (controller.collisions.below)
@@ -318,6 +328,23 @@ public class Player : MonoBehaviour
         transform.localScale = theScale;
     }
     #endregion
+
+    /// <summary>
+    /// Sobre escribe la velocidad del player.
+    /// </summary>
+    /// <param name="x"> Variable x de la velocidad, si es 0 se mantiene la anterior del personaje</param>
+    /// <param name="y"> Variable y de la velocidad, si es 0 se mantiene la anterior del personaje</param>
+    public void addSpeed(float x = 0, float y = 0)
+    {
+        if (x != 0)
+            velocity.x = x;
+
+        if (y != 0)
+        {
+            velocity.y = y;
+            SetMovementAir();
+        }
+    }
 
     [System.Serializable]
     public class ClimbInfo

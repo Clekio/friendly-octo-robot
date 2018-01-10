@@ -7,10 +7,8 @@ public class Controller2D : RaycastController
 	public float maxSlopeAngle = 80;
 
 	public CollisionInfo collisions;
-	[HideInInspector]
-	public Vector2 playerInput;
 
-    private bool goDown = false;
+    protected bool goDown = false;
 
     private Rigidbody2D rb2d;
 
@@ -19,27 +17,25 @@ public class Controller2D : RaycastController
     [HideInInspector]
     public BoxController box;
 
-    public bool debug = true;
-
 	public override void Start() {
 		base.Start ();
 		collisions.faceDir = 1;
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    public void MovePlayer(Vector2 moveAmount, bool standingOnPlatform)
-    {
-        Move(moveAmount, false/*Vector2.zero*/, standingOnPlatform);
-    }
+    //public void MovePlayer(Vector2 moveAmount, bool standingOnPlatform)
+    //{
+    //    Move(moveAmount, false/*Vector2.zero*/, standingOnPlatform);
+    //}
 
-    public void Move(Vector2 moveAmount, bool down/*Vector2 input*/, bool standingOnPlatform = false)
+    public void Move(Vector2 moveAmount, bool down, bool standingOnPlatform = false)
     {
 		UpdateRaycastOrigins ();
 
-		collisions.Reset ();
-		collisions.moveAmountOld = moveAmount;
-        //playerInput = input;
         goDown = down;
+
+        collisions.Reset ();
+		collisions.moveAmountOld = moveAmount;
 
         if (box)
         {
@@ -61,7 +57,7 @@ public class Controller2D : RaycastController
 			collisions.faceDir = (int)Mathf.Sign(moveAmount.x);
 		}
 
-		HorizontalCollisions (ref moveAmount);
+        HorizontalCollisions (ref moveAmount);
 		if (moveAmount.y != 0) {
 			VerticalCollisions (ref moveAmount);
 		}
@@ -94,13 +90,16 @@ public class Controller2D : RaycastController
             rayOrigin += Vector2.up * (horizontalRaySpacing * i);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
 
-            if (debug)
-                Debug.DrawRay(rayOrigin, (Vector2.right * directionX) * rayLength, Color.red);
+            Debug.DrawRay(hit.point, hit.normal, Color.red);
+            Debug.DrawRay(hit.point, new Vector2(hit.normal.y, -hit.normal.x)*directionX, Color.blue);
+            Debug.DrawRay(rayOrigin, (Vector2.right * directionX) * rayLength, Color.green);
 
             if (hit)
             {
-                if (hit.distance == 0)
+                if (hit.distance <= 0)
+                {
                     continue;
+                }
 
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 
@@ -150,8 +149,10 @@ public class Controller2D : RaycastController
             rayOrigin += Vector2.right * (verticalRaySpacing * i + moveAmount.x);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
 
-            if (debug)
-                Debug.DrawRay(rayOrigin, (Vector2.up * directionY) * rayLength, Color.red);
+
+            Debug.DrawRay(hit.point, hit.normal, Color.red);
+            Debug.DrawRay(hit.point, new Vector2(hit.normal.y, -hit.normal.x) * directionY, Color.blue);
+            Debug.DrawRay(rayOrigin, (Vector2.right * directionY) * rayLength, Color.green);
 
             if (hit)
             {
@@ -165,7 +166,7 @@ public class Controller2D : RaycastController
                     {
                         continue;
                     }
-                    if (goDown)//playerInput.y == -1)
+                    if (goDown)
                     {
                         collisions.fallingThroughPlatform = true;
                         Invoke("ResetFallingThroughPlatform", .5f);
