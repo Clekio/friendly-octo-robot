@@ -19,7 +19,7 @@ public class Controller2D : RaycastController
     [HideInInspector]
     public BoxController box;
 
-    public bool debug = true;
+    //public bool debug = true;
 
 	public override void Start() {
 		base.Start ();
@@ -27,16 +27,19 @@ public class Controller2D : RaycastController
         rb2d = GetComponent<Rigidbody2D>();
     }
 
-    public void MovePlayer(Vector2 moveAmount, bool standingOnPlatform)
-    {
-        Move(moveAmount, false/*Vector2.zero*/, standingOnPlatform);
-    }
+    //public void MovePlayer(Vector2 moveAmount, bool standingOnPlatform)
+    //{
+    //    Move(moveAmount, false/*Vector2.zero*/, standingOnPlatform);
+    //}
 
-    public void Move(Vector2 moveAmount, bool down/*Vector2 input*/, bool standingOnPlatform = false)
+    //public void Move(Vector2 moveAmount, bool down/*Vector2 input*/, bool standingOnPlatform = false)
+    public void Move(Vector2 moveAmount, bool down, bool standingOnPlatform = false)
     {
 		UpdateRaycastOrigins ();
 
-		collisions.Reset ();
+        Vector2 moveAlogGround = new Vector2(collisions.slopeNormal.y, -collisions.slopeNormal.y);
+
+        collisions.Reset ();
 		collisions.moveAmountOld = moveAmount;
         //playerInput = input;
         goDown = down;
@@ -61,10 +64,10 @@ public class Controller2D : RaycastController
 			collisions.faceDir = (int)Mathf.Sign(moveAmount.x);
 		}
 
-		HorizontalCollisions (ref moveAmount);
-		if (moveAmount.y != 0) {
+        HorizontalCollisions (ref moveAmount);
+		//if (moveAmount.y != 0) {
 			VerticalCollisions (ref moveAmount);
-		}
+		//}
 
         //transform.Translate (moveAmount);
         rb2d.MovePosition(rb2d.position + moveAmount);
@@ -88,20 +91,29 @@ public class Controller2D : RaycastController
             rayLength = 2 * skinWidth;
         }
 
-        for (int i = 0; i < horizontalRayCount; i++)
-        {
-            Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
-            rayOrigin += Vector2.up * (horizontalRaySpacing * i);
-            RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
+        int contador = rb2d.Cast(Vector2.right * directionX, contactFilter, hitBuffer, rayLength);
 
-            if (debug)
-                Debug.DrawRay(rayOrigin, (Vector2.right * directionX) * rayLength, Color.red);
+        for (int i = 0; i < contador; i++)//(int i = 0; i < horizontalRayCount; i++)
+        {
+            //Vector2 rayOrigin = (directionX == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomRight;
+            //rayOrigin += Vector2.up * (horizontalRaySpacing * i);
+            //RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.right * directionX, rayLength, collisionMask);
+            RaycastHit2D hit = hitBuffer[i];
+
+            Debug.DrawRay(hit.point, hit.normal, Color.red);
+            Debug.DrawRay(hit.point, new Vector2(hit.normal.y, -hit.normal.x)*directionX, Color.blue);
+
+            //if (debug)
+            //    Debug.DrawRay(rayOrigin, (Vector2.right * directionX) * rayLength, Color.red);
 
             if (hit)
             {
-                if (hit.distance == 0)
+                if (hit.distance <= 0)
+                {
                     continue;
+                }
 
+                //moveAmount.x = new Vector2(hit.normal.y, -hit.normal.x) * moveAmount.x;
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
 
                 if (i == 0 && slopeAngle <= maxSlopeAngle)
@@ -123,6 +135,7 @@ public class Controller2D : RaycastController
 
                 if (!collisions.climbingSlope || slopeAngle > maxSlopeAngle)
                 {
+                    Debug.Log("escalando:" + !collisions.climbingSlope + " caer:" + (slopeAngle > maxSlopeAngle));
                     moveAmount.x = (hit.distance - skinWidth) * directionX;
                     rayLength = hit.distance;
 
@@ -150,8 +163,11 @@ public class Controller2D : RaycastController
             rayOrigin += Vector2.right * (verticalRaySpacing * i + moveAmount.x);
             RaycastHit2D hit = Physics2D.Raycast(rayOrigin, Vector2.up * directionY, rayLength, collisionMask);
 
-            if (debug)
-                Debug.DrawRay(rayOrigin, (Vector2.up * directionY) * rayLength, Color.red);
+
+            //Debug.DrawRay(hit.point, hit.normal, Color.red);
+            //Debug.DrawRay(hit.point, new Vector2(hit.normal.y, -hit.normal.x), Color.blue);
+            //if (debug)
+            //Debug.DrawRay(rayOrigin, (Vector2.up * directionY) * rayLength, Color.red);
 
             if (hit)
             {
@@ -198,7 +214,7 @@ public class Controller2D : RaycastController
                 float slopeAngle = Vector2.Angle(hit.normal, Vector2.up);
                 if (slopeAngle != collisions.slopeAngle)
                 {
-                    moveAmount.x = (hit.distance - skinWidth) * directionX;
+                    //moveAmount.x = (hit.distance - skinWidth) * directionX;
                     collisions.slopeAngle = slopeAngle;
                     collisions.slopeNormal = hit.normal;
                 }

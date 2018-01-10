@@ -5,8 +5,11 @@ using System.Collections.Generic;
 public class RaycastController : MonoBehaviour
 {
 	public LayerMask collisionMask;
-	
-	public const float skinWidth = .015f;
+    public ContactFilter2D contactFilter;
+    [HideInInspector]
+    protected RaycastHit2D[] hitBuffer = new RaycastHit2D[12];
+
+    public const float skinWidth = .015f;
     const float dstBetweenRays = .25f;
     [HideInInspector]
     public int horizontalRayCount;
@@ -20,10 +23,12 @@ public class RaycastController : MonoBehaviour
 
     [HideInInspector]
 	public BoxCollider2D collider;
+    protected Collider2D coll;
     public RaycastOrigins raycastOrigins;
 
     public virtual void Awake() {
 		collider = GetComponent<BoxCollider2D> ();
+        coll = GetComponent<Collider2D>();
 	}
 
 	public virtual void Start()

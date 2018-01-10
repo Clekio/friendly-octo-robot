@@ -51,7 +51,6 @@ public class Player : MonoBehaviour
 
     void FixedUpdate()
     {
-
         if (!Dead && canMove)
         {
             switch (PlayerMode)
@@ -69,6 +68,11 @@ public class Player : MonoBehaviour
         }
 
         UpdateAnimations();
+
+        Vector2 deltaPosition = velocity * Time.deltaTime;
+        Vector2 moveAlongGround = new Vector2(controller.collisions.slopeNormal.y, -controller.collisions.slopeNormal.x);
+        Vector2 move = moveAlongGround * deltaPosition.x;
+
         controller.Move(velocity * Time.deltaTime, crouch && input.Action1.WasPressed);
     }
 
