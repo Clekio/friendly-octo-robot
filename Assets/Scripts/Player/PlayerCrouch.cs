@@ -24,18 +24,17 @@ public class PlayerCrouch : MonoBehaviour
     private float crouchTime;
     private bool preFrameCoruch = false;
     private bool setRay = false;
-
-    [SerializeField]
+    
     private Vector2 standSize;
     [SerializeField]
     private Vector2 crouchSize;
+
     private Vector2 startSize;
     private Vector2 endSize;
-
-    [SerializeField]
+    
     private Vector2 standOffset;
-    [SerializeField]
     private Vector2 crouchOffset;
+
     private Vector2 startOffset;
     private Vector2 endOffset;
     
@@ -45,6 +44,12 @@ public class PlayerCrouch : MonoBehaviour
 
         endSize = playerColldier.size;
         endOffset = playerColldier.offset;
+
+        standSize = playerColldier.size;
+        standOffset = playerColldier.offset;
+
+        crouchOffset.x = standOffset.x;
+        crouchOffset.y = crouchSize.y / 2;
     }
 
     bool crouch = false;
@@ -113,6 +118,8 @@ public class PlayerCrouch : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Colors.LawnGreen;
-        Gizmos.DrawWireCube(transform.TransformPoint(standUp.position), standUp.size);
+        Gizmos.DrawWireCube(transform.TransformPoint(standUp.position), Vector3.Scale(standUp.size, transform.localScale));//standUp.size);
+        Gizmos.color = Colors.Green;
+        Gizmos.DrawWireCube(transform.TransformPoint(new Vector2(0, crouchSize.y / 2)), Vector3.Scale(crouchSize, transform.localScale));
     }
 }
