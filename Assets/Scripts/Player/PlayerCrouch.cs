@@ -8,9 +8,26 @@ public class PlayerCrouch : MonoBehaviour
     Player player;
 
     [SerializeField]
-    private Rect standUp;
-    [SerializeField]
-    private LayerMask Ground;
+    private Rect _standCollider;
+
+    /// <value> StandCollider property gets/sets the value of the rect field, _standCollider</value>
+    public Rect StandCollider
+    {
+        get
+        {
+            Rect r = _standCollider;
+
+            r.position = transform.TransformPoint(r.position);
+            //r.size = Vector2.Scale(_grabCollider.size, transform.localScale);
+            r.size = new Vector2(Mathf.Abs(r.size.x * transform.localScale.x), Mathf.Abs(r.size.y * transform.localScale.y));
+
+            return r;
+        }
+
+        set { _standCollider = value; }
+    }
+    
+    public LayerMask collisionMask;
 
     [Space]
     [SerializeField]
@@ -107,8 +124,8 @@ public class PlayerCrouch : MonoBehaviour
             c = true;
         else if (c)
         {
-            Collider2D coll = Physics2D.OverlapBox(transform.TransformPoint(standUp.position), standUp.size / 2, Ground);
-            if (coll == null || coll.CompareTag("Through"))
+            Collider2D coll = Physics2D.OverlapBox(StandCollider.position, StandCollider.size, 0, collisionMask);
+            if (!coll || coll.CompareTag("Through"))
                 c = false;
         }
 
@@ -118,7 +135,8 @@ public class PlayerCrouch : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Colors.LawnGreen;
-        Gizmos.DrawWireCube(transform.TransformPoint(standUp.position), Vector3.Scale(standUp.size, transform.localScale));//standUp.size);
+        //Gizmos.DrawWireCube(transform.TransformPoint(standUp.position), Vector3.Scale(standUp.size, transform.localScale));//standUp.size);
+        Gizmos.DrawWireCube(StandCollider.position, StandCollider.size);
         Gizmos.color = Colors.Green;
         Gizmos.DrawWireCube(transform.TransformPoint(new Vector2(0, crouchSize.y / 2)), Vector3.Scale(crouchSize, transform.localScale));
     }
