@@ -5,7 +5,7 @@ using UnityEngine;
 public class Scr_RamaJoven : MonoBehaviour
 {
     [SerializeField]
-    int impulso;      // Fuerza con la que se impulsa al jugador
+    int impulso = 35;      // Fuerza con la que se impulsa al jugador
 
     Animator anim;
     GameObject player;
