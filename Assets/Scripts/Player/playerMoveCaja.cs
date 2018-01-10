@@ -34,7 +34,7 @@ public class playerMoveCaja : MonoBehaviour
         {
             float _dis = maxDistance * Mathf.Abs(transform.localScale.x);
             Vector3 _pos = transform.position + Vector3.up;
-            if (player.input.Action4.WasReleased || Vector3.Distance(controller.box.transform.position, _pos) > _dis)
+            if (player.input.Action4.WasReleased || Mathf.Abs(Vector3.Distance(controller.box.transform.position, _pos)) > _dis)
             {
                 Debug.Log("Player Input: " + player.input.Action4.WasReleased);
                 Debug.Log("Distance: " + (Vector3.Distance(controller.box.transform.position, _pos) > _dis));
