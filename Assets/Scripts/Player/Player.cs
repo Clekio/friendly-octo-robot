@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
         secondJumpSpeed = Mathf.Sqrt(2 * Mathf.Abs(gravityOnGround) * secondJumpHeight);
     }
 
-    void FixedUpdate()
+    void Update()
     {
         if (!Dead && canMove)
         {
