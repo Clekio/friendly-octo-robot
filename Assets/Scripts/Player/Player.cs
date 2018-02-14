@@ -221,16 +221,16 @@ public class Player : MonoBehaviour
 
         if (tieneParaguas)
         {
-            if (input.Action1.IsPressed && velocity.y < 0)
+            if ((input.Action1.IsPressed || input.Direction.Up.IsPressed) && velocity.y < 0)
             {
                 speedToUse.y = Mathf.SmoothDamp(velocity.y, yGlideSpeed, ref velocityYSmoothing, yGlideTime);
                 planeando = true;
                 //anim.SetBool("planeando", planeo);
             }
-            else if (planeando && input.Action1.WasReleased)
+            else if (planeando && (input.Action1.WasReleased || input.Direction.Up.WasReleased))
                 Invoke("ResetPlaneo", timeToSecondJump);
 
-            if (input.Action1.WasPressed && canSecondJump && planeando)
+            if ((input.Action1.WasPressed || input.Direction.Up.WasPressed) && canSecondJump && planeando)
             {
                 speedToUse.y = secondJumpSpeed;
                 canSecondJump = false;
