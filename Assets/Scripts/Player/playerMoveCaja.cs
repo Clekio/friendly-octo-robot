@@ -39,12 +39,12 @@ public class playerMoveCaja : MonoBehaviour
     
     void Update ()
     {
-        if (player.input.Action4.WasPressed)
+        if (player.input.Action3.WasPressed)
         {
             Collider2D hit = Physics2D.OverlapBox(GrabCollider.position, GrabCollider.size, 0, collisionMask);
             if (hit)
             {
-                Debug.Log("Hay caja");
+                //Debug.Log("Hay caja");
                 controller.box = hit.GetComponent<BoxController>();
             }
         }
@@ -52,12 +52,12 @@ public class playerMoveCaja : MonoBehaviour
         {
             float _dis = maxDistance * Mathf.Abs(transform.localScale.x);
             Vector3 _pos = transform.position + (Vector3.up / 2);
-            if (player.input.Action4.WasReleased || Mathf.Abs(Vector3.Distance(controller.box.transform.position, _pos)) > _dis)
+            if (player.input.Action3.WasReleased || Mathf.Abs(Vector3.Distance(controller.box.transform.position, _pos)) > _dis)
             {
-                Debug.Log("Player Input: " + player.input.Action4.WasReleased);
-                Debug.Log("Distance: " + (Vector3.Distance(controller.box.transform.position, _pos) > _dis));
-                Debug.Log("Max Distance: " + _dis);
-                Debug.Log("obj Distance: " + Vector3.Distance(controller.box.transform.position, _pos));
+                //Debug.Log("Player Input: " + player.input.Action4.WasReleased);
+                //Debug.Log("Distance: " + (Vector3.Distance(controller.box.transform.position, _pos) > _dis));
+                //Debug.Log("Max Distance: " + _dis);
+                //Debug.Log("obj Distance: " + Vector3.Distance(controller.box.transform.position, _pos));
                 controller.box = null;
             }
         }
