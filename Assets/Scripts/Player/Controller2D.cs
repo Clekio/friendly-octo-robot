@@ -169,7 +169,7 @@ public class Controller2D : RaycastController
                     if (goDown)
                     {
                         collisions.fallingThroughPlatform = true;
-                        Invoke("ResetFallingThroughPlatform", .5f);
+                        Invoke("ResetFallingThroughPlatform", .15f);
                         continue;
                     }
                 }
