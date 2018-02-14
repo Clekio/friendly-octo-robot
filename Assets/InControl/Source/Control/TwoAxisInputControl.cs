@@ -19,7 +19,7 @@ namespace InControl
 		bool thisState;
 		bool lastState;
 
-		public static float StateThreshold = 0.0f;
+		public static float StateThreshold = 0.7f;
 
 
 		internal TwoAxisInputControl()

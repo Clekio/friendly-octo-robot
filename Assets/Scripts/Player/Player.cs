@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravityOnGround) * minJumpHeight);
         secondJumpSpeed = Mathf.Sqrt(2 * Mathf.Abs(gravityOnGround) * secondJumpHeight);
     }
-
+    
     void Update()
     {
         if (!Dead && canMove)
@@ -75,8 +75,8 @@ public class Player : MonoBehaviour
         }
 
         UpdateAnimations();
-        
-            controller.Move(velocity * Time.deltaTime, crouch && input.Action1.WasPressed);
+
+        controller.Move(velocity * Time.deltaTime, crouch);// && input.Action1.WasPressed);
     }
 
     #region OnGround
@@ -119,7 +119,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (input.Action1.WasPressed && controller.collisions.below && !crouch)
+        if ((input.Action1.WasPressed || input.Direction.Up) && controller.collisions.below && !crouch)
         {
             if (controller.collisions.slidingDownMaxSlope)
             {
@@ -143,7 +143,7 @@ public class Player : MonoBehaviour
         if (!controller.collisions.below)
             SetMovementAir();
 
-        if (input.Direction.Raw.y != 0/*Mathf.Abs(input.Vertical()) > 0.5f*/ && !PlayerClimbInfo.empty && !crouch)
+        if (input.Direction.Down && !PlayerClimbInfo.empty && !crouch)
             SetMovementClimb();
 
         velocity = speedToUse;
@@ -221,16 +221,16 @@ public class Player : MonoBehaviour
 
         if (tieneParaguas)
         {
-            if (input.Action1.IsPressed && velocity.y < 0)
+            if ((input.Action1.IsPressed || input.Direction.Up.IsPressed) && velocity.y < 0)
             {
                 speedToUse.y = Mathf.SmoothDamp(velocity.y, yGlideSpeed, ref velocityYSmoothing, yGlideTime);
                 planeando = true;
                 //anim.SetBool("planeando", planeo);
             }
-            else if (planeando && input.Action1.WasReleased)
+            else if (planeando && (input.Action1.WasReleased || input.Direction.Up.WasReleased))
                 Invoke("ResetPlaneo", timeToSecondJump);
 
-            if (input.Action1.WasPressed && canSecondJump && planeando)
+            if ((input.Action1.WasPressed || input.Direction.Up.WasPressed) && canSecondJump && planeando)
             {
                 speedToUse.y = secondJumpSpeed;
                 canSecondJump = false;

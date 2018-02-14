@@ -120,7 +120,7 @@ public class PlayerCrouch : MonoBehaviour
     {
         if (player.PlayerMode == Player.MovementMode.OnAir)
             c = false;
-        else if (player.input.Direction.Down)
+        else if (player.input.Direction.Down)//player.input.Direction.Y < -0.7f)
             c = true;
         else if (c)
         {
