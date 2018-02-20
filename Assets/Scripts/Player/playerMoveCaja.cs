@@ -46,6 +46,7 @@ public class playerMoveCaja : MonoBehaviour
             {
                 //Debug.Log("Hay caja");
                 controller.box = hit.GetComponent<BoxController>();
+                controller.box.moving = true;
             }
         }
         if (controller.box)
@@ -58,6 +59,7 @@ public class playerMoveCaja : MonoBehaviour
                 //Debug.Log("Distance: " + (Vector3.Distance(controller.box.transform.position, _pos) > _dis));
                 //Debug.Log("Max Distance: " + _dis);
                 //Debug.Log("obj Distance: " + Vector3.Distance(controller.box.transform.position, _pos));
+                controller.box.moving = false;
                 controller.box = null;
             }
         }
