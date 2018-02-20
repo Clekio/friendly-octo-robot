@@ -19,6 +19,8 @@ public class BoxController : RaycastController
 
     public bool debug = false;
 
+    public bool moving; // Hacer que esta variable sea true cuando el jugador toque el objeto y false cuando no
+
     public override void Start()
     {
         base.Start();
