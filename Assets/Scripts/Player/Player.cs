@@ -305,11 +305,14 @@ public class Player : MonoBehaviour
     private bool m_FacingRight = false; 
     private void UpdateAnimations()
     {
-        anim.SetBool("crouch", crouch);
-        anim.SetFloat("velocityX", velocity.x);
-        anim.SetBool("golpePurificante", input.Action2.WasPressed);
-        anim.SetBool("planeando", planeando);
-        anim.SetBool("grounded", controller.collisions.below);
+        //anim.SetBool("crouch", crouch);
+        //anim.SetFloat("velocityX", velocity.x);
+        //anim.SetBool("golpePurificante", input.Action2.WasPressed);
+        //anim.SetBool("planeando", planeando);
+        //anim.SetBool("grounded", controller.collisions.below);
+
+        anim.SetBool("Move", Mathf.Abs(velocity.x) > 0.5);
+        anim.SetFloat("Speed", Mathf.Abs(velocity.x)/4);
 
         if (velocity.x > 0 && !m_FacingRight)
             Flip();

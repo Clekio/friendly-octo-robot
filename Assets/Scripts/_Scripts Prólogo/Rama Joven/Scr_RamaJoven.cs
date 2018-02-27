@@ -7,8 +7,7 @@ public class Scr_RamaJoven : MonoBehaviour
     [SerializeField]
     int impulso = 35;      // Fuerza con la que se impulsa al jugador
 
-    Animator anim;
-    GameObject player;
+    public Animator anim;
 
     [SerializeField]
     private Rect trigger;
@@ -17,16 +16,13 @@ public class Scr_RamaJoven : MonoBehaviour
 
     private void Start()
     {
-        player = GameObject.Find("Aura");
-        
-        anim = gameObject.GetComponentInParent<Animator>();
     }
 
     private void Update()
     {
         estado = gameObject.GetComponentInChildren<Scr_DetectorRamaJoven>().estado;
 
-        //anim.SetInteger("Estado", estado);
+        anim.SetInteger("Estado", estado);
 
         if (estado == 3)
         {
