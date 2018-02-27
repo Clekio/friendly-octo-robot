@@ -14,6 +14,7 @@ public class Scr_ResetPosition : MonoBehaviour
     private void Awake()
     {
         startPosition = GetComponent<Transform>().position;
+        boxController = GetComponent<BoxController>();
     }
 
     private void Update()
@@ -27,7 +28,7 @@ public class Scr_ResetPosition : MonoBehaviour
             ResetTimer(timeToReset);
         }
 
-        if (startPosition.y < (startPosition.y - checkDistance))
+        if (transform.position.y < (startPosition.y - checkDistance))
         {
             timerRunning = true;
         }
