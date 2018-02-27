@@ -13,6 +13,9 @@ public class Scr_PlataformaTiempo : MonoBehaviour
     [SerializeField]
     int timeToSpawn;
 
+    public Animator anim;
+    public Collider2D coll;
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player" && doBreak == true)
@@ -23,14 +26,14 @@ public class Scr_PlataformaTiempo : MonoBehaviour
 
     void DisablePlatform()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
-        gameObject.GetComponent<BoxCollider2D>().enabled = false;
+        coll.enabled = false;
+        anim.SetBool("Activo", false);
         Invoke("EnablePlatform", timeToSpawn);
     }
 
     void EnablePlatform()
     {
-        gameObject.GetComponent<MeshRenderer>().enabled = true;
-        gameObject.GetComponent<BoxCollider2D>().enabled = true;
+        coll.enabled = true;
+        anim.SetBool("Activo", true);
     }
 }
