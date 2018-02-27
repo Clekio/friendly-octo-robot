@@ -53,7 +53,7 @@ namespace CustomProfile
                 new InputControlMapping
                 {
                     Handle = "Accion",
-                    Target = InputControlType.RightBumper,
+                    Target = InputControlType.RightTrigger,
                     Source = KeyCodeButton( KeyCode.LeftControl, KeyCode.RightControl)
                 },
             };

@@ -2434,6 +2434,26 @@ Prefab:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114098096130219826, guid: 8bb1265266f77e94daf040841cb388de,
+        type: 2}
+      propertyPath: groundSpeed
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114098096130219826, guid: 8bb1265266f77e94daf040841cb388de,
+        type: 2}
+      propertyPath: crouchedSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114098096130219826, guid: 8bb1265266f77e94daf040841cb388de,
+        type: 2}
+      propertyPath: timeCrouch
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114098096130219826, guid: 8bb1265266f77e94daf040841cb388de,
+        type: 2}
+      propertyPath: airSpeed
+      value: 4.8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8bb1265266f77e94daf040841cb388de, type: 2}
   m_IsPrefabParent: 0
