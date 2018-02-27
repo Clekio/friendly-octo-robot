@@ -26,6 +26,7 @@ public class Scr_RamaJoven : MonoBehaviour
 
         if (estado == 3)
         {
+            Debug.Log(estado);
             Player.Instance.addSpeed(0, impulso);
             //Lanzamiento();
         }
