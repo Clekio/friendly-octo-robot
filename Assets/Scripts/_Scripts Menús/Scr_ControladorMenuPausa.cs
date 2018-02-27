@@ -20,7 +20,7 @@ public class Scr_ControladorMenuPausa : MonoBehaviour
 
     private void Update()
     {
-        if (input.MenuWasPressed)//Input.GetKeyDown(KeyCode.Joystick1Button7))
+        if (input.MenuWasPressed || Input.GetKeyDown(KeyCode.Escape)) //Input.GetKeyDown(KeyCode.Joystick1Button7))
         {
             if (GameIsPaused)
             {
