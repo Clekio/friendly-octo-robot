@@ -28,3 +28,4 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Anima2D/Lib/Editor/x64/Anima2D.dll
