@@ -2,16 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using InControl;
 
 public class Scr_ControladorMenuPausa : MonoBehaviour
 {
     [SerializeField] GameObject pauseMenu;
 
+    [SerializeField]
+    public InputDevice input;
+
     public static bool GameIsPaused = false;
+
+    private void Awake()
+    {
+        input = InputManager.ActiveDevice;
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Joystick1Button7))
+        if (input.MenuWasPressed)//Input.GetKeyDown(KeyCode.Joystick1Button7))
         {
             if (GameIsPaused)
             {
