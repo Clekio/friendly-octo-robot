@@ -76,7 +76,9 @@ public class Player : MonoBehaviour
 
         UpdateAnimations();
 
-        controller.Move(velocity * Time.deltaTime, crouch);// && input.Action1.WasPressed);
+        controller.Move(velocity * Time.deltaTime, crouch && input.Action1.WasPressed);
+
+        Debug.Log(input.Direction.Down == true);
     }
 
     #region OnGround
@@ -130,7 +132,7 @@ public class Player : MonoBehaviour
                     speedToUse.y = maxJumpVelocity * controller.collisions.slopeNormal.y;
                 }
             }
-            else
+            else if (!input.Direction.Down)
             {
                 SetMovementAir();
                 speedToUse.y = maxJumpVelocity;
@@ -275,7 +277,7 @@ public class Player : MonoBehaviour
     public ClimbInfo PlayerClimbInfo;
     private void UpdateClimb()
     {
-        if (input.Action1.IsPressed)
+        if (input.Action1.WasPressed)
         {
             SetMovementAir();
             velocity.y = minJumpVelocity;
