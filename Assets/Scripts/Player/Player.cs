@@ -11,8 +11,11 @@ public class Player : MonoBehaviour
     public MovementMode PlayerMode = MovementMode.OnAir;
     
     private Vector3 velocity;
+    private Vector3 newVelocity;
     float velocityXSmoothing;
     float velocityYSmoothing;
+
+    private bool overrrideVelocity = false;
 
     Vector2 directionalInput;
 
@@ -76,9 +79,22 @@ public class Player : MonoBehaviour
 
         UpdateAnimations();
 
-        controller.Move(velocity * Time.deltaTime, crouch && input.Action1.WasPressed);
+        //if (overrrideVelocity)
+        //{
+        //    overrrideVelocity = false;
+        //    Debug.Log(newVelocity);
+        //    controller.Move(newVelocity, crouch && input.Action1.WasPressed);
+        //}
+        //else
 
-        Debug.Log(input.Direction.Down == true);
+        if (overrrideVelocity)
+        {
+            velocity = newVelocity;
+            overrrideVelocity = false;
+            SetMovementAir();
+        }
+
+        controller.Move(velocity * Time.deltaTime, crouch && input.Action1.WasPressed);
     }
 
     #region OnGround
@@ -242,13 +258,13 @@ public class Player : MonoBehaviour
         if (controller.collisions.above)
             speedToUse.y = 0;
 
-        velocity = speedToUse;
-
-        if (controller.collisions.below)
+        if (controller.collisions.below && !overrrideVelocity)
             SetMovementGround();
 
         if (input.Direction.Raw.y != 0/*Mathf.Abs(input.Vertical()) > 0.5f*/ && !PlayerClimbInfo.empty)
             SetMovementClimb();
+
+        velocity = speedToUse;
     }
 
     public void SetMovementAir()
@@ -335,20 +351,17 @@ public class Player : MonoBehaviour
     #endregion
 
     /// <summary>
-    /// Sobre escribe la velocidad del player.
+    /// Sobreescribe la velocidad del player.
     /// </summary>
     /// <param name="x"> Variable x de la velocidad, si es 0 se mantiene la anterior del personaje</param>
     /// <param name="y"> Variable y de la velocidad, si es 0 se mantiene la anterior del personaje</param>
     public void addSpeed(float x = 0, float y = 0)
     {
-        if (x != 0)
-            velocity.x = x;
+        newVelocity.x = (x == 0) ? velocity.x : x;
 
-        if (y != 0)
-        {
-            velocity.y = y;
-            SetMovementAir();
-        }
+        newVelocity.y = (y == 0) ? velocity.y : y;
+
+        overrrideVelocity = true;
     }
 
     [System.Serializable]
