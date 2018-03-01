@@ -6,7 +6,10 @@ public class Controller2D : RaycastController
 
 	public float maxSlopeAngle = 80;
 
-	public CollisionInfo collisions;
+    [Range(0,1)][Tooltip("Timepo que el jugador no colisiona con palataformas")]
+    public float TimeThroughPlatform = 0.1f;
+
+    public CollisionInfo collisions;
 
     protected bool goDown = false;
 
@@ -169,7 +172,7 @@ public class Controller2D : RaycastController
                     if (goDown)
                     {
                         collisions.fallingThroughPlatform = true;
-                        Invoke("ResetFallingThroughPlatform", .15f);
+                        Invoke("ResetFallingThroughPlatform", TimeThroughPlatform);
                         continue;
                     }
                 }
