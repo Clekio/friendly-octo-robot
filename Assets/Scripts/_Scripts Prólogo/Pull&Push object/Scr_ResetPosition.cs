@@ -7,7 +7,7 @@ public class Scr_ResetPosition : MonoBehaviour
     [SerializeField] int checkDistance; // Distancia en el eje vertical límite para el ojbeto antes de retornar a su posición inicial
     [SerializeField] float timeToReset; // Tiempo que está el objeto incativo antes de volver a su posición inical
     Vector3 startPosition;
-    float timer;
+    float timer = 10;
     bool timerRunning;
     BoxController boxController;
 
