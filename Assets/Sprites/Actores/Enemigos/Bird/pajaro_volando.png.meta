@@ -1,0 +1,223 @@
+fileFormatVersion: 2
+guid: fc0c224b878d40f4988e85ab14eee5fa
+timeCreated: 1520761845
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: pajaro_volando_0
+    21300002: pajaro_volando_1
+    21300004: pajaro_volando_2
+    21300006: pajaro_volando_3
+    21300008: pajaro_volando_4
+    21300010: pajaro_volando_5
+    21300012: pajaro_volando_7
+    21300014: pajaro_volando_6
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pajaro_volando_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 131
+        width: 548
+        height: 301
+      alignment: 9
+      pivot: {x: 0.74291056, y: 0.83818537}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pajaro_volando_1
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 71
+        width: 546
+        height: 423
+      alignment: 9
+      pivot: {x: 0.7222885, y: 0.8887381}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pajaro_volando_2
+      rect:
+        serializedVersion: 2
+        x: 1108
+        y: 84
+        width: 517
+        height: 399
+      alignment: 9
+      pivot: {x: 0.72718465, y: 0.8630587}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pajaro_volando_3
+      rect:
+        serializedVersion: 2
+        x: 1621
+        y: 114
+        width: 532
+        height: 337
+      alignment: 9
+      pivot: {x: 0.7502159, y: 0.8601472}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pajaro_volando_4
+      rect:
+        serializedVersion: 2
+        x: 2149
+        y: 133
+        width: 520
+        height: 299
+      alignment: 9
+      pivot: {x: 0.74093205, y: 0.5654708}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pajaro_volando_5
+      rect:
+        serializedVersion: 2
+        x: 2665
+        y: 0
+        width: 532
+        height: 565
+      alignment: 9
+      pivot: {x: 0.7386998, y: 0.20032263}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pajaro_volando_7
+      rect:
+        serializedVersion: 2
+        x: 3765
+        y: 167
+        width: 578
+        height: 233
+      alignment: 9
+      pivot: {x: 0.7404177, y: 0.39475286}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pajaro_volando_6
+      rect:
+        serializedVersion: 2
+        x: 3197
+        y: 43
+        width: 576
+        height: 481
+      alignment: 9
+      pivot: {x: 0.7377048, y: 0.23659047}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

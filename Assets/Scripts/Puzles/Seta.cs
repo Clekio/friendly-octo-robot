@@ -8,7 +8,8 @@ public class Seta : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            Player.Instance.addSpeed(0, FuerzaDelImpulso);
+            Vector2 speed = transform.up * FuerzaDelImpulso;
+            Player.Instance.addSpeed(speed.x, speed.y);
         }
     }
 }

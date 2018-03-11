@@ -1,0 +1,223 @@
+fileFormatVersion: 2
+guid: 7007fb0b9550ce942895e76b4df72a65
+timeCreated: 1520760801
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: pajaro_Ataque_0
+    21300002: pajaro_Ataque_1
+    21300004: pajaro_Ataque_2
+    21300006: pajaro_Ataque_3
+    21300008: pajaro_Ataque_4
+    21300010: pajaro_Ataque_5
+    21300012: pajaro_Ataque_6
+    21300014: pajaro_Ataque_7
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pajaro_Ataque_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 62
+        width: 406
+        height: 401
+      alignment: 9
+      pivot: {x: 0.64669085, y: 0.4504935}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pajaro_Ataque_1
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 22
+        width: 360
+        height: 481
+      alignment: 9
+      pivot: {x: 0.63234764, y: 0.40920022}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pajaro_Ataque_2
+      rect:
+        serializedVersion: 2
+        x: 758
+        y: 67
+        width: 303
+        height: 393
+      alignment: 9
+      pivot: {x: 0.63103706, y: 0.40907425}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pajaro_Ataque_3
+      rect:
+        serializedVersion: 2
+        x: 1057
+        y: 32
+        width: 477
+        height: 461
+      alignment: 9
+      pivot: {x: 0.7247414, y: 0.38803568}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pajaro_Ataque_4
+      rect:
+        serializedVersion: 2
+        x: 1531
+        y: 0
+        width: 377
+        height: 525
+      alignment: 9
+      pivot: {x: 0.65797484, y: 0.447061}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pajaro_Ataque_5
+      rect:
+        serializedVersion: 2
+        x: 1904
+        y: 103
+        width: 593
+        height: 319
+      alignment: 9
+      pivot: {x: 0.5200862, y: 0.5995722}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pajaro_Ataque_6
+      rect:
+        serializedVersion: 2
+        x: 2493
+        y: 67
+        width: 465
+        height: 391
+      alignment: 9
+      pivot: {x: 0.70492536, y: 0.3984546}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: pajaro_Ataque_7
+      rect:
+        serializedVersion: 2
+        x: 2957
+        y: 78
+        width: 427
+        height: 370
+      alignment: 9
+      pivot: {x: 0.6859683, y: 0.31757474}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
