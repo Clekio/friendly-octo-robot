@@ -12,7 +12,7 @@ public class BoxController : RaycastController
 
     //private Rigidbody2D rb2d;
 
-    float gravity = -50;
+    public float gravity = -50;
 
     [HideInInspector]
     public Vector3 velocity;

@@ -3198,6 +3198,8 @@ MonoBehaviour:
   infiniteResets: 0
   trigger: {fileID: 0}
   ManualReset: 0
+  speed: 0
+  delay: 0
   timeAfterExit: 0
   resetIfEnter: 0
   timeAfterEnter: 0
@@ -3227,6 +3229,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   maxSlopeAngle: 25
   playerInput: {x: 0, y: 0}
+  gravity: -50
   velocity: {x: 0, y: 0, z: 0}
   debug: 0
   moving: 0
@@ -9569,12 +9572,12 @@ Prefab:
     - target: {fileID: 224006115358307222, guid: 6d57d7586923d4046a78dc41e478fdc7,
         type: 2}
       propertyPath: m_LocalPosition.x
-      value: 163.5
+      value: 191
       objectReference: {fileID: 0}
     - target: {fileID: 224006115358307222, guid: 6d57d7586923d4046a78dc41e478fdc7,
         type: 2}
       propertyPath: m_LocalPosition.y
-      value: 92
+      value: 107.5
       objectReference: {fileID: 0}
     - target: {fileID: 224006115358307222, guid: 6d57d7586923d4046a78dc41e478fdc7,
         type: 2}
@@ -10444,6 +10447,8 @@ MonoBehaviour:
   infiniteResets: 0
   trigger: {fileID: 0}
   ManualReset: 0
+  speed: 0
+  delay: 0
   timeAfterExit: 0
   resetIfEnter: 0
   timeAfterEnter: 0
@@ -10473,6 +10478,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   maxSlopeAngle: 25
   playerInput: {x: 0, y: 0}
+  gravity: -50
   velocity: {x: 0, y: 0, z: 0}
   debug: 0
   moving: 0
@@ -12011,6 +12017,8 @@ MonoBehaviour:
   infiniteResets: 0
   trigger: {fileID: 0}
   ManualReset: 0
+  speed: 0
+  delay: 0
   timeAfterExit: 0
   resetIfEnter: 0
   timeAfterEnter: 0
@@ -12040,6 +12048,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   maxSlopeAngle: 25
   playerInput: {x: 0, y: 0}
+  gravity: -50
   velocity: {x: 0, y: 0, z: 0}
   debug: 0
   moving: 0
@@ -13913,7 +13922,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 842905997}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -119.50226, y: -59.79577, z: -7.25}
+  m_LocalPosition: {x: -119.50284, y: -59.79577, z: -7.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 185780555}
@@ -16811,7 +16820,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1052419513}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -119.50226, y: -59.79577, z: -7.25}
+  m_LocalPosition: {x: -119.50284, y: -59.79577, z: -7.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1410430976}
@@ -17362,6 +17371,8 @@ MonoBehaviour:
   infiniteResets: 0
   trigger: {fileID: 0}
   ManualReset: 0
+  speed: 0
+  delay: 0
   timeAfterExit: 0
   resetIfEnter: 0
   timeAfterEnter: 0
@@ -17391,6 +17402,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   maxSlopeAngle: 25
   playerInput: {x: 0, y: 0}
+  gravity: -50
   velocity: {x: 0, y: 0, z: 0}
   debug: 0
   moving: 0
@@ -18447,6 +18459,8 @@ MonoBehaviour:
   infiniteResets: 0
   trigger: {fileID: 0}
   ManualReset: 0
+  speed: 0
+  delay: 0
   timeAfterExit: 0
   resetIfEnter: 0
   timeAfterEnter: 0
@@ -18476,6 +18490,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   maxSlopeAngle: 25
   playerInput: {x: 0, y: 0}
+  gravity: -50
   velocity: {x: 0, y: 0, z: 0}
   debug: 0
   moving: 0
@@ -19749,6 +19764,8 @@ MonoBehaviour:
   infiniteResets: 0
   trigger: {fileID: 0}
   ManualReset: 0
+  speed: 0
+  delay: 0
   timeAfterExit: 0
   resetIfEnter: 0
   timeAfterEnter: 0
@@ -19778,6 +19795,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   maxSlopeAngle: 25
   playerInput: {x: 0, y: 0}
+  gravity: -50
   velocity: {x: 0, y: 0, z: 0}
   debug: 0
   moving: 0
@@ -20307,21 +20325,6 @@ Prefab:
       propertyPath: trigger
       value: 
       objectReference: {fileID: 321126672}
-    - target: {fileID: 114236511425522778, guid: cb2017a0fb5c85649886e4c088860f7b,
-        type: 2}
-      propertyPath: timeAfterEnter
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114236511425522778, guid: cb2017a0fb5c85649886e4c088860f7b,
-        type: 2}
-      propertyPath: resetIfExit
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114236511425522778, guid: cb2017a0fb5c85649886e4c088860f7b,
-        type: 2}
-      propertyPath: resetMode
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
   m_IsPrefabParent: 0
@@ -23441,6 +23444,8 @@ MonoBehaviour:
   infiniteResets: 0
   trigger: {fileID: 0}
   ManualReset: 0
+  speed: 0
+  delay: 0
   timeAfterExit: 0
   resetIfEnter: 0
   timeAfterEnter: 0
@@ -23470,6 +23475,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   maxSlopeAngle: 25
   playerInput: {x: 0, y: 0}
+  gravity: -50
   velocity: {x: 0, y: 0, z: 0}
   debug: 0
   moving: 0
@@ -27044,6 +27050,8 @@ MonoBehaviour:
   infiniteResets: 0
   trigger: {fileID: 0}
   ManualReset: 0
+  speed: 0
+  delay: 0
   timeAfterExit: 0
   resetIfEnter: 0
   timeAfterEnter: 0
@@ -27073,6 +27081,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   maxSlopeAngle: 25
   playerInput: {x: 0, y: 0}
+  gravity: -50
   velocity: {x: 0, y: 0, z: 0}
   debug: 0
   moving: 0
@@ -29030,6 +29039,8 @@ MonoBehaviour:
   infiniteResets: 0
   trigger: {fileID: 0}
   ManualReset: 0
+  speed: 0
+  delay: 0
   timeAfterExit: 0
   resetIfEnter: 0
   timeAfterEnter: 0
@@ -29059,6 +29070,7 @@ MonoBehaviour:
   collider: {fileID: 0}
   maxSlopeAngle: 25
   playerInput: {x: 0, y: 0}
+  gravity: -50
   velocity: {x: 0, y: 0, z: 0}
   debug: 0
   moving: 0

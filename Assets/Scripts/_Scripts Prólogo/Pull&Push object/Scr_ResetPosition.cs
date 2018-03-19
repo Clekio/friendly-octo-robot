@@ -20,6 +20,11 @@ public class Scr_ResetPosition : MonoBehaviour
     bool resetDone;                 // Se hace true una vez se ha hecho un reset
     float initialTime;              // Guarda el tiempo de reset original para cualquiera de los modos que admite una variable de tiempo
     bool startTime;                 // Se hace true una vez el jugador ha movido la caja por primera vez
+    BoxCollider2D colliderCaja;     // Collider del objeto
+    ParticleSystem trail;           // Sistema de partículas retorno de la caja
+    bool moving;                    // Se hace true durante el retorno del objeto a su posición inicial
+    SpriteRenderer sprite;          // Sprite de la caja que está en un objeto hijo
+    float distance;                 // Distancia entre la posición actual y la incial
 
     [Header("Select Reset Mode")]
     [Tooltip("Solo se tendrán en cuenta los parámetros que afecten al modo activo")]
@@ -32,6 +37,10 @@ public class Scr_ResetPosition : MonoBehaviour
     [SerializeField] GameObject trigger;
     [Tooltip("Con la tecla Ñ se hace un reset automático para las rondas de testeo en caso de error")]
     [SerializeField] bool ManualReset;
+    [Tooltip("Velocidad de vuelta del objeto a su posición inicial")]
+    [SerializeField] float speed;
+    [Tooltip("Tiempo que tarda en empezar la vuelta una vez se ha producido el reset")]
+    [SerializeField] float delay;
 
     [Header("Custom Parameters: Exit Trigger Mode")]
     [Tooltip("Tiempo que tarda en hacer el reset una vez se sale del trigger")]
@@ -68,6 +77,10 @@ public class Scr_ResetPosition : MonoBehaviour
         boxTrigger = trigger.GetComponent<Scr_BoxTrigger>();
         boxController = GetComponent<BoxController>();
 
+        colliderCaja = GetComponent<BoxCollider2D>();
+        trail = GetComponentInChildren<ParticleSystem>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
+
         switch (resetMode)
         {
             case ResetMode.ExitTrigger:
@@ -90,6 +103,8 @@ public class Scr_ResetPosition : MonoBehaviour
     private void Update()
     {
         inside = boxTrigger.inside;
+
+        distance = Vector3.Distance(transform.position, initialPosition);
 
         if (infiniteResets || (!infiniteResets && !resetDone))
         {
@@ -168,13 +183,38 @@ public class Scr_ResetPosition : MonoBehaviour
                     break;
             }
         }
+
+        if (moving)
+        {
+            if (distance > .5)
+            {
+                transform.position = Vector3.Lerp(transform.position, initialPosition, speed * Time.deltaTime);
+            }
+
+            else
+            {
+                transform.position = initialPosition;
+
+                moving = false;
+
+                colliderCaja.enabled = true;
+                boxController.enabled = true;
+                sprite.enabled = true;
+                trail.Stop();
+            }
+        }
     }
 
     private void Reset()
     {
         resetDone = true;
 
-        gameObject.transform.position = initialPosition;
+        colliderCaja.enabled = false;
+        boxController.enabled = false;
+        sprite.enabled = false;
+        trail.Play();
+
+        Invoke("StartAnimation", delay);
 
         switch (resetMode)
         {
@@ -191,5 +231,10 @@ public class Scr_ResetPosition : MonoBehaviour
                 time = initialTime;
                 break;
         }
+    }
+
+    void StartAnimation()
+    {
+        moving = true;
     }
 }
