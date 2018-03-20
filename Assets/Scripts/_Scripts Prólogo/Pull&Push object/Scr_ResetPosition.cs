@@ -28,6 +28,7 @@ public class Scr_ResetPosition : MonoBehaviour
     bool moving;                    // Se hace true durante el retorno del objeto a su posición inicial
     SpriteRenderer sprite;          // Sprite de la caja que está en un objeto hijo
     float distance;                 // Distancia entre la posición actual y la incial
+    bool reset;                     // Para hacer un reset más preciso del tiempo
 
     [Header("Select Reset Mode")]
     [Tooltip("Solo se tendrán en cuenta los parámetros que afecten al modo activo")]

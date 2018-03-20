@@ -1185,6 +1185,11 @@ Prefab:
       propertyPath: m_Name
       value: Box (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 114236511425522778, guid: cb2017a0fb5c85649886e4c088860f7b,
+        type: 2}
+      propertyPath: heighModeReset
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
   m_IsPrefabParent: 0
@@ -14934,6 +14939,11 @@ Prefab:
       propertyPath: trigger1
       value: 
       objectReference: {fileID: 321126672}
+    - target: {fileID: 114236511425522778, guid: cb2017a0fb5c85649886e4c088860f7b,
+        type: 2}
+      propertyPath: heighModeReset
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
   m_IsPrefabParent: 0
@@ -15905,6 +15915,11 @@ Prefab:
     - target: {fileID: 1844032569148784, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
       propertyPath: m_Name
       value: Box (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114236511425522778, guid: cb2017a0fb5c85649886e4c088860f7b,
+        type: 2}
+      propertyPath: heighModeReset
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
@@ -18314,6 +18329,11 @@ Prefab:
       propertyPath: m_Name
       value: Box (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 114236511425522778, guid: cb2017a0fb5c85649886e4c088860f7b,
+        type: 2}
+      propertyPath: heighModeReset
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
   m_IsPrefabParent: 0
@@ -18394,6 +18414,11 @@ Prefab:
     - target: {fileID: 1844032569148784, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
       propertyPath: m_Name
       value: Box (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114236511425522778, guid: cb2017a0fb5c85649886e4c088860f7b,
+        type: 2}
+      propertyPath: heighModeReset
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
@@ -20755,6 +20780,11 @@ Prefab:
         type: 2}
       propertyPath: heighTime
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114236511425522778, guid: cb2017a0fb5c85649886e4c088860f7b,
+        type: 2}
+      propertyPath: heighModeReset
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
@@ -25788,6 +25818,11 @@ Prefab:
       propertyPath: m_Name
       value: Box (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 114236511425522778, guid: cb2017a0fb5c85649886e4c088860f7b,
+        type: 2}
+      propertyPath: heighModeReset
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
   m_IsPrefabParent: 0
@@ -26922,6 +26957,11 @@ Prefab:
     - target: {fileID: 1844032569148784, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
       propertyPath: m_Name
       value: Box (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114236511425522778, guid: cb2017a0fb5c85649886e4c088860f7b,
+        type: 2}
+      propertyPath: heighModeReset
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
@@ -31745,6 +31785,11 @@ Prefab:
     - target: {fileID: 1844032569148784, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
       propertyPath: m_Name
       value: Box (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114236511425522778, guid: cb2017a0fb5c85649886e4c088860f7b,
+        type: 2}
+      propertyPath: heighModeReset
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
