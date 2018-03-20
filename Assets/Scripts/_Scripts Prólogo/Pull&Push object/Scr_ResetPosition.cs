@@ -13,9 +13,12 @@ public class Scr_ResetPosition : MonoBehaviour
         Time
     }
 
-    Scr_BoxTrigger boxTrigger;      // Script trigger asociado en el editor
+    Scr_BoxTrigger boxTrigger;      // Script trigger asociado en el editor para los modos trigger
+    Scr_BoxTrigger boxTrigger1;     // Script trigger asociado en el editor 1 para los modos tiempo y altura
+    Scr_BoxTrigger boxTrigger2;     // Script trigger asociado en el editor 2 para los modos tiempo y altura
+    Scr_BoxTrigger boxTrigger3;     // Script trigger asociado en el editor 3 para los modos tiempo y altura
     BoxController boxController;    // Script controlador de la caja
-    bool inside;                    // Determina si el player está dentro o fuera del trigger asociado
+    bool inside;                    // Determina si el player está dentro o fuera del trigger asociado para los dos modos trigger
     Vector3 initialPosition;        // Guarda la posición en la que compienza el objeto
     bool resetDone;                 // Se hace true una vez se ha hecho un reset
     float initialTime;              // Guarda el tiempo de reset original para cualquiera de los modos que admite una variable de tiempo
@@ -70,11 +73,38 @@ public class Scr_ResetPosition : MonoBehaviour
     [Tooltip("Si se resetea o no el tiempo al ser movido por el player")]
     [SerializeField] bool timeModeReset;
 
+    [Header("Custom Parameters: Triggers")]
+    [Tooltip("Triggers de entrada para los modos de tiempo y altura")]
+    [SerializeField] GameObject trigger1;
+    [Tooltip("Triggers de entrada para los modos de tiempo y altura")]
+    [SerializeField] GameObject trigger2;
+    [Tooltip("Triggers de entrada para los modos de tiempo y altura")]
+    [SerializeField] GameObject trigger3;
+
     private void Awake()
     {
         initialPosition = transform.position;
 
-        boxTrigger = trigger.GetComponent<Scr_BoxTrigger>();
+        if (trigger != null)
+        {
+            boxTrigger = trigger.GetComponent<Scr_BoxTrigger>();
+        }
+
+        if (trigger1 != null)
+        {
+            boxTrigger1 = trigger1.GetComponent<Scr_BoxTrigger>();
+        }
+
+        if (trigger2 != null)
+        {
+            boxTrigger2 = trigger2.GetComponent<Scr_BoxTrigger>();
+        }
+
+        if (trigger3 != null)
+        {
+            boxTrigger3 = trigger3.GetComponent<Scr_BoxTrigger>();
+        }
+        
         boxController = GetComponent<BoxController>();
 
         colliderCaja = GetComponent<BoxCollider2D>();
@@ -84,11 +114,13 @@ public class Scr_ResetPosition : MonoBehaviour
         switch (resetMode)
         {
             case ResetMode.ExitTrigger:
-                boxTrigger.insideStart = true;
+                if (boxTrigger != null)
+                    boxTrigger.insideStart = true;
                 initialTime = timeAfterExit;
                 break;
             case ResetMode.EnterTrigger:
-                boxTrigger.insideStart = false;
+                if (boxTrigger != null)
+                    boxTrigger.insideStart = false;
                 initialTime = timeAfterEnter;
                 break;
             case ResetMode.Heigh:
@@ -102,7 +134,8 @@ public class Scr_ResetPosition : MonoBehaviour
 
     private void Update()
     {
-        inside = boxTrigger.inside;
+        if (boxTrigger != null)
+            inside = boxTrigger.inside;
 
         distance = Vector3.Distance(transform.position, initialPosition);
 
@@ -157,6 +190,36 @@ public class Scr_ResetPosition : MonoBehaviour
                             heighTime = initialTime;
                         }
                     }
+
+                    if (trigger1 != null && boxTrigger1.inside)
+                    {
+                        heighTime -= Time.deltaTime;
+
+                        if (heighTime <= 0)
+                        {
+                            Reset();
+                        }
+                    }
+
+                    if (trigger2 != null && boxTrigger2.inside)
+                    {
+                        heighTime -= Time.deltaTime;
+
+                        if (heighTime <= 0)
+                        {
+                            Reset();
+                        }
+                    }
+
+                    if (trigger3 != null && boxTrigger3.inside)
+                    {
+                        heighTime -= Time.deltaTime;
+
+                        if (heighTime <= 0)
+                        {
+                            Reset();
+                        }
+                    }
                     break;
                 case ResetMode.Time:
                     if (boxController.moving)
@@ -178,6 +241,36 @@ public class Scr_ResetPosition : MonoBehaviour
                         else if (boxController.moving)
                         {
                             time = initialTime;
+                        }
+                    }
+
+                    if (trigger1 != null && boxTrigger1.inside)
+                    {
+                        time -= Time.deltaTime;
+
+                        if (time <= 0)
+                        {
+                            Reset();
+                        }
+                    }
+
+                    if (trigger2 != null && boxTrigger2.inside)
+                    {
+                        time -= Time.deltaTime;
+
+                        if (time <= 0)
+                        {
+                            Reset();
+                        }
+                    }
+
+                    if (trigger3 != null && boxTrigger3.inside)
+                    {
+                        time -= Time.deltaTime;
+
+                        if (time <= 0)
+                        {
+                            Reset();
                         }
                     }
                     break;

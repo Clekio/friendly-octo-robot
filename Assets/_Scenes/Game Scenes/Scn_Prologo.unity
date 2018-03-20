@@ -3286,6 +3286,9 @@ MonoBehaviour:
   heighModeReset: 0
   time: 0
   timeModeReset: 0
+  trigger1: {fileID: 0}
+  trigger2: {fileID: 0}
+  trigger3: {fileID: 0}
 --- !u!114 &189540625
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5858,7 +5861,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 321126672}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -29.49, y: -33.5, z: -0.0010442594}
+  m_LocalPosition: {x: -220.65, y: 0.86, z: -0.0010442594}
   m_LocalScale: {x: 1.10653, y: 1.59268, z: 1}
   m_Children: []
   m_Father: {fileID: 379186278}
@@ -5876,7 +5879,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 3.7600827, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -5887,7 +5890,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 9.157922, y: 1}
   m_EdgeRadius: 0
 --- !u!114 &321126675
 MonoBehaviour:
@@ -10543,6 +10546,9 @@ MonoBehaviour:
   heighModeReset: 0
   time: 0
   timeModeReset: 0
+  trigger1: {fileID: 0}
+  trigger2: {fileID: 0}
+  trigger3: {fileID: 0}
 --- !u!114 &595488056
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12113,6 +12119,9 @@ MonoBehaviour:
   heighModeReset: 0
   time: 0
   timeModeReset: 0
+  trigger1: {fileID: 0}
+  trigger2: {fileID: 0}
+  trigger3: {fileID: 0}
 --- !u!114 &665386181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14920,6 +14929,11 @@ Prefab:
       propertyPath: m_Name
       value: Box (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 114236511425522778, guid: cb2017a0fb5c85649886e4c088860f7b,
+        type: 2}
+      propertyPath: trigger1
+      value: 
+      objectReference: {fileID: 321126672}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb2017a0fb5c85649886e4c088860f7b, type: 2}
   m_IsPrefabParent: 0
@@ -17619,6 +17633,9 @@ MonoBehaviour:
   heighModeReset: 0
   time: 0
   timeModeReset: 0
+  trigger1: {fileID: 0}
+  trigger2: {fileID: 0}
+  trigger3: {fileID: 0}
 --- !u!114 &1109271924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18859,6 +18876,9 @@ MonoBehaviour:
   heighModeReset: 0
   time: 0
   timeModeReset: 0
+  trigger1: {fileID: 0}
+  trigger2: {fileID: 0}
+  trigger3: {fileID: 0}
 --- !u!114 &1184122315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20164,6 +20184,9 @@ MonoBehaviour:
   heighModeReset: 0
   time: 0
   timeModeReset: 0
+  trigger1: {fileID: 0}
+  trigger2: {fileID: 0}
+  trigger3: {fileID: 0}
 --- !u!114 &1218335963
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20712,7 +20735,7 @@ Prefab:
         type: 2}
       propertyPath: trigger
       value: 
-      objectReference: {fileID: 321126672}
+      objectReference: {fileID: 0}
     - target: {fileID: 114236511425522778, guid: cb2017a0fb5c85649886e4c088860f7b,
         type: 2}
       propertyPath: resetMode
@@ -23864,6 +23887,9 @@ MonoBehaviour:
   heighModeReset: 0
   time: 0
   timeModeReset: 0
+  trigger1: {fileID: 0}
+  trigger2: {fileID: 0}
+  trigger3: {fileID: 0}
 --- !u!114 &1483522622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27622,6 +27648,9 @@ MonoBehaviour:
   heighModeReset: 0
   time: 0
   timeModeReset: 0
+  trigger1: {fileID: 0}
+  trigger2: {fileID: 0}
+  trigger3: {fileID: 0}
 --- !u!114 &1687425352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29611,6 +29640,9 @@ MonoBehaviour:
   heighModeReset: 0
   time: 0
   timeModeReset: 0
+  trigger1: {fileID: 0}
+  trigger2: {fileID: 0}
+  trigger3: {fileID: 0}
 --- !u!114 &1856725298
 MonoBehaviour:
   m_ObjectHideFlags: 0
