@@ -5,20 +5,18 @@ using UnityEngine;
 
 public class Scr_PlayerControl : MonoBehaviour
 {
-    GameObject Aura;
-    GameObject evento1; // Evento caida tronco
-    GameObject evento2; // Evento escudo
-    GameObject evento3; // Evento corrupción
+    public GameObject Aura;
+    public GameObject evento1; // Evento caida tronco
+    public GameObject evento2; // Evento escudo
+    public GameObject evento3; // Evento corrupción
 
     private void Start()
     {
-        Aura = GameObject.Find("Aura");
+        /*Aura = GameObject.Find("Aura");
 
         evento1 = GameObject.Find("TroncoZona1");
         evento2 = GameObject.Find("Escudo");
-        evento3 = GameObject.Find("Corrupción");
-
-        DontDestroyOnLoad(Aura);
+        evento3 = GameObject.Find("Corrupción");*/
     }
 
     void Update ()
