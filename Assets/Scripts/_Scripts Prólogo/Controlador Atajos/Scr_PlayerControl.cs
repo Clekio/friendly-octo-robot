@@ -10,9 +10,6 @@ public class Scr_PlayerControl : MonoBehaviour
     GameObject evento2; // Evento escudo
     GameObject evento3; // Evento corrupción
 
-    Vector3 checkpoint;
-    string checkpointName;
-
     private void Start()
     {
         Aura = GameObject.Find("Aura");
@@ -26,12 +23,10 @@ public class Scr_PlayerControl : MonoBehaviour
 
     void Update ()
     {
-        checkpoint = Scr_PlayerCheckpoint.checkpoint;
-        checkpointName = Scr_PlayerCheckpoint.checkpointName;
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Death();
+            GameController.instance.GameOver(Aura);
         }
 
         if (Input.GetKeyDown(KeyCode.V))
@@ -44,7 +39,7 @@ public class Scr_PlayerControl : MonoBehaviour
             LoadEscenaMagias();
         }
     }
-
+    /*
     void Death()
     {
         Scr_GameControl.control.Save();
@@ -66,9 +61,7 @@ public class Scr_PlayerControl : MonoBehaviour
         }
 
         SceneManager.LoadScene("Scn_Prólogo", LoadSceneMode.Single);
-
-        Aura.transform.position = checkpoint;
-    }
+    }*/
 
     void LoadVictorScene()
     {

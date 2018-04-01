@@ -19,19 +19,13 @@ public class Scr_BotonDelPanico : MonoBehaviour
 
     private void Update()
     {
-        checkpoint = Scr_PlayerCheckpoint.checkpoint;
-        checkpointName = Scr_PlayerCheckpoint.checkpointName;
+        //No es necesario esto porque lo controla el GameController
+        //checkpoint = Scr_PlayerCheckpoint.checkpoint;
+        //checkpointName = Scr_PlayerCheckpoint.checkpointName;
 
         if (Input.GetKeyDown(KeyCode.K))
         {
-            Death();
+            GameController.instance.GameOver(Aura);
         }
-    }
-
-    void Death()
-    {
-        SceneManager.LoadScene("Scn_Prólogo", LoadSceneMode.Single);
-
-        Aura.transform.position = checkpoint;
     }
 }

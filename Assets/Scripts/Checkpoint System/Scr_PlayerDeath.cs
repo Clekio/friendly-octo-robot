@@ -1,45 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class Scr_PlayerDeath : MonoBehaviour
 {
-    GameObject Aura;
-    GameObject camara;
+    public static Scr_PlayerDeath instance;
 
     Vector3 checkpoint;
     string checkpointName;
 
     private void Start()
     {
-        Aura = GameObject.Find("Aura");
-        camara = GameObject.Find("Main Camera");
-
-        DontDestroyOnLoad(Aura);
-        DontDestroyOnLoad(camara);
+        //Aura = GameObject.Find("Aura");//NO HAGAIS FIND, GameObject.find es lo peor de lo peor.
     }
 
-    private void Update()
+    /*private void Update()
     {
         checkpoint = Scr_PlayerCheckpoint.checkpoint;
         checkpointName = Scr_PlayerCheckpoint.checkpointName;
 
         //Debug.Log("Last checkpoint (" + checkpointName + ") position: " + checkpoint); // NO BORRAR
-    }
+    }*/
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D col)
     {
-        if (collision.gameObject.tag == "Player")
+        if (col.gameObject.tag == "Player")
         {
-            Death();
+            GameController.instance.GameOver(col.gameObject);
         }
     }
 
-    void Death()
+    /*public void Death()
     {
         SceneManager.LoadScene("Playtest", LoadSceneMode.Single);
 
         Aura.transform.position = checkpoint;
-    }
+    }*/
+
 }

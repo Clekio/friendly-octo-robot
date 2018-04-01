@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class Scr_PlayerCheckpoint : MonoBehaviour
 {
+    public int order;
+    public Transform spawnPos;
+    [HideInInspector]
+    public Scr_PlayerCheckpoint thisCP;
+    private void Awake()
+    {
+        thisCP = this;
+    }
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.tag == "Player")
+        {
+            GameController.instance.AddCheckPoint(this);
+        }
+    }
+    /*
     public static Vector3 checkpoint;
 
     public static string checkpointName;
@@ -16,5 +32,5 @@ public class Scr_PlayerCheckpoint : MonoBehaviour
 
             checkpointName = gameObject.name;
         }
-    }
+    }*/
 }
