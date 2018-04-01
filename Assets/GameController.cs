@@ -31,11 +31,15 @@ public class GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            GameOver(Aura);
+        }
+    }
 
     public void GameOver(GameObject player)
     {
+        //menu game over
         Respawn(player);
     }
 
