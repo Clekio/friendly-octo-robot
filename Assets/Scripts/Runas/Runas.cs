@@ -63,40 +63,40 @@ public class Runas : recognizerRunas
         //}
 
 
-        //if (Input.GetMouseButtonDown(0))
-        //{
-        //    //Resetear el los valores de la runa.
-        //    if ((thisDelta - LastDelta).magnitude < 0.05f)
-        //        m_pointList = new List<Vector2>();
-        //    LastMousePos = Input.mousePosition;
-        //    //se crean las particulas
-        //    Instantiate(particlePrefab);
-        //    drawing = true;
-        //}
+        if (Input.GetMouseButtonDown(0))
+        {
+            //Resetear el los valores de la runa.
+            if ((thisDelta - LastDelta).magnitude < 0.05f)
+                m_pointList = new List<Vector2>();
+            LastMousePos = Input.mousePosition;
+            //se crean las particulas
+            Instantiate(particlePrefab);
+            drawing = true;
+        }
 
-        //if (Input.GetMouseButton(0))
-        //{
-        //    //Guardar las posiciones en las que se dibuja
-        //    mousePosition = Input.mousePosition; //Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z));
+        if (Input.GetMouseButton(0))
+        {
+            //Guardar las posiciones en las que se dibuja
+            mousePosition = Input.mousePosition; //Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z));
 
-        //    thisDelta = (mousePosition - LastMousePos) / Time.deltaTime;
+            thisDelta = (mousePosition - LastMousePos) / Time.deltaTime;
 
-        //    //if ((thisDelta - LastDelta).magnitude < 0.05f)
-        //    m_pointList.Add(mousePosition);
+            //if ((thisDelta - LastDelta).magnitude < 0.05f)
+            m_pointList.Add(mousePosition);
 
-        //    LastDelta = thisDelta;
-        //    LastMousePos = mousePosition;
-        //}
+            LastDelta = thisDelta;
+            LastMousePos = mousePosition;
+        }
 
-        //if (!Input.GetMouseButton(0) && drawing)
-        //{
-        //    //Reconocer la Runa
-        //    StartRecognizer(m_pointList);//, m_deltaList);
+        if (!Input.GetMouseButton(0) && drawing)
+        {
+            //Reconocer la Runa
+            StartRecognizer(m_pointList);//, m_deltaList);
 
-        //    //Crear la magia
-        //    SpawnMagic(m_magicName, m_magicPosition, m_magicAngle, m_magicScale);
-        //    drawing = false;
-        //}
+            //Crear la magia
+            SpawnMagic(m_magicName, m_magicPosition, m_magicAngle, m_magicScale);
+            drawing = false;
+        }
     }
 
     public override void SpawnMagic(string name, Vector2 position, float angle, Vector2 scale)
