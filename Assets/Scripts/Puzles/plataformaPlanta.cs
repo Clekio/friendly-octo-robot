@@ -16,7 +16,6 @@ public class plataformaPlanta : MonoBehaviour {
 		{
 			open = true;
 			anim.SetBool ("mojado", open);
-			Debug.Log ("heyyyyyy");
 		}
 	}
 

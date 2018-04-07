@@ -14,6 +14,8 @@ public abstract class recognizerRunas : MonoBehaviour
     [Header("Lista de Runas")]
     public MagiaList listaDeMagias;
 
+    public bool debug;
+
     protected List<Vector2> optimacedPointList;
     protected List<Vector2> normalizedPointList;
     protected List<Vector2> simplifyPointList;
@@ -24,36 +26,30 @@ public abstract class recognizerRunas : MonoBehaviour
     protected float m_magicAngle;
     protected Vector2 m_magicScale;
 
-    const float distanceMargin = 2f;
-    //float mouseDeltaNeeded  = 0.05f;
-    float minimumAngle = 25;
+    #region Constantes
+    const float pointDistance = 1f;
+    const int lineDistance = 40;
+    const float minimumAngle = 135;
+    #endregion
 
-    public void StartRecognizer(List<Vector2> PointsList)//, List<Vector2> DeltaList)
+    protected void StartRecognizer(List<Vector2> PointsList)//, List<Vector2> DeltaList)
     {
-        DebugLine(PointsList, Colors.LightPink);
+        //DebugLine(PointsList, Colors.LightPink);
         if (PointsList != null && PointsList.Count > 0)
         {
-            optimacedPointList = optimizeGesture(PointsList);//, DeltaList);
+            optimacedPointList = optimizeGesture(PointsList);
 
             if (optimacedPointList.Count < 3)
-                //texto.text = "ERROR";
                 return;
 
             globalPointList = GetGlobalPoints(optimacedPointList);
-            if (globalPointList.Count >= 4)
-            {
+            GetMagicMesurements(globalPointList);
 
-                GetMagicMesurements(globalPointList);
+            normalizedPointList = NormalizeRune(optimacedPointList);
 
-                normalizedPointList = NormalizeRune(optimacedPointList);
+            simplifyPointList = SimplifyRune(normalizedPointList);
 
-                simplifyPointList = SimplifyRune(normalizedPointList);
-
-                m_magicName = MatchRune(simplifyPointList);
-
-                SpawnMagic(m_magicName, m_magicPosition, m_magicAngle, m_magicScale);
-            }
-
+            MatchRune(simplifyPointList);
         }
     }
 
@@ -61,77 +57,67 @@ public abstract class recognizerRunas : MonoBehaviour
     protected List<Vector2> optimizedDistance;
     private List<Vector2> optimizeGesture(List<Vector2> pointsList)//, List<Vector2> deltaList)
     {
-
-        //Quitamos puntos que esten muy cerca o que se hayan pintado muy rapido sin detenerse.
-        optimizedDistance = new List<Vector2>();
-        optimizedDistance.Add(pointsList[0]);
-
-        for (int i = 1; i < pointsList.Count; ++i)
-        {
-            Vector2 lastPoint = optimizedDistance[optimizedDistance.Count - 1];
-            if (Vector2.Distance(lastPoint, pointsList[i]) > distanceMargin)// && (deltaList[i] - deltaList[i-1]).magnitude < mouseDeltaNeeded)
-            {
-                optimizedDistance.Add(pointsList[i]);
-            }
-        }
-
-        DebugLine(optimizedDistance, Colors.DarkRed);
-
-        ////Quitamos los puntos que no creen un cambio de direccion.
+        //Quitamos los puntos que no creen un cambio de direccion.
         optimizedDirection = new List<Vector2>();
-        optimizedDirection.Add(pointsList[0]);
+        Vector2 pointA = pointsList[0];
 
-        for (int i = 1; i < optimizedDistance.Count - 2; ++i)
+        for (int i = 1; i < pointsList.Count - 1; ++i)
         {
-            Vector2 lastPoint = optimizedDirection[optimizedDirection.Count - 1];
-            Vector2 lastToPoint = optimizedDistance[i] - lastPoint;
-            Vector2 pointToNext = optimizedDistance[i + 1] - optimizedDistance[i];
-            float angle = Vector2.Angle(lastToPoint, pointToNext);
-            /*
-            float anguloAB = AngleBetweenVector2(lastPoint, optimizedDistance[i]);
-            float anguloBC = AngleBetweenVector2(optimizedDistance[i], optimizedDistance[i + 1]);*/
-
-            if (Mathf.Abs(angle) > minimumAngle)
+            if (i >= pointsList.Count - 2 && Vector2.Distance(pointsList[i], pointA) > lineDistance)
             {
-                optimizedDirection.Add(optimizedDistance[i]);
+                optimizedDirection.Add(pointA);
+                optimizedDirection.Add(pointsList[i]);
+                
+                continue;
+            }
+
+            if (Vector2.Distance(pointsList[i], pointA) < pointDistance || Vector2.Distance(pointsList[i], pointsList[i + 1]) < pointDistance)
+                continue;
+
+            Vector2 AB = pointsList[i] - pointA;
+            Vector2 CB = pointsList[i] - pointsList[i + 1];
+            float angle = Vector2.Angle(AB, CB);
+
+            if (angle <= minimumAngle)
+            {
+                if (Vector2.Distance(pointsList[i], pointA) > lineDistance)
+                {
+                    optimizedDirection.Add(pointA);
+                    optimizedDirection.Add(pointsList[i]);
+                }
+                pointA = pointsList[i];
             }
         }
-        optimizedDirection.Add(optimizedDistance[optimizedDistance.Count - 1]);
 
-        //return optimizedDirection;
+        if (optimizedDirection.Count < 3)
+            return optimizedDirection;
 
-        ////Quitamos los puntos que no creen un cambio de direccion.
-        //optimizedDirection = new List<Vector2>();
-        //optimizedDirection.Add(pointsList[0]);
-
-        //for (int i = 1; i < pointsList.Count - 2; ++i)
-        //{
-        //    Vector2 lastPoint = optimizedDirection[optimizedDirection.Count - 1];
-        //    Vector2 lastToPoint = pointsList[i] - lastPoint;
-        //    Vector2 pointToNext = pointsList[i + 1] - pointsList[i];
-        //    float angle = Vector2.Angle(lastToPoint, pointToNext);
-        //    /*
-        //    float anguloAB = AngleBetweenVector2(lastPoint, optimizedDistance[i]);
-        //    float anguloBC = AngleBetweenVector2(optimizedDistance[i], optimizedDistance[i + 1]);*/
-
-        //    if (Mathf.Abs(angle) > minimumAngle)
-        //    {
-        //        optimizedDirection.Add(pointsList[i]);
-        //    }
-        //}
-        //optimizedDirection.Add(pointsList[pointsList.Count - 1]);
-
-        //Quitamos puntos que esten muy cerca o que se hayan pintado muy rapido sin detenerse.
         optimizedDistance = new List<Vector2>();
         optimizedDistance.Add(optimizedDirection[0]);
 
-        for (int i = 1; i < optimizedDirection.Count; ++i)
+        for (int i = 2; i < optimizedDirection.Count-1; i +=2)
         {
-            Vector2 lastPoint = optimizedDistance[optimizedDistance.Count - 1];
-            if (Vector2.Distance(lastPoint, optimizedDirection[i]) > distanceMargin)// && (deltaList[i] - deltaList[i-1]).magnitude < mouseDeltaNeeded)
-            {
+            if (Vector2.Distance(optimizedDirection[i], optimizedDirection[i-1]) < pointDistance)
                 optimizedDistance.Add(optimizedDirection[i]);
+
+            else
+            {
+                bool b = false;
+                Vector2 v = GetIntersectionPointCoordinates(optimizedDirection[i - 2], optimizedDirection[i - 1], optimizedDirection[i], optimizedDirection[i + 1],out b);
+
+                if (b)
+                    optimizedDistance.Add(v);
             }
+        }
+        optimizedDistance.Add(optimizedDirection[optimizedDirection.Count - 1]);
+
+        if (debug)
+        {
+            DebugExtension.DebugLine(optimizedDirection, Colors.IndianRed, 5);
+            DebugExtension.DebugLine(optimizedDistance, Colors.Red, 5);
+
+            foreach (Vector2 v in optimizedDistance)
+                DebugExtension.DebugWireSphere(v, Colors.DarkRed, 10, 5);
         }
 
         return optimizedDistance;
@@ -147,7 +133,8 @@ public abstract class recognizerRunas : MonoBehaviour
         {
             normaliced[i] = normaliced[i] - c;
         }
-        //DebugLine(normaliced, Colors.DarkGreen);
+        if (debug)
+            DebugExtension.DebugLine(normaliced, Colors.LightGreen, 5);
 
         //Normalizamos la rotacion
         //Sacamos el angulo que hay que rotarlo del original
@@ -161,7 +148,8 @@ public abstract class recognizerRunas : MonoBehaviour
         {
             normaliced[i] = Rotate(normaliced[i], angle);
         }
-        //DebugLine(normaliced, Colors.Green);
+        if (debug)
+            DebugExtension.DebugLine(normaliced, Colors.Green, 5);
 
         //Normalizamos la Inversion
         if ((normaliced[2] - normaliced[1]).x < 0)
@@ -170,7 +158,8 @@ public abstract class recognizerRunas : MonoBehaviour
             {
                 normaliced[i] = new Vector2(-normaliced[i].x, normaliced[i].y);
             }
-            //DebugLine(normaliced, Colors.LightGreen);
+            if (debug)
+                DebugExtension.DebugLine(normaliced, Colors.DarkGreen, 5);
         }
 
         return normaliced;
@@ -205,31 +194,26 @@ public abstract class recognizerRunas : MonoBehaviour
         Vector2 vP = new Vector2(0, 0);
         for (int i = 0; i < simplified.Count; i++)
         {
-            Debug.DrawLine(vP, simplified[i] + vP, Colors.LightBlue, 2, false);
+            if (debug) Debug.DrawLine(vP, simplified[i] + vP, Colors.LightBlue, 2, false);
             vP = vP + simplified[i];
         }
 
         return simplified;
     }
 
-    private string MatchRune(List<Vector2> dirList)
+    private void MatchRune(List<Vector2> dirList)
     {
-        string runaName = "Error";
-
         for (int i = 0; i < listaDeMagias.magias.Count; i++)
         {
             if (CompareList(dirList, listaDeMagias.magias[i].runeVector2))
             {
-                runaName = listaDeMagias.magias[i].Name;
+                SpawnMagic(listaDeMagias.magias[i], m_magicPosition, m_magicAngle, m_magicScale);
                 break;
             }
         }
-        Debug.Log(runaName);
-
-        return runaName;
     }
 
-    public abstract void SpawnMagic(string name, Vector2 position, float angle, Vector2 scale);
+    protected abstract void SpawnMagic(Magia name, Vector2 position, float angle, Vector2 scale);
 
     private List<Vector2> GetGlobalPoints(List<Vector2> pointList)
     {
@@ -311,18 +295,30 @@ public abstract class recognizerRunas : MonoBehaviour
         return Vector2.Angle(Vector2.right, diference);
     }
 
-
-    public void DebugLine(List<Vector2> Linea, Color color)
+    /// <summary>
+    /// Gets the coordinates of the intersection point of two lines.
+    /// </summary>
+    /// <param name="A1">A point on the first line.</param>
+    /// <param name="A2">Another point on the first line.</param>
+    /// <param name="B1">A point on the second line.</param>
+    /// <param name="B2">Another point on the second line.</param>
+    /// <param name="found">Is set to false of there are no solution. true otherwise.</param>
+    /// <returns>The intersection point coordinates. Returns Vector2.zero if there is no solution.</returns>
+    private Vector2 GetIntersectionPointCoordinates(Vector2 A1, Vector2 A2, Vector2 B1, Vector2 B2, out bool found)
     {
-        //Draw the lines compositions
-        if (Linea != null)
+        float tmp = (B2.x - B1.x) * (A2.y - A1.y) - (B2.y - B1.y) * (A2.x - A1.x);
+
+        if (tmp == 0)
         {
-            Vector2 vP = Linea[0];
-            for (int i = 1; i < Linea.Count; i++)
-            {
-                Debug.DrawLine(vP, Linea[i], color);
-                vP = Linea[i];
-            }
+            // No solution!
+            found = false;
+            return Vector2.zero;
         }
+
+        float mu = ((A1.x - B1.x) * (A2.y - A1.y) - (A1.y - B1.y) * (A2.x - A1.x)) / tmp;
+
+        found = true;
+
+        return new Vector2(B1.x + (B2.x - B1.x) * mu, B1.y + (B2.y - B1.y) * mu);
     }
 }

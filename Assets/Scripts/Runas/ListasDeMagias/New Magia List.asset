@@ -9,12 +9,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e64e0080f7bdf73448d51b22323176b5, type: 3}
-  m_Name: MagiaListFer
+  m_Name: New Magia List
   m_EditorClassIdentifier: 
   magias:
   - Name: water
     Effect: {fileID: 1030359037256292, guid: 10d31de1edc82aa429adc90974fbaf6a, type: 2}
-    Rune: 00000000030000000000000005000000
+    Rune: 00000000020000000400000007000000
   - Name: wind
     Effect: {fileID: 1182704348935344, guid: 73d460275f8b05c489fdcca42a42bce9, type: 2}
     Rune: 00000000020000000400000006000000

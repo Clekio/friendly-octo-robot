@@ -1,28 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using InControl;
 //using XboxCtrlrInput;
 
 public class Runas : recognizerRunas
 {
-    private Vector3 thisDelta;
-    private Vector3 LastDelta;      //Delta del frame anterior.
-
-    private Vector3 mousePosition;
-    private Vector3 LastMousePos;   //Posicion del mouse en el frame anterior.
-
-    List<Vector2> m_pointList;
-
-    [Header("Visual")]
-    public GameObject particlePrefab;
-
-    [Header("Magic")]
-    public float MagicTimeToDestroy;
-
-    public GameObject water;
-    public GameObject thunder;
-    public GameObject wind;
-    public GameObject swirl;
+    List<Vector2> m_pointList = new List<Vector2> ();
 
     [Header("Puntero")]
     [SerializeField]
@@ -30,135 +14,91 @@ public class Runas : recognizerRunas
     private Vector2 posPuntero;
     private GameObject magicParticles;
 
+    public particleRunas particulasR;
+
     bool drawing = false;
 
-    // Update is called once per frame
-    void Update()
+    public void StartMagia(bool b, Vector3 playerPos)
     {
-        //if (XCI.GetButtonDown(XboxButton.RightBumper))
-        //{
-        //    posPuntero = Player.reference.transform.position + new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * 3;
+        m_pointList.Clear();
+        
+        if (b)
+            particulasR.startMovement(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z)));
 
-        //    if ((thisDelta - LastDelta).magnitude < 0.05f)
-        //        m_pointList = new List<Vector2>();
-        //    LastMousePos = posPuntero;
-
-        //    magicParticles = Instantiate(particlePrefab, (Vector3)posPuntero + Vector3.forward * 20, Quaternion.identity);
-        //}
-        //else if (XCI.GetButton(XboxButton.RightBumper))
-        //{
-        //    posPuntero += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * velocidadPuntero * Time.deltaTime;
-
-        //    m_pointList.Add(Camera.main.WorldToScreenPoint(posPuntero));
-
-        //    magicParticles.transform.position = (Vector3)posPuntero + Vector3.forward*20;
-        //}
-
-        //if (XCI.GetButtonUp(XboxButton.RightBumper))
-        //{
-        //    //Reconocer la Runa
-        //    StartRecognizer(m_pointList);
-
-        //    Destroy(magicParticles, 3);
-        //}
-
-
-        if (Input.GetMouseButtonDown(0))
+        else
         {
-            //Resetear el los valores de la runa.
-            if ((thisDelta - LastDelta).magnitude < 0.05f)
-                m_pointList = new List<Vector2>();
-            LastMousePos = Input.mousePosition;
-            //se crean las particulas
-            Instantiate(particlePrefab);
-            drawing = true;
+            posPuntero = playerPos + new Vector3(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"), 0) * 3;
+            particulasR.startMovement((Vector3)posPuntero + Vector3.forward * 20);
         }
-
-        if (Input.GetMouseButton(0))
-        {
-            //Guardar las posiciones en las que se dibuja
-            mousePosition = Input.mousePosition; //Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z));
-
-            thisDelta = (mousePosition - LastMousePos) / Time.deltaTime;
-
-            //if ((thisDelta - LastDelta).magnitude < 0.05f)
-            m_pointList.Add(mousePosition);
-
-            LastDelta = thisDelta;
-            LastMousePos = mousePosition;
-        }
-
-        if (!Input.GetMouseButton(0) && drawing)
-        {
-            //Reconocer la Runa
-            StartRecognizer(m_pointList);//, m_deltaList);
-
-            //Crear la magia
-            SpawnMagic(m_magicName, m_magicPosition, m_magicAngle, m_magicScale);
-            drawing = false;
-        }
+        StartCoroutine(DoMagia(b));
     }
 
-    public override void SpawnMagic(string name, Vector2 position, float angle, Vector2 scale)
+    private IEnumerator DoMagia(bool b)
+    {
+        while (InputManager.ActiveDevice.LeftBumper.IsPressed)
+        {
+            if (b)
+            {
+                m_pointList.Add(Input.mousePosition);
+
+                particulasR.move(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, transform.position.z - Camera.main.transform.position.z)));
+            }
+            else
+            {
+                posPuntero += new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * velocidadPuntero * Time.deltaTime;
+
+                m_pointList.Add(Camera.main.WorldToScreenPoint(posPuntero));
+                particulasR.move((Vector3)posPuntero + Vector3.forward * 20);
+            }
+            yield return null;
+        }
+
+        particulasR.endMove();
+
+        //Reconocer la Runa
+        StartRecognizer(m_pointList);
+    }
+
+    protected override void SpawnMagic(Magia magia, Vector2 position, float angle, Vector2 scale)
     {
         GameObject effect;
 
-        if (name == "wind")
+        effect = Instantiate(magia.Effect, new Vector3(position.x, position.y, 0), Quaternion.identity) as GameObject;
+
+        if (magia.Name == "wind")
         {
-            effect = Instantiate(wind, new Vector3(position.x, position.y, 0), Quaternion.identity) as GameObject;
             effect.transform.localScale = scale;
             effect.GetComponent<AreaEffector2D>().forceAngle = angle;
-            Destroy(effect, MagicTimeToDestroy);
+            Destroy(effect, 4);
         }
-
-        else if (name == "swirl")
-        {
-            effect = Instantiate(swirl, new Vector3(position.x, position.y, 0), Quaternion.identity) as GameObject;
-            effect.transform.localScale = scale;
-            Destroy(effect, MagicTimeToDestroy);
-        }
-
-        else if (name == "water")
-        {
-            effect = Instantiate(water, new Vector3(position.x, position.y, 0), Quaternion.Euler(90, 90, 0)) as GameObject;
-            //effect.transform.localScale = scale;
-            Destroy(effect, 11.0f);
-        }
-
-        else if (name == "thunder")
-        {
-            effect = Instantiate(thunder, new Vector3(position.x, position.y, 0), Quaternion.identity) as GameObject;
-            //effect.transform.localScale = scale;
-            Destroy(effect, 3.0f);
-        }
-
-        m_magicName = "Error";
+        else if (magia.Name == "water")
+            effect.transform.rotation = Quaternion.Euler(90, 90, 0);
     }
 
-    #if UNITY_EDITOR
+#if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(posPuntero, 0.25f);
 
-        if (optimacedPointList != null)
-            DebugLine(optimacedPointList, Colors.Red);
+        if (m_pointList != null && m_pointList.Count > 1)
+            DebugExtension.DebugLine(m_pointList, Colors.LightBlue, Colors.DarkBlue);
 
-        if (normalizedPointList != null)
-            DebugLine(normalizedPointList, Colors.Green);
+        //if (optimacedPointList != null && optimacedPointList.Count > 0)
+        //    DebugExtension.DebugLine(optimacedPointList, Colors.Red, Colors.IndianRed);
 
-        if (globalPointList != null)
-            DebugLine(globalPointList, Colors.Pink);
+        //if (normalizedPointList != null && normalizedPointList.Count > 0)
+        //    DebugExtension.DebugLine(normalizedPointList, Colors.LightGreen, Colors.Green);
 
-        if (simplifyPointList != null)
-        {
-            Vector2 vP = new Vector2(0, 0);
-            for (int i = 0; i < simplifyPointList.Count; i++)
-            {
-                Debug.DrawLine(vP, simplifyPointList[i] + vP, Colors.Blue);
-                vP = vP + simplifyPointList[i];
-            }
-        }
+        //if (simplifyPointList != null && simplifyPointList.Count > 0)
+        //{
+        //    Vector2 vP = new Vector2(0, 0);
+        //    for (int i = 0; i < simplifyPointList.Count; i++)
+        //    {
+        //        Debug.DrawLine(vP, simplifyPointList[i] + vP, Colors.Blue);
+        //        vP = vP + simplifyPointList[i];
+        //    }
+        //}
     }
-    #endif
+#endif
 }

@@ -37,14 +37,14 @@ namespace CustomProfile
 					Target = InputControlType.Action1,
 					Source = KeyCodeButton( KeyCode.Space )
                 },
-				//new InputControlMapping
-				//{
-				//	Handle = "Magia",
-				//	Target = InputControlType.LeftBumper,
-				//	// KeyCodeButton fires when any of the provided KeyCode params are down.
-				//	Source = KeyCodeButton( KeyCode.L, KeyCode.Return )
-				//},
-				new InputControlMapping
+                new InputControlMapping
+                {
+                    Handle = "Magia",
+                    Target = InputControlType.LeftBumper,
+					// KeyCodeButton fires when any of the provided KeyCode params are down.
+					Source = KeyCodeButton( KeyCode.Mouse0 )
+                },
+                new InputControlMapping
 				{
 					Handle = "Golpe Purificante",
 					Target = InputControlType.Action2,

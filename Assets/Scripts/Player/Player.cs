@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     //public PlayerInput input;
     [SerializeField]
     Animator anim;
+    public Runas runas;
 
     [SerializeField]
     public InputDevice input;
@@ -57,6 +58,10 @@ public class Player : MonoBehaviour
         maxJumpVelocity = Mathf.Abs(gravityOnGround) * timeToJumpApex;
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravityOnGround) * minJumpHeight);
         secondJumpSpeed = Mathf.Sqrt(2 * Mathf.Abs(gravityOnGround) * secondJumpHeight);
+
+        InputManager.OnDeviceAttached += inputDevice => input = inputDevice;
+        InputManager.OnDeviceDetached += inputDevice => input = InputManager.ActiveDevice;
+        InputManager.OnActiveDeviceChanged += inputDevice => input = inputDevice;
     }
     
     void Update()
@@ -75,6 +80,9 @@ public class Player : MonoBehaviour
                     UpdateClimb();
                     break;
             }
+
+            if (input.LeftBumper.WasPressed)
+                runas.StartMagia(input.Name == "Keyboard/Mouse", transform.position);
         }
 
         UpdateAnimations();
