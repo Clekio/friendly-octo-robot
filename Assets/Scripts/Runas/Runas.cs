@@ -18,6 +18,11 @@ public class Runas : recognizerRunas
 
     bool drawing = false;
 
+    [Header("Magias")]
+    public bool Agua = false;
+    public bool Viento = false;
+    public bool Trueno = false;
+
     public void StartMagia(bool b, Vector3 playerPos)
     {
         m_pointList.Clear();
@@ -61,6 +66,9 @@ public class Runas : recognizerRunas
 
     protected override void SpawnMagic(Magia magia, Vector2 position, float angle, Vector2 scale)
     {
+        if (magia.Name == "wind" && !Viento || magia.Name == "water" && !Agua || magia.Name == "thunder" && !Trueno)
+            return;
+
         GameObject effect;
 
         effect = Instantiate(magia.Effect, new Vector3(position.x, position.y, 0), Quaternion.identity) as GameObject;
