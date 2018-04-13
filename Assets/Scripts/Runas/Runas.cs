@@ -13,7 +13,7 @@ public class Runas : recognizerRunas
     private float velocidadPuntero;
     private Vector2 posPuntero;
     private GameObject magicParticles;
-
+    
     public particleRunas particulasR;
 
     bool drawing = false;
@@ -25,6 +25,9 @@ public class Runas : recognizerRunas
 
     public void StartMagia(bool b, Vector3 playerPos)
     {
+        if (!Agua && !Viento && !Trueno)
+            return;
+
         m_pointList.Clear();
         
         if (b)
