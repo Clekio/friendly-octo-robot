@@ -10,13 +10,13 @@ public class Scr_PullPushObject : MonoBehaviour // FALTA HACER QUE CUANDO SE EST
     GameObject player;
 
     bool playerCollision = false;     // Es true cuando el player está en contacto con el objeto a mover
-    float xPos;                       // Posición en X del objeto a mover
+    //float xPos;                       // Posición en X del objeto a mover
     bool move = false;                // Es true cuando el objeto se puede mover
 
-    private void Start()
-    {
-        xPos = transform.position.x;
-    }
+    //private void Start()
+    //{
+    //    xPos = transform.position.x;
+    //}
 
     void Update()
     {
@@ -37,7 +37,7 @@ public class Scr_PullPushObject : MonoBehaviour // FALTA HACER QUE CUANDO SE EST
         {
             transform.GetComponent<FixedJoint2D>().enabled = false;
 
-            xPos = transform.position.x;
+            //xPos = transform.position.x;
             move = false;
         }
     }

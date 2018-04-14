@@ -11,13 +11,13 @@ public class HoldTrigger : MonoBehaviour {
     GameObject feedback;
 
     bool playerCollision = false;     // Es true cuando el player está en contacto con el objeto a mover
-    float xPos;                       // Posición en X del objeto a mover
-    bool move = false;                // Es true cuando el objeto se puede mover
+    //float xPos;                       // Posición en X del objeto a mover
+    //bool move = false;                // Es true cuando el objeto se puede mover
 
-    private void Start()
-    {
-        xPos = transform.position.x;
-    }
+    //private void Start()
+    //{
+    //    xPos = transform.position.x;
+    //}
 
     void Update()
     {

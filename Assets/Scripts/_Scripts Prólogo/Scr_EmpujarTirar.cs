@@ -10,7 +10,7 @@ public class Scr_EmpujarTirar : MonoBehaviour
     //GameObject helpText;
 
     bool playerInRange = false;
-    float xPos;
+    //float xPos;
 
     bool grounded;
 
@@ -18,7 +18,7 @@ public class Scr_EmpujarTirar : MonoBehaviour
 
     private void Start()
     {
-        xPos = transform.position.x;
+        //xPos = transform.position.x;
 
         player = GameObject.Find("Aura_Sprites");
     }
@@ -50,7 +50,7 @@ public class Scr_EmpujarTirar : MonoBehaviour
         {
             transform.GetComponent<FixedJoint2D>().enabled = false;
 
-            xPos = transform.position.x;
+            //xPos = transform.position.x;
 
             canJump = true;
         }

@@ -10,14 +10,14 @@ public class Scr_Balancin : MonoBehaviour
     [SerializeField]
     int tiempoReset;
 
-    float targetRotation;
+    //float targetRotation;
     float currentRotation;
     float result;
 
-    private void Start()
-    {
-        targetRotation = gameObject.GetComponentInParent<Transform>().rotation.z;
-    }
+    //private void Start()
+    //{
+    //    targetRotation = gameObject.GetComponentInParent<Transform>().rotation.z;
+    //}
 
     private void Update()
     {

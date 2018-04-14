@@ -12,7 +12,7 @@ public class Scr_ControladorMenuPpal : MonoBehaviour
     Animator controles;
 
     bool intro = true;
-    int button = 0;
+    //int button = 0;
 
     GameObject jugarButton;
     GameObject controlesButton;

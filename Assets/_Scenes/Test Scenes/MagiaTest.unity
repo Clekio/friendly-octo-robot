@@ -907,7 +907,7 @@ GameObject:
   - component: {fileID: 1089900267}
   - component: {fileID: 1089900266}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: PlayerFalso
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1366,15 +1366,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4227727855051570, guid: 0ba2768ff3ffd9e4ab3da363964d09e3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 14.778448
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4227727855051570, guid: 0ba2768ff3ffd9e4ab3da363964d09e3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 25.216198
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4227727855051570, guid: 0ba2768ff3ffd9e4ab3da363964d09e3, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -3.5546875
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4227727855051570, guid: 0ba2768ff3ffd9e4ab3da363964d09e3, type: 2}
       propertyPath: m_LocalRotation.x
@@ -1399,7 +1399,7 @@ Prefab:
     - target: {fileID: 114468879547243198, guid: 0ba2768ff3ffd9e4ab3da363964d09e3,
         type: 2}
       propertyPath: logDebugInfo
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0ba2768ff3ffd9e4ab3da363964d09e3, type: 2}

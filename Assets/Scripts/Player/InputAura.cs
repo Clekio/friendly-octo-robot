@@ -5,8 +5,8 @@ using InControl;
 
 public class InputAura : MonoBehaviour
 {
-    [SerializeField][Range(-1,0)]
-    private float crouchInput = -0.5f;
+    //[SerializeField][Range(-1,0)]
+    //private float crouchInput = -0.5f;
 
     private InputDevice inputDevice;
 

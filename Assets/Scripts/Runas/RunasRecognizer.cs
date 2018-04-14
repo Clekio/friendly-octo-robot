@@ -25,9 +25,12 @@ public abstract class recognizerRunas : MonoBehaviour
     protected string m_magicName;
     protected float m_magicAngle;
     protected Vector2 m_magicScale;
+    protected float deltaTotal = 0;
+    protected int deltaCount = 0;
+    protected Vector2 lastPositon;
 
     #region Constantes
-    const float pointDistance = 1f;
+    const float pointDistance = 0.009f;
     const int lineDistance = 40;
     const float minimumAngle = 135;
     #endregion
@@ -53,52 +56,74 @@ public abstract class recognizerRunas : MonoBehaviour
         }
     }
 
-    protected List<Vector2> optimizedDirection;
+    protected List<Vector2> optimizedDirection = new List<Vector2>();
     protected List<Vector2> optimizedDistance;
+    private List<Vector2> optimizedIntersection;
     private List<Vector2> optimizeGesture(List<Vector2> pointsList)//, List<Vector2> deltaList)
     {
+        float pD = Screen.width * pointDistance;
+        if (deltaTotal / deltaCount <= pD)
+        {
+            optimizedDistance = new List<Vector2> { pointsList[0] };
+
+            for (int i = 1; i < pointsList.Count; ++i)
+            {
+                if (Vector2.Distance(pointsList[i], optimizedDistance[optimizedDistance.Count - 1]) >= pD)
+                {
+                    //optimizedDistance.Insert(optimizedDistance.Count - 2, pointsList[i]);
+                    optimizedDistance.Add(pointsList[i]);
+                }
+                else if (i == pointsList.Count - 1)
+                {
+                    optimizedDistance[optimizedDistance.Count - 1] = pointsList[i];
+                }
+            }
+        }
+        else
+        {
+            optimizedDistance = pointsList;
+        }
+
         //Quitamos los puntos que no creen un cambio de direccion.
         optimizedDirection = new List<Vector2>();
-        Vector2 pointA = pointsList[0];
+        Vector2 pointA = optimizedDistance[0];
 
-        for (int i = 1; i < pointsList.Count - 1; ++i)
+        for (int i = 1; i < optimizedDistance.Count - 1; ++i)
         {
-            if (i >= pointsList.Count - 2 && Vector2.Distance(pointsList[i], pointA) > lineDistance)
+            if (i >= optimizedDistance.Count - 2 && Vector2.Distance(optimizedDistance[i], pointA) > lineDistance)
             {
                 optimizedDirection.Add(pointA);
-                optimizedDirection.Add(pointsList[i]);
+                optimizedDirection.Add(optimizedDistance[i]);
                 
                 continue;
             }
 
-            if (Vector2.Distance(pointsList[i], pointA) < pointDistance || Vector2.Distance(pointsList[i], pointsList[i + 1]) < pointDistance)
-                continue;
+            //if (Vector2.Distance(optimizedDistance[i], pointA) < pointDistance || Vector2.Distance(optimizedDistance[i], optimizedDistance[i + 1]) < pointDistance)
+            //    continue;
 
-            Vector2 AB = pointsList[i] - pointA;
-            Vector2 CB = pointsList[i] - pointsList[i + 1];
+            Vector2 AB = optimizedDistance[i] - pointA;
+            Vector2 CB = optimizedDistance[i] - optimizedDistance[i + 1];
             float angle = Vector2.Angle(AB, CB);
 
             if (angle <= minimumAngle)
             {
-                if (Vector2.Distance(pointsList[i], pointA) > lineDistance)
+                if (Vector2.Distance(optimizedDistance[i], pointA) > lineDistance)
                 {
                     optimizedDirection.Add(pointA);
-                    optimizedDirection.Add(pointsList[i]);
+                    optimizedDirection.Add(optimizedDistance[i]);
                 }
-                pointA = pointsList[i];
+                pointA = optimizedDistance[i];
             }
         }
 
         if (optimizedDirection.Count < 3)
             return optimizedDirection;
 
-        optimizedDistance = new List<Vector2>();
-        optimizedDistance.Add(optimizedDirection[0]);
-
+        optimizedIntersection = new List<Vector2>{optimizedDirection[0]};
         for (int i = 2; i < optimizedDirection.Count-1; i +=2)
         {
-            if (Vector2.Distance(optimizedDirection[i], optimizedDirection[i-1]) < pointDistance)
-                optimizedDistance.Add(optimizedDirection[i]);
+            if (Vector2.Distance(optimizedDirection[i], optimizedDirection[i-1]) < 1)
+                optimizedIntersection.Add(optimizedDirection[i]);
 
             else
             {
@@ -106,21 +131,21 @@ public abstract class recognizerRunas : MonoBehaviour
                 Vector2 v = GetIntersectionPointCoordinates(optimizedDirection[i - 2], optimizedDirection[i - 1], optimizedDirection[i], optimizedDirection[i + 1],out b);
 
                 if (b)
-                    optimizedDistance.Add(v);
+                    optimizedIntersection.Add(v);
             }
         }
-        optimizedDistance.Add(optimizedDirection[optimizedDirection.Count - 1]);
+        optimizedIntersection.Add(optimizedDirection[optimizedDirection.Count - 1]);
 
         if (debug)
         {
             DebugExtension.DebugLine(optimizedDirection, Colors.IndianRed, 5);
             DebugExtension.DebugLine(optimizedDistance, Colors.Red, 5);
 
-            foreach (Vector2 v in optimizedDistance)
+            foreach (Vector2 v in optimizedIntersection)
                 DebugExtension.DebugWireSphere(v, Colors.DarkRed, 10, 5);
         }
 
-        return optimizedDistance;
+        return optimizedIntersection;
     }
 
     private List<Vector2> NormalizeRune(List<Vector2> pointsList)
@@ -251,7 +276,7 @@ public abstract class recognizerRunas : MonoBehaviour
             if (vec.y > m_magicScale.y)
                 m_magicScale.y = vec.y;
         }
-        m_magicScale = m_magicScale * 2;
+        m_magicScale *= 2;
     }
 
     private Vector2 Rotate(Vector2 v, float degrees)

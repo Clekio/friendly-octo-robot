@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class ColisionAbajo : MonoBehaviour
 {
-    [SerializeField]
-    Animator anim;
+    //[SerializeField]
+    //Animator anim;
 
     public bool colisionAbajo = false;
 
-    void Start()
-    {
-        anim = GetComponent<Animator>();
-    }
+    //void Start()
+    //{
+    //    anim = GetComponent<Animator>();
+    //}
 
     void Update()
     {

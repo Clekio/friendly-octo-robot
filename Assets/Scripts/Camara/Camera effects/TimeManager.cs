@@ -8,7 +8,7 @@ public class TimeManager : MonoBehaviour {
     public float slowdownFactor = 0.05f;
     public float unSlowdownTime = 1f;
 
-    private float refTime = 0;
+    //private float refTime = 0;
 
     //Shader
     public Shader CurShader;

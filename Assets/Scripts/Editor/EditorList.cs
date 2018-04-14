@@ -18,7 +18,7 @@ public static class EditorList {
 
 	private static GUIContent
 		moveButtonContent = new GUIContent("\u21b4", "move down"),
-		duplicateButtonContent = new GUIContent("+", "duplicate"),
+		//duplicateButtonContent = new GUIContent("+", "duplicate"),
 		deleteButtonContent = new GUIContent("-", "delete"),
 		addButtonContent = new GUIContent("+", "add element");
 

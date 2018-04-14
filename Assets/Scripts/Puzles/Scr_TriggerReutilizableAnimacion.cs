@@ -9,7 +9,7 @@ public class Scr_TriggerReutilizable : MonoBehaviour
 
     bool animar = false;
 
-    bool activado = false;
+    //bool activado = false;
 
     void OnTriggerEnter2D(Collider2D collider)
     {
@@ -19,6 +19,6 @@ public class Scr_TriggerReutilizable : MonoBehaviour
     void Update()
     {
         animacion.SetBool("animate", animar);
-        activado = Scr_TriggerRaicesVuelta1.trigger1Activado;
+        //activado = Scr_TriggerRaicesVuelta1.trigger1Activado;
     }
 }

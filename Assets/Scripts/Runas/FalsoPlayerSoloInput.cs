@@ -18,20 +18,24 @@ public class FalsoPlayerSoloInput : MonoBehaviour
         if (!Instance)
             Instance = this;
         else
-            Destroy(this.gameObject);
+            Destroy(gameObject);
 
         input = InputManager.ActiveDevice;
-        
-        Debug.Log(input.Name);
-        
-        InputManager.OnDeviceAttached += inputDevice => input = inputDevice;
-        InputManager.OnDeviceDetached += inputDevice => input = InputManager.ActiveDevice;
+
+        //InputManager.OnDeviceAttached += inputDevice => input = inputDevice;
+        //InputManager.OnDeviceDetached += inputDevice => input = InputManager.ActiveDevice;
         InputManager.OnActiveDeviceChanged += inputDevice => input = inputDevice;
+
+        //InputManager.OnDeviceAttached += inputDevice => Debug.Log("Attached: " + inputDevice.Name);
+        //InputManager.OnDeviceDetached += inputDevice => Debug.Log("Detached: " + inputDevice.Name);
+        //InputManager.OnActiveDeviceChanged += inputDevice => Debug.Log("Switched: " + inputDevice.Name);
     }
 
     // Update is called once per frame
     void Update ()
     {
+        //input = InputManager.ActiveDevice;
+
         if (input.LeftBumper.WasPressed)
         {
             runas.StartMagia(input.Name == "Keyboard/Mouse", transform.position);

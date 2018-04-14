@@ -13,7 +13,7 @@ public class Controller2D : RaycastController
 
     protected bool goDown = false;
 
-    private Rigidbody2D rb2d;
+    //private Rigidbody2D rb2d;
 
     private bool push;
     
@@ -23,7 +23,7 @@ public class Controller2D : RaycastController
 	public override void Start() {
 		base.Start ();
 		collisions.faceDir = 1;
-        rb2d = GetComponent<Rigidbody2D>();
+        //rb2d = GetComponent<Rigidbody2D>();
     }
 
     //public void MovePlayer(Vector2 moveAmount, bool standingOnPlatform)

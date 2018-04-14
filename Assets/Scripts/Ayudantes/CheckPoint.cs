@@ -2,12 +2,12 @@
 
 public class CheckPoint : MonoBehaviour {
 
-    private Vector3 m_spawnPosition;
+    //private Vector3 m_spawnPosition;
 
-    private void Start()
-    {
-        m_spawnPosition = GetComponent<Transform>().position;
-    }
+    //private void Start()
+    //{
+    //    m_spawnPosition = GetComponent<Transform>().position;
+    //}
 
     private void OnTriggerEnter2D(Collider2D other)
     {

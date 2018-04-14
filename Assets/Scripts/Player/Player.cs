@@ -37,11 +37,6 @@ public class Player : MonoBehaviour
     [HideInInspector]
     public static Player Instance;
 
-    private void Awake()
-    {
-        input = InputManager.ActiveDevice;
-    }
-
     void Start()
     {
         if (!Instance)
@@ -49,7 +44,9 @@ public class Player : MonoBehaviour
         else
             Destroy(this.gameObject);
 
-        if(!controller)
+        input = InputManager.ActiveDevice;
+
+        if (!controller)
             controller = GetComponent<Controller2D>();
 
         PlayerClimbInfo.empty = true;
@@ -59,8 +56,6 @@ public class Player : MonoBehaviour
         minJumpVelocity = Mathf.Sqrt(2 * Mathf.Abs(gravityOnGround) * minJumpHeight);
         secondJumpSpeed = Mathf.Sqrt(2 * Mathf.Abs(gravityOnGround) * secondJumpHeight);
 
-        InputManager.OnDeviceAttached += inputDevice => input = inputDevice;
-        InputManager.OnDeviceDetached += inputDevice => input = InputManager.ActiveDevice;
         InputManager.OnActiveDeviceChanged += inputDevice => input = inputDevice;
     }
     

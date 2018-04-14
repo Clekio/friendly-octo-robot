@@ -94,7 +94,7 @@ public class Aura : MonoBehaviour
 
     public bool tieneParaguas = true;
 
-    bool canStandUp = true;
+    //bool canStandUp = true;
 
     bool canJump = true;
 
@@ -169,7 +169,7 @@ public class Aura : MonoBehaviour
 
         //tieneParaguas = Scr_TieneParaguas.paraguas;
 
-        canStandUp = gameObject.GetComponentInChildren<Scr_CrouchCheck>().canStandUp;
+        //canStandUp = gameObject.GetComponentInChildren<Scr_CrouchCheck>().canStandUp;
 
         canJump = Scr_EmpujarTirar.canJump;
 

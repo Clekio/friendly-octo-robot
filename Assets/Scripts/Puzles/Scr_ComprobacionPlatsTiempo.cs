@@ -20,13 +20,13 @@ public class Scr_ComprobacionPlatsTiempo : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if(platTrampa1 = null)
+            if(platTrampa1 == null)
             {
                 Instantiate(platTrampa1, position1);
                 Debug.Log("ASDFGHJ");
             }
 
-            if (platTrampa2 = null)
+            if (platTrampa2 == null)
             {
                 Instantiate(platTrampa2, position2);
             }

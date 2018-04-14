@@ -9,7 +9,7 @@ public class PlayerLive : MonoBehaviour {
 
     private Aura scrPlayer;
 
-    private static float m_respawnTimeLeft = 0.0f;
+    //private static float m_respawnTimeLeft = 0.0f;
 
     private void Awake()
     {
