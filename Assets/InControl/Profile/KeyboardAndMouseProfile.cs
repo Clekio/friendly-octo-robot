@@ -35,7 +35,7 @@ namespace CustomProfile
 				{
 					Handle = "Jump",
 					Target = InputControlType.Action1,
-					Source = KeyCodeButton( KeyCode.Space )
+					Source = KeyCodeButton( KeyCode.Space, KeyCode.W, KeyCode.UpArrow )
                 },
                 new InputControlMapping
                 {

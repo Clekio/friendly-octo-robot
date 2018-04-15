@@ -140,7 +140,7 @@ public class Player : MonoBehaviour
             }
         }
 
-        if ((input.Action1.WasPressed || input.Direction.Up) && controller.collisions.below && !crouch)
+        if ((input.Action1.WasPressed) && controller.collisions.below && !crouch)
         {
             if (controller.collisions.slidingDownMaxSlope)
             {
@@ -242,16 +242,16 @@ public class Player : MonoBehaviour
 
         if (tieneParaguas)
         {
-            if ((input.Action1.IsPressed || input.Direction.Up.IsPressed) && velocity.y < 0)
+            if ((input.Action1.IsPressed) && velocity.y < 0)
             {
                 speedToUse.y = Mathf.SmoothDamp(velocity.y, yGlideSpeed, ref velocityYSmoothing, yGlideTime);
                 planeando = true;
                 //anim.SetBool("planeando", planeo);
             }
-            else if (planeando && (input.Action1.WasReleased || input.Direction.Up.WasReleased))
+            else if (planeando && (input.Action1.WasReleased))
                 Invoke("ResetPlaneo", timeToSecondJump);
 
-            if ((input.Action1.WasPressed || input.Direction.Up.WasPressed) && canSecondJump && planeando)
+            if ((input.Action1.WasPressed) && canSecondJump && planeando)
             {
                 speedToUse.y = secondJumpSpeed;
                 canSecondJump = false;
@@ -332,8 +332,8 @@ public class Player : MonoBehaviour
         //anim.SetBool("planeando", planeando);
         //anim.SetBool("grounded", controller.collisions.below);
 
-        anim.SetBool("Move", Mathf.Abs(velocity.x) > 0.5);
-        anim.SetFloat("Speed", Mathf.Abs(velocity.x)/4);
+        anim.SetBool("Move", Mathf.Abs(velocity.x) > 0.1f);
+        anim.SetFloat("Speed", Mathf.Lerp(0.5f, 1, Mathf.Abs(velocity.x) / groundSpeed));
 
         if (velocity.x > 0 && !m_FacingRight)
             Flip();
