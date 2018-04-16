@@ -17,15 +17,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Game Scenes/Scn_Bosque 1.unity
     guid: ab0839e325a99d54b8d52c98f74ae21e
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Test Scenes/Carga de escenas/scn_1.unity
     guid: 883a792707606f04394e28940028f827
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Test Scenes/Carga de escenas/scn_2.unity
     guid: d9a6745a32737b842a264b26f5602f1d
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Test Scenes/Carga de escenas/scn_3.unity
     guid: 7159a106be2fbaf448ed70bf185884ee
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Test Scenes/Carga de escenas/scn_4.unity
     guid: 616ea1be0e1c61344a8709cf6cb7a243
